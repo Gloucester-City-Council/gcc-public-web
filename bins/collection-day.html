@@ -1030,7 +1030,7 @@
       helpText.style.color = '#666';
 
       try {
-        const response = await fetch(`${GCC_CONFIG.API_BASE_URL}/api/postcode-addresses?postcode=${encodeURIComponent(postcode)}`);
+        const response = await fetch(`${GCC_CONFIG.API_BASE_URL}/api/addresses/lookup?postcode=${encodeURIComponent(postcode)}`);
         if (!response.ok) throw new Error('Address lookup failed');
         const data = await response.json();
 
