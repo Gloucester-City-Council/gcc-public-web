@@ -1184,11 +1184,11 @@ async function loadBinsForProperty() {
 
     try {
         // Call bins API
-        const response = await fetch('${GCC_CONFIG.API_BASE_URL}/api/bins-by-uprn', {
+        const response = await fetch(`${GCC_CONFIG.API_BASE_URL}/api/bins/by-address`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'x-api-token': 'oije8u23984uoriwfjowei2398470'
+                'x-api-token': GCC_CONFIG.API_TOKEN
             },
             body: JSON.stringify({
                 addressId: addressId,
@@ -1416,11 +1416,11 @@ document.getElementById('missed-bin-form').addEventListener('submit', async func
     
     try {
         // Call API
-        const response = await fetch('${GCC_CONFIG.API_BASE_URL}/api/submitMissedCollection', {
+        const response = await fetch(`${GCC_CONFIG.API_BASE_URL}/api/submitMissedCollection`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'x-api-token': 'oije8u23984uoriwfjowei2398470'
+                'x-api-token': GCC_CONFIG.API_TOKEN
             },
             body: JSON.stringify(formData)
         });
