@@ -682,6 +682,7 @@
   </footer>
 
   <!-- JS -->
+  <script src="/assets/js/config.js"></script>
   <script src="/assets/js/main.js"></script>
 
   <script>
@@ -732,14 +733,14 @@
     }
 
     // -------- Calendar URLs --------
-    const API_HOST = 'gcc-api-pilot.azurewebsites.net';
     function calendarHttpsUrl(addressId) {
       // NOTE: include the .ics in the path (this is the key fix)
-      return `https://${API_HOST}/api/bins-webcal/${encodeURIComponent(addressId)}.ics`;
+      return `${GCC_CONFIG.API_BASE_URL}/api/bins-webcal/${encodeURIComponent(addressId)}.ics`;
     }
     function calendarWebcalUrl(addressId) {
-      // webcal is basically https for calendar clients
-      return `webcal://${API_HOST}/api/bins-webcal/${encodeURIComponent(addressId)}.ics`;
+      // webcal is basically https for calendar clients (strip https:// and replace with webcal://)
+      const host = GCC_CONFIG.API_BASE_URL.replace('https://', '');
+      return `webcal://${host}/api/bins-webcal/${encodeURIComponent(addressId)}.ics`;
     }
 
     // -------- Accessible calendar modal --------
@@ -1029,7 +1030,7 @@
       helpText.style.color = '#666';
 
       try {
-        const response = await fetch(`https://${API_HOST}/api/postcode-addresses?postcode=${encodeURIComponent(postcode)}`);
+        const response = await fetch(`${GCC_CONFIG.API_BASE_URL}/api/postcode-addresses?postcode=${encodeURIComponent(postcode)}`);
         if (!response.ok) throw new Error('Address lookup failed');
         const data = await response.json();
 
@@ -1163,11 +1164,11 @@
     }
 
     async function loadBinsForAddressId(addressId) {
-      const response = await fetch(`https://${API_HOST}/api/bins-by-uprn`, {
+      const response = await fetch(`${GCC_CONFIG.API_BASE_URL}/api/bins/by-address`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-api-token': 'oije8u23984uoriwfjowei2398470'
+          'x-api-token': GCC_CONFIG.API_TOKEN
         },
         body: JSON.stringify({ addressId })
       });

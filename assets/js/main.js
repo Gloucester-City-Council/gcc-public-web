@@ -250,11 +250,11 @@
             console.log('Feedback event:', feedbackPayload);
 
             try {
-                const response = await fetch('https://gcc-api-pilot.azurewebsites.net/api/submitFeedback', {
+                const response = await fetch(`${GCC_CONFIG.API_BASE_URL}/api/submitFeedback`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'x-api-token': 'oije8u23984uoriwfjowei2398470'
+                        'x-api-token': GCC_CONFIG.API_TOKEN
                     },
                     body: JSON.stringify(feedbackPayload)
                 });
