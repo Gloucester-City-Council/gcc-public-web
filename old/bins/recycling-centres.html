@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find your nearest household recycling centre (HRC) in Gloucestershire. Opening hours, booking information, and what you can take to recycle.">
+    <base href="/pilot-demo-site/">
+    <title>Household Recycling Centres | Bins and Recycling | Gloucester City Council</title>
+
+    <!-- Assets -->
+    <link rel="preload" href="assets/images/GCC_logo.svg" as="image">
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/service-landing.css">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RecyclingCenter",
+      "name": "Gloucestershire Household Recycling Centres",
+      "description": "Household waste recycling centres across Gloucestershire for items that cannot go in your bins",
+      "provider": {
+        "@type": "GovernmentOrganization",
+        "name": "Gloucestershire County Council"
+      },
+      "areaServed": {
+        "@type": "County",
+        "name": "Gloucestershire"
+      }
+    }
+    </script>
+
+    <style>
+        .hrc-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #2d6a4f;
+        }
+
+        .hrc-card h3 {
+            color: #2d6a4f;
+            font-size: 1.5rem;
+            margin: 0 0 1rem 0;
+        }
+
+        .hrc-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-block {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .info-block h4 {
+            margin: 0 0 0.5rem 0;
+            color: #2d6a4f;
+            font-size: 1rem;
+        }
+
+        .info-block p {
+            margin: 0;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            color: #92400e;
+            margin: 0 0 1rem 0;
+        }
+
+        .highlight-box p {
+            color: #78350f;
+            margin: 0 0 1rem 0;
+        }
+
+        .highlight-box p:last-child {
+            margin: 0;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .material-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .material-item::before {
+            content: "✓";
+            color: #2d6a4f;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2d6a4f;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin: 1rem 0;
+        }
+
+        .cta-button:hover {
+            background: #1b4332;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.4);
+        }
+
+        .nearest-centre {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 2px solid #2d6a4f;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .nearest-centre h3 {
+            color: #065f46;
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body data-service-id="recycling-centres">
+
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <div class="header-top">
+                <a href="" class="logo-link" aria-label="Gloucester City Council homepage">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="site-logo"
+                         width="250"
+                         height="70">
+                </a>
+
+                <form class="search-form" role="search" action="search" method="get">
+                    <label for="search-input" class="sr-only">Search the website</label>
+                    <input type="search" id="search-input" name="q"
+                           class="search-input" placeholder="Search..." aria-label="Search the website">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Welcome Banner -->
+        <h1 class="welcome-banner">
+            Household Recycling Centres
+        </h1>
+    </header>
+
+    <!-- MAIN NAV -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <button class="menu-toggle" aria-expanded="false">Menu</button>
+            <ul class="nav-list">
+                <li><a href="contact">Contact us</a></li>
+                <li><a href="https://gloucester-self.achieveservice.com/">My Gloucester</a></li>
+                <li><a href="news">News</a></li>
+                <li><a href="https://public.govdelivery.com/accounts/UKGCCA/subscriber/new">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <nav class="service-breadcrumb" aria-label="Breadcrumb">
+        <div class="breadcrumb-inner">
+            <ol>
+                <li><a href="">Home</a></li>
+                <li><a href="Bins">Bins and Recycling</a></li>
+                <li aria-current="page">Household Recycling Centres</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="main-content" class="main-content" role="main">
+
+        <div class="service-layout">
+
+            <!-- LEFT COLUMN -->
+            <div class="service-main">
+
+                <p style="font-size: 1.25rem; line-height: 1.6; color: #4a5568; margin-bottom: 2rem;">
+                    Household Recycling Centres (HRCs), sometimes called 'tips' or 'the dump', are for items that don't fit in your bins. All centres require you to book before visiting.
+                </p>
+
+                <!-- BOOKING REQUIREMENT -->
+                <div class="highlight-box">
+                    <h3>📅 Booking required for all visits</h3>
+                    <p><strong>You must book before visiting any Household Recycling Centre.</strong></p>
+                    <p>Book online at <a href="https://www.gloucestershirerecycles.com/household-recycling-centres-hrcs/car-and-van-bookings-for-hrc-visits/" style="color: #92400e; font-weight: 600; text-decoration: underline;">Book your HRC visit</a></p>
+                    <p>Phone bookings: <strong>01452 596 626</strong> (weekdays 9am-5pm) for those without internet access</p>
+                </div>
+
+                <!-- NEAREST CENTRE -->
+                <div class="nearest-centre">
+                    <h3>🏭 Your nearest centre</h3>
+                    <div class="hrc-card" style="margin: 0;">
+                        <h3>Hempsted HRC (Gloucester)</h3>
+                        <div class="hrc-info">
+                            <div class="info-block">
+                                <h4>📍 Location</h4>
+                                <p>Hempsted Lane, Gloucester</p>
+                            </div>
+                            <div class="info-block">
+                                <h4>🕐 Opening hours</h4>
+                                <p><strong>Summer:</strong> 9am - 5pm<br>
+                                <strong>Winter:</strong> 10am - 4pm<br>
+                                <strong>Closed:</strong> Thursdays</p>
+                            </div>
+                        </div>
+                        <p style="margin: 1rem 0 0 0; color: #065f46;"><strong>Note:</strong> Closed on Christmas Day, Boxing Day and New Year's Day</p>
+                    </div>
+                </div>
+
+                <!-- ALL CENTRES -->
+                <section aria-labelledby="all-centres">
+                    <h2 id="all-centres" style="font-size: 2rem; margin: 3rem 0 1.5rem 0;">All Gloucestershire Recycling Centres</h2>
+                    <p style="color: #4a5568; margin-bottom: 2rem;">You can visit any of the five Household Recycling Centres in Gloucestershire.</p>
+
+                    <!-- Fosse Cross -->
+                    <div class="hrc-card">
+                        <h3>Fosse Cross HRC (Cirencester)</h3>
+                        <div class="hrc-info">
+                            <div class="info-block">
+                                <h4>📍 Location</h4>
+                                <p>Fosse Cross, Cirencester</p>
+                            </div>
+                            <div class="info-block">
+                                <h4>🕐 Opening hours</h4>
+                                <p><strong>Summer:</strong> 9am - 5pm<br>
+                                <strong>Winter:</strong> 10am - 4pm<br>
+                                <strong>Closed:</strong> Tuesdays</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Oak Quarry -->
+                    <div class="hrc-card">
+                        <h3>Oak Quarry HRC (Coleford)</h3>
+                        <div class="hrc-info">
+                            <div class="info-block">
+                                <h4>📍 Location</h4>
+                                <p>Oak Quarry, Coleford</p>
+                            </div>
+                            <div class="info-block">
+                                <h4>🕐 Opening hours</h4>
+                                <p><strong>Summer:</strong> 9am - 5pm<br>
+                                <strong>Winter:</strong> 10am - 4pm<br>
+                                <strong>Closed:</strong> Tuesdays</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pyke Quarry -->
+                    <div class="hrc-card">
+                        <h3>Pyke Quarry HRC (Horsley, near Stroud)</h3>
+                        <div class="hrc-info">
+                            <div class="info-block">
+                                <h4>📍 Location</h4>
+                                <p>Pyke Quarry, Horsley, near Stroud</p>
+                            </div>
+                            <div class="info-block">
+                                <h4>🕐 Opening hours</h4>
+                                <p><strong>Summer:</strong> 9am - 5pm<br>
+                                <strong>Winter:</strong> 10am - 4pm<br>
+                                <strong>Closed:</strong> Wednesdays</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wingmoor Farm -->
+                    <div class="hrc-card">
+                        <h3>Wingmoor Farm HRC (Bishops Cleeve)</h3>
+                        <div class="hrc-info">
+                            <div class="info-block">
+                                <h4>📍 Location</h4>
+                                <p>Wingmoor Farm, Bishops Cleeve</p>
+                            </div>
+                            <div class="info-block">
+                                <h4>🕐 Opening hours</h4>
+                                <p><strong>Summer:</strong> 9am - 5pm<br>
+                                <strong>Winter:</strong> 10am - 4pm<br>
+                                <strong>Open:</strong> 7 days a week</p>
+                            </div>
+                        </div>
+                        <p style="margin: 1rem 0 0 0; color: #2d6a4f;"><strong>Note:</strong> This is the only centre open 7 days a week</p>
+                    </div>
+                </section>
+
+                <!-- WHAT YOU CAN TAKE -->
+                <section aria-labelledby="what-to-take">
+                    <h2 id="what-to-take" style="font-size: 2rem; margin: 3rem 0 1.5rem 0;">What you can take to recycling centres</h2>
+                    <p style="color: #4a5568; margin-bottom: 1.5rem;">Household Recycling Centres accept a wide range of materials and items including:</p>
+
+                    <div class="materials-grid">
+                        <div class="material-item">Garden waste</div>
+                        <div class="material-item">Cardboard and paper</div>
+                        <div class="material-item">Glass bottles and jars</div>
+                        <div class="material-item">Plastic bottles and containers</div>
+                        <div class="material-item">Metal cans and scrap metal</div>
+                        <div class="material-item">Wood and timber</div>
+                        <div class="material-item">Electrical items</div>
+                        <div class="material-item">Batteries</div>
+                        <div class="material-item">Textiles and clothing</div>
+                        <div class="material-item">Books and media</div>
+                        <div class="material-item">Household furniture</div>
+                        <div class="material-item">Mattresses</div>
+                        <div class="material-item">Fridges and freezers</div>
+                        <div class="material-item">Paint and chemicals</div>
+                        <div class="material-item">Rubble and soil (small amounts)</div>
+                        <div class="material-item">Tyres (limited quantities)</div>
+                    </div>
+
+                    <p style="background: #e0f2fe; padding: 1.5rem; border-radius: 8px; color: #0c4a6e; margin-top: 2rem;">
+                        <strong>💡 Tip:</strong> For a complete list of what can and cannot be taken, and any restrictions or charges, visit
+                        <a href="https://www.gloucestershirerecycles.com/household-recycling-centres-hrcs/" style="color: #075985; font-weight: 600; text-decoration: underline;">www.gloucestershirerecycles.com</a>
+                    </p>
+                </section>
+
+                <!-- IMPORTANT INFORMATION -->
+                <section aria-labelledby="important-info">
+                    <h2 id="important-info" style="font-size: 2rem; margin: 3rem 0 1.5rem 0;">Important information</h2>
+
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 2px solid #e0e0e0; margin-bottom: 1.5rem;">
+                        <h3 style="margin: 0 0 1rem 0; color: #2d6a4f;">🚗 Van permits</h3>
+                        <p style="margin: 0; color: #4a5568;">If you're visiting in a van, pick-up truck, or large vehicle, you may need a permit. Check the Gloucestershire Recycles website for details.</p>
+                    </div>
+
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 2px solid #e0e0e0; margin-bottom: 1.5rem;">
+                        <h3 style="margin: 0 0 1rem 0; color: #2d6a4f;">🏠 Household waste only</h3>
+                        <p style="margin: 0; color: #4a5568;">Recycling centres are for household waste only. Business and commercial waste is not accepted.</p>
+                    </div>
+
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 2px solid #e0e0e0; margin-bottom: 1.5rem;">
+                        <h3 style="margin: 0 0 1rem 0; color: #2d6a4f;">📋 What to bring</h3>
+                        <p style="margin: 0; color: #4a5568;">Bring proof of Gloucestershire residency (such as a utility bill or Council Tax letter) and your booking confirmation.</p>
+                    </div>
+
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 2px solid #e0e0e0;">
+                        <h3 style="margin: 0 0 1rem 0; color: #2d6a4f;">⏰ Allow enough time</h3>
+                        <p style="margin: 0; color: #4a5568;">Booking slots are typically 15 minutes. Make sure to arrive on time and allow enough time to unload your vehicle safely.</p>
+                    </div>
+                </section>
+
+                <!-- CTA -->
+                <div style="text-align: center; margin: 3rem 0;">
+                    <a href="https://www.gloucestershirerecycles.com/household-recycling-centres-hrcs/car-and-van-bookings-for-hrc-visits/" class="cta-button">
+                        Book your visit to a recycling centre →
+                    </a>
+                    <p style="color: #6b7280; margin-top: 1rem;">Or call 01452 596 626 (weekdays 9am-5pm)</p>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN (SIDEBAR) -->
+            <aside class="service-sidebar">
+
+                <section class="service-contact">
+                    <h2>Contact information</h2>
+                    <div class="contact-block">
+                        <h3>Phone</h3>
+                        <p>
+                            <a href="tel:+441452596626">01452 596 626</a><br>
+                            Weekdays, 9am to 5pm
+                        </p>
+                    </div>
+                    <div class="contact-block">
+                        <h3>Website</h3>
+                        <p>
+                            <a href="https://www.gloucestershirerecycles.com/">gloucestershirerecycles.com</a><br>
+                            For bookings and full information
+                        </p>
+                    </div>
+                </section>
+
+                <section class="service-related">
+                    <h2>Related pages</h2>
+                    <ul class="related-links">
+                        <li><a href="Bins">← Back to bins home</a></li>
+                        <li><a href="Bins/bin-services.html">All bin services</a></li>
+                        <li><a href="Bins/what-goes-where.html">What goes in which bin</a></li>
+                        <li><a href="Bins/bulky-waste">Bulky waste collection</a></li>
+                        <li><a href="Bins/textiles">Textile recycling</a></li>
+                    </ul>
+                </section>
+
+            </aside>
+
+        </div>
+
+        <!-- FEEDBACK PANEL -->
+        <section class="feedback-panel" aria-labelledby="feedback-heading">
+            <div class="feedback-inner">
+                <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
+
+                <div class="feedback-buttons" role="group">
+                    <button type="button" class="feedback-btn feedback-yes" data-rating="positive">
+                        👍 Yes
+                    </button>
+                    <button type="button" class="feedback-btn feedback-no" data-rating="negative">
+                        👎 No
+                    </button>
+                </div>
+
+                <form id="feedback-form" class="feedback-form" hidden>
+                    <p id="feedback-prompt">What worked well? (optional)</p>
+                    <label for="feedback-comments" class="sr-only">Your feedback</label>
+                    <textarea id="feedback-comments" rows="3" aria-labelledby="feedback-prompt"></textarea>
+
+                    <label for="feedback-email">Email (optional, if you'd like a response)</label>
+                    <input type="email" id="feedback-email">
+
+                    <button type="submit" class="feedback-submit">Submit</button>
+                </form>
+
+                <p id="feedback-thanks" class="feedback-thanks" hidden>
+                    ✅ Thank you for your feedback.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-section">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="footer-logo">
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="Bins/collection-day.html">Check bin day</a></li>
+                        <li><a href="council-tax/pay">Pay Council Tax</a></li>
+                        <li><a href="planning/search">Planning applications</a></li>
+                        <li><a href="report">Report a problem</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Gloucester</h3>
+                    <ul class="footer-links">
+                        <li><a href="http://visitgloucester.co.uk/">Visit Gloucester</a></li>
+                        <li><a href="find-councillor">Find your councillor</a></li>
+                        <li><a href="jobs">Jobs & careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Using our site</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy">Privacy & cookies</a></li>
+                        <li><a href="accessibility">Accessibility</a></li>
+                        <li><a href="contact">Contact us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Gloucester City Council. All rights reserved.</p>
+                <p>Registered office: Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

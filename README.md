@@ -1,7 +1,6 @@
-# Static Site Template (Council Pilot)
+# Static Site Pilot Demo Site (Council Pilot)
 
-This repository is a **template** for public, static websites in the council GitHub pilot.
-
+This repository is for public, static websites in the council GitHub pilot.
 ## Governance
 
 - [Security Policy (local copy)](SECURITY.md)

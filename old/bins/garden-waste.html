@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subscribe to fortnightly garden waste collection in Gloucester. £60 per year for brown bin collection from February to November.">
+    <base href="/pilot-demo-site/">
+    <title>Garden waste collection | Bins and Recycling | Gloucester City Council</title>
+
+    <!-- Assets -->
+    <link rel="preload" href="assets/images/GCC_logo.svg" as="image">
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/service-landing.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GovernmentService",
+      "name": "Garden waste collection subscription",
+      "description": "Fortnightly collection of garden waste in a brown bin from February to November",
+      "serviceUrl": "https://www.gloucester.gov.uk/bins/garden-waste",
+      "provider": {
+        "@type": "GovernmentOrganization",
+        "name": "Gloucester City Council"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "60.00",
+        "priceCurrency": "GBP",
+        "priceValidUntil": "2025-12-31",
+        "description": "Annual subscription for garden waste collection"
+      },
+      "serviceType": "Waste Collection",
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://gloucester-self.achieveservice.com/garden-waste",
+        "serviceType": "Online"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --garden-green: #6a994e;
+            --garden-green-dark: #4a7c59;
+            --garden-lime: #a7c957;
+            --accent-gold: #f2cc8f;
+            --bg-cream: #fdfcfb;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-cream);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Fraunces', Georgia, serif;
+        }
+
+        .intro-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 1.5rem 0 2rem 0;
+        }
+
+        /* Hero price section */
+        .hero-price {
+            background: linear-gradient(135deg, #4a7c59 0%, #6a994e 100%);
+            color: white;
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            margin: 2rem 0 3rem 0;
+            box-shadow: 0 8px 24px rgba(74, 124, 89, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-price::before {
+            content: "🌿";
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            right: -2rem;
+            top: -3rem;
+            transform: rotate(15deg);
+        }
+
+        .hero-price-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-price h2 {
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .price-display {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .price-amount {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1;
+            font-family: 'Fraunces', serif;
+        }
+
+        .price-period {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        .price-breakdown {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .price-breakdown p {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--garden-green-dark);
+            padding: 1.25rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Benefits grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 1.75rem;
+            border-radius: 12px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--garden-green);
+            box-shadow: 0 4px 16px rgba(106, 153, 78, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .benefit-card h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            color: var(--garden-green-dark);
+        }
+
+        .benefit-card p {
+            margin: 0;
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Process steps */
+        .process-steps {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            border: 2px solid #e0e0e0;
+        }
+
+        .process-steps h2 {
+            margin-top: 0;
+            color: var(--garden-green-dark);
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding: 1.5rem 0 1.5rem 4rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .step-list li:last-child {
+            border-bottom: none;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 1.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, var(--garden-green) 0%, var(--garden-lime) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .step-list strong {
+            color: var(--garden-green-dark);
+            font-size: 1.05rem;
+        }
+
+        /* Collection info boxes */
+        .collection-info {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #0284c7;
+            margin: 2rem 0;
+        }
+
+        .collection-info h3 {
+            margin-top: 0;
+            color: #0c4a6e;
+        }
+
+        .collection-info strong {
+            color: #0c4a6e;
+        }
+
+        /* Materials lists */
+        .materials-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 2px solid #e0e0e0;
+        }
+
+        .materials-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .materials-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .materials-list li::before {
+            content: "✓";
+            color: var(--garden-green);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .rejected-list {
+            background: #fef2f2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ef4444;
+            margin: 1.5rem 0;
+        }
+
+        .rejected-list h3 {
+            color: #991b1b;
+            margin-top: 0;
+        }
+
+        .rejected-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rejected-list li::before {
+            content: "✕";
+            color: #dc2626;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* FAQ section */
+        .faq-section {
+            margin: 3rem 0;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.75rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 2px solid #e0e0e0;
+            transition: all 0.2s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--garden-green);
+        }
+
+        .faq-item h3 {
+            margin: 0 0 1rem 0;
+            color: var(--garden-green-dark);
+            font-size: 1.15rem;
+        }
+
+        .faq-item p {
+            margin: 0;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Composting callout */
+        .composting-callout {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            border-left: 6px solid #f59e0b;
+        }
+
+        .composting-callout h2 {
+            margin-top: 0;
+            color: #92400e;
+        }
+
+        .composting-callout ul li {
+            color: #78350f;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Quick facts sidebar */
+        .quick-facts {
+            background: white;
+            padding: 1.75rem;
+            border-radius: 12px;
+            border: 2px solid var(--garden-green);
+            position: sticky;
+            top: 20px;
+        }
+
+        .quick-facts h2 {
+            font-size: 1.3rem;
+            margin: 0 0 1.5rem 0;
+            color: var(--garden-green-dark);
+        }
+
+        .quick-facts ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-facts li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.95rem;
+        }
+
+        .quick-facts li:last-child {
+            border-bottom: none;
+        }
+
+        .quick-facts strong {
+            color: var(--garden-green-dark);
+        }
+
+        /* Animation */
+        .benefit-card {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .benefit-card:nth-child(1) { animation-delay: 0.1s; }
+        .benefit-card:nth-child(2) { animation-delay: 0.2s; }
+        .benefit-card:nth-child(3) { animation-delay: 0.3s; }
+        .benefit-card:nth-child(4) { animation-delay: 0.4s; }
+        .benefit-card:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .price-display {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .price-amount {
+                font-size: 3.5rem;
+            }
+
+            .hero-price {
+                padding: 2rem 1.5rem;
+            }
+
+            .materials-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body data-service-id="garden-waste-subscription">
+
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <div class="header-top">
+                <a href="" class="logo-link" aria-label="Gloucester City Council homepage">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="site-logo"
+                         width="250"
+                         height="70">
+                </a>
+
+                <form class="search-form" role="search" action="search" method="get">
+                    <label for="search-input" class="sr-only">Search the website</label>
+                    <input type="search" id="search-input" name="q"
+                           class="search-input" placeholder="Search..." aria-label="Search the website">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Welcome Banner -->
+        <h1 class="welcome-banner">
+            Garden waste collection
+        </h1>
+    </header>
+
+    <!-- MAIN NAV -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <button class="menu-toggle" aria-expanded="false">Menu</button>
+            <ul class="nav-list">
+                <li><a href="contact">Contact us</a></li>
+                <li><a href="https://gloucester-self.achieveservice.com/">My Gloucester</a></li>
+                <li><a href="news">News</a></li>
+                <li><a href="https://public.govdelivery.com/accounts/UKGCCA/subscriber/new">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <nav class="service-breadcrumb" aria-label="Breadcrumb">
+        <div class="breadcrumb-inner">
+            <ol>
+                <li><a href="">Home</a></li>
+                <li><a href="Bins">Bins and Recycling</a></li>
+                <li aria-current="page">Garden waste collection</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="main-content" class="main-content" role="main">
+
+        <div class="service-layout">
+
+            <!-- LEFT COLUMN -->
+            <div class="service-main">
+                
+                <p class="intro-text">Subscribe to fortnightly garden waste collection in a brown bin. We collect from February to November every year.</p>
+
+                <!-- HERO PRICE SECTION -->
+                <div class="hero-price">
+                    <div class="hero-price-content">
+                        <h2>Annual subscription</h2>
+                        <div class="price-display">
+                            <span class="price-amount">£60</span>
+                            <span class="price-period">per year</span>
+                        </div>
+                        <div class="price-breakdown">
+                            <p>📅 February to November (10 months)</p>
+                            <p>🗓️ That's about £6 per month during the collection season</p>
+                        </div>
+                        <a href="https://gloucester-self.achieveservice.com/garden-waste" class="cta-button">Subscribe now →</a>
+                    </div>
+                </div>
+
+                <!-- WHAT YOU GET -->
+                <section aria-labelledby="what-you-get">
+                    <h2 id="what-you-get" style="font-size: 2rem; margin-bottom: 1.5rem;">What you get</h2>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🗓️</span>
+                            <h3>Fortnightly collections</h3>
+                            <p>Regular collections every two weeks from February to November</p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🗑️</span>
+                            <h3>Brown bin provided</h3>
+                            <p>240-litre bin delivered free if you don't have one</p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">📍</span>
+                            <h3>Same day as black bin</h3>
+                            <p>Collected on alternate weeks to your general waste</p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">⏰</span>
+                            <h3>Collection window</h3>
+                            <p>Collected between 7am and 6pm on your scheduled day</p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">❄️</span>
+                            <h3>Winter break included</h3>
+                            <p>No collections in December and January when waste is minimal</p>
+                        </div>
+                    </div>
+
+                    <div class="collection-info">
+                        <h3>📌 Important to know</h3>
+                        <p><strong>The garden waste service runs annually from 1 February to 30 November.</strong> The subscription is £60 per season, and you can join at any time. Your collections will continue until the season ends on 30 November, then you can renew for the next season starting 1 February.</p>
+                    </div>
+                </section>
+
+                <!-- HOW IT WORKS -->
+                <div class="process-steps">
+                    <h2>How it works</h2>
+
+                    <ol class="step-list">
+                        <li><strong>Subscribe online</strong> — Pay £60 by card or Direct Debit</li>
+                        <li><strong>Receive confirmation</strong> — We'll email you within 2 working days</li>
+                        <li><strong>Get your brown bin</strong> — Delivered within 10 working days</li>
+                        <li><strong>Put it out for collection</strong> — Same day as your black bin</li>
+                        <li><strong>We collect it</strong> — Every two weeks, February to November</li>
+                        <li><strong>Renew next year</strong> — We'll send you a reminder</li>
+                    </ol>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="https://gloucester-self.achieveservice.com/garden-waste" class="cta-button">Subscribe now →</a>
+                    </div>
+                </div>
+
+                <!-- WHAT WE COLLECT -->
+                <section aria-labelledby="what-we-collect">
+                    <h2 id="what-we-collect" style="font-size: 2rem; margin: 3rem 0 1.5rem 0;">What we collect</h2>
+                    
+                    <div class="materials-section">
+                        <h3 style="color: var(--garden-green-dark);">✓ You can put in your brown bin</h3>
+                        <ul class="materials-list">
+                            <li>Grass cuttings</li>
+                            <li>Lawn clippings</li>
+                            <li>Leaves</li>
+                            <li>Small branches (under 10cm)</li>
+                            <li>Twigs</li>
+                            <li>Hedge trimmings</li>
+                            <li>Plants & flowers</li>
+                            <li>Weeds</li>
+                            <li>Windfall fruit</li>
+                            <li>Dead flower heads</li>
+                        </ul>
+                    </div>
+
+                    <div class="rejected-list">
+                        <h3>✕ Do not put in your brown bin</h3>
+                        <ul>
+                            <li>Soil or turf</li>
+                            <li>Tree stumps or large branches</li>
+                            <li>Japanese knotweed (invasive species)</li>
+                            <li>Diseased plants (put in black bin to prevent spread)</li>
+                            <li>Pet waste</li>
+                            <li>Food waste (use your food caddy instead)</li>
+                            <li>Plant pots, stones or gravel</li>
+                        </ul>
+                    </div>
+
+                    <div class="collection-info">
+                        <h3>🏢 Don't have a garden?</h3>
+                        <p>You don't need to subscribe to this service. Use your food caddy for food waste and put houseplant cuttings in your black bin.</p>
+                    </div>
+                </section>
+
+                <!-- COLLECTION DATES -->
+                <section aria-labelledby="collection-dates">
+                    <h2 id="collection-dates" style="font-size: 2rem; margin: 3rem 0 1.5rem 0;">Collection dates</h2>
+                    
+                    <div class="collection-info">
+                        <h3>📅 2025 season</h3>
+                        <p><strong>Collections run:</strong> 1 February 2025 to 30 November 2025</p>
+                        <p><strong>Winter break:</strong> December 2025 and January 2026 (no collections)</p>
+                        <p><strong>2026 season starts:</strong> 1 February 2026</p>
+                    </div>
+
+                    <p style="margin: 1.5rem 0;">We don't collect in December and January because there's very little garden waste in winter. This also gives crews time for vehicle maintenance and helps reduce costs.</p>
+
+                    <p style="margin: 1.5rem 0;"><strong>Your collection day:</strong> Brown bin collection is on the same day as your black bin, but in alternate weeks. <a href="Bins/collection-day.html" style="color: var(--garden-green-dark); font-weight: 600;">Check your collection day →</a></p>
+                </section>
+
+                <!-- COMPOSTING AT HOME -->
+                <div class="composting-callout">
+                    <h2 id="composting" style="font-size: 1.75rem;">💡 Composting at home</h2>
+                    
+                    <p style="color: #78350f; font-size: 1.05rem; margin-bottom: 1.5rem;">You can reduce garden waste and create free compost by composting at home. It's better for your garden and the environment.</p>
+
+                    <ul style="color: #78350f; font-size: 1rem; line-height: 1.8;">
+                        <li><strong>Free</strong> — No subscription needed</li>
+                        <li><strong>Good for your garden</strong> — Creates natural fertilizer</li>
+                        <li><strong>Better for the environment</strong> — No transport needed</li>
+                        <li><strong>Easy to get started</strong> — Simple once you know how</li>
+                    </ul>
+
+                    <p style="margin-top: 1.5rem;"><a href="bins/composting-at-home" style="color: #78350f; font-weight: 700; text-decoration: underline;">Guide to composting at home →</a></p>
+                </div>
+
+                <!-- FAQS -->
+                <section aria-labelledby="faqs" class="faq-section">
+                    <h2 id="faqs" style="font-size: 2rem; margin-bottom: 1.5rem;">Common questions</h2>
+                    
+                    <div class="faq-item">
+                        <h3>Can I have more than one brown bin?</h3>
+                        <p>Yes. You pay £60 for each additional bin. Subscribe for your first bin, then <a href="bins/order-bin">order extra bins</a> separately.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What if I only want it for part of the year?</h3>
+                        <p>The subscription covers the full season from 1 February to 30 November. We don't offer part-season subscriptions or refunds if you decide to cancel partway through. Consider whether you'll use the service for most of the season before subscribing.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What if I move house?</h3>
+                        <p>If you move within Gloucester, you'll need to take out a new subscription for your new address. The subscription is tied to the property, not to you personally. If you move outside Gloucester, the subscription cannot be transferred or refunded.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What happens to my garden waste?</h3>
+                        <p>It's taken to a composting facility where it's turned into soil conditioner used by farmers and gardeners.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What if my bin isn't collected?</h3>
+                        <p>Wait until the next working day (crews sometimes run late), then <a href="Bins/missed-collection2.html">report a missed collection</a>. We'll return within 2 working days.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can I put garden waste in my black bin instead?</h3>
+                        <p>You can, but your black bin is only collected every two weeks and may fill up quickly. Garden waste can also be composted at home for free.</p>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN (SIDEBAR) -->
+            <aside class="service-sidebar">
+
+                <div class="quick-facts">
+                    <h2>Quick facts</h2>
+                    <ul>
+                        <li><strong>Cost:</strong> £60 per year</li>
+                        <li><strong>Collections:</strong> Fortnightly</li>
+                        <li><strong>Season:</strong> Feb to Nov</li>
+                        <li><strong>Bin size:</strong> 240 litres</li>
+                        <li><strong>Payment:</strong> Card or Direct Debit</li>
+                    </ul>
+                </div>
+
+                <section class="service-contact" style="margin-top: 1.5rem;">
+                    <h2>Need help?</h2>
+
+                    <div class="contact-block">
+                        <h3>Phone</h3>
+                        <p>
+                            <a href="tel:+441452396396">01452 396396</a><br>
+                            Monday to Friday, 8:30am to 5pm
+                        </p>
+                    </div>
+
+                    <div class="contact-block">
+                        <h3>Email</h3>
+                        <p>
+                            <a href="/cdn-cgi/l/email-protection#86eee3f4e3f2e9eee3eaf6c6e1eae9f3e5e3f5f2e3f4a8e1e9f0a8f3ed">
+                                <span class="__cf_email__" data-cfemail="cba3aeb9aebfa4a3aea7bb8baca7a4bea8aeb8bfaeb9e5aca4bde5bea0">[email&#160;protected]</span>
+                            </a>
+                        </p>
+                    </div>
+                </section>
+
+                <section class="service-related" style="margin-top: 1.5rem;">
+                    <h2>Related pages</h2>
+                    <ul class="related-links">
+                        <li><a href="Bins/bin-services.html">All bin services</a></li>
+                        <li><a href="Bins/collection-day.html">Check your collection day</a></li>
+                        <li><a href="Bins/what-goes-where.html">What goes in which bin</a></li>
+                        <li><a href="Bins/composting-at-home">Composting at home</a></li>
+                    </ul>
+                </section>
+
+            </aside>
+
+        </div>
+
+        <!-- FEEDBACK PANEL -->
+        <section class="feedback-panel" aria-labelledby="feedback-heading">
+            <div class="feedback-inner">
+                <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
+
+                <div class="feedback-buttons" role="group">
+                    <button type="button" class="feedback-btn feedback-yes" data-rating="positive">
+                        👍 Yes
+                    </button>
+                    <button type="button" class="feedback-btn feedback-no" data-rating="negative">
+                        👎 No
+                    </button>
+                </div>
+
+                <form id="feedback-form" class="feedback-form" hidden>
+                    <p id="feedback-prompt">What worked well? (optional)</p>
+                    <label for="feedback-comments" class="sr-only">Your feedback</label>
+                    <textarea id="feedback-comments" rows="3" aria-labelledby="feedback-prompt"></textarea>
+
+                    <label for="feedback-email">Email (optional, if you'd like a response)</label>
+                    <input type="email" id="feedback-email">
+
+                    <button type="submit" class="feedback-submit">Submit</button>
+                </form>
+
+                <p id="feedback-thanks" class="feedback-thanks" hidden>
+                    ✅ Thank you for your feedback.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-section">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="footer-logo">
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="Bins/collection-day.html">Check bin day</a></li>
+                        <li><a href="council-tax/pay">Pay Council Tax</a></li>
+                        <li><a href="planning/search">Planning applications</a></li>
+                        <li><a href="report">Report a problem</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Gloucester</h3>
+                    <ul class="footer-links">
+                        <li><a href="http://visitgloucester.co.uk/">Visit Gloucester</a></li>
+                        <li><a href="find-councillor">Find your councillor</a></li>
+                        <li><a href="jobs">Jobs & careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Using our site</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy">Privacy & cookies</a></li>
+                        <li><a href="accessibility">Accessibility</a></li>
+                        <li><a href="contact">Contact us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Gloucester City Council. All rights reserved.</p>
+                <p>Registered office: Eastgate Management Suite, Eastgate Street

@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find out what goes in which bin in Gloucester. Simple guide to recycling and waste separation with pictures of what you can and cannot recycle.">
+    <base href="/pilot-demo-site/">
+    <title>What goes in which bin | Bins and Recycling | Gloucester City Council</title>
+
+    <!-- Assets -->
+    <link rel="preload" href="assets/images/GCC_logo.svg" as="image">
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/service-landing.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "What goes in which bin",
+      "description": "Guide to sorting your household waste and recycling correctly in Gloucester",
+      "provider": {
+        "@type": "GovernmentOrganization",
+        "name": "Gloucester City Council"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Green box - Plastics and metals",
+          "text": "Plastic bottles, pots, tubs, trays, metal cans, tins, aerosols and foil"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Green box - Glass",
+          "text": "Glass bottles and jars only"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Blue bag - Paper and cardboard",
+          "text": "Cardboard, paper, newspapers, magazines and envelopes"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Food caddy - Food waste",
+          "text": "All food waste including cooked and uncooked food"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Black bin - General waste",
+          "text": "Everything that cannot be recycled"
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --recycling-green: #2d6a4f;
+            --recycling-green-light: #52b788;
+            --glass-green: #1b4332;
+            --paper-blue: #0077b6;
+            --food-brown: #8b5a3c;
+            --waste-gray: #495057;
+            --garden-lime: #6a994e;
+            --bg-cream: #fdfcfb;
+            --text-dark: #1a1a1a;
+            --border-soft: #e0e0e0;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-cream);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Fraunces', Georgia, serif;
+        }
+
+        .intro-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 1.5rem 0 3rem 0;
+        }
+
+        /* Bin card styles */
+        .bin-cards {
+            display: grid;
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .bin-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .bin-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.06);
+        }
+
+        .bin-header {
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            border-bottom: 3px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Bin-specific header colors */
+        .bin-card.plastics-metals .bin-header {
+            background: linear-gradient(135deg, var(--recycling-green) 0%, var(--recycling-green-light) 100%);
+            border-color: var(--recycling-green);
+            color: white;
+        }
+
+        .bin-card.glass .bin-header {
+            background: linear-gradient(135deg, var(--glass-green) 0%, var(--recycling-green) 100%);
+            border-color: var(--glass-green);
+            color: white;
+        }
+
+        .bin-card.paper .bin-header {
+            background: linear-gradient(135deg, #023e8a 0%, var(--paper-blue) 100%);
+            border-color: var(--paper-blue);
+            color: white;
+        }
+
+        .bin-card.food .bin-header {
+            background: linear-gradient(135deg, #6f4518 0%, var(--food-brown) 100%);
+            border-color: var(--food-brown);
+            color: white;
+        }
+
+        .bin-card.general .bin-header {
+            background: linear-gradient(135deg, #2b2d42 0%, var(--waste-gray) 100%);
+            border-color: var(--waste-gray);
+            color: white;
+        }
+
+        .bin-card.garden .bin-header {
+            background: linear-gradient(135deg, #4a7c59 0%, var(--garden-lime) 100%);
+            border-color: var(--garden-lime);
+            color: white;
+        }
+
+        .bin-icon {
+            font-size: 4rem;
+            flex-shrink: 0;
+            line-height: 1;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .bin-title-group h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: inherit;
+        }
+
+        .bin-frequency {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .bin-body {
+            padding: 2rem;
+        }
+
+        .bin-section {
+            margin-bottom: 2rem;
+        }
+
+        .bin-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .bin-section h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-icon {
+            font-size: 1.25rem;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .material-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .material-item:hover {
+            background: #e9ecef;
+            transform: translateX(4px);
+        }
+
+        .material-item.accepted::before {
+            content: "✓";
+            color: #2d6a4f;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .material-item.rejected::before {
+            content: "✕";
+            color: #dc2626;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .rejected-items {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .rejected-items h3 {
+            color: #991b1b;
+        }
+
+        .rejected-items .materials-grid .material-item {
+            background: white;
+        }
+
+        .tips-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tips-box strong {
+            color: #92400e;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .tips-box p {
+            margin: 0;
+            color: #78350f;
+            line-height: 1.6;
+        }
+
+        .subscription-banner {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 2px solid #3b82f6;
+            text-align: center;
+        }
+
+        .subscription-banner p {
+            margin: 0 0 1rem 0;
+            font-weight: 600;
+            color: #1e40af;
+        }
+
+        .subscription-banner a {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .subscription-banner a:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Special items section */
+        .special-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .special-item-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-soft);
+            transition: all 0.2s ease;
+        }
+
+        .special-item-card:hover {
+            border-color: var(--recycling-green);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .special-item-card h3 {
+            font-size: 1.1rem;
+            margin: 0 0 0.75rem 0;
+            color: var(--recycling-green);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .special-item-card p {
+            margin: 0 0 0.75rem 0;
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .special-item-card a {
+            color: var(--recycling-green);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .special-item-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Impact section */
+        .impact-section {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            border-left: 6px solid var(--recycling-green);
+        }
+
+        .impact-section h2 {
+            color: var(--recycling-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .impact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .impact-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .impact-item p {
+            margin: 0;
+            color: #065f46;
+            line-height: 1.6;
+        }
+
+        /* Quick reference sidebar */
+        .quick-reference {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-soft);
+            position: sticky;
+            top: 20px;
+        }
+
+        .quick-reference h2 {
+            font-size: 1.3rem;
+            margin: 0 0 1rem 0;
+            color: var(--recycling-green);
+        }
+
+        .quick-reference ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-reference li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-soft);
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .quick-reference li:last-child {
+            border-bottom: none;
+        }
+
+        .quick-reference li::before {
+            content: "→";
+            color: var(--recycling-green);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bin-header {
+                padding: 1.5rem;
+            }
+
+            .bin-icon {
+                font-size: 3rem;
+            }
+
+            .bin-title-group h2 {
+                font-size: 1.5rem;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for page load */
+        .bin-card {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .bin-card:nth-child(1) { animation-delay: 0.1s; }
+        .bin-card:nth-child(2) { animation-delay: 0.2s; }
+        .bin-card:nth-child(3) { animation-delay: 0.3s; }
+        .bin-card:nth-child(4) { animation-delay: 0.4s; }
+        .bin-card:nth-child(5) { animation-delay: 0.5s; }
+        .bin-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body data-service-id="recycling-guidance">
+
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <div class="header-top">
+                <a href="" class="logo-link" aria-label="Gloucester City Council homepage">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="site-logo"
+                         width="250"
+                         height="70">
+                </a>
+
+                <form class="search-form" role="search" action="search" method="get">
+                    <label for="search-input" class="sr-only">Search the website</label>
+                    <input type="search" id="search-input" name="q"
+                           class="search-input" placeholder="Search..." aria-label="Search the website">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Welcome Banner -->
+        <h1 class="welcome-banner">
+            What goes in which bin
+        </h1>
+    </header>
+
+    <!-- MAIN NAV -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <button class="menu-toggle" aria-expanded="false">Menu</button>
+            <ul class="nav-list">
+                <li><a href="contact">Contact us</a></li>
+                <li><a href="https://gloucester-self.achieveservice.com/">My Gloucester</a></li>
+                <li><a href="news">News</a></li>
+                <li><a href="https://public.govdelivery.com/accounts/UKGCCA/subscriber/new">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <nav class="service-breadcrumb" aria-label="Breadcrumb">
+        <div class="breadcrumb-inner">
+            <ol>
+                <li><a href="">Home</a></li>
+                <li><a href="Bins">Bins and Recycling</a></li>
+                <li aria-current="page">What goes in which bin</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="main-content" class="main-content" role="main">
+
+        <div class="service-layout">
+
+            <!-- LEFT COLUMN -->
+            <div class="service-main">
+                
+                <p class="intro-text">Getting your recycling right helps protect the environment and saves money. Use this guide to know exactly what goes in each bin.</p>
+
+                <!-- WASTE WIZARD CALLOUT -->
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border: 2px solid #0ea5e9; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; display: flex; gap: 1.5rem; align-items: center;">
+                    <div style="font-size: 3rem; flex-shrink: 0;">🔍</div>
+                    <div>
+                        <h3 style="margin: 0 0 0.5rem 0; color: #075985; font-size: 1.3rem;">Not sure what goes where?</h3>
+                        <p style="margin: 0 0 1rem 0; color: #0c4a6e;">Use the Gloucestershire Waste Wizard to search for specific items and find out exactly how to dispose of them.</p>
+                        <a href="https://www.gloucestershirerecycles.com/waste-wizard/" style="display: inline-block; background: #0ea5e9; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s ease;">Search the Waste Wizard →</a>
+                    </div>
+                </div>
+
+                <!-- BIN CARDS -->
+                <div class="bin-cards">
+
+                    <!-- GREEN BOX - PLASTICS & METALS -->
+                    <article class="bin-card plastics-metals" id="plastics-metals">
+                        <div class="bin-header">
+                            <div class="bin-icon" aria-hidden="true">♻️</div>
+                            <div class="bin-title-group">
+                                <h2>Green box — Plastics & metals</h2>
+                                <p class="bin-frequency">Collected every week</p>
+                            </div>
+                        </div>
+                        <div class="bin-body">
+                            <div class="bin-section">
+                                <h3><span class="section-icon">✓</span> What goes in</h3>
+                                <div class="materials-grid">
+                                    <div class="material-item accepted">Plastic bottles</div>
+                                    <div class="material-item accepted">Plastic pots & tubs</div>
+                                    <div class="material-item accepted">Plastic trays</div>
+                                    <div class="material-item accepted">Metal cans & tins</div>
+                                    <div class="material-item accepted">Aerosols (empty)</div>
+                                    <div class="material-item accepted">Aluminium foil</div>
+                                    <div class="material-item accepted">Metal lids</div>
+                                </div>
+                            </div>
+
+                            <div class="rejected-items">
+                                <h3><span class="section-icon">✕</span> Do not put in</h3>
+                                <div class="materials-grid">
+                                    <div class="material-item rejected">Plastic bags</div>
+                                    <div class="material-item rejected">Polystyrene</div>
+                                    <div class="material-item rejected">Plastic film</div>
+                                    <div class="material-item rejected">Black plastic trays</div>
+                                    <div class="material-item rejected">Crisp packets</div>
+                                </div>
+                            </div>
+
+                            <div class="tips-box">
+                                <strong>💡 Top tips</strong>
+                                <p>Rinse items and squash bottles to save space. Remove lids from plastic bottles — metal lids can stay in, plastic lids go in general waste.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- GREEN BOX - GLASS -->
+                    <article class="bin-card glass" id="glass">
+                        <div class="bin-header">
+                            <div class="bin-icon" aria-hidden="true">🍾</div>
+                            <div class="bin-title-group">
+                                <h2>Green box — Glass</h2>
+                                <p class="bin-frequency">Collected every week</p>
+                            </div>
+                        </div>
+                        <div class="bin-body">
+                            <div class="bin-section">
+                                <h3><span class="section-icon">✓</span> What goes in</h3>
+                                <div class="materials-grid">
+                                    <div class="material-item accepted">Glass bottles</div>
+                                    <div class="material-item accepted">Glass jars</div>
+                                </div>
+                            </div>
+
+                            <div class="rejected-items">
+                                <h3><span class="section-icon">✕</span> Do not put in</h3>
+                                <div class="materials-grid">
+                                    <div class="material-item rejected">Drinking glasses</div>
+                                    <div class="material-item rejected">Pyrex or ovenware</div>
+                                    <div class="material-item rejected">Window glass</div>
+                                    <div class="material-item rejected">Mirrors</div>
+                                    <div class="material-item rejected">Light bulbs</div>
+                                    <div class="material-item rejected">Crystal</div>
+                                </div>
+                            </div>
+
+                            <div class="tips-box">
+                                <strong>💡 Top tips</strong>
+                                <p>Rinse bottles and jars. You can leave labels on. Remove lids — metal lids go in the other green box, plastic lids go in general waste.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- BLUE BAG - PAPER & CARDBOARD -->
+                    <article class="bin-card paper" id="paper">
+                        <div class="bin-header">
+                            <div class="bin-icon" aria-hidden="true">📰</div>
+                            <div class="bin-title-group">
+                                <h2>Blue bag — Paper & cardboard</h2>
+                                <p class="bin-frequency">Collected every week</p>
+                            </div>
+                        </div>
+                        <div class="bin-body">
+                            <div class="bin-section">
+                                <h3><span class="section-icon">✓</span> What goes in</h3>
+                                <div class="materials-grid">
+                                    <div class="material-item accepted">Cardboard boxes</div>
+                                    <div class="material-item accepted">Paper & writing paper</div>
+                                    <div class="material-item accepted">Newspapers & magazines</div>
+                                    <div class="material-item accepted">Envelopes</div>
+                                    <div class="material-item accepted">Junk mail</div>
+                                    <div class="material-item accepted">Greetings cards</div>
+                                    <div class="material-item accepted">Cereal boxes</div>
+                                    <div class="material-item accepted">Egg boxes</div>
+                                </div>
+                            </div>
+
+                            <div class="rejected-items">
+                                <h3><span class="section-icon">✕</span> Do not put in</h3>
+                                <div class="materials-grid">
+                                    <div class="material-item rejected">Greasy pizza boxes</div>
+                                    <div class="material-item rejected">Shredded paper</div>
+                                    <div class="material-item rejected">Wallpaper</div>
+                                    <div class="material-item rejected">Tissues or kitchen roll</div>
+                                    <div class="material-item rejected">Glittery wrapping paper</div>
+                                </div>
+                            </div>
+
+                            <div class="tips-box">
+                                <strong>💡 Top tips</strong>
+                                <p>Flatten cardboard boxes to save space. If cardboard is wet or has food on it, put it in your black bin instead.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- FOOD CADDY -->
+                    <article class="bin-card food" id="food">
+                        <div class="bin-header">
+                            <div class="bin-icon" aria-hidden="true">🥬</div>
+                            <div class="bin-title-group">
+                                <h2>Food caddy — Food waste</h2>
+                                <p class="bin-frequency">Collected every week</p>
+                            </div>
+                        </div>
+                        <div class="bin-body">
+                            <div class="bin-section">
+                                <h3><span class="section-icon">✓</span> What goes in</h3>
+                                <div class="materials-grid">
+                                    <div class="material-item accepted">All cooked food</div>
+                                    <div class="material-item accepted">All raw food</div>
+                                    <div class="material-item accepted">Plate scrapings</div>
+                                    <div class="material-item accepted">Fruit & veg peelings</div>
+                                    <div class="material-item accepted">Meat, fish & bones</div>
+                                    <div class="material-item accepted">Dairy products</div>
+                                    <div class="material-item accepted">Bread & cakes</div>
+                                    <div class="material-item accepted">Tea bags & coffee</div>
+                                    <div class="material-item accepted">Out of date food</div>
+                                </div>
+                            </div>
+
+                            <div class="rejected-items">
+                                <h3><span class="section-icon">✕</span> Do not put in</h3>
+                                <div class="materials-grid">
+                                    <div class="material-item rejected">Any packaging</div>
+                                    <div class="material-item rejected">Liquids or oil</div>
+                                    <div class="material-item rejected">Pet waste</div>
+                                </div>
+                            </div>
+
+                            <div class="tips-box">
+                                <strong>💡 Top tips</strong>
+                                <p>Line your caddy with newspaper or use free compostable bags from the council. Empty weekly to prevent smells. <a href="Bins/compostable-bags" style="color: #78350f; text-decoration: underline;">Get free bags</a></p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- BLACK BIN -->
+                    <article class="bin-card general" id="general">
+                        <div class="bin-header">
+                            <div class="bin-icon" aria-hidden="true">🗑️</div>
+                            <div class="bin-title-group">
+                                <h2>Black bin — General waste</h2>
+                                <p class="bin-frequency">Collected every two weeks</p>
+                            </div>
+                        </div>
+                        <div class="bin-body">
+                            <div class="bin-section">
+                                <p style="margin-bottom: 1.5rem; color: #4a5568;">Everything that cannot be recycled. Because it's collected less often, recycle as much as possible to avoid your bin filling up.</p>
+                                
+                                <h3><span class="section-icon">📝</span> Common items</h3>
+                                <div class="materials-grid">
+                                    <div class="material-item">Nappies</div>
+                                    <div class="material-item">Sanitary products</div>
+                                    <div class="material-item">Plastic bags</div>
+                                    <div class="material-item">Polystyrene</div>
+                                    <div class="material-item">Cling film</div>
+                                    <div class="material-item">Tissues</div>
+                                    <div class="material-item">Crisp packets</div>
+                                    <div class="material-item">Pet waste (bagged)</div>
+                                </div>
+                            </div>
+
+                            <div class="tips-box">
+                                <strong>💡 Top tips</strong>
+                                <p>Don't leave extra bags beside your bin. Check you're recycling everything possible. <a href="Bins/extra-or-larger-bin.html" style="color: #78350f; text-decoration: underline;">Request an extra bin</a> if you have a larger household.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- GARDEN WASTE -->
+                    <article class="bin-card garden" id="garden">
+                        <div class="bin-header">
+                            <div class="bin-icon" aria-hidden="true">🌿</div>
+                            <div class="bin-title-group">
+                                <h2>Brown bin — Garden waste</h2>
+                                <p class="bin-frequency">Collected every two weeks • Feb–Nov</p>
+                            </div>
+                        </div>
+                        <div class="bin-body">
+                            <div class="bin-section">
+                                <h3><span class="section-icon">✓</span> What goes in</h3>
+                                <div class="materials-grid">
+                                    <div class="material-item accepted">Grass cuttings</div>
+                                    <div class="material-item accepted">Leaves</div>
+                                    <div class="material-item accepted">Small branches</div>
+                                    <div class="material-item accepted">Hedge trimmings</div>
+                                    <div class="material-item accepted">Plants & flowers</div>
+                                    <div class="material-item accepted">Windfall fruit</div>
+                                </div>
+                            </div>
+
+                            <div class="rejected-items">
+                                <h3><span class="section-icon">✕</span> Do not put in</h3>
+                                <div class="materials-grid">
+                                    <div class="material-item rejected">Soil or turf</div>
+                                    <div class="material-item rejected">Tree stumps</div>
+                                    <div class="material-item rejected">Japanese knotweed</div>
+                                    <div class="material-item rejected">Diseased plants</div>
+                                    <div class="material-item rejected">Pet waste</div>
+                                    <div class="material-item rejected">Food waste</div>
+                                </div>
+                            </div>
+
+                            <div class="subscription-banner">
+                                <p>💷 £60 per year subscription required</p>
+                                <a href="Bins/garden-waste.html">Subscribe to garden waste collection →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- SPECIAL ITEMS SECTION -->
+                <section aria-labelledby="special-items">
+                    <h2 id="special-items" style="font-size: 2rem; margin: 3rem 0 1.5rem 0;">Items that need special disposal</h2>
+                    <p style="font-size: 1.1rem; color: #4a5568; margin-bottom: 2rem;">These items cannot go in any of your bins. Take them to a recycling centre or arrange special collection.</p>
+
+                    <div class="special-items-grid">
+                        <div class="special-item-card">
+                            <h3>🔌 Electrical items</h3>
+                            <p>Small electricals can be taken to recycling centres or supermarkets with collection points.</p>
+                            <a href="Bins/batteries">Dispose of batteries & electricals →</a>
+                        </div>
+
+                        <div class="special-item-card">
+                            <h3>👕 Textiles & clothes</h3>
+                            <p>Donate to charity shops or use textile recycling banks around the city.</p>
+                            <a href="Bins/textiles">Find textile recycling points →</a>
+                        </div>
+
+                        <div class="special-item-card">
+                            <h3>🛋️ Bulky waste</h3>
+                            <p>Furniture, white goods, and mattresses need special collection.</p>
+                            <a href="Bins/bulky-waste">Book a collection →</a>
+                        </div>
+
+                        <div class="special-item-card">
+                            <h3>⚠️ Hazardous waste</h3>
+                            <p>Paint, chemicals, and asbestos must be disposed of safely at specialist facilities.</p>
+                            <a href="Bins/hazardous-waste">Safe disposal information →</a>
+                        </div>
+
+                        <div class="special-item-card">
+                            <h3>🔋 Batteries</h3>
+                            <p>Take to supermarkets, recycling centres, or use dedicated battery collection points.</p>
+                            <a href="Bins/batteries">Battery recycling locations →</a>
+                        </div>
+
+                        <div class="special-item-card">
+                            <h3>🏭 Recycling centres</h3>
+                            <p>Visit household waste recycling centres for items that don't fit in your bins.</p>
+                            <a href="Bins/recycling-centres.html">Find your nearest centre →</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- IMPACT SECTION -->
+                <section class="impact-section" aria-labelledby="why-matters">
+                    <h2 id="why-matters" style="font-size: 2rem; margin: 0 0 1rem 0;">Why getting it right matters</h2>
+                    <p style="font-size: 1.1rem; color: #065f46; margin-bottom: 1.5rem;">When you recycle correctly, you're making a real difference to the environment and your community.</p>
+                    
+                    <div class="impact-grid">
+                        <div class="impact-item">
+                            <div class="impact-icon">♻️</div>
+                            <p><strong>Creates new products:</strong> Recycled materials become new items instead of going to landfill</p>
+                        </div>
+                        
+                        <div class="impact-item">
+                            <div class="impact-icon">💷</div>
+                            <p><strong>Saves money:</strong> Money saved on waste can be spent on other council services</p>
+                        </div>
+                        
+                        <div class="impact-item">
+                            <div class="impact-icon">🌍</div>
+                            <p><strong>Protects the planet:</strong> Reduces carbon emissions and helps fight climate change</p>
+                        </div>
+                        
+                        <div class="impact-item">
+                            <div class="impact-icon">👥</div>
+                            <p><strong>Creates local jobs:</strong> The recycling industry employs people in our community</p>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; border-left: 4px solid #dc2626;">
+                        <strong style="color: #991b1b; display: block; margin-bottom: 0.5rem;">⚠️ Contamination wastes everything</strong>
+                        <p style="margin: 0; color: #4a5568;">When wrong items get mixed into recycling, entire loads can be rejected and sent to landfill. This costs money and wastes everyone's effort. <a href="bins/contaminated-recycling" style="color: #dc2626; font-weight: 600;">Learn more about contamination</a></p>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN (SIDEBAR) -->
+            <aside class="service-sidebar">
+
+                <div class="quick-reference">
+                    <h2>Quick reminders</h2>
+                    <ul>
+                        <li>Rinse food containers before recycling</li>
+                        <li>Squash bottles and flatten cardboard</li>
+                        <li>Empty your food caddy every week</li>
+                        <li>Remove lids from bottles and jars</li>
+                        <li>Check labels if unsure about an item</li>
+                    </ul>
+                </div>
+
+                <section class="service-contact" style="margin-top: 1.5rem;">
+                    <h2>Download guides</h2>
+                    <p>
+                        <a href="bins/recycling-poster.pdf" download>📄 Kitchen recycling poster (PDF)</a>
+                    </p>
+                    <p>
+                        <a href="bins/recycling-leaflet.pdf" download>📋 Full recycling guide (PDF)</a>
+                    </p>
+                </section>
+
+                <section class="service-related" style="margin-top: 1.5rem;">
+                    <h2>Related pages</h2>
+                    <ul class="related-links">
+                        <li><a href="Bins/bin-services.html">All bin services</a></li>
+                        <li><a href="https://www.gloucestershirerecycles.com/waste-wizard/">Gloucestershire Waste Wizard</a></li>
+                        <li><a href="Bins/collection-day.html">Check your bin day</a></li>
+                        <li><a href="Bins/recycling-tips">Recycling tips & advice</a></li>
+                        <li><a href="Bins/compostable-bags">Free compostable bags</a></li>
+                    </ul>
+                </section>
+
+            </aside>
+
+        </div>
+
+        <!-- FEEDBACK PANEL -->
+        <section class="feedback-panel" aria-labelledby="feedback-heading">
+            <div class="feedback-inner">
+                <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
+
+                <div class="feedback-buttons" role="group">
+                    <button type="button" class="feedback-btn feedback-yes" data-rating="positive">
+                        👍 Yes
+                    </button>
+                    <button type="button" class="feedback-btn feedback-no" data-rating="negative">
+                        👎 No
+                    </button>
+                </div>
+
+                <form id="feedback-form" class="feedback-form" hidden>
+                    <p id="feedback-prompt">What worked well? (optional)</p>
+                    <label for="feedback-comments" class="sr-only">Your feedback</label>
+                    <textarea id="feedback-comments" rows="3" aria-labelledby="feedback-prompt"></textarea>
+
+                    <label for="feedback-email">Email (optional, if you'd like a response)</label>
+                    <input type="email" id="feedback-email">
+
+                    <button type="submit" class="feedback-submit">Submit</button>
+                </form>
+
+                <p id="feedback-thanks" class="feedback-thanks" hidden>
+                    ✅ Thank you for your feedback.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-section">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="footer-logo">
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="Bins/collection-day.html">Check bin day</a></li>
+                        <li><a href="council-tax/pay">Pay Council Tax</a></li>
+                        <li><a href="planning/search">Planning applications</a></li>
+                        <li><a href="report">Report a problem</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Gloucester</h3>
+                    <ul class="footer-links">
+                        <li><a href="http://visitgloucester.co.uk/">Visit Gloucester</a></li>
+                        <li><a href="find-councillor">Find your councillor</a></li>
+                        <li><a href="jobs">Jobs & careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Using our site</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy">Privacy & cookies</a></li>
+                        <li><a href="accessibility">Accessibility</a></li>
+                        <li><a href="contact">Contact us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Gloucester City Council. All rights reserved.</p>
+                <p>Registered office: Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
