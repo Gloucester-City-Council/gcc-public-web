@@ -735,12 +735,12 @@
     // -------- Calendar URLs --------
     function calendarHttpsUrl(addressId) {
       // NOTE: include the .ics in the path (this is the key fix)
-      return `${GCC_CONFIG.API_BASE_URL}/api/bins-webcal/${encodeURIComponent(addressId)}.ics`;
+      return `${GCC_CONFIG.API_BASE_URL}/api/bins/webcal/${encodeURIComponent(addressId)}.ics`;
     }
     function calendarWebcalUrl(addressId) {
       // webcal is basically https for calendar clients (strip https:// and replace with webcal://)
       const host = GCC_CONFIG.API_BASE_URL.replace('https://', '');
-      return `webcal://${host}/api/bins-webcal/${encodeURIComponent(addressId)}.ics`;
+      return `webcal://${host}/api/bins/webcal/${encodeURIComponent(addressId)}.ics`;
     }
 
     // -------- Accessible calendar modal --------
