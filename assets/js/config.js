@@ -9,7 +9,7 @@ const GCC_CONFIG = {
 
     // API Endpoints (relative to API_BASE_URL)
     ENDPOINTS: {
-        POSTCODE_ADDRESSES: '/api/postcode-addresses',
+        ADDRESS_LOOKUP: '/api/addresses/lookup',
         BINS_BY_ADDRESS: '/api/bins/by-address',
         SUBMIT_MISSED_COLLECTION: '/api/submitMissedCollection',
         SUBMIT_FEEDBACK: '/api/submitFeedback'
