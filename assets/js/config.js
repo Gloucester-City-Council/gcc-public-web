@@ -11,6 +11,7 @@ const GCC_CONFIG = {
     ENDPOINTS: {
         ADDRESS_LOOKUP: '/api/addresses/lookup',
         BINS_BY_ADDRESS: '/api/bins/by-address',
+        BINS_WEBCAL: '/api/bins/webcal',
         SUBMIT_MISSED_COLLECTION: '/api/submitMissedCollection',
         SUBMIT_FEEDBACK: '/api/submitFeedback'
     }
