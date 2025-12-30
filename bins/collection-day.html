@@ -356,7 +356,7 @@
     <div class="breadcrumb-inner">
       <ol>
         <li><a href="">Home</a></li>
-        <li><a href="bins/index.html">Bins and Recycling</a></li>
+        <li><a href="/bins/index.html">Bins and Recycling</a></li>
         <li aria-current="page">Check your bin day</li>
       </ol>
     </div>
@@ -449,7 +449,7 @@
               <div class="bin-card-body">
                 <p class="bin-types">Brown bin (subscription service)</p>
                 <p class="collection-next">Next: <strong><span id="next-garden">...</span></strong></p>
-                <p class="subscription-note">£60 per year • <a href="bins/garden-waste.html">Subscribe</a></p>
+                <p class="subscription-note">£60 per year • <a href="/bins/garden-waste.html">Subscribe</a></p>
               </div>
             </div>
           </div>
@@ -549,7 +549,7 @@
               <div class="step-number" aria-hidden="true">4</div>
               <div>
                 <strong>Report by 4pm the next business day</strong>
-                <p>If still not collected, <a href="bins/missed-collection.html">report a missed collection</a> by 4pm the next business day and we'll return within 2 working days</p>
+                <p>If still not collected, <a href="/bins/missed-collection.html">report a missed collection</a> by 4pm the next business day and we'll return within 2 working days</p>
               </div>
             </div>
           </div>
@@ -568,7 +568,7 @@
             <li>Subscribe to SMS reminders</li>
             <li>Follow us on social media</li>
           </ul>
-          <p><a href="bins/collection-reminders">Set up collection reminders</a></p>
+          <p><a href="/bins/collection-reminders">Set up collection reminders</a></p>
         </section>
       </div>
 
@@ -585,7 +585,7 @@
 
           <div class="contact-block">
             <h3>Report a missed collection</h3>
-            <p>If your bin isn't collected by 6pm, wait until the next working day, then <a href="bins/missed-collection.html">report it online</a>.</p>
+            <p>If your bin isn't collected by 6pm, wait until the next working day, then <a href="/bins/missed-collection.html">report it online</a>.</p>
           </div>
 
           <div class="contact-block">
@@ -602,10 +602,10 @@
         <section class="service-related">
           <h2>Related pages</h2>
           <ul class="related-links">
-            <li><a href="bins/order-bins.html">Order bins & containers</a></li>
-            <li><a href="bins/what-goes-where.html">What goes in which bin</a></li>
-            <li><a href="bins/garden-waste.html">Subscribe to garden waste</a></li>
-            <li><a href="bins/assisted-collections.html">Assisted collections</a></li>
+            <li><a href="/bins/order-bins.html">Order bins & containers</a></li>
+            <li><a href="/bins/what-goes-where.html">What goes in which bin</a></li>
+            <li><a href="/bins/garden-waste.html">Subscribe to garden waste</a></li>
+            <li><a href="/bins/assisted-collections.html">Assisted collections</a></li>
           </ul>
         </section>
       </aside>
@@ -648,7 +648,7 @@
         <div class="footer-section">
           <h3>Quick links</h3>
           <ul class="footer-links">
-            <li><a href="bins/collection-day.html">Check bin day</a></li>
+            <li><a href="/bins/collection-day.html">Check bin day</a></li>
             <li><a href="council-tax/pay">Pay Council Tax</a></li>
             <li><a href="planning/search">Planning applications</a></li>
             <li><a href="report">Report a problem</a></li>
@@ -735,12 +735,12 @@
     // -------- Calendar URLs --------
     function calendarHttpsUrl(addressId) {
       // NOTE: include the .ics in the path (this is the key fix)
-      return `${GCC_CONFIG.API_BASE_URL}/api/bins-webcal/${encodeURIComponent(addressId)}.ics`;
+      return `${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.BINS_WEBCAL}/${encodeURIComponent(addressId)}.ics`;
     }
     function calendarWebcalUrl(addressId) {
       // webcal is basically https for calendar clients (strip https:// and replace with webcal://)
       const host = GCC_CONFIG.API_BASE_URL.replace('https://', '');
-      return `webcal://${host}/api/bins-webcal/${encodeURIComponent(addressId)}.ics`;
+      return `webcal://${host}${GCC_CONFIG.ENDPOINTS.BINS_WEBCAL}/${encodeURIComponent(addressId)}.ics`;
     }
 
     // -------- Accessible calendar modal --------
@@ -1255,7 +1255,7 @@
         gardenCard.style.opacity = '0.6';
         gardenCard.querySelector('.bin-types').innerHTML = '<em>Not subscribed</em>';
         gardenCard.querySelector('.collection-next').innerHTML =
-          '<a href="bins/garden-waste.html" style="color: var(--color-primary); font-weight: 600;">Subscribe for £60/year →</a>';
+          '<a href="/bins/garden-waste.html" style="color: var(--color-primary); font-weight: 600;">Subscribe for £60/year →</a>';
       }
 
       resultsDiv.hidden = false;
