@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Report a missed bin collection in Gloucester. We'll return within 2 working days to collect your bin.">
+    <base href="/pilot-demo-site/">
+    <title>Report a missed collection | Bins and Recycling | Gloucester City Council</title>
+
+    <!-- Assets -->
+    <link rel="preload" href="assets/images/GCC_logo.svg" as="image">
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/service-landing.css">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Report Missed Bin Collection",
+      "description": "Report a missed bin collection and we'll return within 2 working days",
+      "applicationCategory": "GovernmentApplication",
+      "provider": {
+        "@type": "GovernmentOrganization",
+        "name": "Gloucester City Council"
+      }
+    }
+    </script>
+
+    <style>
+        /* Smart form styling */
+        .smart-form {
+            background: #fff;
+            border: 2px solid var(--color-primary);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+        }
+        
+        .form-help {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        
+        .bin-selector {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .bin-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #fff;
+        }
+        
+        .bin-option:hover {
+            border-color: var(--color-primary);
+            background: #f5f7ff;
+        }
+        
+        .bin-option.selected {
+            border-color: var(--color-primary);
+            background: #e8f4ff;
+            border-width: 3px;
+        }
+        
+        .bin-option input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        
+        .bin-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .bin-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .alert-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .alert-box strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .success-box .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .success-box h2 {
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+        
+        .reference-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            font-family: monospace;
+            margin: 1rem 0;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+        }
+        
+        .btn-secondary {
+            background: #fff;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            background: #f5f7ff;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* Checklist styling */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding: 0.5rem 0 0.5rem 2rem;
+            position: relative;
+        }
+        
+        .checklist li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Reason cards - grid layout */
+        .reason-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .reason-card {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        
+        .reason-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .reason-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reason-card h3 {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            color: #333;
+        }
+        
+        .reason-card p {
+            font-size: 0.95rem;
+            color: #666;
+            margin: 0.5rem 0;
+        }
+        
+        .reason-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .reason-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Tip list with icons */
+        .tip-list {
+            margin: 1.5rem 0;
+        }
+        
+        .tip-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            border-left: 4px solid var(--color-primary);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .tip-item:hover {
+            background: #e3f2fd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .tip-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        
+        .tip-item strong {
+            display: block;
+            color: #333;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+        
+        .tip-item p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .tip-item a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+        
+        .tip-item a:hover {
+            color: var(--color-primary-dark);
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 640px) {
+            .reason-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .tip-item {
+                gap: 0.75rem;
+                padding: 0.75rem;
+            }
+            
+            .tip-icon {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body data-service-id="missed-collection">
+
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <div class="header-top">
+                <a href="" class="logo-link" aria-label="Gloucester City Council homepage">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="site-logo"
+                         width="250"
+                         height="70">
+                </a>
+
+                <form class="search-form" role="search" action="search" method="get">
+                    <label for="search-input" class="sr-only">Search the website</label>
+                    <input type="search" id="search-input" name="q"
+                           class="search-input" placeholder="Search..." aria-label="Search the website">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Welcome Banner -->
+        <h1 class="welcome-banner">
+            Report a missed bin collection
+        </h1>
+    </header>
+
+    <!-- MAIN NAV -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <button class="menu-toggle" aria-expanded="false">Menu</button>
+            <ul class="nav-list">
+                <li><a href="contact">Contact us</a></li>
+                <li><a href="https://gloucester-self.achieveservice.com/">My Gloucester</a></li>
+                <li><a href="news">News</a></li>
+                <li><a href="https://public.govdelivery.com/accounts/UKGCCA/subscriber/new">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <nav class="service-breadcrumb" aria-label="Breadcrumb">
+        <div class="breadcrumb-inner">
+            <ol>
+                <li><a href="">Home</a></li>
+                <li><a href="Bins">Bins and Recycling</a></li>
+                <li aria-current="page">Report a missed collection</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="main-content" class="main-content" role="main">
+
+        <div class="service-layout">
+
+            <!-- LEFT COLUMN -->
+            <div class="service-main">
+                
+                <p class="intro-text">We'll return within 2 working days to collect your bin. This service is quick and easy — most people complete it in under 2 minutes.</p>
+
+                <!-- SERVICE STATUS CHECK -->
+                <div class="info-box" id="service-status">
+                    <strong>All collections running normally</strong>
+                    <p>There are no reported issues affecting collections today.</p>
+                </div>
+
+                <!-- BEFORE YOU START -->
+                <section aria-labelledby="before-start">
+                    <h2 id="before-start">Before you report a missed collection</h2>
+                    
+                    <p><strong>You can report a missed collection if:</strong></p>
+                    <ul class="checklist">
+                        <li>Your bin was due for collection today or yesterday</li>
+                        <li>It's before 4pm on the day after your collection</li>
+                        <li>You put your bin out by 7am on collection day</li>
+                        <li>Your bin was at the edge of your property (where the crew could reach it)</li>
+                        <li>The lid was closed and nothing was sticking out</li>
+                        <li>You didn't have wrong items in your bin (this causes it to be refused)</li>
+                    </ul>
+
+                    <div class="alert-box">
+                        <strong>⏰ Reporting deadline: 4pm the next business day</strong>
+                        <p>Crews update the system as they complete rounds. You can report a missed collection until 4pm the day after your scheduled collection. After that, you'll need to wait for your next scheduled collection.</p>
+                    </div>
+                </section>
+
+                <!-- THE FORM -->
+                <div class="smart-form">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+
+                    <form id="missed-bin-form" action="/api/submitMissedCollection" method="post">
+                        
+                        <!-- STEP 1: Address -->
+                        <div class="form-step active" data-step="1">
+                            <h3>Your address</h3>
+                            
+                            <div class="form-group">
+                                <label for="postcode">Postcode</label>
+                                <input type="text" 
+                                       id="postcode" 
+                                       name="postcode" 
+                                       placeholder="e.g. GL1 2AB"
+                                       required
+                                       pattern="[A-Za-z]{1,2}[0-9]{1,2}[A-Za-z]?\s?[0-9][A-Za-z]{2}"
+                                       aria-describedby="postcode-help"
+                                       autocomplete="postal-code">
+                                <p id="postcode-help" class="form-help">We'll use this to find your address and collection schedule</p>
+                            </div>
+
+                            <div class="form-group hidden" id="address-select-group">
+                                <label for="address">Select your address</label>
+                                <select id="address" name="address" required aria-describedby="address-help">
+                                    <option value="">Choose your address...</option>
+                                </select>
+                                <p id="address-help" class="form-help"><span id="address-count"></span> addresses found</p>
+                                
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; margin-top: 0.75rem;">
+                                    <input type="checkbox" id="remember-address-missed" style="width: auto;">
+                                    <span>Remember this address for next time</span>
+                                </label>
+                            </div>
+
+                            <div class="button-group">
+                                <button type="button" class="btn-primary" onclick="nextStep()">Continue</button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: Which bins were missed -->
+                        <div class="form-step" data-step="2">
+                            <h3>Which bins weren't collected?</h3>
+                            <p>Select all that apply. You can report multiple bins at once.</p>
+                            
+                            <div id="loading-bins" style="padding: 2rem; text-align: center;">
+                                <p>Loading your bins...</p>
+                            </div>
+                            
+                            <div class="bin-selector" id="bin-selector" style="display: none;">
+                                <!-- Bins will be populated dynamically from API -->
+                            </div>
+
+                            <div class="button-group">
+                                <button type="button" class="btn-secondary" onclick="prevStep()">Back</button>
+                                <button type="button" class="btn-primary" onclick="nextStep()">Continue</button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: Additional details (conditional) -->
+                        <div class="form-step" data-step="3">
+                            <h3>A bit more detail</h3>
+                            
+                            <div class="form-group">
+                                <label for="additional-info">Is there anything else we should know? (optional)</label>
+                                <textarea id="additional-info" 
+                                          name="additional-info" 
+                                          rows="4"
+                                          aria-describedby="additional-help"
+                                          placeholder="For example: unusual access, temporary obstruction, repeated missed collections"></textarea>
+                                <p id="additional-help" class="form-help">This helps us resolve the issue faster. You don't need to explain where you put your bin — we already know that.</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-method">How would you like us to contact you?</label>
+                                <select id="contact-method" name="contact-method" required onchange="toggleContactFields()">
+                                    <option value="">Choose...</option>
+                                    <option value="email">Email</option>
+                                    <option value="phone">Phone</option>
+                                    <option value="none">No contact needed</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group hidden" id="email-group">
+                                <label for="email">Email address</label>
+                                <input type="email" id="email" name="email" placeholder="your.email@example.com">
+                            </div>
+
+                            <div class="form-group hidden" id="phone-group">
+                                <label for="phone">Phone number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="07XXX XXXXXX">
+                            </div>
+
+                            <div class="button-group">
+                                <button type="button" class="btn-secondary" onclick="prevStep()">Back</button>
+                                <button type="submit" class="btn-primary">Submit report</button>
+                            </div>
+                        </div>
+
+                        <!-- SUCCESS MESSAGE -->
+                        <div class="form-step" data-step="4" id="success-step">
+                            <div class="success-box">
+                                <div class="icon" aria-hidden="true">✓</div>
+                                <h2>Report received</h2>
+                                <p>Your reference number is:</p>
+                                <p class="reference-number" id="reference-number">MB-2025-XXXXX</p>
+                                
+                                <h3 style="margin-top: 2rem;">What happens next</h3>
+                                <p style="text-align: left; max-width: 500px; margin: 1rem auto;">
+                                    <strong>We'll return within 2 working days</strong> (usually sooner) to collect your bin. Please leave your bin out until it's been collected.
+                                </p>
+                                <p style="text-align: left; max-width: 500px; margin: 1rem auto;">
+                                    If we can't collect your bin (for example, if it contains wrong items), we'll let you know why.
+                                </p>
+
+                                <div style="margin-top: 2rem;">
+                                    <a href="Bins" class="btn-primary">Back to bins and recycling</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- WHAT IF YOUR BIN WAS REFUSED -->
+                <section aria-labelledby="refused">
+                    <h2 id="refused">What if your bin was refused?</h2>
+                    
+                    <p>If your bin has a note or sticker on it, it wasn't collected for one of these reasons:</p>
+                    
+                    <div class="reason-cards">
+                        <div class="reason-card">
+                            <div class="reason-icon">❌</div>
+                            <h3>Wrong items inside</h3>
+                            <p>Contaminated bins can't be collected. Check what should go in each bin.</p>
+                            <a href="Bins/what-goes-where.html" class="reason-link">What goes where →</a>
+                        </div>
+                        
+                        <div class="reason-card">
+                            <div class="reason-icon">⚠️</div>
+                            <h3>Lid wouldn't close</h3>
+                            <p>Overfilled bins or items sticking out prevent safe collection.</p>
+                        </div>
+                        
+                        <div class="reason-card">
+                            <div class="reason-icon">🚫</div>
+                            <h3>Not accessible</h3>
+                            <p>Bins behind locked gates or too far from the road can't be reached.</p>
+                        </div>
+                        
+                        <div class="reason-card">
+                            <div class="reason-icon">⚖️</div>
+                            <h3>Too heavy</h3>
+                            <p>Bins that are too heavy create a safety risk for collection crews.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box" style="margin-top: 1.5rem;">
+                        <strong>What to do next:</strong>
+                        Remove the problem items, then put your bin out on your next scheduled collection day.
+                    </div>
+                </section>
+
+                <!-- PREVENT MISSED COLLECTIONS -->
+                <section aria-labelledby="prevent">
+                    <h2 id="prevent">How to prevent missed collections</h2>
+                    
+                    <div class="tip-list">
+                        <div class="tip-item">
+                            <span class="tip-icon">🌙</span>
+                            <div>
+                                <strong>Put bins out the night before</strong>
+                                <p>Collections can start as early as 7am — don't risk missing your slot.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-item">
+                            <span class="tip-icon">📍</span>
+                            <div>
+                                <strong>Place at the edge of your property</strong>
+                                <p>Position bins where your drive meets the pavement or road.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-item">
+                            <span class="tip-icon">✓</span>
+                            <div>
+                                <strong>Make sure the lid closes</strong>
+                                <p>Don't overfill or force items in — lids must close fully.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-item">
+                            <span class="tip-icon">🚪</span>
+                            <div>
+                                <strong>Keep it accessible</strong>
+                                <p>Crews cannot open gates or enter your property.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-item">
+                            <span class="tip-icon">♻️</span>
+                            <div>
+                                <strong>Use the right bin</strong>
+                                <p>Wrong items cause bins to be refused — <a href="Bins/what-goes-where.html">check our guide</a>.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-item">
+                            <span class="tip-icon">🔔</span>
+                            <div>
+                                <strong>Set up reminders</strong>
+                                <p>Never miss collection day — <a href="bins/collection-reminders">get email or SMS alerts</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN (SIDEBAR) -->
+            <aside class="service-sidebar">
+
+                <section class="service-status">
+                    <h2>Response time</h2>
+                    <p><strong>Within 2 working days</strong></p>
+                    <p>We'll return within 2 working days of receiving your report. Most collections are completed within 24 hours.</p>
+                </section>
+
+                <section class="service-contact">
+                    <h2>Need help?</h2>
+
+                    <div class="contact-block">
+                        <h3>Check your bin day</h3>
+                        <p>
+                            Make sure your bin was due to be collected today.
+                            <a href="Bins/collection-day.html">Check your collection day</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-block">
+                        <h3>Phone us</h3>
+                        <p>
+                            <a href="tel:+441452396396">01452 396396</a><br>
+                            Monday to Friday, 8:30am to 5pm
+                        </p>
+                    </div>
+
+                    <div class="contact-block">
+                        <h3>Email us</h3>
+                        <p>
+                            <a href="mailto:heretohelp@gloucester.gov.uk">heretohelp@gloucester.gov.uk</a>
+                        </p>
+                    </div>
+                </section>
+
+                <section class="service-related">
+                    <h2>Related pages</h2>
+                    <ul class="related-links">
+                        <li><a href="Bins/bin-services.html">All bin services</a></li>
+                        <li><a href="Bins/collection-day.html">Check your collection day</a></li>
+                        <li><a href="Bins/what-goes-where.html">What goes in which bin</a></li>
+                        <li><a href="Bins/putting-bins-out">How to put bins out properly</a></li>
+                        <li><a href="Bins/bad-weather">Collections in bad weather</a></li>
+                    </ul>
+                </section>
+
+            </aside>
+
+        </div>
+
+        <!-- FEEDBACK PANEL -->
+        <section class="feedback-panel" aria-labelledby="feedback-heading">
+            <div class="feedback-inner">
+                <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
+
+                <div class="feedback-buttons" role="group">
+                    <button type="button" class="feedback-btn feedback-yes" data-rating="positive">
+                        👍 Yes
+                    </button>
+                    <button type="button" class="feedback-btn feedback-no" data-rating="negative">
+                        👎 No
+                    </button>
+                </div>
+
+                <form id="feedback-form" class="feedback-form" hidden>
+                    <p id="feedback-prompt">What worked well? (optional)</p>
+                    <label for="feedback-comments" class="sr-only">Your feedback</label>
+                    <textarea id="feedback-comments" rows="3" aria-labelledby="feedback-prompt"></textarea>
+
+                    <label for="feedback-email">Email (optional, if you'd like a response)</label>
+                    <input type="email" id="feedback-email">
+
+                    <button type="submit" class="feedback-submit">Submit</button>
+                </form>
+
+                <p id="feedback-thanks" class="feedback-thanks" hidden>
+                    ✅ Thank you for your feedback.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-section">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="footer-logo">
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="Bins/collection-day.html">Check bin day</a></li>
+                        <li><a href="council-tax/pay">Pay Council Tax</a></li>
+                        <li><a href="planning/search">Planning applications</a></li>
+                        <li><a href="report">Report a problem</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Gloucester</h3>
+                    <ul class="footer-links">
+                        <li><a href="http://visitgloucester.co.uk/">Visit Gloucester</a></li>
+                        <li><a href="find-councillor">Find your councillor</a></li>
+                        <li><a href="jobs">Jobs & careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Using our site</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy">Privacy & cookies</a></li>
+                        <li><a href="accessibility">Accessibility</a></li>
+                        <li><a href="contact">Contact us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Gloucester City Council. All rights reserved.</p>
+                <p>Registered office: Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+// Cookie helper functions
+function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/;SameSite=Strict`;
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+    }
+    return null;
+}
+
+function deleteCookie(name) {
+    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+}
+
+// Address management
+function getSavedAddress() {
+    const addressData = getCookie('gcc_saved_address');
+    if (addressData) {
+        try {
+            return JSON.parse(addressData);
+        } catch (e) {
+            return null;
+        }
+    }
+    return null;
+}
+
+function saveAddress(uprn, displayAddress, postcode, wardName) {
+    const addressData = {
+        uprn: uprn,
+        displayAddress: displayAddress,
+        postcode: postcode,
+        wardName: wardName,
+        savedAt: new Date().toISOString()
+    };
+    setCookie('gcc_saved_address', JSON.stringify(addressData), 365);
+}
+
+function clearSavedAddress() {
+    deleteCookie('gcc_saved_address');
+    location.reload();
+}
+
+// Multi-step form logic
+let currentStep = 1;
+const totalSteps = 3;
+let addressesLoaded = false;
+let binsLoaded = false;
+let propertyBins = [];
+let savedUprn = null;
+let savedDisplayAddress = null;
+let savedPostcode = null;
+let savedWardName = null;
+
+function updateProgress() {
+    const progress = (currentStep / totalSteps) * 100;
+    document.querySelector('.progress-fill').style.width = progress + '%';
+    document.querySelector('.progress-bar').setAttribute('aria-valuenow', progress);
+}
+
+function showStep(stepNumber) {
+    document.querySelectorAll('.form-step').forEach(step => {
+        step.classList.remove('active');
+    });
+    document.querySelector(`[data-step="${stepNumber}"]`).classList.add('active');
+    currentStep = stepNumber;
+    updateProgress();
+    
+    // Load bins when entering step 2
+    if (stepNumber === 2 && !binsLoaded) {
+        loadBinsForProperty();
+    }
+    
+    // Scroll to top of form
+    document.querySelector('.smart-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function nextStep() {
+    if (currentStep === 1 && !addressesLoaded) {
+        alert('Please enter your postcode and select your address');
+        return;
+    }
+    if (currentStep < totalSteps) {
+        showStep(currentStep + 1);
+    }
+}
+
+function prevStep() {
+    if (currentStep > 1) {
+        showStep(currentStep - 1);
+    }
+}
+
+function toggleContactFields() {
+    const method = document.getElementById('contact-method').value;
+    document.getElementById('email-group').classList.toggle('hidden', method !== 'email');
+    document.getElementById('phone-group').classList.toggle('hidden', method !== 'phone');
+}
+
+// Initialize on page load
+window.addEventListener('DOMContentLoaded', function() {
+    const savedAddress = getSavedAddress();
+    
+    if (savedAddress) {
+        // User has saved address - show it
+        showSavedAddressInForm(savedAddress);
+    } else {
+        // Set up postcode auto-lookup
+        setupPostcodeLookup();
+    }
+    
+    updateProgress();
+});
+
+function showSavedAddressInForm(savedAddress) {
+    // Hide postcode lookup
+    const postcodeGroup = document.querySelector('[data-step="1"] .form-group:first-child');
+    if (postcodeGroup) {
+        postcodeGroup.style.display = 'none';
+    }
+    
+    // Show saved address in address section
+    const addressSelectGroup = document.getElementById('address-select-group');
+    if (addressSelectGroup) {
+        addressSelectGroup.classList.remove('hidden');
+        addressSelectGroup.innerHTML = `
+            <label for="address">Your address</label>
+            <div style="background: #e8f5e9; padding: 1rem; border-radius: 4px; border: 2px solid #4caf50; margin-bottom: 0.5rem;">
+                <strong>✓ ${savedAddress.displayAddress}</strong>
+            </div>
+            <button type="button" onclick="clearSavedAddress()" style="background: transparent; border: 2px solid #666; color: #666; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.9rem; margin-bottom: 1rem;">
+                Select a different address
+            </button>
+            <input type="hidden" id="address" name="address" value="${savedAddress.uprn}">
+        `;
+        
+        // Set globals
+        savedUprn = savedAddress.uprn;
+        savedDisplayAddress = savedAddress.displayAddress;
+        savedPostcode = savedAddress.postcode;
+        savedWardName = savedAddress.wardName;
+        addressesLoaded = true;
+    }
+}
+
+function setupPostcodeLookup() {
+    const postcodeInput = document.getElementById('postcode');
+    if (!postcodeInput) return;
+    
+    let lookupTimeout;
+    
+    postcodeInput.addEventListener('input', function() {
+        clearTimeout(lookupTimeout);
+        const postcode = this.value.trim().toUpperCase();
+        
+        // Auto-lookup when postcode looks complete
+        if (postcode.match(/^[A-Z]{1,2}[0-9]{1,2}[A-Z]?\s?[0-9][A-Z]{2}$/)) {
+            lookupTimeout = setTimeout(() => {
+                triggerAddressLookup(postcode);
+            }, 500);
+        }
+    });
+}
+
+async function triggerAddressLookup(postcode) {
+    const postcodeHelp = document.getElementById('postcode-help');
+    postcodeHelp.textContent = 'Looking up addresses...';
+    postcodeHelp.style.color = '#666';
+    
+    try {
+        const response = await fetch(`https://gcc-api-pilot.azurewebsites.net/api/postcode-addresses?postcode=${encodeURIComponent(postcode)}`);
+        
+        if (!response.ok) {
+            throw new Error('Address lookup failed');
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success || !data.addresses || data.addresses.length === 0) {
+            postcodeHelp.textContent = 'No addresses found for this postcode';
+            postcodeHelp.style.color = '#d32f2f';
+            addressesLoaded = false;
+            return;
+        }
+        
+        // Populate address dropdown
+        const addressSelect = document.getElementById('address');
+        addressSelect.innerHTML = '<option value="">Choose your address...</option>';
+        
+        data.addresses.forEach(addr => {
+            const option = document.createElement('option');
+            option.value = addr.uprn;
+            option.textContent = addr.display;
+            option.dataset.uprn = addr.uprn;
+            option.dataset.displayAddress = addr.display;
+            option.dataset.postcode = addr.postcode;
+            option.dataset.wardName = addr.wardName || '';
+            addressSelect.appendChild(option);
+        });
+        
+        // Handle address selection
+        addressSelect.addEventListener('change', function() {
+            const rememberCheckbox = document.getElementById('remember-address-missed');
+            if (rememberCheckbox && rememberCheckbox.checked && this.value) {
+                const selectedOption = this.options[this.selectedIndex];
+                saveAddress(
+                    selectedOption.dataset.uprn,
+                    selectedOption.dataset.displayAddress,
+                    selectedOption.dataset.postcode,
+                    selectedOption.dataset.wardName
+                );
+            }
+        });
+        
+        // Handle remember checkbox
+        const rememberCheckbox = document.getElementById('remember-address-missed');
+        if (rememberCheckbox) {
+            rememberCheckbox.addEventListener('change', function() {
+                if (this.checked && addressSelect.value) {
+                    const selectedOption = addressSelect.options[addressSelect.selectedIndex];
+                    saveAddress(
+                        selectedOption.dataset.uprn,
+                        selectedOption.dataset.displayAddress,
+                        selectedOption.dataset.postcode,
+                        selectedOption.dataset.wardName
+                    );
+                } else if (!this.checked) {
+                    deleteCookie('gcc_saved_address');
+                }
+            });
+        }
+        
+        // Show address dropdown
+        document.getElementById('address-count').textContent = data.addresses.length;
+        document.getElementById('address-select-group').classList.remove('hidden');
+        addressesLoaded = true;
+        
+        postcodeHelp.textContent = 'We\'ll use this to find your address and collection schedule';
+        postcodeHelp.style.color = '#666';
+        
+    } catch (error) {
+        console.error('Address lookup error:', error);
+        postcodeHelp.textContent = 'Could not look up addresses. Please try again.';
+        postcodeHelp.style.color = '#d32f2f';
+        addressesLoaded = false;
+    }
+}
+
+async function loadBinsForProperty() {
+    let uprn = savedUprn;
+    
+    // Get UPRN from form if not saved
+    if (!uprn) {
+        const addressSelect = document.getElementById('address');
+        const selectedOption = addressSelect.options[addressSelect.selectedIndex];
+        uprn = selectedOption ? selectedOption.dataset.uprn : null;
+    }
+    
+    if (!uprn) {
+        alert('Please select your address first');
+        showStep(1);
+        return;
+    }
+    
+    const loadingDiv = document.getElementById('loading-bins');
+    const binSelector = document.getElementById('bin-selector');
+    
+    try {
+        // Call bins API
+        const response = await fetch('https://gcc-api-pilot.azurewebsites.net/api/bins-by-uprn', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-token': 'oije8u23984uoriwfjowei2398470'
+            },
+            body: JSON.stringify({
+                binUprn: uprn
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Could not load bins');
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success || !data.containers) {
+            throw new Error('No bin data available');
+        }
+        
+        // Map container types to bin types
+        function mapContainerToBinType(container) {
+            const subtitle = container.subtitle.toLowerCase();
+            if (subtitle.includes('refuse') || subtitle.includes('sack')) {
+                return { 
+                    type: 'black', 
+                    name: subtitle.includes('sack') ? 'Black sacks (general waste)' : 'Black bin (general waste)' 
+                };
+            }
+            if (subtitle.includes('green box')) return { type: 'green-box', name: 'Green box (plastics and metals)' };
+            if (subtitle.includes('blue bag')) return { type: 'blue-bag', name: 'Blue bag (paper and cardboard)' };
+            if (subtitle.includes('food')) return { type: 'food-caddy', name: 'Food caddy' };
+            if (subtitle.includes('garden')) return { type: 'garden', name: 'Brown bin (garden waste)' };
+            return null;
+        }
+        
+        // Check if bin is eligible for missed collection reporting
+        function isEligibleForReport(container) {
+            if (!container.collectionSchedule?.lastCollection) return false;
+            
+            const lastCollection = new Date(container.collectionSchedule.lastCollection);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            lastCollection.setHours(0, 0, 0, 0);
+            
+            const yesterday = new Date(today);
+            yesterday.setDate(yesterday.getDate() - 1);
+            
+            const now = new Date();
+            const currentHour = now.getHours();
+            
+            // Last collection was today OR yesterday and it's before 4pm today
+            return (
+                (lastCollection.getTime() === today.getTime()) ||
+                (lastCollection.getTime() === yesterday.getTime() && currentHour < 16)
+            );
+        }
+        
+        // Build bin selector
+        binSelector.innerHTML = '';
+        propertyBins = [];
+        let eligibleBins = 0;
+        
+        data.containers
+            .filter(container => !container.archived)
+            .forEach((container) => {
+                const binType = mapContainerToBinType(container);
+                if (!binType) return;
+                
+                // Check eligibility
+                const eligible = isEligibleForReport(container);
+                if (!eligible) return;
+                
+                // Avoid duplicates
+                if (propertyBins.find(b => b.type === binType.type)) return;
+                
+                eligibleBins++;
+                
+                const lastCollectionDate = container.collectionSchedule?.lastCollection;
+                const formattedDate = lastCollectionDate ? new Date(lastCollectionDate).toLocaleDateString('en-GB', {
+                    weekday: 'short',
+                    day: 'numeric',
+                    month: 'short'
+                }) : '';
+                
+                propertyBins.push({
+                    type: binType.type,
+                    name: binType.name,
+                    lastCollection: lastCollectionDate
+                });
+                
+                const label = document.createElement('label');
+                label.className = 'bin-option';
+                label.innerHTML = `
+                    <input type="checkbox" name="bins" value="${binType.type}" id="bin-${binType.type}">
+                    <div>
+                        <span class="bin-name">${binType.name}</span>
+                        <span class="bin-description">Last collected: ${formattedDate}</span>
+                    </div>
+                `;
+                binSelector.appendChild(label);
+                
+                // Visual feedback
+                const checkbox = label.querySelector('input[type="checkbox"]');
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        label.classList.add('selected');
+                    } else {
+                        label.classList.remove('selected');
+                    }
+                });
+            });
+        
+        // Show message if no eligible bins
+        if (eligibleBins === 0) {
+            loadingDiv.innerHTML = `
+                <div class="alert-box">
+                    <strong>No bins eligible for missed collection report</strong>
+                    <p>You can only report missed collections until 4pm the day after your scheduled collection.</p>
+                    <p>Your bins were last collected more than 1 day ago, so the reporting window has closed.</p>
+                    <p><a href="Bins/collection-day.html">Check your next collection dates</a></p>
+                </div>
+            `;
+            loadingDiv.style.display = 'block';
+            binSelector.style.display = 'none';
+            return;
+        }
+        
+        // Show bins
+        loadingDiv.style.display = 'none';
+        binSelector.style.display = 'grid';
+        binsLoaded = true;
+        
+        console.log(`Loaded ${propertyBins.length} bins for UPRN ${uprn}`);
+        
+    } catch (error) {
+        console.error('Error loading bins:', error);
+        loadingDiv.innerHTML = `
+            <div class="alert-box">
+                <strong>Could not load your bins</strong>
+                <p>We couldn't find the bins for this property. This might be because:</p>
+                <ul style="text-align: left; margin: 1rem auto; max-width: 400px;">
+                    <li>The address is new and not yet in our system</li>
+                    <li>There's a temporary system issue</li>
+                </ul>
+                <p>Please <a href="tel:+441452396396">call us on 01452 396396</a> to report your missed collection.</p>
+            </div>
+        `;
+    }
+}
+
+// Form submission
+document.getElementById('missed-bin-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Get UPRN
+    let uprn = savedUprn;
+    if (!uprn) {
+        const addressSelect = document.getElementById('address');
+        const selectedOption = addressSelect.options[addressSelect.selectedIndex];
+        uprn = selectedOption ? selectedOption.dataset.uprn : null;
+    }
+    
+    // Get display address
+    let displayAddress = savedDisplayAddress;
+    let postcode = savedPostcode;
+    let wardName = savedWardName;
+    
+    if (!displayAddress) {
+        const addressSelect = document.getElementById('address');
+        const selectedOption = addressSelect.options[addressSelect.selectedIndex];
+        if (selectedOption) {
+            displayAddress = selectedOption.dataset.displayAddress;
+            postcode = selectedOption.dataset.postcode;
+            wardName = selectedOption.dataset.wardName;
+        }
+    }
+    
+    // Get selected bins
+    const selectedBins = Array.from(document.querySelectorAll('input[name="bins"]:checked')).map(input => ({
+        type: input.value,
+        label: input.parentElement.querySelector('.bin-name').textContent
+    }));
+    
+    if (selectedBins.length === 0) {
+        alert('Please select at least one bin');
+        return;
+    }
+    
+    // Build form data
+    const formData = {
+        uprn: uprn,
+        address: uprn,
+        displayAddress: displayAddress,
+        postcode: postcode,
+        wardName: wardName,
+        bins: selectedBins,
+        additionalInfo: document.getElementById('additional-info').value.trim() || null,
+        contactMethod: document.getElementById('contact-method').value,
+        email: document.getElementById('email').value.trim() || null,
+        phone: document.getElementById('phone').value.trim() || null,
+        timestamp: new Date().toISOString(),
+        source: 'missed-collection-form-v1'
+    };
+    
+    // Show loading
+    const submitBtn = document.querySelector('[data-step="3"] .btn-primary[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+    
+    try {
+        // Call API
+        const response = await fetch('https://gcc-api-pilot.azurewebsites.net/api/submitMissedCollection', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-token': 'oije8u23984uoriwfjowei2398470'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        if (!response.ok) {
+            throw new Error('Submission failed');
+        }
+        
+        const result = await response.json();
+        
+        // Generate reference number
+        const referenceNumber = result.referenceNumber || 
+            'MB-' + new Date().getFullYear() + '-' + 
+            Math.floor(Math.random() * 90000 + 10000).toString().padStart(5, '0');
+        
+        // Show success
+        document.getElementById('reference-number').textContent = referenceNumber;
+        showStep(4);
+        
+        console.log('Missed collection reported successfully:', {
+            reference: referenceNumber,
+            uprn: uprn,
+            bins: formData.bins.length
+        });
+        
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Sorry, there was a problem submitting your report. Please try again or call us on 01452 396396.');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }
+});
+    </script>
+
+</body>
+</html>

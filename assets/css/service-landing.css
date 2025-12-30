@@ -1,0 +1,111 @@
+/* ==========================================
+   SERVICE LANDING PAGE LAYOUT
+   Works on top of styles.css
+   ========================================== */
+
+/* Breadcrumb strip – scoped to service pages only */
+.service-breadcrumb {
+    border-bottom: 1px solid var(--color-border);
+    background: #fff;
+}
+
+.service-breadcrumb .breadcrumb-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.95rem;
+}
+
+.service-breadcrumb .breadcrumb-inner ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.service-breadcrumb .breadcrumb-inner li + li::before {
+    content: "›";
+    margin: 0 0.25rem;
+    color: var(--color-muted);
+}
+
+/* Main service layout – two columns (content + sidebar) */
+.service-layout {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(220px, 1fr);
+    gap: 2.5rem;
+    align-items: flex-start;
+}
+
+.service-main section {
+    margin-bottom: 0.5rem;
+}
+
+/* Sidebar cards */
+.service-sidebar section {
+    background: #f5f7ff;
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 0.55rem;
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.service-sidebar h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+}
+
+.service-sidebar h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.contact-block {
+    margin-bottom: 1rem;
+}
+
+/* Related links tidy list */
+.related-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.related-links li {
+    margin-bottom: 0.5rem;
+}
+
+.related-links a {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+}
+
+.related-links a:hover,
+.related-links a:focus {
+    text-decoration: underline;
+}
+
+/* Service help tweaks */
+.service-help ul {
+    margin-top: 0.75rem;
+    padding-left: 1.2rem;
+}
+
+/* Smaller screens – stack columns */
+@media (max-width: 900px) {
+    .service-layout {
+        display: block;
+        padding: 2rem 1.25rem;
+    }
+
+    .service-sidebar {
+        margin-top: 2.5rem;
+    }
+}

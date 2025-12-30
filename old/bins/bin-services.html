@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order bins and recycling containers for your Gloucester home. Get your first bins, order replacements, or find out about bins for flats and new builds.">
+    <base href="/pilot-demo-site/">
+    <title>All Your Bins & Containers | Bins and Recycling | Gloucester City Council</title>
+
+    <!-- Assets -->
+    <link rel="preload" href="assets/images/GCC_logo.svg" as="image">
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/service-landing.css">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GovernmentService",
+      "name": "Bin and Container Services",
+      "description": "Order, replace or get bins and recycling containers for your Gloucester property",
+      "provider": {
+        "@type": "GovernmentOrganization",
+        "name": "Gloucester City Council"
+      },
+      "serviceType": "Waste Collection",
+      "areaServed": {
+        "@type": "City",
+        "name": "Gloucester"
+      }
+    }
+    </script>
+
+    <style>
+        .situation-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #2d6a4f;
+        }
+
+        .situation-card h3 {
+            color: #2d6a4f;
+            font-size: 1.5rem;
+            margin: 0 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .situation-card .icon {
+            font-size: 2rem;
+        }
+
+        .service-list-enhanced {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .service-list-enhanced li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #2d6a4f;
+        }
+
+        .service-list-enhanced li strong {
+            color: #2d6a4f;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-list-enhanced li p {
+            margin: 0;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .service-list-enhanced li a {
+            color: #2d6a4f;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .service-list-enhanced li a:hover {
+            text-decoration: underline;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2d6a4f;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin: 0.5rem 0;
+        }
+
+        .cta-button:hover {
+            background: #1b4332;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.4);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-left: 4px solid #2d6a4f;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h4 {
+            color: #065f46;
+            margin: 0 0 1rem 0;
+        }
+
+        .highlight-box p, .highlight-box ul {
+            color: #065f46;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .highlight-box ul {
+            padding-left: 1.5rem;
+        }
+
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box {
+            background: #e0f2fe;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .info-box h4 {
+            color: #075985;
+            margin: 0 0 0.75rem 0;
+        }
+
+        .info-box p {
+            color: #0c4a6e;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .expandable {
+            margin: 2rem 0;
+        }
+
+        .expandable-header {
+            background: #f8f9fa;
+            padding: 1.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.2s ease;
+        }
+
+        .expandable-header:hover {
+            background: #e9ecef;
+            border-color: #2d6a4f;
+        }
+
+        .expandable-header h4 {
+            margin: 0;
+            color: #2d6a4f;
+        }
+
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .expandable-content.open {
+            max-height: 2000px;
+        }
+
+        .expandable-inner {
+            padding: 1.5rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .container-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .container-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .container-item h5 {
+            color: #2d6a4f;
+            margin: 0 0 0.75rem 0;
+            font-size: 1.1rem;
+        }
+
+        .container-item p {
+            margin: 0;
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body data-service-id="bin-services">
+
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <div class="header-top">
+                <a href="" class="logo-link" aria-label="Gloucester City Council homepage">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="site-logo"
+                         width="250"
+                         height="70">
+                </a>
+
+                <form class="search-form" role="search" action="search" method="get">
+                    <label for="search-input" class="sr-only">Search the website</label>
+                    <input type="search" id="search-input" name="q"
+                           class="search-input" placeholder="Search..." aria-label="Search the website">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Welcome Banner -->
+        <h1 class="welcome-banner">
+            All Your Bins & Containers
+        </h1>
+    </header>
+
+    <!-- MAIN NAV -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <button class="menu-toggle" aria-expanded="false">Menu</button>
+            <ul class="nav-list">
+                <li><a href="contact">Contact us</a></li>
+                <li><a href="https://gloucester-self.achieveservice.com/">My Gloucester</a></li>
+                <li><a href="news">News</a></li>
+                <li><a href="https://public.govdelivery.com/accounts/UKGCCA/subscriber/new">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <nav class="service-breadcrumb" aria-label="Breadcrumb">
+        <div class="breadcrumb-inner">
+            <ol>
+                <li><a href="">Home</a></li>
+                <li><a href="Bins">Bins and Recycling</a></li>
+                <li aria-current="page">All Your Bins & Containers</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="main-content" class="main-content" role="main">
+
+        <div class="service-layout">
+
+            <!-- LEFT COLUMN -->
+            <div class="service-main">
+
+                <p style="font-size: 1.25rem; line-height: 1.6; color: #4a5568; margin-bottom: 2rem;">
+                    Whether you're new to Gloucester, need replacement containers, or live in a flat, we'll help you get the right bins and recycling containers for your home.
+                </p>
+
+                <!-- YOUR HOME SETUP -->
+                <section aria-labelledby="home-setup">
+                    <div class="situation-card">
+                        <h3><span class="icon">🏠</span> Your Home Setup</h3>
+                        <p style="color: #4a5568; margin-bottom: 1.5rem;">Everything you need to get bins and containers for your house or individual property.</p>
+
+                        <ul class="service-list-enhanced">
+                            <li>
+                                <strong>🆕 New to Gloucester? Get your first bins</strong>
+                                <p>All new residents receive a standard black bin for general waste. You'll need to order your free recycling containers separately.</p>
+                                <p style="margin-top: 0.75rem;">
+                                    <a href="https://gloucester-self.achieveservice.com/service/Bins___Order_recycling_containers" class="cta-button">Order your recycling containers →</a>
+                                </p>
+                            </li>
+
+                            <li>
+                                <strong>♻️ Order recycling containers</strong>
+                                <p>Free green boxes, blue sacks, and food caddies for all Gloucester residents. Each household should have a minimum of 2 green boxes and 1 blue sack.</p>
+                                <div class="container-grid" style="margin-top: 1rem;">
+                                    <div class="container-item">
+                                        <h5>Green boxes (2 minimum)</h5>
+                                        <p>For plastics, metals, and glass. Collected weekly.</p>
+                                    </div>
+                                    <div class="container-item">
+                                        <h5>Blue sacks</h5>
+                                        <p>For paper and cardboard. Can have multiple.</p>
+                                    </div>
+                                    <div class="container-item">
+                                        <h5>Food caddies</h5>
+                                        <p>Large outdoor caddy and small kitchen caddy.</p>
+                                    </div>
+                                </div>
+                                <p style="margin-top: 1rem;">
+                                    <a href="https://gloucester-self.achieveservice.com/service/Bins___Order_recycling_containers" class="cta-button">Order recycling containers online →</a>
+                                </p>
+                                <div class="info-box" style="margin-top: 1rem;">
+                                    <h4>📍 Replacement lids for green boxes</h4>
+                                    <p>Collect free replacement lids from our depot at 81 Eastern Avenue, Gloucester, GL4 6PG, or from Quedgeley Town Council. You cannot collect other containers from the depot.</p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <strong>🗑️ Order or replace a black bin</strong>
+                                <p>If your black bin is damaged, stolen, or you need a replacement refuse sack, contact us by phone or online form.</p>
+                                <p style="margin-top: 0.75rem;">
+                                    Phone: <strong><a href="tel:+441452396396">01452 396 396</a></strong><br>
+                                    Or use the <a href="contact">Contact us form</a>
+                                </p>
+                            </li>
+
+                            <li>
+                                <strong>📏 Extra or larger black bin</strong>
+                                <p>Need more waste capacity? You may be eligible if you have 7+ residents, 2+ children in nappies, or certain medical conditions.</p>
+                                <p style="margin-top: 0.75rem;">
+                                    <a href="Bins/extra-or-larger-bin.html">Check eligibility and apply →</a>
+                                </p>
+                            </li>
+
+                            <li>
+                                <strong>🤝 Assisted collections</strong>
+                                <p>Free service if you have mobility difficulties and cannot take bins to the pavement, with no one else in your household to help.</p>
+                                <p style="margin-top: 0.75rem;">
+                                    <a href="Bins/assisted-collections.html">Apply for assisted collections →</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- FLATS & SHARED PROPERTIES -->
+                <section aria-labelledby="flats-shared">
+                    <div class="situation-card">
+                        <h3><span class="icon">🏢</span> Flats & Shared Properties</h3>
+                        <p style="color: #4a5568; margin-bottom: 1.5rem;">If you live in a flat or apartment, you'll likely have communal bins instead of individual containers.</p>
+
+                        <div class="highlight-box">
+                            <h4>What you'll have</h4>
+                            <ul>
+                                <li><strong>Communal bins:</strong> Shared recycling and waste bins in a designated bin store</li>
+                                <li><strong>Food caddy:</strong> Each flat gets a 7L kitchen caddy for food waste</li>
+                                <li><strong>Communal food bin:</strong> A brown 140L bin in the bin store for all residents</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>Collection schedule for flats</h4>
+                            <p><strong>Food waste:</strong> Weekly collection<br>
+                            <strong>Recycling and general waste:</strong> Fortnightly on alternating weeks</p>
+                        </div>
+
+                        <h4 style="margin: 2rem 0 1rem 0; color: #2d6a4f;">Bin sizes for flats</h4>
+                        <p style="color: #4a5568; margin-bottom: 1rem;">The number and size of bins depends on how many flats share them:</p>
+                        <ul style="padding-left: 1.5rem; color: #4a5568;">
+                            <li>For every 8 flats: One 1100L communal bin</li>
+                            <li>Recycling bins: 240L or 360L depending on the development</li>
+                        </ul>
+
+                        <h4 style="margin: 2rem 0 1rem 0; color: #2d6a4f;">Problems with communal bins?</h4>
+                        <p style="color: #4a5568; margin-bottom: 1rem;">If your communal bins are:</p>
+                        <ul style="padding-left: 1.5rem; color: #4a5568;">
+                            <li>Always full or overflowing</li>
+                            <li>Damaged or need replacing</li>
+                            <li>Not being collected properly</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">
+                            <a href="tel:+441452396396" class="cta-button">Call us: 01452 396 396</a>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- DEVELOPERS & NEW BUILDS -->
+                <section aria-labelledby="developers">
+                    <div class="situation-card">
+                        <h3><span class="icon">🏗️</span> Developers & New Builds</h3>
+                        <p style="color: #4a5568; margin-bottom: 1.5rem;">Information for developers, builders, and residents moving into new build properties.</p>
+
+                        <div class="highlight-box">
+                            <h4>When will new properties get bins?</h4>
+                            <p>Before bins can be delivered to new residential properties:</p>
+                            <ul>
+                                <li>The property must be registered for Council Tax</li>
+                                <li>The developer must request a site visit from our contractor</li>
+                                <li>The contractor needs to agree that collections can be carried out safely</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>For new residents in completed developments</h4>
+                            <p>If you've just moved into a new build property and don't have bins yet, order your recycling containers online and contact us about your black bin.</p>
+                            <p style="margin-top: 0.75rem;">
+                                <a href="https://gloucester-self.achieveservice.com/service/Bins___Order_recycling_containers">Order recycling containers →</a> |
+                                <a href="tel:+441452396396">Call about black bin: 01452 396 396</a>
+                            </p>
+                        </div>
+
+                        <!-- Expandable planning guidance -->
+                        <div class="expandable">
+                            <div class="expandable-header" onclick="this.nextElementSibling.classList.toggle('open')">
+                                <h4>📋 Planning & storage guidance for developers</h4>
+                                <span style="font-size: 1.5rem;">▼</span>
+                            </div>
+                            <div class="expandable-content">
+                                <div class="expandable-inner">
+                                    <h5 style="color: #2d6a4f; margin: 0 0 1rem 0;">Bin store requirements</h5>
+                                    <p style="color: #4a5568; margin-bottom: 1rem;">Developers must consider bin storage as part of planning submissions:</p>
+                                    <ul style="padding-left: 1.5rem; color: #4a5568; margin-bottom: 1.5rem;">
+                                        <li>Collections can only be made from designated bin stores with adequate access</li>
+                                        <li>Under Building Regulations (2010) Part H: Householders must not carry waste containers further than 30m</li>
+                                        <li>Bin stores must be accessible for collection vehicles</li>
+                                    </ul>
+
+                                    <h5 style="color: #2d6a4f; margin: 1.5rem 0 1rem 0;">Storage space calculations</h5>
+                                    <p style="color: #4a5568; margin-bottom: 0.5rem;"><strong>For individual houses:</strong></p>
+                                    <ul style="padding-left: 1.5rem; color: #4a5568; margin-bottom: 1rem;">
+                                        <li>1 x 180L black bin (collected fortnightly)</li>
+                                        <li>2 x green boxes for recycling</li>
+                                        <li>1 x blue sack</li>
+                                        <li>1 x outdoor food caddy</li>
+                                    </ul>
+
+                                    <p style="color: #4a5568; margin-bottom: 0.5rem;"><strong>For flats/multiple occupancy:</strong></p>
+                                    <ul style="padding-left: 1.5rem; color: #4a5568; margin-bottom: 1.5rem;">
+                                        <li>1 x 1100L bin per 8 flats</li>
+                                        <li>240L or 360L recycling bins as appropriate</li>
+                                        <li>1 x 140L communal food waste bin per bin store</li>
+                                    </ul>
+
+                                    <h5 style="color: #2d6a4f; margin: 1.5rem 0 1rem 0;">Contact for developers</h5>
+                                    <p style="color: #4a5568; margin: 0;">
+                                        For full waste storage and collection guidance, download the
+                                        <a href="https://www.gloucester.gov.uk/media/trqgrqer/waste-storage-and-collection-guidance-february-2020.pdf" style="color: #2d6a4f; font-weight: 600;">Waste & Recycling Storage Guidance (PDF)</a>
+                                    </p>
+                                    <p style="color: #4a5568; margin-top: 1rem;">
+                                        To arrange a site visit: <strong><a href="tel:+441452396396">01452 396 396</a></strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CONTACT -->
+                <section aria-labelledby="contact-section" style="margin-top: 3rem;">
+                    <h2 id="contact-section" style="font-size: 2rem; margin: 0 0 1.5rem 0;">Contact us about bins and containers</h2>
+
+                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                            <div>
+                                <h3 style="color: #2d6a4f; margin: 0 0 1rem 0;">📞 Phone</h3>
+                                <p style="color: #4a5568; margin: 0;"><a href="tel:+441452396396" style="color: #2d6a4f; font-weight: 600; font-size: 1.25rem;">01452 396 396</a></p>
+                                <p style="color: #6b7280; margin: 0.5rem 0 0 0; font-size: 0.95rem;">Monday to Friday, 8:30am to 5pm</p>
+                            </div>
+                            <div>
+                                <h3 style="color: #2d6a4f; margin: 0 0 1rem 0;">📧 Email</h3>
+                                <p style="color: #4a5568; margin: 0;"><a href="mailto:heretohelp@gloucester.gov.uk" style="color: #2d6a4f; font-weight: 600;">heretohelp@gloucester.gov.uk</a></p>
+                                <p style="color: #6b7280; margin: 0.5rem 0 0 0; font-size: 0.95rem;">We aim to reply within 2 working days</p>
+                            </div>
+                            <div>
+                                <h3 style="color: #2d6a4f; margin: 0 0 1rem 0;">💻 Online</h3>
+                                <p style="color: #4a5568; margin: 0;"><a href="https://gloucester-self.achieveservice.com/service/Bins___Order_recycling_containers" style="color: #2d6a4f; font-weight: 600;">Order containers online</a></p>
+                                <p style="color: #6b7280; margin: 0.5rem 0 0 0; font-size: 0.95rem;">Quickest way to order recycling containers</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN (SIDEBAR) -->
+            <aside class="service-sidebar">
+
+                <section class="service-contact">
+                    <h2>Quick links</h2>
+                    <ul class="related-links">
+                        <li><a href="Bins">← Back to bins home</a></li>
+                        <li><a href="https://gloucester-self.achieveservice.com/service/Bins___Order_recycling_containers">Order recycling containers</a></li>
+                        <li><a href="Bins/extra-or-larger-bin.html">Extra or larger black bin</a></li>
+                        <li><a href="Bins/assisted-collections.html">Assisted collections</a></li>
+                        <li><a href="Bins/collection-day.html">Check your bin day</a></li>
+                    </ul>
+                </section>
+
+                <section class="service-related">
+                    <h2>What you should have</h2>
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1rem; margin: 0 0 0.75rem 0; color: #2d6a4f;">Standard household:</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem; color: #4a5568;">
+                            <li style="margin-bottom: 0.5rem;">✓ 1 black bin (180L)</li>
+                            <li style="margin-bottom: 0.5rem;">✓ 2+ green boxes</li>
+                            <li style="margin-bottom: 0.5rem;">✓ 1+ blue sack</li>
+                            <li style="margin-bottom: 0.5rem;">✓ 2 food caddies</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                        <h3 style="font-size: 1rem; margin: 0 0 0.75rem 0; color: #2d6a4f;">Flats/apartments:</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem; color: #4a5568;">
+                            <li style="margin-bottom: 0.5rem;">✓ Communal bins</li>
+                            <li style="margin-bottom: 0.5rem;">✓ 1 food caddy (7L)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="service-related">
+                    <h2>Related pages</h2>
+                    <ul class="related-links">
+                        <li><a href="Bins/what-goes-where.html">What goes in which bin</a></li>
+                        <li><a href="Bins/garden-waste.html">Garden waste subscription</a></li>
+                        <li><a href="Bins/recycling-centres.html">Recycling centres</a></li>
+                        <li><a href="Bins/missed-collection2.html">Report missed collection</a></li>
+                    </ul>
+                </section>
+
+            </aside>
+
+        </div>
+
+        <!-- FEEDBACK PANEL -->
+        <section class="feedback-panel" aria-labelledby="feedback-heading">
+            <div class="feedback-inner">
+                <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
+
+                <div class="feedback-buttons" role="group">
+                    <button type="button" class="feedback-btn feedback-yes" data-rating="positive">
+                        👍 Yes
+                    </button>
+                    <button type="button" class="feedback-btn feedback-no" data-rating="negative">
+                        👎 No
+                    </button>
+                </div>
+
+                <form id="feedback-form" class="feedback-form" hidden>
+                    <p id="feedback-prompt">What worked well? (optional)</p>
+                    <label for="feedback-comments" class="sr-only">Your feedback</label>
+                    <textarea id="feedback-comments" rows="3" aria-labelledby="feedback-prompt"></textarea>
+
+                    <label for="feedback-email">Email (optional, if you'd like a response)</label>
+                    <input type="email" id="feedback-email">
+
+                    <button type="submit" class="feedback-submit">Submit</button>
+                </form>
+
+                <p id="feedback-thanks" class="feedback-thanks" hidden>
+                    ✅ Thank you for your feedback.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-section">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="footer-logo">
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="Bins/collection-day.html">Check bin day</a></li>
+                        <li><a href="council-tax/pay">Pay Council Tax</a></li>
+                        <li><a href="planning/search">Planning applications</a></li>
+                        <li><a href="report">Report a problem</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Gloucester</h3>
+                    <ul class="footer-links">
+                        <li><a href="http://visitgloucester.co.uk/">Visit Gloucester</a></li>
+                        <li><a href="find-councillor">Find your councillor</a></li>
+                        <li><a href="jobs">Jobs & careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Using our site</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy">Privacy & cookies</a></li>
+                        <li><a href="accessibility">Accessibility</a></li>
+                        <li><a href="contact">Contact us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Gloucester City Council. All rights reserved.</p>
+                <p>Registered office: Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

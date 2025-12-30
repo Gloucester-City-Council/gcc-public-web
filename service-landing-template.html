@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Core meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="[Short description explaining this service area and what residents can do here]">
+    <title>[SERVICE NAME] | Gloucester City Council</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="assets/images/GCC_logo.svg" as="image">
+    <link rel="preload" href="assets/css/styles.css" as="style">
+
+    <!-- Main stylesheet (existing) -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Service landing stylesheet (new, see below) -->
+    <link rel="stylesheet" href="assets/css/service-landing.css">
+
+    <!-- Canonical & social basics -->
+    <link rel="canonical" href="[FULL URL TO THIS PAGE]">
+    <meta property="og:title" content="[SERVICE NAME] | Gloucester City Council">
+    <meta property="og:description" content="[Same as meta description]">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="[FULL URL TO THIS PAGE]">
+
+    <!-- GovernmentService schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GovernmentService",
+      "name": "[SERVICE NAME]",
+      "description": "[Plain-language description of what this service area covers and what residents can do here.]",
+      "provider": {
+        "@type": "GovernmentOrganization",
+        "name": "Gloucester City Council",
+        "url": "https://www.gloucester.gov.uk",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Eastgate Management Suite, Eastgate Street",
+          "addressLocality": "Gloucester",
+          "postalCode": "GL1 1PA",
+          "addressCountry": "GB"
+        },
+        "telephone": "+44-1452-396396"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Gloucester"
+      },
+      "serviceUrl": "[FULL URL TO THIS PAGE]"
+    }
+    </script>
+</head>
+
+<body data-service-id="[SERVICE-ID]">
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Site Header (logo + search + H1 banner) -->
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <!-- Top Row: Logo + Search -->
+            <div class="header-top">
+                <a href="/" class="logo-link" aria-label="Gloucester City Council homepage">
+                    <img
+                        src="assets/images/GCC_logo.svg"
+                        alt="Gloucester City Council"
+                        class="site-logo"
+                        width="250"
+                        height="70">
+                </a>
+
+                <form class="search-form" role="search" action="/search" method="get">
+                    <label for="search-input" class="sr-only">Search the website</label>
+                    <input
+                        type="search"
+                        id="search-input"
+                        name="q"
+                        class="search-input"
+                        placeholder="Search..."
+                        aria-label="Search the website">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+        <!-- H1 banner – same pattern as homepage -->
+        <h1 class="welcome-banner">
+            [SERVICE NAME]
+        </h1>
+    </header>
+
+    <!-- Main Navigation (global) -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                Menu
+            </button>
+            <ul class="nav-list">
+                <li><a href="/contact">Contact us</a></li>
+                <li><a href="https://gloucester-self.achieveservice.com/">My Gloucester</a></li>
+                <li><a href="/news">News</a></li>
+                <li><a href="https://public.govdelivery.com/accounts/UKGCCA/subscriber/new">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero-style Quick Actions – reuse homepage hero/quick-actions styling -->
+    <section class="hero-section" aria-labelledby="service-actions-title">
+        <div class="hero-container">
+            <div class="quick-actions">
+                <h2 id="service-actions-title" class="quick-actions-title">
+                    What would you like to do?
+                </h2>
+                <p class="service-intro-text">
+                    Choose an option below to go to the right page. Most things can be done online in a few minutes.
+                </p>
+
+                <div class="actions-grid">
+                    <!-- CARD TEMPLATE: duplicate as needed -->
+                    <a href="[TASK-URL-1]" class="action-card" data-ai-role="service-task">
+                        <span class="action-icon" aria-hidden="true">✅</span>
+                        <span class="action-title">[Task name – e.g. “Report a missed bin”]</span><br/>
+                        <span class="action-description">[1-line explanation in resident language]</span>
+                    </a>
+
+                    <a href="[TASK-URL-2]" class="action-card" data-ai-role="service-task">
+                        <span class="action-icon" aria-hidden="true">💳</span>
+                        <span class="action-title">[Task name – e.g. “Pay your bill”]</span><br/>
+                        <span class="action-description">[1-line explanation]</span>
+                    </a>
+
+                    <a href="[TASK-URL-3]" class="action-card" data-ai-role="service-task">
+                        <span class="action-icon" aria-hidden="true">📢</span>
+                        <span class="action-title">[Task name – e.g. “Report a problem”]</span><br/>
+                        <span class="action-description">[1-line explanation]</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <main id="main-content" class="main-content" role="main">
+        <div class="service-layout">
+            <!-- Main column -->
+            <div class="service-main">
+
+                <!-- Grouped service links behind the landing page -->
+                <section class="service-groups" aria-labelledby="all-services-heading">
+                    <h2 id="all-services-heading" class="section-title">
+                        All [service name] options
+                    </h2>
+                    <p>Browse everything in this area if you’re not sure which option you need.</p>
+
+                    <div class="categories-grid">
+                        <!-- CATEGORY 1 -->
+                        <article class="category-card">
+                            <div class="category-icon" aria-hidden="true">💰</div>
+                            <h3 class="category-title">[Category – e.g. “Payments”]</h3>
+                            <p class="category-description">
+                                [Short explanation of what sits in this category.]
+                            </p>
+                            <ul class="service-list">
+                                <li><a href="[URL]">[Service link – e.g. “Pay your [thing]”]</a></li>
+                                <li><a href="[URL]">[Another payment option]</a></li>
+                            </ul>
+                        </article>
+
+                        <!-- CATEGORY 2 -->
+                        <article class="category-card">
+                            <div class="category-icon" aria-hidden="true">⚠️</div>
+                            <h3 class="category-title">[Category – e.g. “Report a problem”]</h3>
+                            <p class="category-description">
+                                [Short explanation.]
+                            </p>
+                            <ul class="service-list">
+                                <li><a href="[URL]">[Service link – e.g. “Report [issue]”]</a></li>
+                            </ul>
+                        </article>
+
+                        <!-- Add more category-card blocks as needed -->
+                    </div>
+                </section>
+
+                <!-- Help using the online services -->
+                <section class="service-help" aria-labelledby="help-heading">
+                    <h2 id="help-heading" class="section-title">Need help using these services?</h2>
+                    <p>
+                        If you cannot complete something online, we can help you in other ways.
+                    </p>
+                    <ul>
+                        <li>Phone us on <a href="tel:+441452396396">01452 396396</a>.</li>
+                        <li>Visit us at [location / building] during opening hours.</li>
+                        <li>
+                            Ask a trusted friend, family member or support worker to help you complete the form.
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="service-sidebar" aria-label="[SERVICE NAME] updates and contact">
+                <!-- Service updates / status -->
+                <section class="service-status" aria-labelledby="status-heading">
+                    <h2 id="status-heading">Service updates</h2>
+                    <p>
+                        [Use this area for short updates, for example:
+                        “Service running as normal” or “High demand – responses may take longer than usual”.]
+                    </p>
+                </section>
+
+                <!-- Contact details -->
+                <section class="service-contact" aria-labelledby="contact-heading">
+                    <h2 id="contact-heading">Contact the team</h2>
+
+                    <div class="contact-block">
+                        <h3>Phone</h3>
+                        <p>
+                            <a href="tel:+441452396396">01452 396396</a><br>
+                            Monday to Friday, 8:30am – 5pm
+                        </p>
+                    </div>
+
+                    <div class="contact-block">
+                        <h3>Email</h3>
+                        <p>
+                            <a href="mailto:[SERVICE-EMAIL]@gloucester.gov.uk">[SERVICE-EMAIL]@gloucester.gov.uk</a><br>
+                            We aim to reply within [X] working days.
+                        </p>
+                    </div>
+
+                    <div class="contact-block">
+                        <h3>Visit us</h3>
+                        <p>
+                            [Location or office name]<br>
+                            [Opening hours]<br>
+                            [Any access notes – for example, step-free access.]
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Related links -->
+                <section class="service-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading">You might also need</h2>
+                    <ul class="related-links">
+                        <li><a href="[RELATED-URL-1]">[Related service or information]</a></li>
+                        <li><a href="[RELATED-URL-2]">[Related service or information]</a></li>
+                    </ul>
+                </section>
+            </aside>
+        </div>
+    </main>
+        <!-- News Section -->
+    <section class="news-section" aria-labelledby="news-title">
+        <div class="news-container">
+            <h2 id="news-title" class="section-title">Service news</h2>
+            
+            <div class="news-grid">
+                
+                <article class="news-card">
+                    <a href="/news/purple-flag-award">
+                        <h3 class="news-title">Gloucester is a Purple Flag City</h3>
+                        <p class="news-excerpt">
+                            Gloucester holds the Purple Flag National Safety award, 
+                            recognizing our commitment to making the City safer.
+                        </p>
+                        <span class="news-link">Read more →</span>
+                    </a>
+                </article>
+                
+                <article class="news-card">
+                    <a href="/news/watch-meetings-online">
+                        <h3 class="news-title">Watch our meetings online</h3>
+                        <p class="news-excerpt">
+                            Follow our YouTube channel to see how the council makes 
+                            decisions about improving our City for residents.
+                        </p>
+                        <span class="news-link">Watch now →</span>
+                    </a>
+                </article>
+                
+                <article class="news-card">
+                    <a href="/cost-of-living">
+                        <h3 class="news-title">Cost of living support</h3>
+                        <p class="news-excerpt">
+                            Information and support available if you're struggling 
+                            with the cost of living.
+                        </p>
+                        <span class="news-link">Get help →</span>
+                    </a>
+                </article>
+                
+            </div>
+        </div>
+    </section>
+    <section class="feedback-panel" aria-labelledby="feedback-heading">
+  <div class="feedback-inner">
+    <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
+
+    <div class="feedback-buttons" role="group" aria-label="Page feedback">
+      <button
+        type="button"
+        class="feedback-btn feedback-yes"
+        aria-label="Yes, this page was helpful"
+        data-rating="positive"
+      >
+        👍 Yes, it helped
+      </button>
+
+      <button
+        type="button"
+        class="feedback-btn feedback-no"
+        aria-label="No, this page was not helpful"
+        data-rating="negative"
+      >
+        👎 No, it didn’t
+      </button>
+    </div>
+
+    <form id="feedback-form" class="feedback-form" hidden>
+      <label for="feedback-comments" id="feedback-prompt">
+        Tell us more (optional)
+      </label>
+      <textarea
+        id="feedback-comments"
+        rows="3"
+        placeholder="Your comments…"
+      ></textarea>
+
+      <label for="feedback-email">
+        Email (optional, if you'd like a reply)
+      </label>
+      <input
+        type="email"
+        id="feedback-email"
+        placeholder="you@example.com"
+      />
+
+      <button type="submit" class="feedback-submit">
+        Submit feedback
+      </button>
+    </form>
+
+    <p id="feedback-thanks" class="feedback-thanks" hidden>
+      ✅ Thanks for your feedback — it helps us improve this service.
+    </p>
+  </div>
+</section>
+
+
+    <!-- Footer (same as homepage, 2025 + registered office) -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <!-- Brand Column -->
+                <div class="footer-section">
+                    <img
+                        src="assets/images/GCC_logo.svg"
+                        alt="Gloucester City Council"
+                        class="footer-logo"
+                        loading="lazy">
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/GloucesterCityCouncil/" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073C0 18.062 4.388 23.027 10.125 23.927V15.542H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/GloucesterCity" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M23.953 4.57a10 10 0 0 1-2.825.775 4.958 4.958 0 0 0 2.163-2.723 9.864 9.864 0 0 1-3.127 1.184 4.92 4.92 0 0 0-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 0 0-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.06c0 2.386 1.693 4.374 3.946 4.827a4.996 4.996 0 0 1-2.212.085c.623 1.946 2.444 3.366 4.6 3.406A9.868 9.868 0 0 1 0 19.54a13.94 13.94 0 0 0 7.548 2.213c9.056 0 14.01-7.496 14.01-13.985 0-.21 0-.42-.015-.63A9.936 9.936 0 0 0 24 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/bins-recycling/collection-day">Check bin day</a></li>
+                        <li><a href="/council-tax/pay">Pay Council Tax</a></li>
+                        <li><a href="/planning/search">Planning applications</a></li>
+                        <li><a href="/report">Report a problem</a></li>
+                    </ul>
+                </div>
+
+                <!-- About Gloucester -->
+                <div class="footer-section">
+                    <h3>About Gloucester</h3>
+                    <ul class="footer-links">
+                        <li><a href="http://visitgloucester.co.uk/">Visit Gloucester</a></li>
+                        <li><a href="/find-councillor">Find your councillor</a></li>
+                        <li><a href="https://www.gloucesterlottery.co.uk/">Gloucester Lottery</a></li>
+                        <li><a href="/jobs">Jobs &amp; careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Using our site -->
+                <div class="footer-section">
+                    <h3>Using our site</h3>
+                    <ul class="footer-links">
+                        <li><a href="/privacy">Privacy &amp; cookies</a></li>
+                        <li><a href="/accessibility">Accessibility</a></li>
+                        <li><a href="/sitemap">Sitemap</a></li>
+                        <li><a href="/contact">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Gloucester City Council. All rights reserved.</p>
+                <p>Registered office: Gloucester City Council, Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JS (mobile nav + feedback etc.) -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

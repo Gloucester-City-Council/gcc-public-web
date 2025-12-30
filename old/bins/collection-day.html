@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check when your bins are collected in Gloucester. Enter your postcode to find your collection days for recycling, food waste and general rubbish.">
+    <base href="/pilot-demo-site/">
+    <title>Check your bin collection day | Bins and Recycling | Gloucester City Council</title>
+
+    <!-- Assets -->
+    <link rel="preload" href="assets/images/GCC_logo.svg" as="image">
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/service-landing.css">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Bin Collection Day Checker",
+      "description": "Check when your bins are collected by entering your postcode",
+      "applicationCategory": "GovernmentApplication",
+      "operatingSystem": "Any",
+      "provider": {
+        "@type": "GovernmentOrganization",
+        "name": "Gloucester City Council"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP"
+      }
+    }
+    </script>
+
+    <style>
+        .lookup-form {
+            background: #f5f7ff;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .lookup-form label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .lookup-form input[type="text"] {
+            width: 100%;
+            max-width: 300px;
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        
+        .lookup-form button {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .lookup-form button:hover {
+            background: var(--color-primary-dark);
+        }
+        
+        .collection-schedule {
+            background: #fff;
+            border: 2px solid var(--color-primary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .collection-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .collection-item:last-child {
+            border-bottom: none;
+        }
+        
+        .collection-item strong {
+            display: block;
+            color: var(--color-primary-dark);
+            margin-bottom: 0.25rem;
+        }
+        
+        .next-collection {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        /* Next collection banner */
+        .next-collection-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .banner-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+        
+        .next-collection-banner h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.3rem;
+            color: white;
+        }
+        
+        .banner-details {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .banner-schedule {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+        
+        /* Bin collection cards grid */
+        .bin-collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .bin-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .bin-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        
+        .bin-card-header {
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .bin-card.recycling .bin-card-header { background: #e8f5e9; }
+        .bin-card.food .bin-card-header { background: #fff3e0; }
+        .bin-card.general .bin-card-header { background: #e0e0e0; }
+        .bin-card.garden .bin-card-header { background: #f1f8e9; }
+        
+        .bin-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .bin-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        
+        .bin-card-body {
+            padding: 1.25rem;
+        }
+        
+        .bin-types {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0 0 0.75rem 0;
+        }
+        
+        .collection-frequency {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            color: #333;
+        }
+        
+        .collection-next {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            color: var(--color-primary);
+        }
+        
+        .subscription-note {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        /* Reminder actions */
+        .reminder-actions {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .reminder-actions h3 {
+            margin: 0 0 1.5rem 0;
+            font-size: 1.3rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            background: white;
+            border: 2px solid #ccc;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .action-btn:hover {
+            border-color: var(--color-primary);
+            background: #f0f4ff;
+            transform: translateY(-2px);
+        }
+        
+        .action-btn.primary {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+        
+        .action-btn.primary:hover {
+            background: var(--color-primary-dark);
+        }
+        
+        
+        /* Info cards */
+        .info-cards {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .info-card {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .info-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        
+        .info-card strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #333;
+        }
+        
+        .info-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        /* Process steps */
+        .process-steps {
+            margin: 1.5rem 0;
+        }
+        
+        .process-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .process-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .process-step strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #333;
+            font-size: 1rem;
+        }
+        
+        .process-step p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .response-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .response-box strong {
+            color: #2e7d32;
+            font-size: 1.05rem;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .next-collection-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .bin-collection-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body data-service-id="bin-collection-lookup">
+
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <div class="header-top">
+                <a href="" class="logo-link" aria-label="Gloucester City Council homepage">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="site-logo"
+                         width="250"
+                         height="70">
+                </a>
+
+                <form class="search-form" role="search" action="search" method="get">
+                    <label for="search-input" class="sr-only">Search the website</label>
+                    <input type="search" id="search-input" name="q"
+                           class="search-input" placeholder="Search..." aria-label="Search the website">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Welcome Banner -->
+        <h1 class="welcome-banner">
+            Check your bin collection day
+        </h1>
+    </header>
+
+    <!-- MAIN NAV -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <button class="menu-toggle" aria-expanded="false">Menu</button>
+            <ul class="nav-list">
+                <li><a href="contact">Contact us</a></li>
+                <li><a href="https://gloucester-self.achieveservice.com/">My Gloucester</a></li>
+                <li><a href="news">News</a></li>
+                <li><a href="https://public.govdelivery.com/accounts/UKGCCA/subscriber/new">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <nav class="service-breadcrumb" aria-label="Breadcrumb">
+        <div class="breadcrumb-inner">
+            <ol>
+                <li><a href="">Home</a></li>
+                <li><a href="Bins">Bins and Recycling</a></li>
+                <li aria-current="page">Check your bin day</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="main-content" class="main-content" role="main">
+
+        <div class="service-layout">
+
+            <!-- LEFT COLUMN -->
+            <div class="service-main">
+                
+                <p class="intro-text">Enter your postcode to find out which bins are collected when at your property.</p>
+
+                <!-- LOOKUP FORM -->
+                <div class="lookup-form">
+                    <form id="collection-lookup-form">
+                        <label for="postcode">Your postcode</label>
+                        <input type="text" 
+                               id="postcode" 
+                               name="postcode" 
+                               placeholder="e.g. GL1 2AB"
+                               required
+                               pattern="[A-Za-z]{1,2}[0-9]{1,2}[A-Za-z]?\s?[0-9][A-Za-z]{2}"
+                               aria-describedby="postcode-help">
+                        <p id="postcode-help" class="form-help">Enter your full postcode, including the space</p>
+                        
+                        <button type="submit">Find my collection days</button>
+                    </form>
+                </div>
+
+                <!-- RESULTS PLACEHOLDER (populated by JavaScript/API) -->
+                <div id="collection-results" hidden>
+                    
+                    <div class="next-collection-banner">
+                        <div class="banner-icon">📅</div>
+                        <div>
+                            <h2>Your next collection</h2>
+                            <p id="next-collection-info" class="banner-details">Loading...</p>
+                            <p id="collection-round-info" class="banner-schedule">Loading...</p>
+                        </div>
+                    </div>
+
+                    <div class="bin-collection-grid">
+                        
+                        <div class="bin-card recycling">
+                            <div class="bin-card-header">
+                                <span class="bin-icon">♻️</span>
+                                <h3>Recycling</h3>
+                            </div>
+                            <div class="bin-card-body">
+                                <p class="bin-types">Green boxes • Blue bag (cardboard)</p>
+                                <p class="collection-next">Next: <strong><span id="next-recycling">...</span></strong></p>
+                            </div>
+                        </div>
+
+                        <div class="bin-card food">
+                            <div class="bin-card-header">
+                                <span class="bin-icon">🥬</span>
+                                <h3>Food waste</h3>
+                            </div>
+                            <div class="bin-card-body">
+                                <p class="bin-types">Food caddy (small brown bin)</p>
+                                <p class="collection-next">Next: <strong><span id="next-food">...</span></strong></p>
+                            </div>
+                        </div>
+
+                        <div class="bin-card general">
+                            <div class="bin-card-header">
+                                <span class="bin-icon">🗑️</span>
+                                <h3>General waste</h3>
+                            </div>
+                            <div class="bin-card-body">
+                                <p class="bin-types" id="general-waste-type">Black bin (non-recyclable)</p>
+                                <p class="collection-next">Next: <strong><span id="next-black-bin">...</span></strong></p>
+                            </div>
+                        </div>
+
+                        <div class="bin-card garden" id="garden-waste-card">
+                            <div class="bin-card-header">
+                                <span class="bin-icon">🌿</span>
+                                <h3>Garden waste</h3>
+                            </div>
+                            <div class="bin-card-body">
+                                <p class="bin-types">Brown bin (subscription service)</p>
+                                <p class="collection-next">Next: <strong><span id="next-garden">...</span></strong></p>
+                                <p class="subscription-note">£60 per year • <a href="Bins/garden-waste.html">Subscribe</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reminder-actions">
+                        <h3>Never miss collection day</h3>
+                        <div class="action-buttons">
+                            <button type="button" id="add-to-calendar" class="action-btn primary">
+                                <span>📅</span> Add to calendar
+                            </button>
+                            <button type="button" id="email-reminder" class="action-btn">
+                                <span>✉️</span> Email reminders
+                            </button>
+                            <button type="button" id="download-pdf" class="action-btn">
+                                <span>📄</span> Download PDF
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- INFORMATION SECTIONS -->
+                <section aria-labelledby="putting-bins-out">
+                    <h2 id="putting-bins-out">How to put your bins out</h2>
+                    
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <div class="info-icon">⏰</div>
+                            <div>
+                                <strong>By 7am on collection day</strong>
+                                <p>Put bins out the evening before — collections can start early</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">📍</div>
+                            <div>
+                                <strong>At the boundary of your property</strong>
+                                <p>Where your drive meets the pavement, or at your garden gate</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">🚪</div>
+                            <div>
+                                <strong>Where crew can reach them</strong>
+                                <p>Crews cannot enter your property or open gates</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">✓</div>
+                            <div>
+                                <strong>Lid must close fully</strong>
+                                <p>Overfilled bins may not be collected</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">↩️</div>
+                            <div>
+                                <strong>Bring back within 24 hours</strong>
+                                <p>Don't leave bins on the pavement after collection</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section aria-labelledby="what-if-missed">
+                    <h2 id="what-if-missed">What if my bin isn't collected?</h2>
+                    
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div>
+                                <strong>Check it wasn't refused</strong>
+                                <p>Was the lid closed? Was it in the right place? Wrong items inside?</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div>
+                                <strong>Check for service updates</strong>
+                                <p>Bad weather or vehicle breakdowns can delay collections</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div>
+                                <strong>Give crews until end of day</strong>
+                                <p>Crews can be out until 5pm, so your bin may still be collected</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div>
+                                <strong>Report by 4pm the next business day</strong>
+                                <p>If still not collected, <a href="Bins/missed-collection2.html">report a missed collection</a> by 4pm the next business day and we'll return within 2 working days</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="response-box">
+                        <strong>⚡ We'll return within 2 working days</strong> after you report a missed collection.
+                    </div>
+                </section>
+
+                <section aria-labelledby="reminders">
+                    <h2 id="reminders">Get collection reminders</h2>
+
+                    <p>Never miss your bin day again:</p>
+                    <ul>
+                        <li>Add to your phone calendar</li>
+                        <li>Subscribe to email reminders</li>
+                        <li>Subscribe to SMS reminders</li>
+                        <li>Follow us on social media</li>
+                    </ul>
+
+                    <p><a href="bins/collection-reminders">Set up collection reminders</a></p>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN (SIDEBAR) -->
+            <aside class="service-sidebar">
+
+                <section class="service-status">
+                    <h2>Service status</h2>
+                    <p><strong>All collections running normally</strong></p>
+                    <p>Last updated: <time datetime="2025-12-11">11 December 2025</time></p>
+                </section>
+
+                <section class="service-contact">
+                    <h2>Need help?</h2>
+
+                    <div class="contact-block">
+                        <h3>Report a missed collection</h3>
+                        <p>
+                            If your bin isn't collected by 6pm, wait until the next working day, then <a href="Bins/missed-collection2.html">report it online</a>.
+                        </p>
+                    </div>
+
+                    <div class="contact-block">
+                        <h3>Phone us</h3>
+                        <p>
+                            <a href="tel:+441452396396">01452 396396</a><br>
+                            Monday to Friday, 8:30am to 5pm
+                        </p>
+                    </div>
+
+                    <div class="contact-block">
+                        <h3>Email us</h3>
+                        <p>
+                            <a href="mailto:heretohelp@gloucester.gov.uk">heretohelp@gloucester.gov.uk</a>
+                        </p>
+                    </div>
+                </section>
+
+                <section class="service-related">
+                    <h2>Related pages</h2>
+                    <ul class="related-links">
+                        <li><a href="Bins/bin-services.html">All bin services</a></li>
+                        <li><a href="Bins/what-goes-where.html">What goes in which bin</a></li>
+                        <li><a href="Bins/garden-waste.html">Subscribe to garden waste</a></li>
+                        <li><a href="Bins/assisted-collections.html">Assisted collections</a></li>
+                    </ul>
+                </section>
+
+            </aside>
+
+        </div>
+
+        <!-- FEEDBACK PANEL -->
+        <section class="feedback-panel" aria-labelledby="feedback-heading">
+            <div class="feedback-inner">
+                <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
+
+                <div class="feedback-buttons" role="group">
+                    <button type="button" class="feedback-btn feedback-yes" data-rating="positive">
+                        👍 Yes
+                    </button>
+                    <button type="button" class="feedback-btn feedback-no" data-rating="negative">
+                        👎 No
+                    </button>
+                </div>
+
+                <form id="feedback-form" class="feedback-form" hidden>
+                    <p id="feedback-prompt">What worked well? (optional)</p>
+                    <label for="feedback-comments" class="sr-only">Your feedback</label>
+                    <textarea id="feedback-comments" rows="3" aria-labelledby="feedback-prompt"></textarea>
+
+                    <label for="feedback-email">Email (optional, if you'd like a response)</label>
+                    <input type="email" id="feedback-email">
+
+                    <button type="submit" class="feedback-submit">Submit</button>
+                </form>
+
+                <p id="feedback-thanks" class="feedback-thanks" hidden>
+                    ✅ Thank you for your feedback.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-section">
+                    <img src="assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="footer-logo">
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="Bins/collection-day.html">Check bin day</a></li>
+                        <li><a href="council-tax/pay">Pay Council Tax</a></li>
+                        <li><a href="planning/search">Planning applications</a></li>
+                        <li><a href="report">Report a problem</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Gloucester</h3>
+                    <ul class="footer-links">
+                        <li><a href="http://visitgloucester.co.uk/">Visit Gloucester</a></li>
+                        <li><a href="find-councillor">Find your councillor</a></li>
+                        <li><a href="jobs">Jobs & careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Using our site</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy">Privacy & cookies</a></li>
+                        <li><a href="accessibility">Accessibility</a></li>
+                        <li><a href="contact">Contact us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Gloucester City Council. All rights reserved.</p>
+                <p>Registered office: Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+// Cookie helper functions
+function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/;SameSite=Strict`;
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+    }
+    return null;
+}
+
+function deleteCookie(name) {
+    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+}
+
+// Address management
+function getSavedAddress() {
+    const addressData = getCookie('gcc_saved_address');
+    if (addressData) {
+        try {
+            return JSON.parse(addressData);
+        } catch (e) {
+            return null;
+        }
+    }
+    return null;
+}
+
+function saveAddress(uprn, displayAddress, postcode, wardName) {
+    const addressData = {
+        uprn: uprn,
+        displayAddress: displayAddress,
+        postcode: postcode,
+        wardName: wardName,
+        savedAt: new Date().toISOString()
+    };
+    setCookie('gcc_saved_address', JSON.stringify(addressData), 365);
+}
+
+function clearSavedAddress() {
+    deleteCookie('gcc_saved_address');
+    location.reload();
+}
+
+// Initialize on page load
+let selectedUprn = null;
+
+window.addEventListener('DOMContentLoaded', function() {
+    const savedAddress = getSavedAddress();
+    
+    if (savedAddress) {
+        // User has saved address - show it and auto-load bins
+        showSavedAddress(savedAddress);
+    } else {
+        // No saved address - set up postcode auto-lookup
+        setupPostcodeLookup();
+    }
+    
+    // Set up form submission
+    setupFormSubmission();
+});
+
+function showSavedAddress(savedAddress) {
+    const lookupFormContainer = document.querySelector('.lookup-form');
+    lookupFormContainer.innerHTML = `
+        <div style="background: #e8f5e9; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #4caf50;">
+            <p style="margin: 0 0 0.5rem 0;"><strong>✓ Using saved address:</strong></p>
+            <p style="margin: 0 0 1rem 0; font-size: 1.1rem;">${savedAddress.displayAddress}</p>
+            <p id="loading-message" style="margin: 0.75rem 0; font-size: 0.95rem; color: #666;">
+                <span style="display: inline-block; width: 16px; height: 16px; border: 2px solid #666; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: 0.5rem; vertical-align: middle;"></span>
+                Loading your collection information...
+            </p>
+            <style>
+                @keyframes spin {
+                    to { transform: rotate(360deg); }
+                }
+            </style>
+            <button type="button" onclick="clearSavedAddress()" style="background: transparent; border: 2px solid #666; color: #666; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.9rem; margin-top: 1rem;">
+                Select a different address
+            </button>
+        </div>
+    `;
+    
+    // Auto-load bins
+    selectedUprn = savedAddress.uprn;
+    loadBinsForUprn(savedAddress.uprn);
+}
+
+function setupPostcodeLookup() {
+    const postcodeInput = document.getElementById('postcode');
+    if (!postcodeInput) return;
+    
+    let lookupTimeout;
+    
+    postcodeInput.addEventListener('input', function() {
+        clearTimeout(lookupTimeout);
+        const postcode = this.value.trim().toUpperCase();
+        
+        // Check if postcode looks complete
+        if (postcode.match(/^[A-Z]{1,2}[0-9]{1,2}[A-Z]?\s?[0-9][A-Z]{2}$/)) {
+            lookupTimeout = setTimeout(() => {
+                lookupAddresses(postcode);
+            }, 500);
+        }
+    });
+}
+
+async function lookupAddresses(postcode) {
+    const helpText = document.getElementById('postcode-help');
+    helpText.textContent = 'Looking up addresses...';
+    helpText.style.color = '#666';
+    
+    try {
+        const response = await fetch(`https://gcc-api-pilot.azurewebsites.net/api/postcode-addresses?postcode=${encodeURIComponent(postcode)}`);
+        
+        if (!response.ok) {
+            throw new Error('Address lookup failed');
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success || !data.addresses || data.addresses.length === 0) {
+            helpText.textContent = 'No addresses found for this postcode';
+            helpText.style.color = '#d32f2f';
+            return;
+        }
+        
+        // Remove old address select if exists
+        const oldSelect = document.getElementById('address-select');
+        if (oldSelect) {
+            oldSelect.parentElement.remove();
+        }
+        
+        // Create address select
+        const form = document.getElementById('collection-lookup-form');
+        const submitButton = form.querySelector('button[type="submit"]');
+        
+        const addressGroup = document.createElement('div');
+        addressGroup.className = 'form-group';
+        addressGroup.style.marginTop = '1rem';
+        addressGroup.innerHTML = `
+            <label for="address-select">Select your address</label>
+            <select id="address-select" required style="width: 100%; padding: 0.75rem; font-size: 1rem; border: 2px solid #ccc; border-radius: 4px; margin-bottom: 0.75rem;">
+                <option value="">Choose your address...</option>
+            </select>
+            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; margin-bottom: 1rem;">
+                <input type="checkbox" id="remember-address" style="width: auto;">
+                <span>Remember this address for next time</span>
+            </label>
+        `;
+        
+        // Insert BEFORE the submit button
+        submitButton.parentElement.insertBefore(addressGroup, submitButton);
+        
+        const select = document.getElementById('address-select');
+        data.addresses.forEach(addr => {
+            const option = document.createElement('option');
+            option.value = addr.uprn;
+            option.textContent = addr.display;
+            option.dataset.uprn = addr.uprn;
+            option.dataset.displayAddress = addr.display;
+            option.dataset.postcode = addr.postcode;
+            option.dataset.wardName = addr.wardName;
+            select.appendChild(option);
+        });
+        
+        select.addEventListener('change', function() {
+            selectedUprn = this.value;
+            
+            // Save address if checkbox is checked
+            const rememberCheckbox = document.getElementById('remember-address');
+            if (rememberCheckbox && rememberCheckbox.checked && this.value) {
+                const selectedOption = this.options[this.selectedIndex];
+                saveAddress(
+                    selectedOption.dataset.uprn,
+                    selectedOption.dataset.displayAddress,
+                    selectedOption.dataset.postcode,
+                    selectedOption.dataset.wardName
+                );
+            }
+        });
+        
+        // Also save on checkbox change
+        const rememberCheckbox = document.getElementById('remember-address');
+        rememberCheckbox.addEventListener('change', function() {
+            if (this.checked && selectedUprn) {
+                const selectedOption = select.options[select.selectedIndex];
+                saveAddress(
+                    selectedOption.dataset.uprn,
+                    selectedOption.dataset.displayAddress,
+                    selectedOption.dataset.postcode,
+                    selectedOption.dataset.wardName
+                );
+            } else if (!this.checked) {
+                deleteCookie('gcc_saved_address');
+            }
+        });
+        
+        helpText.textContent = `${data.addresses.length} addresses found`;
+        helpText.style.color = '#4caf50';
+        
+    } catch (error) {
+        console.error('Error:', error);
+        helpText.textContent = 'Could not look up addresses. Please try again.';
+        helpText.style.color = '#d32f2f';
+    }
+}
+
+function setupFormSubmission() {
+    const form = document.getElementById('collection-lookup-form');
+    if (!form) return;
+    
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        if (!selectedUprn) {
+            alert('Please select your address from the list');
+            return;
+        }
+        
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Looking up collections...';
+        submitBtn.disabled = true;
+        
+        try {
+            await loadBinsForUprn(selectedUprn);
+            submitBtn.textContent = 'Find my collection days';
+            submitBtn.disabled = false;
+        } catch (error) {
+            alert('Sorry, we could not find collection information for that address.');
+            console.error('Error:', error);
+            submitBtn.textContent = 'Find my collection days';
+            submitBtn.disabled = false;
+        }
+    });
+}
+
+async function loadBinsForUprn(uprn) {
+    const response = await fetch('https://gcc-api-pilot.azurewebsites.net/api/bins-by-uprn', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-api-token': 'oije8u23984uoriwfjowei2398470'
+        },
+        body: JSON.stringify({
+            binUprn: uprn
+        })
+    });
+    
+    if (!response.ok) {
+        throw new Error('Could not find collection information');
+    }
+    
+    const data = await response.json();
+    
+    if (!data.success || !data.containers) {
+        throw new Error('No collection data available');
+    }
+    
+    displayCollectionResults(data);
+}
+
+function displayCollectionResults(data) {
+    const resultsDiv = document.getElementById('collection-results');
+    
+    // Hide loading message if it exists
+    const loadingMessage = document.getElementById('loading-message');
+    if (loadingMessage) {
+        loadingMessage.style.display = 'none';
+    }
+    
+    // Format dates
+    function formatShortDate(dateStr) {
+        if (!dateStr) return 'Not scheduled';
+        const date = new Date(dateStr);
+        const options = { weekday: 'short', day: 'numeric', month: 'short' };
+        return date.toLocaleDateString('en-GB', options);
+    }
+    
+    function getDaysUntil(dateStr) {
+        if (!dateStr) return null;
+        const date = new Date(dateStr);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const diffTime = date - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        return diffDays;
+    }
+    
+    function formatSchedule(schedule) {
+        if (!schedule || schedule === 'Not available') return schedule;
+        
+        if (schedule.toLowerCase().includes('weekly') && !schedule.toLowerCase().includes('week 1') && !schedule.toLowerCase().includes('week 2')) {
+            return schedule.replace(/\s+Weekly/i, '');
+        } else if (schedule.match(/\w+\s+Week\s+\d/i)) {
+            return 'Collection round: ' + schedule;
+        }
+        return schedule;
+    }
+    
+    // Find containers by type (exclude archived)
+    const containers = data.containers.filter(c => !c.archived);
+    const refuseContainer = containers.find(c => c.subtitle.includes('Refuse') || c.subtitle.includes('Sack'));
+    const recyclingContainer = containers.find(c => c.subtitle.includes('Green Box'));
+    const foodContainer = containers.find(c => c.subtitle.includes('Food'));
+    const gardenContainer = containers.find(c => c.subtitle.includes('Garden'));
+    
+    // Get collection schedule
+    const mainSchedule = containers[0]?.collectionSchedule;
+    const rawSchedule = mainSchedule?.scheduleDescription || 'Not available';
+    const collectionDay = formatSchedule(rawSchedule);
+    
+    // Find next collection
+    const allNextCollections = containers
+        .map(c => c.collectionSchedule?.nextCollection)
+        .filter(d => d)
+        .sort();
+    const nextCollectionDate = allNextCollections[0];
+    const daysUntil = getDaysUntil(nextCollectionDate);
+    
+    // Build next collection message
+    let nextMessage = formatShortDate(nextCollectionDate);
+    if (daysUntil === 0) {
+        nextMessage += ' (TODAY!)';
+    } else if (daysUntil === 1) {
+        nextMessage += ' (tomorrow)';
+    } else if (daysUntil > 0) {
+        nextMessage += ` (in ${daysUntil} days)`;
+    }
+    
+    // Populate banner
+    document.getElementById('next-collection-info').textContent = nextMessage;
+    document.getElementById('collection-round-info').textContent = collectionDay;
+    
+    // Update next collection dates for all bins
+    if (recyclingContainer) {
+        document.getElementById('next-recycling').textContent = 
+            formatShortDate(recyclingContainer.collectionSchedule.nextCollection);
+    } else {
+        document.getElementById('next-recycling').textContent = 'Not available';
+    }
+    
+    if (foodContainer) {
+        document.getElementById('next-food').textContent = 
+            formatShortDate(foodContainer.collectionSchedule.nextCollection);
+    } else {
+        document.getElementById('next-food').textContent = 'Not available';
+    }
+    
+    if (refuseContainer) {
+        // Update text based on whether it's bin or sacks
+        const isSacks = refuseContainer.subtitle.toLowerCase().includes('sack');
+        document.getElementById('general-waste-type').textContent = 
+            isSacks ? 'Black sacks (non-recyclable)' : 'Black bin (non-recyclable)';
+        
+        document.getElementById('next-black-bin').textContent = 
+            formatShortDate(refuseContainer.collectionSchedule.nextCollection);
+    } else {
+        document.getElementById('next-black-bin').textContent = 'Not available';
+    }
+    
+    if (gardenContainer) {
+        document.getElementById('next-garden').textContent = 
+            formatShortDate(gardenContainer.collectionSchedule.nextCollection);
+    } else {
+        // Hide garden waste card if not subscribed
+        const gardenCard = document.getElementById('garden-waste-card');
+        gardenCard.style.opacity = '0.6';
+        gardenCard.querySelector('.bin-types').innerHTML = 
+            '<em>Not subscribed</em>';
+        gardenCard.querySelector('.collection-next').innerHTML = 
+            '<a href="Bins/garden-waste.html" style="color: var(--color-primary); font-weight: 600;">Subscribe for £60/year →</a>';
+    }
+    
+    // Show results
+    resultsDiv.hidden = false;
+    resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    
+    console.log('Collection data loaded:', {
+        containers: data.containerCount,
+        nextCollection: nextCollectionDate,
+        schedule: collectionDay
+    });
+}
+    </script>
+
+</body>
+</html>
