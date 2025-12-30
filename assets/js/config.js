@@ -12,6 +12,7 @@ const GCC_CONFIG = {
         ADDRESS_LOOKUP: '/api/addresses/lookup',
         BINS_BY_ADDRESS: '/api/bins/by-address',
         BINS_WEBCAL: '/api/bins/webcal',
+        COUNCILLORS: '/api/about/councillors',
         SUBMIT_MISSED_COLLECTION: '/api/submitMissedCollection',
         SUBMIT_FEEDBACK: '/api/submitFeedback'
     }
