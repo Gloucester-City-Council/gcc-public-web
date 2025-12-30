@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Find your local councillors in Gloucester. Enter your postcode to see who represents you at the council." />
+  <title>Find your councillors | About | Gloucester City Council</title>
+
+  <!-- Assets -->
+  <link rel="preload" href="/assets/images/GCC_logo.svg" as="image" />
+  <link rel="preload" href="/assets/css/styles.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="/assets/css/service-landing.css" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Councillor Finder",
+    "description": "Find your local councillors by entering your postcode",
+    "applicationCategory": "GovernmentApplication",
+    "operatingSystem": "Any",
+    "provider": { "@type": "GovernmentOrganization", "name": "Gloucester City Council" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" }
+  }
+  </script>
+
+  <style>
+    /* --- small accessibility helpers --- */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0,0,0,0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .lookup-form {
+      background: #f5f7ff;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      border-left: 4px solid var(--color-primary);
+    }
+    .lookup-form label { display:block; font-weight:600; margin-bottom:0.5rem; }
+    .lookup-form input[type="text"] {
+      width:100%; max-width:300px; padding:0.75rem; font-size:1.1rem;
+      border:2px solid #ccc; border-radius:4px; margin-bottom:1rem;
+    }
+    .lookup-form button {
+      background: var(--color-primary); color:white; border:none;
+      padding:0.75rem 2rem; font-size:1rem; font-weight:600;
+      border-radius:4px; cursor:pointer;
+    }
+    .lookup-form button:hover { background: var(--color-primary-dark); }
+
+    /* Ward banner */
+    .ward-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .banner-icon { font-size: 3rem; flex-shrink: 0; }
+    .ward-banner h2 { margin: 0 0 0.5rem 0; font-size: 1.3rem; color: white; }
+    .banner-details { margin: 0; font-size: 1.4rem; font-weight: 600; line-height: 1.4; }
+
+    /* Councillor cards grid */
+    .councillor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+      margin: 2rem 0;
+    }
+
+    .councillor-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .councillor-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .councillor-photo {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: #f0f0f0;
+      opacity: 0.9;
+      transition: opacity 0.2s ease;
+    }
+
+    .councillor-photo.is-loaded {
+      opacity: 1;
+    }
+
+    .councillor-photo.is-error {
+      opacity: 0.7;
+    }
+
+    .councillor-body {
+      padding: 1.5rem;
+    }
+
+    .councillor-name {
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .councillor-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    .pill.ward {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .pill.party {
+      background: #fce7f3;
+      color: #9f1239;
+    }
+
+    .councillor-role {
+      margin: 0 0 1rem;
+      font-size: 0.875rem;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    .councillor-contact {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+
+    .btn:not(.btn-primary) {
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .btn:not(.btn-primary):hover {
+      background: #e5e7eb;
+    }
+
+    .icon {
+      flex-shrink: 0;
+    }
+
+    /* Info section */
+    .info-section {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .info-section h3 {
+      margin: 0 0 1rem 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .info-section p {
+      margin: 0 0 0.75rem 0;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .loading-message {
+      text-align: center;
+      padding: 2rem;
+      color: #666;
+      font-size: 1.1rem;
+    }
+
+    .error-message {
+      background: #fee;
+      border: 2px solid #fcc;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      color: #c33;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .ward-banner { flex-direction: column; text-align: center; }
+      .councillor-grid { grid-template-columns: 1fr; padding: 0; }
+    }
+  </style>
+</head>
+
+<body data-service-id="councillor-lookup">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-container">
+      <div class="header-top">
+        <a href="/" class="logo-link" aria-label="Gloucester City Council homepage">
+          <img src="/assets/images/GCC_logo.svg" alt="Gloucester City Council" class="site-logo" width="250" height="70" />
+        </a>
+
+        <form class="search-form" role="search" action="/search" method="get">
+          <label for="search-input" class="sr-only">Search the website</label>
+          <input type="search" id="search-input" name="q" class="search-input" placeholder="Search..." aria-label="Search the website" />
+          <button type="submit" class="search-button">Search</button>
+        </form>
+      </div>
+    </div>
+
+    <h1 class="welcome-banner">Find your councillors</h1>
+  </header>
+
+  <!-- MAIN NAV -->
+  <nav class="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <button class="menu-toggle" aria-expanded="false">Menu</button>
+      <ul class="nav-list">
+        <li><a href="/contact">Contact us</a></li>
+        <li><a href="https://gloucester-self.achieveservice.com/">My Gloucester</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="https://public.govdelivery.com/accounts/UKGCCA/subscriber/new">Subscribe</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <nav class="service-breadcrumb" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li aria-current="page">Find your councillors</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content" class="main-content" role="main">
+    <div class="service-layout">
+
+      <!-- LEFT -->
+      <div class="service-main">
+        <p class="intro-text">Enter your postcode to find out who represents you at the council.</p>
+
+        <div class="lookup-form">
+          <form id="councillor-lookup-form">
+            <label for="postcode">Your postcode</label>
+            <input
+              type="text"
+              id="postcode"
+              name="postcode"
+              placeholder="e.g. GL1 2AB"
+              required
+              pattern="[A-Za-z]{1,2}[0-9]{1,2}[A-Za-z]?\s?[0-9][A-Za-z]{2}"
+              aria-describedby="postcode-help"
+              autocomplete="postal-code"
+              inputmode="text"
+            />
+            <p id="postcode-help" class="form-help" aria-live="polite">Enter your full postcode, including the space</p>
+
+            <button type="submit" id="submit-councillor-lookup" disabled style="opacity: 0.5; cursor: not-allowed;" aria-describedby="address-selection-hint">
+              Find my councillors
+            </button>
+
+            <p id="address-selection-hint" style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;" aria-live="polite">
+              ℹ️ Please select your address from the list above
+            </p>
+          </form>
+        </div>
+
+        <!-- RESULTS -->
+        <div id="councillor-results" hidden>
+          <div class="ward-banner" role="region" aria-label="Your ward information">
+            <div class="banner-icon" aria-hidden="true">🏛️</div>
+            <div>
+              <h2 id="ward-heading" tabindex="-1">Your Ward</h2>
+              <p id="ward-info" class="banner-details">Loading...</p>
+            </div>
+          </div>
+
+          <div id="councillorCards" class="councillor-grid">
+            <!-- Cards will be inserted here -->
+          </div>
+        </div>
+
+        <!-- INFORMATION SECTIONS -->
+        <section class="info-section" aria-labelledby="what-councillors-do">
+          <h3 id="what-councillors-do">What do councillors do?</h3>
+          <p>Councillors represent you and your community at the council. They:</p>
+          <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+            <li>Make decisions on council services and policies</li>
+            <li>Represent your views and concerns</li>
+            <li>Help resolve issues in your local area</li>
+            <li>Work with local groups and organizations</li>
+          </ul>
+        </section>
+
+        <section class="info-section" aria-labelledby="contact-councillor">
+          <h3 id="contact-councillor">How to contact your councillor</h3>
+          <p>You can contact your councillor about:</p>
+          <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+            <li>Local issues and concerns</li>
+            <li>Council services</li>
+            <li>Planning applications</li>
+            <li>Community matters</li>
+          </ul>
+          <p><strong>Tip:</strong> For routine council services (like bin collections or council tax), it's usually quicker to <a href="/contact">contact the council directly</a>.</p>
+        </section>
+      </div>
+
+      <!-- RIGHT -->
+      <aside class="service-sidebar">
+        <section class="service-contact">
+          <h2>More about the council</h2>
+
+          <div class="contact-block">
+            <h3>Council meetings</h3>
+            <p>View upcoming meetings and decisions at <a href="https://democracy.gloucester.gov.uk">democracy.gloucester.gov.uk</a></p>
+          </div>
+
+          <div class="contact-block">
+            <h3>Council structure</h3>
+            <p>Learn about <a href="/about/how-council-works">how the council works</a> and its decision-making process.</p>
+          </div>
+
+          <div class="contact-block">
+            <h3>Contact the council</h3>
+            <p><a href="tel:+441452396396">01452 396396</a><br />Monday to Friday, 8:30am to 5pm</p>
+          </div>
+        </section>
+
+        <section class="service-related">
+          <h2>Related pages</h2>
+          <ul class="related-links">
+            <li><a href="/about/councillors">All councillors</a></li>
+            <li><a href="/about/committees">Council committees</a></li>
+            <li><a href="/about/elections">Elections</a></li>
+            <li><a href="/contact">Contact the council</a></li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <!-- FEEDBACK PANEL -->
+    <section class="feedback-panel" aria-labelledby="feedback-heading">
+      <div class="feedback-inner">
+        <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
+
+        <div class="feedback-buttons" role="group">
+          <button type="button" class="feedback-btn feedback-yes" data-rating="positive">👍 Yes</button>
+          <button type="button" class="feedback-btn feedback-no" data-rating="negative">👎 No</button>
+        </div>
+
+        <form id="feedback-form" class="feedback-form" hidden>
+          <p id="feedback-prompt">What worked well? (optional)</p>
+          <label for="feedback-comments" class="sr-only">Your feedback</label>
+          <textarea id="feedback-comments" rows="3" aria-labelledby="feedback-prompt"></textarea>
+
+          <label for="feedback-email">Email (optional, if you'd like a response)</label>
+          <input type="email" id="feedback-email" />
+
+          <button type="submit" class="feedback-submit">Submit</button>
+        </form>
+
+        <p id="feedback-thanks" class="feedback-thanks" hidden>✅ Thank you for your feedback.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <img src="/assets/images/GCC_logo.svg" alt="Gloucester City Council" class="footer-logo" />
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick links</h3>
+          <ul class="footer-links">
+            <li><a href="/bins/collection-day.html">Check bin day</a></li>
+            <li><a href="/council-tax/pay">Pay Council Tax</a></li>
+            <li><a href="/planning/search">Planning applications</a></li>
+            <li><a href="/report">Report a problem</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>About Gloucester</h3>
+          <ul class="footer-links">
+            <li><a href="http://visitgloucester.co.uk/">Visit Gloucester</a></li>
+            <li><a href="/about/councillors.html">Find your councillor</a></li>
+            <li><a href="/jobs">Jobs & careers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Using our site</h3>
+          <ul class="footer-links">
+            <li><a href="/privacy">Privacy & cookies</a></li>
+            <li><a href="/accessibility">Accessibility</a></li>
+            <li><a href="/contact">Contact us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Gloucester City Council. All rights reserved.</p>
+        <p>Registered office: Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Card template -->
+  <template id="councillor-card-template">
+    <article class="councillor-card" data-councillor-id="">
+      <img
+        class="councillor-photo"
+        src="/assets/images/placeholder-councillor.svg"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        data-src=""
+      />
+      <div class="councillor-body">
+        <h3 class="councillor-name"></h3>
+        <div class="councillor-meta">
+          <span class="pill ward"></span>
+          <span class="pill party"></span>
+        </div>
+        <p class="councillor-role"></p>
+        <div class="councillor-contact">
+          <a class="btn btn-primary email" href="">
+            <span aria-hidden="true">✉️</span> Email
+          </a>
+          <a class="btn phone" href="">
+            <span aria-hidden="true">📞</span> Phone
+          </a>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <!-- JS -->
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/main.js"></script>
+
+  <script>
+    // -------- Cookie helpers --------
+    function setCookie(name, value, days) {
+      const expires = new Date();
+      expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+      document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/;SameSite=Strict`;
+    }
+    function getCookie(name) {
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1);
+        if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length));
+      }
+      return null;
+    }
+    function deleteCookie(name) {
+      document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+    }
+
+    // -------- Address management --------
+    function getSavedAddress() {
+      const addressData = getCookie('gcc_saved_address');
+      if (!addressData) return null;
+      try { return JSON.parse(addressData); } catch { return null; }
+    }
+    function saveAddress(addressId, displayAddress, postcode, wardName) {
+      const addressData = { addressId, displayAddress, postcode, wardName, savedAt: new Date().toISOString() };
+      setCookie('gcc_saved_address', JSON.stringify(addressData), 365);
+    }
+    function clearSavedAddress() {
+      deleteCookie('gcc_saved_address');
+      location.reload();
+    }
+
+    // -------- Lazy Image Loading --------
+    function wireCouncillorImages(root = document) {
+      const imgs = [...root.querySelectorAll("img[data-src]")];
+
+      const loadOne = (img) => {
+        const url = img.getAttribute("data-src");
+        if (!url) return;
+
+        // Pre-load image in memory
+        const pre = new Image();
+        pre.decoding = "async";
+
+        // Only swap once we know it loads successfully
+        pre.onload = () => {
+          img.src = url;
+          img.removeAttribute("data-src");
+          img.classList.add("is-loaded");
+        };
+
+        // On error, keep placeholder
+        pre.onerror = () => {
+          console.warn(`Failed to load councillor photo: ${url}`);
+          img.removeAttribute("data-src");
+          img.classList.add("is-error");
+          // Placeholder remains visible
+        };
+
+        pre.src = url;
+      };
+
+      // If browser doesn't support IntersectionObserver, load all images immediately
+      if (!("IntersectionObserver" in window)) {
+        imgs.forEach(loadOne);
+        return;
+      }
+
+      // Use IntersectionObserver for true lazy loading
+      const io = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            io.unobserve(entry.target);
+            loadOne(entry.target);
+          }
+        }
+      }, {
+        rootMargin: "200px 0px" // Start loading 200px before visible
+      });
+
+      imgs.forEach(img => io.observe(img));
+    }
+
+    // -------- Fetch Councillors --------
+    async function fetchCouncillors(addressId, retries = 2) {
+      for (let attempt = 0; attempt <= retries; attempt++) {
+        try {
+          const response = await fetch(`${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.COUNCILLORS}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-api-token': GCC_CONFIG.API_TOKEN
+            },
+            body: JSON.stringify({ addressId })
+          });
+
+          if (response.status === 404) {
+            return {
+              success: false,
+              error: 'Address not found or ward information unavailable'
+            };
+          }
+
+          if (!response.ok) {
+            throw new Error(`API error: ${response.status}`);
+          }
+
+          return await response.json();
+
+        } catch (err) {
+          if (attempt === retries) {
+            throw err;
+          }
+          // Wait before retry (exponential backoff)
+          await new Promise(resolve =>
+            setTimeout(resolve, Math.pow(2, attempt) * 1000)
+          );
+        }
+      }
+    }
+
+    // -------- Render Councillors --------
+    async function renderCouncillors(addressId) {
+      const container = document.getElementById('councillorCards');
+      const template = document.getElementById('councillor-card-template');
+      const resultsDiv = document.getElementById('councillor-results');
+
+      try {
+        // Show loading state
+        container.innerHTML = '<p class="loading-message">Loading your councillors...</p>';
+        resultsDiv.hidden = false;
+
+        // Fetch data
+        const data = await fetchCouncillors(addressId);
+
+        if (!data.success || data.councillorCount === 0) {
+          container.innerHTML = '<p class="error-message">No councillors found for this address.</p>';
+          return;
+        }
+
+        // Update ward banner
+        document.getElementById('ward-info').textContent = data.ward.wardName + ' Ward';
+
+        // Clear container
+        container.innerHTML = '';
+
+        // Render each councillor
+        data.councillors.forEach(councillor => {
+          const card = template.content.cloneNode(true);
+
+          // Set councillor ID
+          const article = card.querySelector('.councillor-card');
+          article.dataset.councillorId = councillor.councillorId;
+
+          // Set image data-src (NOT src yet - we'll lazy load it)
+          const img = card.querySelector('.councillor-photo');
+          img.alt = councillor.fullName;
+          if (councillor.photoSmallUrl) {
+            img.setAttribute('data-src', councillor.photoSmallUrl);
+          }
+
+          // Set text content
+          card.querySelector('.councillor-name').textContent = councillor.fullName;
+          card.querySelector('.pill.ward').textContent = data.ward.wardName;
+          card.querySelector('.pill.party').textContent = councillor.party || 'Independent';
+
+          const roleEl = card.querySelector('.councillor-role');
+          if (councillor.keyPosts) {
+            roleEl.textContent = councillor.keyPosts;
+          } else {
+            roleEl.remove();
+          }
+
+          // Set contact links
+          const emailBtn = card.querySelector('.email');
+          if (councillor.work && councillor.work.email) {
+            emailBtn.href = `mailto:${councillor.work.email}`;
+          } else {
+            emailBtn.remove();
+          }
+
+          const phoneBtn = card.querySelector('.phone');
+          if (councillor.work && councillor.work.phone) {
+            phoneBtn.href = `tel:${councillor.work.phone}`;
+          } else {
+            phoneBtn.remove();
+          }
+
+          container.appendChild(card);
+        });
+
+        // NOW lazy load images
+        wireCouncillorImages(container);
+
+        // Accessibility: move focus to the results
+        document.getElementById('ward-heading')?.focus();
+
+      } catch (err) {
+        console.error('Failed to load councillors:', err);
+        container.innerHTML = '<p class="error-message">Unable to load councillors. Please try again later.</p>';
+      }
+    }
+
+    // -------- Page lifecycle --------
+    let selectedAddressId = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedAddress = getSavedAddress();
+      if (savedAddress) {
+        showSavedAddress(savedAddress);
+      } else {
+        setupPostcodeLookup();
+      }
+      setupFormSubmission();
+    });
+
+    function showSavedAddress(savedAddress) {
+      const lookupFormContainer = document.querySelector('.lookup-form');
+      lookupFormContainer.innerHTML = `
+        <div style="background:#e8f5e9; padding:1.5rem; border-radius:8px; border-left:4px solid #4caf50;">
+          <p style="margin:0 0 0.5rem 0;"><strong>✓ Using saved address:</strong></p>
+          <p style="margin:0 0 1rem 0; font-size:1.1rem;">${savedAddress.displayAddress}</p>
+          <p id="loading-message" style="margin:0.75rem 0; font-size:0.95rem; color:#666;">
+            <span style="display:inline-block; width:16px; height:16px; border:2px solid #666; border-top-color:transparent; border-radius:50%; animation:spin 0.8s linear infinite; margin-right:0.5rem; vertical-align:middle;"></span>
+            Loading your councillor information...
+          </p>
+          <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
+          <button type="button" onclick="clearSavedAddress()" style="background:transparent; border:2px solid #666; color:#666; padding:0.5rem 1rem; border-radius:4px; cursor:pointer; font-size:0.9rem; margin-top:1rem;">
+            Select a different address
+          </button>
+        </div>
+      `;
+
+      selectedAddressId = savedAddress.addressId;
+      renderCouncillors(savedAddress.addressId);
+    }
+
+    function setupPostcodeLookup() {
+      const postcodeInput = document.getElementById('postcode');
+      if (!postcodeInput) return;
+
+      let lookupTimeout;
+      postcodeInput.addEventListener('input', function() {
+        clearTimeout(lookupTimeout);
+        const postcode = this.value.trim().toUpperCase();
+        if (postcode.match(/^[A-Z]{1,2}[0-9]{1,2}[A-Z]?\s?[0-9][A-Z]{2}$/)) {
+          lookupTimeout = setTimeout(() => lookupAddresses(postcode), 500);
+        }
+      });
+    }
+
+    async function lookupAddresses(postcode) {
+      const helpText = document.getElementById('postcode-help');
+      helpText.textContent = 'Looking up addresses...';
+      helpText.style.color = '#666';
+
+      try {
+        const response = await fetch(`${GCC_CONFIG.API_BASE_URL}/api/addresses/lookup?postcode=${encodeURIComponent(postcode)}`);
+        if (!response.ok) throw new Error('Address lookup failed');
+        const data = await response.json();
+
+        if (!data.success || !data.addresses || data.addresses.length === 0) {
+          helpText.textContent = 'No addresses found for this postcode';
+          helpText.style.color = '#d32f2f';
+          return;
+        }
+
+        const oldSelect = document.getElementById('address-select');
+        if (oldSelect) oldSelect.parentElement.remove();
+
+        const form = document.getElementById('councillor-lookup-form');
+        const submitButton = document.getElementById('submit-councillor-lookup');
+
+        const addressGroup = document.createElement('div');
+        addressGroup.className = 'form-group';
+        addressGroup.style.marginTop = '1rem';
+        addressGroup.innerHTML = `
+          <label for="address-select">Select your address</label>
+          <select id="address-select" required style="width:100%; padding:0.75rem; font-size:1rem; border:2px solid #ccc; border-radius:4px; margin-bottom:0.75rem;">
+            <option value="">Choose your address...</option>
+          </select>
+          <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.95rem; margin-bottom:1rem;">
+            <input type="checkbox" id="remember-address" style="width:auto;">
+            <span>Remember this address for next time</span>
+          </label>
+        `;
+
+        // Insert above the submit button
+        submitButton.parentElement.insertBefore(addressGroup, submitButton);
+
+        const hint = document.getElementById('address-selection-hint');
+        if (hint) hint.style.display = 'block';
+
+        const select = document.getElementById('address-select');
+        data.addresses.forEach(addr => {
+          const option = document.createElement('option');
+          option.value = addr.addressId;
+          option.textContent = addr.display;
+          option.dataset.addressId = addr.addressId;
+          option.dataset.displayAddress = addr.display;
+          option.dataset.postcode = addr.postcode;
+          option.dataset.wardName = addr.wardName;
+          select.appendChild(option);
+        });
+
+        // Accessibility: move focus to the new select so keyboard flow is natural
+        select.focus();
+
+        select.addEventListener('change', function() {
+          selectedAddressId = this.value;
+
+          const hint = document.getElementById('address-selection-hint');
+          if (this.value) {
+            submitButton.disabled = false;
+            submitButton.style.opacity = '1';
+            submitButton.style.cursor = 'pointer';
+            if (hint) hint.style.display = 'none';
+          } else {
+            submitButton.disabled = true;
+            submitButton.style.opacity = '0.5';
+            submitButton.style.cursor = 'not-allowed';
+            if (hint) hint.style.display = 'block';
+          }
+
+          const rememberCheckbox = document.getElementById('remember-address');
+          if (rememberCheckbox && rememberCheckbox.checked && this.value) {
+            const selectedOption = this.options[this.selectedIndex];
+            saveAddress(
+              selectedOption.dataset.addressId,
+              selectedOption.dataset.displayAddress,
+              selectedOption.dataset.postcode,
+              selectedOption.dataset.wardName
+            );
+          }
+        });
+
+        const rememberCheckbox = document.getElementById('remember-address');
+        rememberCheckbox.addEventListener('change', function() {
+          if (this.checked && selectedAddressId) {
+            const selectedOption = select.options[select.selectedIndex];
+            saveAddress(
+              selectedOption.dataset.addressId,
+              selectedOption.dataset.displayAddress,
+              selectedOption.dataset.postcode,
+              selectedOption.dataset.wardName
+            );
+          } else if (!this.checked) {
+            deleteCookie('gcc_saved_address');
+          }
+        });
+
+        helpText.textContent = `${data.addresses.length} addresses found`;
+        helpText.style.color = '#4caf50';
+
+      } catch (error) {
+        console.error('Error:', error);
+        helpText.textContent = 'Could not look up addresses. Please try again.';
+        helpText.style.color = '#d32f2f';
+      }
+    }
+
+    function setupFormSubmission() {
+      const form = document.getElementById('councillor-lookup-form');
+      if (!form) return;
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        if (!selectedAddressId) {
+          alert('Please select your address from the list');
+          return;
+        }
+
+        const submitBtn = document.getElementById('submit-councillor-lookup');
+        submitBtn.textContent = 'Finding councillors...';
+        submitBtn.disabled = true;
+
+        try {
+          await renderCouncillors(selectedAddressId);
+          submitBtn.textContent = 'Find my councillors';
+          submitBtn.disabled = false;
+        } catch (error) {
+          alert('Sorry, we could not find councillor information for that address.');
+          console.error('Error:', error);
+          submitBtn.textContent = 'Find my councillors';
+          submitBtn.disabled = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
