@@ -297,7 +297,7 @@ body {
 .main-content {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 3rem 0.5rem;
+    padding: 1rem 0.5rem;
 }
 
 /* === Featured Banner === */
