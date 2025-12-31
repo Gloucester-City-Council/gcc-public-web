@@ -700,15 +700,15 @@
           return;
         }
 
-        // Validate ward data exists
-        if (!data.ward || (!data.ward.wardTitle && !data.ward.wardName)) {
+        // Validate ward data exists (wardTitle is at root level, not nested)
+        if (!data.wardTitle && !data.wardName) {
           container.innerHTML = '<p class="error-message">Ward information not available for this address.</p>';
           console.error('Missing ward data in API response:', data);
           return;
         }
 
         // Update ward banner (use wardTitle with fallback to wardName)
-        const wardName = data.ward.wardTitle || data.ward.wardName || 'Unknown';
+        const wardName = data.wardTitle || data.wardName || 'Unknown';
         document.getElementById('ward-info').textContent = wardName + ' Ward';
 
         // Clear container
