@@ -9,6 +9,149 @@
   <link rel="preload" href="/assets/images/GCC_logo.svg" as="image" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <link rel="stylesheet" href="/assets/css/service-landing.css" />
+
+  <style>
+    .highlight-box {
+      background: linear-gradient(135deg, #f5f7ff 0%, #e8f0fe 100%);
+      border-left: 4px solid var(--color-primary);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .highlight-box h3 {
+      margin-top: 0;
+      color: var(--color-primary);
+    }
+
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .leadership-card {
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .leadership-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .leadership-card h4 {
+      margin: 0 0 0.5rem 0;
+      color: var(--color-primary);
+      font-size: 1.25rem;
+    }
+
+    .leadership-card p {
+      margin: 0;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--color-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: white;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .info-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .info-list li {
+      padding: 0.75rem 0 0.75rem 2rem;
+      border-bottom: 1px solid #e0e0e0;
+      position: relative;
+    }
+
+    .info-list li:last-child {
+      border-bottom: none;
+    }
+
+    .info-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .stats-box {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+
+    .stat-label {
+      display: block;
+      margin-top: 0.5rem;
+      color: #666;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 
 <body data-service-id="your-council">
@@ -56,49 +199,122 @@
   <main id="main-content" class="main-content" role="main">
     <div class="service-layout">
       <div class="service-main">
-        <h2>How the council is led</h2>
+        <p class="intro-text">Gloucester City Council is led by elected councillors and supported by professional officers who work together to deliver services and make decisions that affect our city.</p>
 
-        <p class="intro-text">Gloucester City Council is led by elected councillors and supported by professional officers. Together, they deliver services and make decisions that affect our city.</p>
+        <div class="stats-box">
+          <h2 style="margin-top: 0;">At a glance</h2>
+          <div class="stats-grid">
+            <div class="stat">
+              <span class="stat-number">39</span>
+              <span class="stat-label">Councillors</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">16</span>
+              <span class="stat-label">Wards</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">10</span>
+              <span class="stat-label">Cabinet Members</span>
+            </div>
+          </div>
+        </div>
 
         <section aria-labelledby="political-leadership">
-          <h3 id="political-leadership">Political Leadership</h3>
-          <p>The council is made up of 39 elected councillors who represent the city's 16 wards. Councillors are elected every four years.</p>
+          <h2 id="political-leadership">Political Leadership</h2>
 
-          <h4>The Leader of the Council</h4>
-          <p>The Leader is elected by councillors and is responsible for the council's overall direction and leadership. The Leader appoints the Cabinet.</p>
+          <div class="highlight-box">
+            <h3>Elected by residents</h3>
+            <p>The council is made up of 39 elected councillors who represent the city's 16 wards. Councillors are elected every four years to make decisions on behalf of residents and champion local issues.</p>
+          </div>
 
-          <h4>The Cabinet</h4>
-          <p>The Cabinet is made up of up to 10 councillors, each with responsibility for specific areas of council work. The Cabinet makes most of the council's major decisions.</p>
+          <div class="leadership-grid">
+            <div class="leadership-card">
+              <h4>🏛️ The Leader</h4>
+              <p>The Leader is elected by councillors and is responsible for the council's overall direction and leadership. The Leader appoints the Cabinet and represents the council publicly.</p>
+            </div>
 
-          <p><a href="/your-council/councillors-and-wards/leader-and-cabinet.html" class="btn-primary">View Leader and Cabinet</a></p>
+            <div class="leadership-card">
+              <h4>👥 The Cabinet</h4>
+              <p>The Cabinet is made up of up to 10 councillors, each with responsibility for specific areas like housing, environment, or finance. They make most major decisions.</p>
+            </div>
+
+            <div class="leadership-card">
+              <h4>🗳️ Full Council</h4>
+              <p>All 39 councillors meet regularly as Full Council to make key decisions including setting the budget, agreeing major policies, and appointing committees.</p>
+            </div>
+
+            <div class="leadership-card">
+              <h4>🔍 Overview & Scrutiny</h4>
+              <p>Scrutiny councillors hold the Cabinet to account, review decisions, and investigate issues that matter to residents.</p>
+            </div>
+          </div>
+
+          <p>
+            <a href="/your-council/councillors-and-wards/leader-and-cabinet.html" class="btn-primary">View Leader and Cabinet</a>
+            <a href="/about/councillors.html" class="btn-secondary">Find your councillor</a>
+          </p>
         </section>
 
         <section aria-labelledby="officer-structure">
-          <h3 id="officer-structure">Officer Structure</h3>
-          <p>The council employs professional officers to deliver services and provide advice to councillors.</p>
+          <h2 id="officer-structure">Officer Structure</h2>
 
-          <h4>Chief Executive</h4>
-          <p>The Chief Executive is the head of paid service and leads the council's officers. They are responsible for ensuring the council operates effectively and delivers its priorities.</p>
+          <p>The council employs around 400 professional officers to deliver services and provide advice to councillors. Officers implement the decisions made by councillors and ensure services run smoothly.</p>
 
-          <h4>Corporate Management Team</h4>
-          <p>The Corporate Management Team includes the Chief Executive and senior directors responsible for different service areas.</p>
+          <div class="leadership-grid">
+            <div class="leadership-card">
+              <h4>Chief Executive</h4>
+              <p>The Chief Executive is the head of paid service and leads all council officers. They ensure the council operates effectively and delivers on its priorities.</p>
+            </div>
 
-          <p><a href="/your-council/how-were-organised/senior-pay-and-staffing.html">View senior officer pay</a></p>
+            <div class="leadership-card">
+              <h4>Corporate Management Team</h4>
+              <p>Senior directors responsible for different service areas such as communities, place, and resources. They manage teams and budgets.</p>
+            </div>
+
+            <div class="leadership-card">
+              <h4>Service Managers</h4>
+              <p>Managers lead specific services like planning, housing, environmental services, and customer services.</p>
+            </div>
+          </div>
+
+          <p><a href="/your-council/how-were-organised/senior-pay-and-staffing.html" class="btn-secondary">View senior officer pay</a></p>
         </section>
 
         <section aria-labelledby="decision-making">
-          <h3 id="decision-making">How Decisions Are Made</h3>
-          <p>The council makes decisions through various committees and meetings:</p>
-          <ul>
-            <li><strong>Cabinet</strong> - Makes most major decisions</li>
-            <li><strong>Full Council</strong> - Makes key decisions like setting the budget</li>
-            <li><strong>Committees</strong> - Make decisions on planning, licensing, and scrutiny</li>
+          <h2 id="decision-making">How Decisions Are Made</h2>
+
+          <p>The council makes decisions through various meetings and committees:</p>
+
+          <ul class="info-list">
+            <li><strong>Cabinet</strong> - Makes most major decisions on services and policies</li>
+            <li><strong>Full Council</strong> - Sets the budget and agrees the policy framework</li>
+            <li><strong>Planning Committee</strong> - Decides planning applications</li>
+            <li><strong>Licensing Committee</strong> - Makes decisions on licences for taxis, alcohol, and entertainment</li>
+            <li><strong>Overview & Scrutiny</strong> - Reviews and challenges Cabinet decisions</li>
+            <li><strong>Audit & Governance</strong> - Ensures financial controls and good governance</li>
           </ul>
-          <p><a href="/your-council/how-were-organised/how-decisions-are-made.html">Learn more about decision making</a></p>
+
+          <div class="highlight-box">
+            <h3>Public participation</h3>
+            <p>Most council meetings are open to the public. You can attend in person, watch online, or even speak at certain meetings to share your views.</p>
+            <p><a href="/your-council/meetings-and-decisions/have-your-say">Learn how to have your say →</a></p>
+          </div>
+
+          <p>
+            <a href="/your-council/meetings-and-decisions/calendar.html" class="btn-primary">View meeting calendar</a>
+            <a href="/your-council/how-were-organised/our-constitution.html" class="btn-secondary">Read our constitution</a>
+          </p>
         </section>
       </div>
 
       <aside class="service-sidebar">
+        <section class="service-contact">
+          <h2>Democratic Services</h2>
+          <p>For questions about how the council is organised:</p>
+          <p><strong>Email:</strong> <a href="mailto:democratic.services@gloucester.gov.uk">democratic.services@gloucester.gov.uk</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+441452396567">01452 396567</a></p>
+        </section>
+
         <section class="service-related">
           <h2>Related pages</h2>
           <ul class="related-links">
@@ -106,6 +322,7 @@
             <li><a href="/your-council/how-were-organised/our-constitution.html">Our constitution</a></li>
             <li><a href="/your-council/councillors-and-wards/leader-and-cabinet.html">Leader and Cabinet</a></li>
             <li><a href="/about/councillors.html">Find your councillor</a></li>
+            <li><a href="/your-council/meetings-and-decisions/committees.html">Council committees</a></li>
           </ul>
         </section>
       </aside>
