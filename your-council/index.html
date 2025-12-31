@@ -455,6 +455,31 @@
       </article>
 
     </div>
+
+    <!-- FEEDBACK PANEL -->
+    <section class="feedback-panel" aria-labelledby="feedback-heading">
+      <div class="feedback-inner">
+        <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
+
+        <div class="feedback-buttons" role="group">
+          <button type="button" class="feedback-btn feedback-yes" data-rating="positive">👍 Yes</button>
+          <button type="button" class="feedback-btn feedback-no" data-rating="negative">👎 No</button>
+        </div>
+
+        <form id="feedback-form" class="feedback-form" hidden>
+          <p id="feedback-prompt">What worked well? (optional)</p>
+          <label for="feedback-comments" class="sr-only">Your feedback</label>
+          <textarea id="feedback-comments" rows="3" aria-labelledby="feedback-prompt"></textarea>
+
+          <label for="feedback-email">Email (optional, if you'd like a response)</label>
+          <input type="email" id="feedback-email" />
+
+          <button type="submit" class="feedback-submit">Submit</button>
+        </form>
+
+        <p id="feedback-thanks" class="feedback-thanks" hidden>✅ Thank you for your feedback.</p>
+      </div>
+    </section>
   </main>
 
   <!-- FOOTER -->
