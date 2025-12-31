@@ -27,19 +27,6 @@
   </script>
 
   <style>
-    /* --- small accessibility helpers --- */
-    .sr-only {
-      position: absolute !important;
-      width: 1px !important;
-      height: 1px !important;
-      padding: 0 !important;
-      margin: -1px !important;
-      overflow: hidden !important;
-      clip: rect(0,0,0,0) !important;
-      white-space: nowrap !important;
-      border: 0 !important;
-    }
-
     .lookup-form {
       background: #f5f7ff;
       padding: 2rem;
@@ -199,39 +186,15 @@
       flex-wrap: wrap;
     }
 
-    .btn {
+    /* Contact button styling */
+    .councillor-contact a {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
       font-size: 0.875rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      border: none;
-      cursor: pointer;
     }
 
-    .btn-primary {
-      background: #2563eb;
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: #1d4ed8;
-    }
-
-    .btn:not(.btn-primary) {
-      background: #f3f4f6;
-      color: #374151;
-    }
-
-    .btn:not(.btn-primary):hover {
-      background: #e5e7eb;
-    }
-
-    .icon {
+    .councillor-contact .icon {
       flex-shrink: 0;
     }
 
@@ -522,10 +485,10 @@
         </div>
         <p class="councillor-role"></p>
         <div class="councillor-contact">
-          <a class="btn btn-primary email" href="">
+          <a class="btn-primary email" href="">
             <span aria-hidden="true">✉️</span> Email
           </a>
-          <a class="btn phone" href="">
+          <a class="btn-secondary phone" href="">
             <span aria-hidden="true">📞</span> Phone
           </a>
         </div>

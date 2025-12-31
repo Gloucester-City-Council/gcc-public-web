@@ -57,40 +57,10 @@
       color: #666;
     }
 
-    .btn-primary {
-      display: inline-block;
-      background: var(--color-primary);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      margin: 0.5rem 0.5rem 0.5rem 0;
-    }
-
-    .btn-primary:hover {
-      background: var(--color-primary-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
+    /* Button spacing for this page */
+    .btn-primary,
     .btn-secondary {
-      display: inline-block;
-      background: white;
-      color: var(--color-primary);
-      border: 2px solid var(--color-primary);
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
       margin: 0.5rem 0.5rem 0.5rem 0;
-    }
-
-    .btn-secondary:hover {
-      background: var(--color-primary);
-      color: white;
     }
 
     .info-list {
@@ -327,6 +297,31 @@
         </section>
       </aside>
     </div>
+
+    <!-- FEEDBACK PANEL -->
+    <section class="feedback-panel" aria-labelledby="feedback-heading">
+      <div class="feedback-inner">
+        <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
+
+        <div class="feedback-buttons" role="group">
+          <button type="button" class="feedback-btn feedback-yes" data-rating="positive">👍 Yes</button>
+          <button type="button" class="feedback-btn feedback-no" data-rating="negative">👎 No</button>
+        </div>
+
+        <form id="feedback-form" class="feedback-form" hidden>
+          <p id="feedback-prompt">What worked well? (optional)</p>
+          <label for="feedback-comments" class="sr-only">Your feedback</label>
+          <textarea id="feedback-comments" rows="3" aria-labelledby="feedback-prompt"></textarea>
+
+          <label for="feedback-email">Email (optional, if you'd like a response)</label>
+          <input type="email" id="feedback-email" />
+
+          <button type="submit" class="feedback-submit">Submit</button>
+        </form>
+
+        <p id="feedback-thanks" class="feedback-thanks" hidden>✅ Thank you for your feedback.</p>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">

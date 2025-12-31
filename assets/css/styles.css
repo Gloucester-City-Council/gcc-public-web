@@ -330,21 +330,55 @@ body {
     object-fit: cover;
 }
 
+/* === Button System === */
 .btn-primary {
     display: inline-block;
-    background: white;
-    color: var(--color-link);
+    background: var(--color-primary);
+    color: white;
     padding: 0.75rem 1.5rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 6px;
     text-decoration: none;
-    border-radius: 4px;
-    font-weight: 700;
-    transition: all 0.2s;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background: var(--color-background-light);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    display: inline-block;
+    background: white;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 /* === Service Categories === */
