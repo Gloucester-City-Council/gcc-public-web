@@ -331,7 +331,8 @@
 
       <!-- LEFT -->
       <div class="service-main">
-        <p class="intro-text">Enter your postcode to find out who represents you at the council.</p>
+        <h2>Your local councillors represent you at the council</h2>
+        <p class="intro-text">Councillors make decisions about council services, represent your views, and help resolve local issues. Enter your postcode below to find out who represents your area.</p>
 
         <div class="lookup-form">
           <form id="councillor-lookup-form">
@@ -805,6 +806,13 @@
       let lookupTimeout;
       postcodeInput.addEventListener('input', function() {
         clearTimeout(lookupTimeout);
+
+        // Hide previous results when user starts typing new postcode
+        const resultsDiv = document.getElementById('councillor-results');
+        if (resultsDiv) {
+          resultsDiv.hidden = true;
+        }
+
         const postcode = this.value.trim().toUpperCase();
         if (postcode.match(/^[A-Z]{1,2}[0-9]{1,2}[A-Z]?\s?[0-9][A-Z]{2}$/)) {
           lookupTimeout = setTimeout(() => lookupAddresses(postcode), 500);
@@ -871,6 +879,12 @@
 
         select.addEventListener('change', function() {
           selectedAddressId = this.value;
+
+          // Hide previous results when address changes
+          const resultsDiv = document.getElementById('councillor-results');
+          if (resultsDiv) {
+            resultsDiv.hidden = true;
+          }
 
           const hint = document.getElementById('address-selection-hint');
           if (this.value) {
