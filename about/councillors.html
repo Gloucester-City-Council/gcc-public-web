@@ -100,7 +100,7 @@
     .councillor-photo {
       width: 100%;
       height: 200px;
-      object-fit: cover;
+      object-fit: contain;
       background: #f0f0f0;
       opacity: 0.9;
       transition: opacity 0.2s ease;
@@ -148,8 +148,42 @@
     }
 
     .pill.party {
-      background: #fce7f3;
-      color: #9f1239;
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    /* Political party colors (accessible contrast ratios) */
+    .pill.party-labour {
+      background: #dc2626;
+      color: white;
+    }
+
+    .pill.party-conservative {
+      background: #1e40af;
+      color: white;
+    }
+
+    .pill.party-liberal-democrat,
+    .pill.party-lib-dem {
+      background: #f59e0b;
+      color: #1f2937;
+    }
+
+    .pill.party-green {
+      background: #16a34a;
+      color: white;
+    }
+
+    .pill.party-reform {
+      background: #0891b2;
+      color: white;
+    }
+
+    .pill.party-independent,
+    .pill.party-default {
+      background: #1f2937;
+      color: white;
+      border: 2px solid #e5e7eb;
     }
 
     .councillor-role {
@@ -297,7 +331,8 @@
 
       <!-- LEFT -->
       <div class="service-main">
-        <p class="intro-text">Enter your postcode to find out who represents you at the council.</p>
+        <h2>Your local councillors represent you at the council</h2>
+        <p class="intro-text">Councillors make decisions about council services, represent your views, and help resolve local issues. Enter your postcode below to find out who represents your area.</p>
 
         <div class="lookup-form">
           <form id="councillor-lookup-form">
@@ -589,6 +624,23 @@
       imgs.forEach(img => io.observe(img));
     }
 
+    // -------- Get Party Color Class --------
+    function getPartyClass(partyName) {
+      if (!partyName) return 'party-independent';
+
+      const party = partyName.toLowerCase().trim();
+
+      if (party.includes('labour')) return 'party-labour';
+      if (party.includes('conservative')) return 'party-conservative';
+      if (party.includes('liberal democrat') || party.includes('lib dem')) return 'party-liberal-democrat';
+      if (party.includes('green')) return 'party-green';
+      if (party.includes('reform')) return 'party-reform';
+      if (party.includes('independent')) return 'party-independent';
+
+      // Default for unknown parties
+      return 'party-default';
+    }
+
     // -------- Fetch Councillors --------
     async function fetchCouncillors(addressId, retries = 2) {
       for (let attempt = 0; attempt <= retries; attempt++) {
@@ -670,7 +722,11 @@
           // Set text content
           card.querySelector('.councillor-name').textContent = councillor.fullName;
           card.querySelector('.pill.ward').textContent = data.ward.wardName;
-          card.querySelector('.pill.party').textContent = councillor.party || 'Independent';
+
+          const partyPill = card.querySelector('.pill.party');
+          const partyName = councillor.party || 'Independent';
+          partyPill.textContent = partyName;
+          partyPill.classList.add(getPartyClass(partyName));
 
           const roleEl = card.querySelector('.councillor-role');
           if (councillor.keyPosts) {
@@ -750,6 +806,13 @@
       let lookupTimeout;
       postcodeInput.addEventListener('input', function() {
         clearTimeout(lookupTimeout);
+
+        // Hide previous results when user starts typing new postcode
+        const resultsDiv = document.getElementById('councillor-results');
+        if (resultsDiv) {
+          resultsDiv.hidden = true;
+        }
+
         const postcode = this.value.trim().toUpperCase();
         if (postcode.match(/^[A-Z]{1,2}[0-9]{1,2}[A-Z]?\s?[0-9][A-Z]{2}$/)) {
           lookupTimeout = setTimeout(() => lookupAddresses(postcode), 500);
@@ -816,6 +879,12 @@
 
         select.addEventListener('change', function() {
           selectedAddressId = this.value;
+
+          // Hide previous results when address changes
+          const resultsDiv = document.getElementById('councillor-results');
+          if (resultsDiv) {
+            resultsDiv.hidden = true;
+          }
 
           const hint = document.getElementById('address-selection-hint');
           if (this.value) {
