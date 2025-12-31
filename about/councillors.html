@@ -665,7 +665,9 @@
             throw new Error(`API error: ${response.status}`);
           }
 
-          return await response.json();
+          const data = await response.json();
+          console.log('API Response:', data); // Debug logging
+          return data;
 
         } catch (err) {
           if (attempt === retries) {
@@ -695,6 +697,13 @@
 
         if (!data.success || data.councillorCount === 0) {
           container.innerHTML = '<p class="error-message">No councillors found for this address.</p>';
+          return;
+        }
+
+        // Validate ward data exists
+        if (!data.ward || !data.ward.wardName) {
+          container.innerHTML = '<p class="error-message">Ward information not available for this address.</p>';
+          console.error('Missing ward data in API response:', data);
           return;
         }
 
