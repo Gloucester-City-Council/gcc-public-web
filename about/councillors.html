@@ -701,14 +701,15 @@
         }
 
         // Validate ward data exists
-        if (!data.ward || !data.ward.wardName) {
+        if (!data.ward || (!data.ward.wardTitle && !data.ward.wardName)) {
           container.innerHTML = '<p class="error-message">Ward information not available for this address.</p>';
           console.error('Missing ward data in API response:', data);
           return;
         }
 
-        // Update ward banner
-        document.getElementById('ward-info').textContent = data.ward.wardName + ' Ward';
+        // Update ward banner (use wardTitle with fallback to wardName)
+        const wardName = data.ward.wardTitle || data.ward.wardName || 'Unknown';
+        document.getElementById('ward-info').textContent = wardName + ' Ward';
 
         // Clear container
         container.innerHTML = '';
@@ -730,7 +731,7 @@
 
           // Set text content
           card.querySelector('.councillor-name').textContent = councillor.fullName;
-          card.querySelector('.pill.ward').textContent = data.ward.wardName;
+          card.querySelector('.pill.ward').textContent = wardName;
 
           const partyPill = card.querySelector('.pill.party');
           const partyName = councillor.party || 'Independent';
