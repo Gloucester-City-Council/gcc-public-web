@@ -1317,6 +1317,12 @@
 
       if (existingSubscription) {
         // Show existing subscription management
+        const reminderTimeDesc = existingSubscription.reminderHours === 14
+          ? 'Evening before collection day (6pm)'
+          : existingSubscription.reminderHours === 1
+          ? 'Morning of collection day (7am)'
+          : `${existingSubscription.reminderHours} hours before collection`;
+
         overlay.innerHTML = `
           <div class="sub-modal" role="dialog" aria-modal="true" aria-labelledby="sub-title" tabindex="-1">
             <div class="sub-topbar">
@@ -1338,7 +1344,7 @@
                   <dd>${existingSubscription.mobile} ${existingSubscription.smsNotifications ? '✓' : '✗'}</dd>
                 ` : ''}
                 <dt>Reminder timing:</dt>
-                <dd>${existingSubscription.reminderHours} hours before collection</dd>
+                <dd>${reminderTimeDesc}</dd>
                 <dt>Subscribed since:</dt>
                 <dd>${new Date(existingSubscription.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</dd>
               </dl>
@@ -1356,15 +1362,15 @@
           <div class="sub-modal" role="dialog" aria-modal="true" aria-labelledby="sub-title" tabindex="-1">
             <div class="sub-topbar">
               <div>
-                <h2 id="sub-title">Sign up for bin collection reminders</h2>
-                <p class="sub-lede">Get notified before your bin collection day. Never miss a collection again!</p>
+                <h2 id="sub-title">Get bin collection reminders</h2>
+                <p class="sub-lede">We'll send you a reminder to put your bins out. You'll receive notifications on the contact method(s) you provide.</p>
               </div>
               <button class="sub-close-x" type="button" aria-label="Close">×</button>
             </div>
 
             <form id="sub-form">
               <div class="sub-form-group">
-                <label for="sub-email">Your email address (optional)</label>
+                <label for="sub-email">Email address</label>
                 <input
                   type="email"
                   id="sub-email"
@@ -1376,7 +1382,7 @@
               </div>
 
               <div class="sub-form-group">
-                <label for="sub-mobile">Your mobile number (optional)</label>
+                <label for="sub-mobile">Mobile number <span style="color: #6b7280; font-weight: 400;">(optional)</span></label>
                 <input
                   type="tel"
                   id="sub-mobile"
@@ -1384,39 +1390,27 @@
                   placeholder="+447700123456 or 07700123456"
                   value="${userContact.mobile || ''}"
                 />
-                <small>We'll only use this for bin collection reminders</small>
+                <small>For SMS reminders. Standard rates apply.</small>
                 <span class="sub-error" id="sub-mobile-error"></span>
               </div>
 
-              <div class="sub-checkbox-group">
-                <input type="checkbox" id="sub-email-notify" name="emailNotifications" checked />
-                <label for="sub-email-notify">Receive email notifications</label>
-              </div>
-
-              <div class="sub-checkbox-group">
-                <input type="checkbox" id="sub-sms-notify" name="smsNotifications" checked />
-                <label for="sub-sms-notify">Receive SMS notifications</label>
-              </div>
-
               <div class="sub-form-group">
-                <label for="sub-reminder-hours">Send reminder (hours before collection)</label>
-                <select id="sub-reminder-hours" name="reminderHours">
-                  <option value="6">6 hours before</option>
-                  <option value="12">12 hours before</option>
-                  <option value="13" selected>13 hours before (recommended)</option>
-                  <option value="24">1 day before</option>
-                  <option value="48">2 days before</option>
+                <label for="sub-reminder-time">When to send reminder</label>
+                <select id="sub-reminder-time" name="reminderHours">
+                  <option value="14" selected>Evening before collection day (6pm)</option>
+                  <option value="1">Morning of collection day (7am)</option>
                 </select>
+                <small>Collections start early, so we recommend putting bins out the evening before.</small>
               </div>
 
               <div class="sub-notice">
-                ℹ️ You must provide at least one contact method (email or mobile)
+                ℹ️ At least an email address is required. Mobile number is optional for SMS alerts.
               </div>
 
               <span class="sub-error" id="sub-general-error"></span>
 
               <div class="sub-actions">
-                <button type="submit" class="sub-btn sub-btn-primary" id="sub-submit-btn">Sign up for reminders</button>
+                <button type="submit" class="sub-btn sub-btn-primary" id="sub-submit-btn">Subscribe to reminders</button>
                 <button type="button" class="sub-btn sub-btn-secondary" id="sub-close-btn">Cancel</button>
               </div>
             </form>
@@ -1507,12 +1501,15 @@
 
           // Get form data
           const formData = new FormData(form);
+          const email = formData.get('email')?.trim() || null;
+          const mobile = formData.get('mobile')?.trim() || null;
+
           const data = {
             addressId: addressId,
-            email: formData.get('email')?.trim() || null,
-            mobile: formData.get('mobile')?.trim() || null,
-            emailNotifications: formData.get('emailNotifications') === 'on',
-            smsNotifications: formData.get('smsNotifications') === 'on',
+            email: email,
+            mobile: mobile,
+            emailNotifications: !!email,  // Enable email notifications if email provided
+            smsNotifications: !!mobile,   // Enable SMS notifications if mobile provided
             reminderHours: parseInt(formData.get('reminderHours'))
           };
 
@@ -1535,7 +1532,7 @@
             // Show loading state
             const submitBtn = form.querySelector('#sub-submit-btn');
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Signing up...';
+            submitBtn.textContent = 'Setting up...';
 
             // Create subscription
             const result = await createSubscription(data);
@@ -1543,13 +1540,18 @@
             // Save user contact info for future
             saveUserContact(data.email, data.mobile);
 
+            // Determine reminder time description
+            const reminderTime = data.reminderHours === 14
+              ? 'the evening before (at 6pm)'
+              : 'the morning of collection day (at 7am)';
+
             // Show success message
             dialog.innerHTML = `
               <div class="sub-success">
-                <h3>✓ You're all set!</h3>
-                <p>You'll receive bin collection reminders ${data.reminderHours} hours before each collection.</p>
-                ${data.email ? `<p>Email: ${data.email}</p>` : ''}
-                ${data.mobile ? `<p>Mobile: ${data.mobile}</p>` : ''}
+                <h3>✓ You're subscribed!</h3>
+                <p>You'll receive bin collection reminders ${reminderTime}.</p>
+                ${data.email ? `<p><strong>Email:</strong> ${data.email}</p>` : ''}
+                ${data.mobile ? `<p><strong>Mobile:</strong> ${data.mobile}</p>` : ''}
                 <div class="sub-actions">
                   <button type="button" class="sub-btn sub-btn-primary" onclick="this.closest('.sub-overlay').remove()">Close</button>
                 </div>
@@ -1572,7 +1574,7 @@
 
             const submitBtn = form.querySelector('#sub-submit-btn');
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Sign up for reminders';
+            submitBtn.textContent = 'Subscribe to reminders';
           }
         });
       }
