@@ -14,6 +14,7 @@ const GCC_CONFIG = {
         BINS_WEBCAL: '/api/bins/webcal',
         COUNCILLORS: '/api/about/councillors',
         SUBMIT_MISSED_COLLECTION: '/api/submitMissedCollection',
-        SUBMIT_FEEDBACK: '/api/submitFeedback'
+        SUBMIT_FEEDBACK: '/api/submitFeedback',
+        SUBSCRIPTIONS_BINS: '/api/subscriptions/bins'
     }
 };
