@@ -293,12 +293,193 @@
       flex-shrink: 0;
     }
 
+    /* Subscription modal */
+    .sub-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 1rem;
+    }
+    .sub-modal {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 540px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      outline: none;
+    }
+    .sub-modal h2 { margin: 0 0 0.5rem 0; color: #1f2937; }
+    .sub-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .sub-close-x {
+      background: transparent;
+      border: 2px solid #d1d5db;
+      border-radius: 8px;
+      padding: 0.35rem 0.6rem;
+      cursor: pointer;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .sub-close-x:focus { outline: 3px solid #93c5fd; outline-offset: 2px; }
+    .sub-lede { margin: 0 0 1.5rem 0; line-height: 1.6; color: #374151; font-size: 0.95rem; }
+
+    .sub-form-group {
+      margin-bottom: 1.25rem;
+    }
+    .sub-form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #374151;
+    }
+    .sub-form-group input[type="email"],
+    .sub-form-group input[type="tel"],
+    .sub-form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    .sub-form-group input:focus,
+    .sub-form-group select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+    .sub-form-group small {
+      display: block;
+      margin-top: 0.25rem;
+      color: #6b7280;
+      font-size: 0.85rem;
+    }
+    .sub-error {
+      display: block;
+      color: #dc2626;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+    .sub-checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .sub-checkbox-group input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+    }
+    .sub-checkbox-group label {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .sub-notice {
+      background: #f0f9ff;
+      border-left: 4px solid #0284c7;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .sub-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .sub-btn {
+      flex: 1;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .sub-btn-primary {
+      background: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+    }
+    .sub-btn-primary:hover { background: var(--color-primary-dark); }
+    .sub-btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .sub-btn-secondary {
+      background: white;
+      border-color: #d1d5db;
+      color: #374151;
+    }
+    .sub-btn-secondary:hover { background: #f9fafb; }
+    .sub-btn-danger {
+      background: #dc2626;
+      color: white;
+      border-color: #dc2626;
+    }
+    .sub-btn-danger:hover { background: #b91c1c; }
+
+    .sub-success {
+      text-align: center;
+      padding: 1rem;
+    }
+    .sub-success h3 {
+      color: #16a34a;
+      margin: 0 0 0.5rem 0;
+    }
+    .sub-success p {
+      margin: 0.5rem 0;
+      color: #374151;
+    }
+
+    .sub-status {
+      background: #f9fafb;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .sub-status h3 {
+      margin: 0 0 1rem 0;
+      color: #16a34a;
+    }
+    .sub-status dl {
+      margin: 0;
+    }
+    .sub-status dt {
+      font-weight: 600;
+      color: #374151;
+      margin-top: 0.75rem;
+    }
+    .sub-status dt:first-child { margin-top: 0; }
+    .sub-status dd {
+      margin: 0.25rem 0 0 0;
+      color: #6b7280;
+    }
+
     /* Mobile responsive */
     @media (max-width: 768px) {
       .next-collection-banner { flex-direction: column; text-align: center; }
       .bin-collection-grid { grid-template-columns: 1fr; }
       .action-buttons { flex-direction: column; }
       .action-btn { width: 100%; justify-content: center; }
+      .sub-modal { padding: 1.5rem; }
+      .sub-actions { flex-direction: column; }
     }
   </style>
 </head>
@@ -962,6 +1143,458 @@
       calendarBtn._calendarListenerAttached = true;
     }
 
+    // -------- Subscription Management --------
+
+    // LocalStorage helpers for user contact info
+    function getUserContact() {
+      const email = localStorage.getItem('gcc_user_email');
+      const mobile = localStorage.getItem('gcc_user_mobile');
+      return { email, mobile };
+    }
+
+    function saveUserContact(email, mobile) {
+      if (email) localStorage.setItem('gcc_user_email', email);
+      if (mobile) localStorage.setItem('gcc_user_mobile', mobile);
+    }
+
+    // Mobile number formatting
+    function formatMobileNumber(input) {
+      if (!input) return '';
+      let cleaned = input.replace(/\D/g, '');
+
+      if (cleaned.startsWith('44')) {
+        return '+' + cleaned;
+      }
+      if (cleaned.startsWith('0')) {
+        return '+44' + cleaned.substring(1);
+      }
+      if (cleaned.startsWith('7')) {
+        return '+44' + cleaned;
+      }
+
+      return input;
+    }
+
+    // Form validation
+    function validateSubscriptionForm(formData) {
+      const errors = {};
+
+      if (!formData.email && !formData.mobile) {
+        errors.general = 'Please provide at least an email address or mobile number';
+      }
+
+      if (formData.email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+          errors.email = 'Please enter a valid email address';
+        }
+      }
+
+      if (formData.mobile) {
+        const mobile = formData.mobile.replace(/\s/g, '');
+        const mobileRegex = /^(\+44\d{10}|07\d{9})$/;
+        if (!mobileRegex.test(mobile)) {
+          errors.mobile = 'Please enter a valid UK mobile number (e.g., +447700123456 or 07700123456)';
+        }
+      }
+
+      if (formData.reminderHours !== undefined) {
+        const hours = parseInt(formData.reminderHours);
+        if (isNaN(hours) || hours < 1 || hours > 48) {
+          errors.reminderHours = 'Reminder hours must be between 1 and 48';
+        }
+      }
+
+      return {
+        valid: Object.keys(errors).length === 0,
+        errors
+      };
+    }
+
+    // Check if user has subscription
+    async function checkUserSubscription(addressId, email, mobile) {
+      try {
+        const params = new URLSearchParams({ addressId });
+        if (email) params.append('email', email);
+        else if (mobile) params.append('mobile', mobile);
+        else return null;
+
+        const response = await fetch(
+          `${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.SUBSCRIPTIONS_BINS}?${params.toString()}`,
+          {
+            method: 'GET',
+            headers: {
+              'x-api-token': GCC_CONFIG.API_TOKEN
+            }
+          }
+        );
+
+        if (!response.ok) {
+          if (response.status === 400) return null;
+          throw new Error('Failed to check subscription status');
+        }
+
+        const data = await response.json();
+        return data.subscription;
+      } catch (error) {
+        console.error('Error checking subscription:', error);
+        return null;
+      }
+    }
+
+    // Create subscription
+    async function createSubscription(formData) {
+      const response = await fetch(
+        `${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.SUBSCRIPTIONS_BINS}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-token': GCC_CONFIG.API_TOKEN
+          },
+          body: JSON.stringify({
+            addressId: formData.addressId,
+            email: formData.email || null,
+            mobile: formData.mobile || null,
+            emailNotifications: formData.emailNotifications ?? true,
+            smsNotifications: formData.smsNotifications ?? true,
+            reminderHours: formData.reminderHours || 13
+          })
+        }
+      );
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to create subscription');
+      }
+
+      return await response.json();
+    }
+
+    // Cancel subscription
+    async function cancelUserSubscription(addressId, email, mobile) {
+      const requestBody = { addressId };
+      if (email) requestBody.email = email;
+      else if (mobile) requestBody.mobile = mobile;
+
+      const response = await fetch(
+        `${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.SUBSCRIPTIONS_BINS}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-token': GCC_CONFIG.API_TOKEN
+          },
+          body: JSON.stringify(requestBody)
+        }
+      );
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to cancel subscription');
+      }
+
+      return await response.json();
+    }
+
+    // Show subscription modal
+    async function showSubscriptionModal(addressId) {
+      const userContact = getUserContact();
+      let existingSubscription = null;
+
+      // Check if user already has a subscription
+      if (userContact.email || userContact.mobile) {
+        existingSubscription = await checkUserSubscription(
+          addressId,
+          userContact.email,
+          userContact.mobile
+        );
+      }
+
+      const overlay = document.createElement('div');
+      overlay.className = 'sub-overlay';
+      overlay.setAttribute('role', 'presentation');
+
+      if (existingSubscription) {
+        // Show existing subscription management
+        overlay.innerHTML = `
+          <div class="sub-modal" role="dialog" aria-modal="true" aria-labelledby="sub-title" tabindex="-1">
+            <div class="sub-topbar">
+              <div>
+                <h2 id="sub-title">Your bin collection reminders</h2>
+              </div>
+              <button class="sub-close-x" type="button" aria-label="Close">×</button>
+            </div>
+
+            <div class="sub-status">
+              <h3>✓ You're subscribed</h3>
+              <dl>
+                ${existingSubscription.email ? `
+                  <dt>Email:</dt>
+                  <dd>${existingSubscription.email} ${existingSubscription.emailNotifications ? '✓' : '✗'}</dd>
+                ` : ''}
+                ${existingSubscription.mobile ? `
+                  <dt>Mobile:</dt>
+                  <dd>${existingSubscription.mobile} ${existingSubscription.smsNotifications ? '✓' : '✗'}</dd>
+                ` : ''}
+                <dt>Reminder timing:</dt>
+                <dd>${existingSubscription.reminderHours} hours before collection</dd>
+                <dt>Subscribed since:</dt>
+                <dd>${new Date(existingSubscription.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</dd>
+              </dl>
+            </div>
+
+            <div class="sub-actions">
+              <button type="button" class="sub-btn sub-btn-danger" id="sub-cancel-btn">Unsubscribe</button>
+              <button type="button" class="sub-btn sub-btn-secondary" id="sub-close-btn">Close</button>
+            </div>
+          </div>
+        `;
+      } else {
+        // Show signup form
+        overlay.innerHTML = `
+          <div class="sub-modal" role="dialog" aria-modal="true" aria-labelledby="sub-title" tabindex="-1">
+            <div class="sub-topbar">
+              <div>
+                <h2 id="sub-title">Sign up for bin collection reminders</h2>
+                <p class="sub-lede">Get notified before your bin collection day. Never miss a collection again!</p>
+              </div>
+              <button class="sub-close-x" type="button" aria-label="Close">×</button>
+            </div>
+
+            <form id="sub-form">
+              <div class="sub-form-group">
+                <label for="sub-email">Your email address (optional)</label>
+                <input
+                  type="email"
+                  id="sub-email"
+                  name="email"
+                  placeholder="your.email@example.com"
+                  value="${userContact.email || ''}"
+                />
+                <span class="sub-error" id="sub-email-error"></span>
+              </div>
+
+              <div class="sub-form-group">
+                <label for="sub-mobile">Your mobile number (optional)</label>
+                <input
+                  type="tel"
+                  id="sub-mobile"
+                  name="mobile"
+                  placeholder="+447700123456 or 07700123456"
+                  value="${userContact.mobile || ''}"
+                />
+                <small>We'll only use this for bin collection reminders</small>
+                <span class="sub-error" id="sub-mobile-error"></span>
+              </div>
+
+              <div class="sub-checkbox-group">
+                <input type="checkbox" id="sub-email-notify" name="emailNotifications" checked />
+                <label for="sub-email-notify">Receive email notifications</label>
+              </div>
+
+              <div class="sub-checkbox-group">
+                <input type="checkbox" id="sub-sms-notify" name="smsNotifications" checked />
+                <label for="sub-sms-notify">Receive SMS notifications</label>
+              </div>
+
+              <div class="sub-form-group">
+                <label for="sub-reminder-hours">Send reminder (hours before collection)</label>
+                <select id="sub-reminder-hours" name="reminderHours">
+                  <option value="6">6 hours before</option>
+                  <option value="12">12 hours before</option>
+                  <option value="13" selected>13 hours before (recommended)</option>
+                  <option value="24">1 day before</option>
+                  <option value="48">2 days before</option>
+                </select>
+              </div>
+
+              <div class="sub-notice">
+                ℹ️ You must provide at least one contact method (email or mobile)
+              </div>
+
+              <span class="sub-error" id="sub-general-error"></span>
+
+              <div class="sub-actions">
+                <button type="submit" class="sub-btn sub-btn-primary" id="sub-submit-btn">Sign up for reminders</button>
+                <button type="button" class="sub-btn sub-btn-secondary" id="sub-close-btn">Cancel</button>
+              </div>
+            </form>
+          </div>
+        `;
+      }
+
+      document.body.appendChild(overlay);
+
+      const dialog = overlay.querySelector('.sub-modal');
+      const closeX = overlay.querySelector('.sub-close-x');
+      const closeBtn = overlay.querySelector('#sub-close-btn');
+
+      // Focus management
+      const previouslyFocused = document.activeElement;
+      dialog.focus();
+
+      function closeModal() {
+        document.body.removeChild(overlay);
+        if (previouslyFocused && previouslyFocused.focus) previouslyFocused.focus();
+      }
+
+      // Close handlers
+      closeX.addEventListener('click', closeModal);
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+      dialog.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+      if (existingSubscription) {
+        // Handle unsubscribe
+        const cancelBtn = overlay.querySelector('#sub-cancel-btn');
+        cancelBtn.addEventListener('click', async () => {
+          const confirmed = confirm(
+            'Are you sure you want to unsubscribe? You will no longer receive bin collection reminders.'
+          );
+          if (!confirmed) return;
+
+          try {
+            cancelBtn.disabled = true;
+            cancelBtn.textContent = 'Unsubscribing...';
+
+            await cancelUserSubscription(
+              addressId,
+              existingSubscription.email,
+              existingSubscription.mobile
+            );
+
+            // Show success message
+            dialog.innerHTML = `
+              <div class="sub-success">
+                <h3>✓ Unsubscribed</h3>
+                <p>You have been unsubscribed from bin collection reminders.</p>
+                <div class="sub-actions">
+                  <button type="button" class="sub-btn sub-btn-primary" onclick="this.closest('.sub-overlay').remove()">Close</button>
+                </div>
+              </div>
+            `;
+
+            // Update button text
+            const reminderBtn = document.getElementById('email-reminder');
+            if (reminderBtn) {
+              reminderBtn.innerHTML = '<span aria-hidden="true">✉️</span> Set up reminders';
+            }
+
+          } catch (error) {
+            alert('Failed to cancel subscription. Please try again.');
+            cancelBtn.disabled = false;
+            cancelBtn.textContent = 'Unsubscribe';
+          }
+        });
+      } else {
+        // Handle form submission
+        const form = overlay.querySelector('#sub-form');
+        const mobileInput = overlay.querySelector('#sub-mobile');
+
+        // Mobile number auto-formatting
+        mobileInput.addEventListener('blur', (e) => {
+          if (e.target.value) {
+            e.target.value = formatMobileNumber(e.target.value);
+          }
+        });
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          // Clear previous errors
+          overlay.querySelectorAll('.sub-error').forEach(el => el.textContent = '');
+
+          // Get form data
+          const formData = new FormData(form);
+          const data = {
+            addressId: addressId,
+            email: formData.get('email')?.trim() || null,
+            mobile: formData.get('mobile')?.trim() || null,
+            emailNotifications: formData.get('emailNotifications') === 'on',
+            smsNotifications: formData.get('smsNotifications') === 'on',
+            reminderHours: parseInt(formData.get('reminderHours'))
+          };
+
+          // Format mobile if provided
+          if (data.mobile) {
+            data.mobile = formatMobileNumber(data.mobile);
+          }
+
+          // Validate
+          const validation = validateSubscriptionForm(data);
+          if (!validation.valid) {
+            Object.entries(validation.errors).forEach(([field, message]) => {
+              const errorEl = overlay.querySelector(`#sub-${field}-error`);
+              if (errorEl) errorEl.textContent = message;
+            });
+            return;
+          }
+
+          try {
+            // Show loading state
+            const submitBtn = form.querySelector('#sub-submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Signing up...';
+
+            // Create subscription
+            const result = await createSubscription(data);
+
+            // Save user contact info for future
+            saveUserContact(data.email, data.mobile);
+
+            // Show success message
+            dialog.innerHTML = `
+              <div class="sub-success">
+                <h3>✓ You're all set!</h3>
+                <p>You'll receive bin collection reminders ${data.reminderHours} hours before each collection.</p>
+                ${data.email ? `<p>Email: ${data.email}</p>` : ''}
+                ${data.mobile ? `<p>Mobile: ${data.mobile}</p>` : ''}
+                <div class="sub-actions">
+                  <button type="button" class="sub-btn sub-btn-primary" onclick="this.closest('.sub-overlay').remove()">Close</button>
+                </div>
+              </div>
+            `;
+
+            // Update button text
+            const reminderBtn = document.getElementById('email-reminder');
+            if (reminderBtn) {
+              reminderBtn.innerHTML = '<span aria-hidden="true">✉️</span> Manage reminders';
+            }
+
+          } catch (error) {
+            const generalError = overlay.querySelector('#sub-general-error');
+            if (error.message.includes('already')) {
+              generalError.textContent = 'You already have a subscription for this address.';
+            } else {
+              generalError.textContent = error.message || 'Failed to create subscription. Please try again.';
+            }
+
+            const submitBtn = form.querySelector('#sub-submit-btn');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Sign up for reminders';
+          }
+        });
+      }
+    }
+
+    function setupSubscriptionButton() {
+      const reminderBtn = document.getElementById('email-reminder');
+      if (!reminderBtn) return;
+      if (reminderBtn._subscriptionListenerAttached) return;
+
+      reminderBtn.addEventListener('click', async () => {
+        if (!currentAddressId) {
+          alert('Please look up your address first to set up reminders.');
+          return;
+        }
+
+        await showSubscriptionModal(currentAddressId);
+      });
+
+      reminderBtn._subscriptionListenerAttached = true;
+    }
+
     // -------- Page lifecycle --------
     let selectedAddressId = null;
     let currentAddressId = null;
@@ -1252,6 +1885,7 @@
       document.getElementById('next-collection-heading')?.focus();
 
       setupCalendarButton();
+      setupSubscriptionButton();
     }
   </script>
 </body>
