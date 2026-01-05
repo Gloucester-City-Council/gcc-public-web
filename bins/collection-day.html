@@ -1145,16 +1145,16 @@
 
     // -------- Subscription Management --------
 
-    // LocalStorage helpers for user contact info
+    // Cookie helpers for user contact info
     function getUserContact() {
-      const email = localStorage.getItem('gcc_user_email');
-      const mobile = localStorage.getItem('gcc_user_mobile');
+      const email = getCookie('gcc-email');
+      const mobile = getCookie('gcc-mobile');
       return { email, mobile };
     }
 
     function saveUserContact(email, mobile) {
-      if (email) localStorage.setItem('gcc_user_email', email);
-      if (mobile) localStorage.setItem('gcc_user_mobile', mobile);
+      if (email) setCookie('gcc-email', email, 365);
+      if (mobile) setCookie('gcc-mobile', mobile, 365);
     }
 
     // Mobile number formatting
