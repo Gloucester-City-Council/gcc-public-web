@@ -1145,18 +1145,6 @@
 
     // -------- Subscription Management --------
 
-    // Cookie helpers for user contact info
-    function getUserContact() {
-      const email = getCookie('gcc-email');
-      const mobile = getCookie('gcc-mobile');
-      return { email, mobile };
-    }
-
-    function saveUserContact(email, mobile) {
-      if (email) setCookie('gcc-email', email, 365);
-      if (mobile) setCookie('gcc-mobile', mobile, 365);
-    }
-
     // Mobile number formatting
     function formatMobileNumber(input) {
       if (!input) return '';
@@ -1299,21 +1287,12 @@
 
     // Show subscription modal
     async function showSubscriptionModal(addressId) {
-      const userContact = getUserContact();
-      let existingSubscription = null;
-
-      // Check if user already has a subscription
-      if (userContact.email || userContact.mobile) {
-        existingSubscription = await checkUserSubscription(
-          addressId,
-          userContact.email,
-          userContact.mobile
-        );
-      }
-
       const overlay = document.createElement('div');
       overlay.className = 'sub-overlay';
       overlay.setAttribute('role', 'presentation');
+
+      // Always show signup form - no PII stored in cookies
+      const existingSubscription = null;
 
       if (existingSubscription) {
         // Show existing subscription management
@@ -1376,7 +1355,7 @@
                   id="sub-email"
                   name="email"
                   placeholder="your.email@example.com"
-                  value="${userContact.email || ''}"
+                  required
                 />
                 <span class="sub-error" id="sub-email-error"></span>
               </div>
@@ -1388,7 +1367,6 @@
                   id="sub-mobile"
                   name="mobile"
                   placeholder="+447700123456 or 07700123456"
-                  value="${userContact.mobile || ''}"
                 />
                 <small>For SMS reminders. Standard rates apply.</small>
                 <span class="sub-error" id="sub-mobile-error"></span>
@@ -1536,9 +1514,6 @@
 
             // Create subscription
             const result = await createSubscription(data);
-
-            // Save user contact info for future
-            saveUserContact(data.email, data.mobile);
 
             // Determine reminder time description
             const reminderTime = data.reminderHours === 14
