@@ -56,6 +56,7 @@
             const response = await fetch(requestUrl, {
                 method: 'GET',
                 headers: {
+                    'Authorization': `Bearer ${GCC_CONFIG.JOBS_API_TOKEN}`,
                     'Content-Type': 'application/json'
                 }
             });
