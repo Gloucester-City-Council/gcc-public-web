@@ -29,7 +29,6 @@
         locationFilter: document.getElementById('location-filter'),
         contractFilter: document.getElementById('contract-filter'),
         salaryFilter: document.getElementById('salary-filter'),
-        showClosedCheckbox: document.getElementById('show-closed'),
         sortFilter: document.getElementById('sort-filter'),
 
         // Buttons
@@ -125,8 +124,6 @@
         const selectedLocation = elements.locationFilter.value;
         const selectedContract = elements.contractFilter.value;
         const minSalary = parseInt(elements.salaryFilter.value) || 0;
-        const showClosed = elements.showClosedCheckbox.checked;
-
         // Filter jobs
         filteredJobs = allJobs.filter(job => {
             // Search filter
@@ -146,11 +143,6 @@
 
             // Salary filter
             if (minSalary > 0 && (!job.salary_min || job.salary_min < minSalary)) {
-                return false;
-            }
-
-            // Closed jobs filter
-            if (!showClosed && job.is_closed) {
                 return false;
             }
 
@@ -208,7 +200,7 @@
     function renderJobs() {
         // Update results count
         const count = filteredJobs.length;
-        elements.resultsCount.innerHTML = `<strong>${count}</strong> job${count !== 1 ? 's' : ''} found`;
+        elements.resultsCount.innerHTML = `<strong>${count}</strong> role${count !== 1 ? 's' : ''} found`;
         elements.resultsHeader.style.display = 'flex';
 
         // Clear existing jobs
@@ -231,8 +223,8 @@
 
         // Announce to screen readers
         const announcement = count === 0
-            ? 'No jobs found. Try adjusting your filters.'
-            : `${count} job${count !== 1 ? 's' : ''} found.`;
+            ? 'No roles found. Try adjusting your filters.'
+            : `${count} role${count !== 1 ? 's' : ''} found.`;
         elements.resultsCount.setAttribute('aria-label', announcement);
     }
 
@@ -341,7 +333,6 @@
         elements.locationFilter.value = '';
         elements.contractFilter.value = '';
         elements.salaryFilter.value = '';
-        elements.showClosedCheckbox.checked = false;
         elements.sortFilter.value = 'closing-soon';
 
         applyFiltersAndRender();
@@ -396,9 +387,6 @@
 
         // Sort change
         elements.sortFilter.addEventListener('change', applyFiltersAndRender);
-
-        // Show closed checkbox
-        elements.showClosedCheckbox.addEventListener('change', applyFiltersAndRender);
 
         // Enter key on search/filters
         elements.searchFilter.addEventListener('keypress', (e) => {

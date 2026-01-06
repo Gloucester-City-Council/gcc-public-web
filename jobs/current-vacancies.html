@@ -384,7 +384,7 @@
 
         <!-- Welcome Banner -->
         <h1 class="welcome-banner">
-            Current Vacancies
+            Current vacancies at Gloucester City Council
         </h1>
     </header>
 
@@ -421,9 +421,9 @@
             <div class="service-main">
 
                 <section aria-labelledby="page-heading">
-                    <h2 id="page-heading" class="section-title">Find your next role</h2>
+                    <h2 id="page-heading" class="section-title">Find a role that fits you</h2>
                     <p style="font-size: 1.0625rem; line-height: 1.7; margin-bottom: 2rem;">
-                        Search and filter current job opportunities across Gloucestershire councils including City Council, County Council, and specialist services. All vacancies are also listed on the <a href="https://careers.gloucestershire.gov.uk/GloucesterCity" target="_blank" rel="noopener">Gloucestershire Careers Portal</a> where you can apply online.
+                        Browse current vacancies at Gloucester City Council. Use the filters to find roles that match your skills, then apply online through the <a href="https://careers.gloucestershire.gov.uk/GloucesterCity" target="_blank" rel="noopener">Gloucestershire Careers Portal</a>.
                     </p>
 
                     <!-- FILTERS -->
@@ -431,7 +431,7 @@
                         <div class="filters-grid">
 
                             <div class="filter-group search-box">
-                                <label for="search-filter">Search jobs</label>
+                                <label for="search-filter">Search by title or keyword</label>
                                 <input
                                     type="text"
                                     id="search-filter"
@@ -442,21 +442,21 @@
                             </div>
 
                             <div class="filter-group">
-                                <label for="location-filter">Location</label>
+                                <label for="location-filter">Work location</label>
                                 <select id="location-filter" aria-label="Filter by location">
                                     <option value="">All locations</option>
                                 </select>
                             </div>
 
                             <div class="filter-group">
-                                <label for="contract-filter">Contract type</label>
+                                <label for="contract-filter">Role type</label>
                                 <select id="contract-filter" aria-label="Filter by contract type">
                                     <option value="">All contract types</option>
                                 </select>
                             </div>
 
                             <div class="filter-group">
-                                <label for="salary-filter">Minimum salary (£)</label>
+                                <label for="salary-filter">Minimum salary</label>
                                 <input
                                     type="number"
                                     id="salary-filter"
@@ -471,15 +471,11 @@
 
                         <div class="filter-actions">
                             <button type="button" class="btn-filter" id="apply-filters" aria-label="Apply filters">
-                                Apply filters
+                                Update results
                             </button>
                             <button type="button" class="btn-clear" id="clear-filters" aria-label="Clear all filters">
-                                Clear filters
+                                Reset filters
                             </button>
-                            <label style="display: flex; align-items: center; gap: 0.5rem; margin-left: auto; cursor: pointer;">
-                                <input type="checkbox" id="show-closed" aria-label="Show closed positions">
-                                <span style="font-size: 0.9375rem; color: #475569;">Show closed positions</span>
-                            </label>
                         </div>
                     </div>
 
@@ -489,7 +485,7 @@
                             <strong>0</strong> jobs found
                         </div>
                         <div class="sort-group">
-                            <label for="sort-filter">Sort by:</label>
+                            <label for="sort-filter">Sort results:</label>
                             <select id="sort-filter" aria-label="Sort jobs">
                                 <option value="closing-soon">Closing date (soonest first)</option>
                                 <option value="closing-latest">Closing date (latest first)</option>
@@ -504,20 +500,20 @@
                     <!-- LOADING STATE -->
                     <div class="loading-spinner" id="loading-state">
                         <div class="spinner" role="status" aria-label="Loading jobs"></div>
-                        <p style="margin-top: 1rem; color: #64748b; font-weight: 600;">Loading vacancies...</p>
+                        <p style="margin-top: 1rem; color: #64748b; font-weight: 600;">Loading current vacancies...</p>
                     </div>
 
                     <!-- ERROR STATE -->
                     <div class="error-message" id="error-state" style="display: none;">
-                        <h3>Unable to load vacancies</h3>
-                        <p id="error-message">There was a problem loading the job vacancies. Please try again later or contact us for assistance.</p>
+                        <h3>We can’t load vacancies right now</h3>
+                        <p id="error-message">Please try again later, or contact the recruitment team for help.</p>
                     </div>
 
                     <!-- NO RESULTS STATE -->
                     <div class="no-results" id="no-results-state" style="display: none;">
                         <div class="no-results-icon">🔍</div>
-                        <h3>No jobs found</h3>
-                        <p>Try adjusting your filters or search terms to find more opportunities.</p>
+                        <h3>No roles match your filters</h3>
+                        <p>Try different keywords or reset filters to see more opportunities.</p>
                     </div>
 
                     <!-- JOBS LIST -->
@@ -565,13 +561,13 @@
                     <h2>Application tips</h2>
                     <div style="font-size: 0.9375rem; line-height: 1.6;">
                         <p style="margin-bottom: 0.75rem;">
-                            <strong style="color: #1e293b;">Read the job description carefully</strong> - Ensure you meet the essential criteria before applying.
+                            <strong style="color: #1e293b;">Read the role profile</strong> - Check the essential criteria and responsibilities.
                         </p>
                         <p style="margin-bottom: 0.75rem;">
-                            <strong style="color: #1e293b;">Tailor your application</strong> - Show how your skills match the role requirements.
+                            <strong style="color: #1e293b;">Show your fit</strong> - Use real examples that match the role’s requirements.
                         </p>
                         <p style="margin-bottom: 0;">
-                            <strong style="color: #1e293b;">Apply early</strong> - We may close vacancies early if we receive enough suitable applications.
+                            <strong style="color: #1e293b;">Apply early</strong> - Some roles may close early if we receive strong applications.
                         </p>
                     </div>
                 </section>
