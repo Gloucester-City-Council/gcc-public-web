@@ -19,7 +19,7 @@ const GCC_CONFIG = {
         JOBS: '/api/jobs/getJobs'
     },
 
-    // Jobs API Configuration (separate API base)
-    JOBS_API_BASE_URL: 'https://gccprivateliteapi-acbbbjbthjdkhafa.westeurope-01.azurewebsites.net',
-    JOBS_API_TOKEN: 'mock-token-for-city-council'
+    // Jobs API Configuration (uses same public API base)
+    JOBS_API_BASE_URL: 'https://gccpublicliteapi-c3dsa8fmg7g3eydv.westeurope-01.azurewebsites.net',
+    JOBS_API_TOKEN: 'oije8u23984uoriwfjowei2398470'
 };
