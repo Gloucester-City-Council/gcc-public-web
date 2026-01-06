@@ -46,16 +46,15 @@
 
             // Construct API URL using config
             const apiUrl = `${GCC_CONFIG.JOBS_API_BASE_URL}${GCC_CONFIG.ENDPOINTS.JOBS}`;
-            const params = new URLSearchParams({
-                council: 'all',  // Show all jobs (county, city, social work, fire, etc.)
-                include_closed: 'false'
-            });
+            const params = new URLSearchParams();
 
-            const response = await fetch(`${apiUrl}?${params.toString()}`, {
+            const queryString = params.toString();
+            const requestUrl = queryString ? `${apiUrl}?${queryString}` : apiUrl;
+            const response = await fetch(requestUrl, {
                 method: 'GET',
                 headers: {
-                    'Authorization': `Bearer ${GCC_CONFIG.JOBS_API_TOKEN}`,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-api-token': GCC_CONFIG.JOBS_API_TOKEN
                 }
             });
 
