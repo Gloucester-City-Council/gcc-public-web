@@ -48,7 +48,7 @@
             // Construct API URL using config
             const apiUrl = `${GCC_CONFIG.JOBS_API_BASE_URL}${GCC_CONFIG.ENDPOINTS.JOBS}`;
             const params = new URLSearchParams({
-                council: 'city',
+                council: 'all',  // Show all jobs (county, city, social work, fire, etc.)
                 include_closed: 'false'
             });
 
@@ -237,6 +237,23 @@
     }
 
     /**
+     * Get council badge HTML
+     */
+    function getCouncilBadge(councilType) {
+        const badges = {
+            'city': { text: 'City Council', color: '#3b82f6' },
+            'county': { text: 'County Council', color: '#059669' },
+            'adults_social': { text: 'Adult Social Work', color: '#8b5cf6' },
+            'childrens_social': { text: "Children's Social Work", color: '#ec4899' },
+            'fire': { text: 'Fire & Rescue', color: '#ef4444' }
+        };
+
+        const badge = badges[councilType] || { text: councilType, color: '#64748b' };
+
+        return `<span style="display: inline-block; background: ${badge.color}; color: white; padding: 0.375rem 0.75rem; border-radius: 999px; font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.75rem;">${badge.text}</span>`;
+    }
+
+    /**
      * Create job card element
      */
     function createJobCard(job) {
@@ -270,6 +287,7 @@
 
         card.innerHTML = `
             <div class="job-header">
+                ${getCouncilBadge(job.council)}
                 <h3 class="job-title">
                     <a href="${job.url || '#'}" target="_blank" rel="noopener">
                         ${escapeHtml(job.title)}
