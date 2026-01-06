@@ -56,7 +56,7 @@
             const response = await fetch(requestUrl, {
                 method: 'GET',
                 headers: {
-                    'Authorization': `Bearer ${GCC_CONFIG.JOBS_API_TOKEN}`,
+                    'x-api-token': GCC_CONFIG.JOBS_API_TOKEN,
                     'Content-Type': 'application/json'
                 }
             });
@@ -231,9 +231,11 @@
     }
 
     /**
-     * Get council badge HTML
+     * Get council badge(s) HTML
+     * @param {string|string[]} councilData - Either a single council string or array of councils
+     * @returns {string} HTML for badge(s)
      */
-    function getCouncilBadge(councilType) {
+    function getCouncilBadges(councilData) {
         const badges = {
             'city': { text: 'City Council', color: '#3b82f6' },
             'county': { text: 'County Council', color: '#059669' },
@@ -242,9 +244,13 @@
             'fire': { text: 'Fire & Rescue', color: '#ef4444' }
         };
 
-        const badge = badges[councilType] || { text: councilType, color: '#64748b' };
+        // Handle both single council (string) and multiple councils (array)
+        const councils = Array.isArray(councilData) ? councilData : [councilData];
 
-        return `<span style="display: inline-block; background: ${badge.color}; color: white; padding: 0.375rem 0.75rem; border-radius: 999px; font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.75rem;">${badge.text}</span>`;
+        return councils.map(councilType => {
+            const badge = badges[councilType] || { text: councilType, color: '#64748b' };
+            return `<span style="display: inline-block; background: ${badge.color}; color: white; padding: 0.375rem 0.75rem; border-radius: 999px; font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.75rem; margin-right: 0.5rem;">${badge.text}</span>`;
+        }).join('');
     }
 
     /**
@@ -281,7 +287,7 @@
 
         card.innerHTML = `
             <div class="job-header">
-                ${getCouncilBadge(job.council)}
+                ${getCouncilBadges(job.councils || job.council)}
                 <h3 class="job-title">
                     <a href="${job.url || '#'}" target="_blank" rel="noopener">
                         ${escapeHtml(job.title)}
