@@ -61,13 +61,21 @@
             });
 
             if (!response.ok) {
-                throw new Error(`API request failed with status ${response.status}`);
+                // Handle 503 - cache not ready
+                if (response.status === 503) {
+                    throw new Error('The jobs system is currently initializing. Please check back in a few minutes as job listings are being prepared.');
+                }
+                // Handle 401 - authentication
+                if (response.status === 401) {
+                    throw new Error('Unable to access jobs data. Please try again later or contact us for assistance.');
+                }
+                throw new Error(`Unable to load jobs at this time (Error ${response.status}). Please try again later.`);
             }
 
             const data = await response.json();
 
             if (!data.success) {
-                throw new Error(data.error || 'Failed to fetch jobs');
+                throw new Error(data.error || 'Failed to fetch jobs. Please try again later.');
             }
 
             // Store jobs and filter options
