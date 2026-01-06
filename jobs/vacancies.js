@@ -50,6 +50,7 @@
                 council: 'all'
             });
 
+
             const queryString = params.toString();
             const requestUrl = queryString ? `${apiUrl}?${queryString}` : apiUrl;
             const response = await fetch(requestUrl, {
