@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Current job vacancies at Gloucester City Council. Search and filter roles, view details, and apply online.">
+    <title>Current Vacancies | Jobs | Gloucester City Council</title>
+
+    <!-- Assets -->
+    <link rel="preload" href="/assets/images/GCC_logo.svg" as="image">
+    <link rel="preload" href="/assets/css/styles.css" as="style">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/service-landing.css">
+
+    <style>
+        /* Jobs-specific styles */
+        .filters-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            font-size: 0.9375rem;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 0.625rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding-right: 2.5rem;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            pointer-events: none;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-filter {
+            padding: 0.625rem 1.25rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-filter:hover,
+        .btn-filter:focus {
+            background: #2563eb;
+        }
+
+        .btn-clear {
+            padding: 0.625rem 1.25rem;
+            background: transparent;
+            color: #64748b;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-clear:hover,
+        .btn-clear:focus {
+            border-color: #94a3b8;
+            color: #475569;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .results-count {
+            font-size: 1.125rem;
+            color: #475569;
+        }
+
+        .results-count strong {
+            color: #1e293b;
+            font-size: 1.375rem;
+        }
+
+        .sort-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .sort-group label {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 0.9375rem;
+        }
+
+        .sort-group select {
+            padding: 0.5rem 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.9375rem;
+        }
+
+        .jobs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .job-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.75rem;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .job-card:hover,
+        .job-card:focus-within {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .job-header {
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .job-title a:hover,
+        .job-title a:focus {
+            color: #3b82f6;
+            text-decoration: underline;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9375rem;
+            color: #475569;
+        }
+
+        .job-meta-icon {
+            font-size: 1.125rem;
+        }
+
+        .job-salary {
+            font-weight: 600;
+            color: #059669;
+        }
+
+        .job-closing {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .job-closing.urgent {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .job-closed {
+            background: #f1f5f9;
+            color: #64748b;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .job-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .btn-apply {
+            padding: 0.75rem 1.5rem;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-apply:hover,
+        .btn-apply:focus {
+            background: #2563eb;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e2e8f0;
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 10px;
+            border: 2px dashed #cbd5e1;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+        }
+
+        .no-results p {
+            color: #64748b;
+            font-size: 1.0625rem;
+        }
+
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #dc2626;
+            margin-bottom: 2rem;
+        }
+
+        .error-message h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        @media (max-width: 768px) {
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .job-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .job-actions {
+                flex-direction: column;
+            }
+
+            .btn-apply {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body data-service-id="jobs-vacancies">
+
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <div class="header-top">
+                <a href="/" class="logo-link" aria-label="Gloucester City Council homepage">
+                    <img src="/assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="site-logo"
+                         width="250"
+                         height="70">
+                </a>
+
+                <form class="search-form" role="search" action="/search" method="get">
+                    <label for="search-input" class="sr-only">Search the website</label>
+                    <input type="search" id="search-input" name="q"
+                           class="search-input" placeholder="Search..." aria-label="Search the website">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Welcome Banner -->
+        <h1 class="welcome-banner">
+            Current Vacancies
+        </h1>
+    </header>
+
+    <!-- MAIN NAV -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <button class="menu-toggle" aria-expanded="false">Menu</button>
+            <ul class="nav-list">
+                <li><a href="/contact">Contact us</a></li>
+                <li><a href="https://gloucester-self.achieveservice.com/">My Gloucester</a></li>
+                <li><a href="/news">News</a></li>
+                <li><a href="https://public.govdelivery.com/accounts/UKGCCA/subscriber/new">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="breadcrumb-inner">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li><a href="/jobs">Jobs and Careers</a></li>
+                <li aria-current="page">Current Vacancies</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="main-content" class="main-content" role="main">
+
+        <div class="service-layout">
+
+            <!-- LEFT COLUMN -->
+            <div class="service-main">
+
+                <section aria-labelledby="page-heading">
+                    <h2 id="page-heading" class="section-title">Find your next role</h2>
+                    <p style="font-size: 1.0625rem; line-height: 1.7; margin-bottom: 2rem;">
+                        Search and filter current job opportunities at Gloucester City Council. All vacancies are also listed on the <a href="https://careers.gloucestershire.gov.uk/GloucesterCity" target="_blank" rel="noopener">Gloucestershire Careers Portal</a> where you can apply online.
+                    </p>
+
+                    <!-- FILTERS -->
+                    <div class="filters-container" role="search" aria-label="Job filters">
+                        <div class="filters-grid">
+
+                            <div class="filter-group search-box">
+                                <label for="search-filter">Search jobs</label>
+                                <input
+                                    type="text"
+                                    id="search-filter"
+                                    placeholder="Job title or keyword..."
+                                    aria-label="Search jobs by title or keyword"
+                                >
+                                <span class="search-icon" aria-hidden="true">🔍</span>
+                            </div>
+
+                            <div class="filter-group">
+                                <label for="location-filter">Location</label>
+                                <select id="location-filter" aria-label="Filter by location">
+                                    <option value="">All locations</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-group">
+                                <label for="contract-filter">Contract type</label>
+                                <select id="contract-filter" aria-label="Filter by contract type">
+                                    <option value="">All contract types</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-group">
+                                <label for="salary-filter">Minimum salary (£)</label>
+                                <input
+                                    type="number"
+                                    id="salary-filter"
+                                    placeholder="e.g. 25000"
+                                    min="0"
+                                    step="1000"
+                                    aria-label="Filter by minimum salary"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="filter-actions">
+                            <button type="button" class="btn-filter" id="apply-filters" aria-label="Apply filters">
+                                Apply filters
+                            </button>
+                            <button type="button" class="btn-clear" id="clear-filters" aria-label="Clear all filters">
+                                Clear filters
+                            </button>
+                            <label style="display: flex; align-items: center; gap: 0.5rem; margin-left: auto; cursor: pointer;">
+                                <input type="checkbox" id="show-closed" aria-label="Show closed positions">
+                                <span style="font-size: 0.9375rem; color: #475569;">Show closed positions</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- RESULTS HEADER -->
+                    <div class="results-header" id="results-header" style="display: none;">
+                        <div class="results-count" id="results-count" role="status" aria-live="polite">
+                            <strong>0</strong> jobs found
+                        </div>
+                        <div class="sort-group">
+                            <label for="sort-filter">Sort by:</label>
+                            <select id="sort-filter" aria-label="Sort jobs">
+                                <option value="closing-soon">Closing date (soonest first)</option>
+                                <option value="closing-latest">Closing date (latest first)</option>
+                                <option value="salary-high">Salary (highest first)</option>
+                                <option value="salary-low">Salary (lowest first)</option>
+                                <option value="title-az">Job title (A-Z)</option>
+                                <option value="title-za">Job title (Z-A)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- LOADING STATE -->
+                    <div class="loading-spinner" id="loading-state">
+                        <div class="spinner" role="status" aria-label="Loading jobs"></div>
+                        <p style="margin-top: 1rem; color: #64748b; font-weight: 600;">Loading vacancies...</p>
+                    </div>
+
+                    <!-- ERROR STATE -->
+                    <div class="error-message" id="error-state" style="display: none;">
+                        <h3>Unable to load vacancies</h3>
+                        <p id="error-message">There was a problem loading the job vacancies. Please try again later or contact us for assistance.</p>
+                    </div>
+
+                    <!-- NO RESULTS STATE -->
+                    <div class="no-results" id="no-results-state" style="display: none;">
+                        <div class="no-results-icon">🔍</div>
+                        <h3>No jobs found</h3>
+                        <p>Try adjusting your filters or search terms to find more opportunities.</p>
+                    </div>
+
+                    <!-- JOBS LIST -->
+                    <div class="jobs-list" id="jobs-list" role="list">
+                        <!-- Jobs will be dynamically inserted here -->
+                    </div>
+
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN (SIDEBAR) -->
+            <aside class="service-sidebar">
+
+                <section class="service-status">
+                    <h2>Quick links</h2>
+                    <ul class="related-links">
+                        <li><a href="/jobs">Why work for us?</a></li>
+                        <li><a href="/jobs#benefits">Employee benefits</a></li>
+                        <li><a href="https://careers.gloucestershire.gov.uk/GloucesterCity" target="_blank" rel="noopener">Apply online</a></li>
+                        <li><a href="/jobs#career-areas">Career areas</a></li>
+                    </ul>
+                </section>
+
+                <section class="service-contact">
+                    <h2>Recruitment team</h2>
+
+                    <div class="contact-block">
+                        <h3>Email</h3>
+                        <p>
+                            <a href="mailto:recruitment@gloucester.gov.uk">recruitment@gloucester.gov.uk</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-block">
+                        <h3>Phone</h3>
+                        <p>
+                            <a href="tel:+441452396396">01452 396 396</a><br>
+                            Monday to Friday, 9am to 5pm
+                        </p>
+                    </div>
+                </section>
+
+                <section class="service-related">
+                    <h2>Application tips</h2>
+                    <div style="font-size: 0.9375rem; line-height: 1.6;">
+                        <p style="margin-bottom: 0.75rem;">
+                            <strong style="color: #1e293b;">Read the job description carefully</strong> - Ensure you meet the essential criteria before applying.
+                        </p>
+                        <p style="margin-bottom: 0.75rem;">
+                            <strong style="color: #1e293b;">Tailor your application</strong> - Show how your skills match the role requirements.
+                        </p>
+                        <p style="margin-bottom: 0;">
+                            <strong style="color: #1e293b;">Apply early</strong> - We may close vacancies early if we receive enough suitable applications.
+                        </p>
+                    </div>
+                </section>
+
+            </aside>
+
+        </div>
+
+        <!-- FEEDBACK PANEL -->
+        <section class="feedback-panel" aria-labelledby="feedback-heading">
+            <div class="feedback-inner">
+                <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
+
+                <div class="feedback-buttons" role="group">
+                    <button type="button" class="feedback-btn feedback-yes" data-rating="positive">
+                        👍 Yes
+                    </button>
+                    <button type="button" class="feedback-btn feedback-no" data-rating="negative">
+                        👎 No
+                    </button>
+                </div>
+
+                <form id="feedback-form" class="feedback-form" hidden>
+                    <p id="feedback-prompt">What worked well? (optional)</p>
+                    <label for="feedback-comments" class="sr-only">Your feedback</label>
+                    <textarea id="feedback-comments" rows="3" aria-labelledby="feedback-prompt"></textarea>
+
+                    <label for="feedback-email">Email (optional, if you'd like a response)</label>
+                    <input type="email" id="feedback-email">
+
+                    <button type="submit" class="feedback-submit">Submit</button>
+                </form>
+
+                <p id="feedback-thanks" class="feedback-thanks" hidden>
+                    ✅ Thank you for your feedback.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-section">
+                    <img src="/assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="footer-logo">
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/bins/collection-day.html">Check bin day</a></li>
+                        <li><a href="/council-tax/pay">Pay Council Tax</a></li>
+                        <li><a href="/planning/search">Planning applications</a></li>
+                        <li><a href="/report">Report a problem</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Gloucester</h3>
+                    <ul class="footer-links">
+                        <li><a href="http://visitgloucester.co.uk/">Visit Gloucester</a></li>
+                        <li><a href="/find-councillor">Find your councillor</a></li>
+                        <li><a href="/jobs">Jobs &amp; careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Using our site</h3>
+                    <ul class="footer-links">
+                        <li><a href="/privacy">Privacy &amp; cookies</a></li>
+                        <li><a href="/accessibility">Accessibility</a></li>
+                        <li><a href="/contact">Contact us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Gloucester City Council. All rights reserved.</p>
+                <p>Registered office: Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/jobs/vacancies.js"></script>
+
+</body>
+</html>

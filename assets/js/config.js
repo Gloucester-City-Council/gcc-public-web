@@ -15,6 +15,11 @@ const GCC_CONFIG = {
         COUNCILLORS: '/api/about/councillors',
         SUBMIT_MISSED_COLLECTION: '/api/submitMissedCollection',
         SUBMIT_FEEDBACK: '/api/submitFeedback',
-        SUBSCRIPTIONS_BINS: '/api/subscriptions/bins'
-    }
+        SUBSCRIPTIONS_BINS: '/api/subscriptions/bins',
+        JOBS: '/api/jobs/getJobs'
+    },
+
+    // Jobs API Configuration (separate API base)
+    JOBS_API_BASE_URL: 'https://gccprivateliteapi-acbbbjbthjdkhafa.westeurope-01.azurewebsites.net',
+    JOBS_API_TOKEN: 'mock-token-for-city-council'
 };
