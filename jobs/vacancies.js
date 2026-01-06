@@ -46,7 +46,10 @@
 
             // Construct API URL using config
             const apiUrl = `${GCC_CONFIG.JOBS_API_BASE_URL}${GCC_CONFIG.ENDPOINTS.JOBS}`;
-            const params = new URLSearchParams();
+            const params = new URLSearchParams({
+                council: 'all'
+            });
+
 
             const queryString = params.toString();
             const requestUrl = queryString ? `${apiUrl}?${queryString}` : apiUrl;
