@@ -56,8 +56,7 @@
             const response = await fetch(requestUrl, {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'x-api-token': GCC_CONFIG.JOBS_API_TOKEN
+                    'Content-Type': 'application/json'
                 }
             });
 
