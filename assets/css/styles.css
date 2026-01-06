@@ -27,7 +27,8 @@
     --color-background: #ffffff;
     --color-background-light: #f3f2f1;
     --color-background-lighter: #f8f9fa;
-    
+    --color-muted: #6b7280;
+
     --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --max-width: 1200px;
 }
@@ -541,6 +542,17 @@ body {
     content: "›";
     margin: 0 0.25rem;
     color: var(--color-muted);
+}
+
+.breadcrumb-inner a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+.breadcrumb-inner a:hover,
+.breadcrumb-inner a:focus {
+    text-decoration: underline;
+    color: var(--color-link-hover);
 }
 /* Heading */
 .feedback-title {
