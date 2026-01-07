@@ -1,0 +1,8 @@
+{
+  "name": "site-rag",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "rag:corpus": "node scripts/rag/build-corpus.mjs"
+  }
+}
