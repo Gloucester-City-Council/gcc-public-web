@@ -2,7 +2,7 @@
  * Global Configuration
  * Centralized configuration for API endpoints and shared constants
  */
-const GCC_CONFIG = {
+window.GCC_CONFIG = {
     // API Configuration
     API_BASE_URL: 'https://gccpublicliteapi-c3dsa8fmg7g3eydv.westeurope-01.azurewebsites.net',
     API_TOKEN: 'oije8u23984uoriwfjowei2398470',
