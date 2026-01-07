@@ -16,15 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Optional debug (keep until everything is stable)
-      - name: Debug - show repo root + lockfiles
-        run: |
-          echo "Repo root:"
-          ls -la
-          echo "Lockfiles:"
-          find . -maxdepth 3 -name "package-lock.json" -print || true
-
-      # IMPORTANT: No npm caching here (avoids the 'paths not resolved' error)
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -36,19 +27,29 @@ jobs:
       - name: Generate RAG corpus
         run: npm run rag:corpus
 
-      # Commit generated /rag outputs to a dedicated branch (keeps main clean)
-      - name: Commit corpus to rag-corpus branch
+      - name: Verify output exists
+        run: |
+          echo "Repo root:"
+          ls -la
+          echo "RAG folder:"
+          ls -la rag || true
+          test -f rag/chunks.jsonl || (echo "Missing rag/chunks.jsonl - your build-corpus.mjs did not write to ./rag" && exit 1)
+
+      - name: Stage output for publishing
+        run: |
+          rm -rf /tmp/rag-out
+          mkdir -p /tmp/rag-out
+          cp -R rag /tmp/rag-out/rag
+
+      - name: Publish corpus to rag-corpus branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Create a fresh orphan branch each time
           git checkout --orphan rag-corpus
           git rm -rf . >/dev/null 2>&1 || true
 
-          # Copy just the generated output
-          mkdir -p rag
-          cp -R rag/* rag/
+          cp -R /tmp/rag-out/rag ./rag
 
           git add rag
           git commit -m "Update RAG corpus" || echo "Nothing to commit"
