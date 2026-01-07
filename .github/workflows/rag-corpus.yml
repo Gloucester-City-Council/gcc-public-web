@@ -1,0 +1,53 @@
+name: Build RAG Corpus
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build-rag:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: rag-tools
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: rag-tools/package-lock.json
+
+      - name: Install
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: Generate corpus
+        run: npm run corpus
+
+      - name: Commit to rag-corpus branch
+        working-directory: .
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout --orphan rag-corpus
+          git rm -rf . >/dev/null 2>&1 || true
+
+          mkdir -p rag
+          cp -R rag/* rag/ 2>/dev/null || true
+          cp -R rag-tools/../rag ./rag 2>/dev/null || true
+
+          # If your script writes to repo-root /rag, just add that:
+          git add rag
+          git commit -m "Update RAG corpus" || echo "Nothing to commit"
+          git push -f origin rag-corpus
