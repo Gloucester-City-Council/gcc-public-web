@@ -1,0 +1,114 @@
+[
+  {
+    "url": "https://gloucester.gov.uk/service-landing-template.html",
+    "title": "[SERVICE NAME] | Gloucester City Council",
+    "excerpt": "[Same as meta description]",
+    "source_path": "service-landing-template.html",
+    "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/service-specific-template.html",
+    "title": "[SERVICE NAME] | Gloucester City Council",
+    "excerpt": "[Short description of the service area]",
+    "source_path": "service-specific-template.html",
+    "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/about/councillors.html",
+    "title": "Find your councillors | About | Gloucester City Council",
+    "excerpt": "Find your local councillors in Gloucester. Enter your postcode to see who represents you at the council.",
+    "source_path": "_site/about/councillors.html",
+    "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/bins/assisted-collections.html",
+    "title": "Assisted Collections | Bins and Recycling | Gloucester City Council",
+    "excerpt": "Apply for assisted bin collections if you have mobility difficulties or an impairment and cannot take bins to the pavement.",
+    "source_path": "_site/bins/assisted-collections.html",
+    "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/bins/collection-day.html",
+    "title": "Check your bin collection day | Bins and Recycling | Gloucester City Council",
+    "excerpt": "Check when your bins are collected in Gloucester. Enter your postcode to find your collection days for recycling, food waste and general rubbish.",
+    "source_path": "_site/bins/collection-day.html",
+    "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/bins/extra-or-larger-bin.html",
+    "title": "Apply or Renew an Extra or Larger Black Bin | Bins and Recycling | Gloucester City Council",
+    "excerpt": "Apply for an extra or larger black bin if you have a larger household, young children in nappies, or certain medical conditions.",
+    "source_path": "_site/bins/extra-or-larger-bin.html",
+    "chunkCount": 2
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/bins/garden-waste.html",
+    "title": "Garden waste collection | Bins and Recycling | Gloucester City Council",
+    "excerpt": "Subscribe to fortnightly garden waste collection in Gloucester. £60 per year for brown bin collection from February to November.",
+    "source_path": "_site/bins/garden-waste.html",
+    "chunkCount": 3
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/bins/",
+    "title": "Bins and Recycling | Gloucester City Council",
+    "excerpt": "Household waste and recycling collection services in Gloucester. Check your bin day, find out what goes in each bin, and manage your bins online.",
+    "source_path": "_site/bins/index.html",
+    "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/bins/missed-collection.html",
+    "title": "Report a missed collection | Bins and Recycling | Gloucester City Council",
+    "excerpt": "Report a missed bin collection in Gloucester. We'll return within 2 working days to collect your bin.",
+    "source_path": "_site/bins/missed-collection.html",
+    "chunkCount": 2
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/bins/order-bins.html",
+    "title": "All Your Bins & Containers | Bins and Recycling | Gloucester City Council",
+    "excerpt": "Order bins and recycling containers for your Gloucester home. Get your first bins, order replacements, or find out about bins for flats and new builds.",
+    "source_path": "_site/bins/order-bins.html",
+    "chunkCount": 3
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/bins/recycling-centres.html",
+    "title": "Household Recycling Centres | Bins and Recycling | Gloucester City Council",
+    "excerpt": "Find your nearest household recycling centre (HRC) in Gloucestershire. Opening hours, booking information, and what you can take to recycle.",
+    "source_path": "_site/bins/recycling-centres.html",
+    "chunkCount": 2
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/bins/what-goes-where.html",
+    "title": "What goes in which bin | Bins and Recycling | Gloucester City Council",
+    "excerpt": "Find out what goes in which bin in Gloucester. Simple guide to recycling and waste separation with pictures of what you can and cannot recycle.",
+    "source_path": "_site/bins/what-goes-where.html",
+    "chunkCount": 3
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/jobs/",
+    "title": "Jobs and Careers | Gloucester City Council",
+    "excerpt": "Join Gloucester City Council - explore careers, current vacancies, and discover the benefits of working for your local authority. Make a difference in your community.",
+    "source_path": "_site/jobs/index.html",
+    "chunkCount": 2
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/your-council/",
+    "title": "Your Council | Gloucester City Council",
+    "excerpt": "Find out how Gloucester City Council works, meet your councillors, view meetings and decisions, and access council policies and data.",
+    "source_path": "_site/your-council/index.html",
+    "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/your-council/how-were-organised/leadership-and-structure.html",
+    "title": "Leadership and Structure | Your Council | Gloucester City Council",
+    "excerpt": "Learn about Gloucester City Council's leadership structure, including the Leader, Cabinet, and Chief Executive.",
+    "source_path": "_site/your-council/how-were-organised/leadership-and-structure.html",
+    "chunkCount": 3
+  },
+  {
+    "url": "https://gloucester.gov.uk/_site/your-council/meetings-and-decisions/calendar.html",
+    "title": "Meeting Calendar | Your Council | Gloucester City Council",
+    "excerpt": "View upcoming council meetings, committee dates, and full council meetings for Gloucester City Council.",
+    "source_path": "_site/your-council/meetings-and-decisions/calendar.html",
+    "chunkCount": 1
+  }
+]
