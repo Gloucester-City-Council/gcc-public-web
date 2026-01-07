@@ -1,15 +1,12 @@
 // build-corpus.mjs
 // Build-time corpus generator for RAG.
-// Reads HTML files from a directory (often your repo root), extracts main content,
+// Reads HTML files from a directory (default: _site), extracts main content,
 // chunks it, counts tokens, and writes JSONL chunks + a pages index.
-//
-// Designed to run from a tooling folder (e.g. rag-tools/) with distDir: ".."
-// in rag.config.json.
 //
 // Required deps:
 //   fast-glob, jsdom, @mozilla/readability, turndown, @dqbd/tiktoken
 //
-// Outputs (default): ../rag/chunks.jsonl, ../rag/pages.json, ../rag/.meta.json
+// Outputs (default): rag/chunks.jsonl, rag/pages.json, rag/.meta.json
 
 import fs from "node:fs";
 import fsp from "node:fs/promises";
@@ -21,7 +18,9 @@ import TurndownService from "turndown";
 import { get_encoding } from "@dqbd/tiktoken";
 
 const CONFIG_PATH = process.env.RAG_CONFIG || "rag.config.json";
-const OUT_DIR = process.env.RAG_OUT_DIR || "../rag";
+
+// Write to repo root /rag by default
+const OUT_DIR = process.env.RAG_OUT_DIR || "rag";
 
 function normaliseWhitespace(s) {
   return (s || "").replace(/\s+/g, " ").trim();
@@ -74,7 +73,6 @@ function extractMainContent(html, url) {
     normaliseWhitespace(doc.querySelector("h1")?.textContent) ||
     "";
 
-  // Readability tries to find the “article-like” main content
   const reader = new Readability(doc);
   const article = reader.parse();
 
@@ -86,12 +84,10 @@ function extractMainContent(html, url) {
     };
   }
 
-  // Fallback: body text (less clean, but better than nothing)
   const body = doc.querySelector("body");
   const fallbackText = normaliseWhitespace(body?.textContent || "");
   if (!fallbackText) return null;
 
-  // Wrap fallback text so Turndown can handle it (crudely)
   const escaped = fallbackText
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -117,7 +113,7 @@ function chunkMarkdown({
   overlapParagraphs = 0
 }) {
   const parts = markdown
-    .split(/\n(?=#+\s)/g) // split on headings
+    .split(/\n(?=#+\s)/g)
     .map(p => p.trim())
     .filter(Boolean);
 
@@ -139,11 +135,9 @@ function chunkMarkdown({
       continue;
     }
 
-    // buf is as big as it can be; flush it if worthwhile
     flush(buf);
     buf = "";
 
-    // if this part alone is too big, split by paragraphs
     if (tokenCount(encoding, part) > maxTokens) {
       const paras = part.split(/\n{2,}/g).map(p => p.trim()).filter(Boolean);
 
@@ -156,15 +150,12 @@ function chunkMarkdown({
         if (tokenCount(encoding, candidate) <= maxTokens) {
           pbuf = candidate;
           prevParas.push(para);
-          // limit stored overlap paras to a small bound
           if (prevParas.length > Math.max(3, overlapParagraphs)) prevParas.shift();
           continue;
         }
 
-        // flush pbuf
         flush(pbuf);
 
-        // start a new buffer with optional overlap
         if (overlapParagraphs > 0 && prevParas.length) {
           const overlap = prevParas.slice(-overlapParagraphs).join("\n\n");
           pbuf = `${overlap}\n\n${para}`.trim();
@@ -176,7 +167,6 @@ function chunkMarkdown({
 
       flush(pbuf);
     } else {
-      // start new buf with this smaller part
       buf = part;
     }
   }
@@ -188,13 +178,15 @@ function chunkMarkdown({
 async function main() {
   const rawConfig = JSON.parse(await fsp.readFile(CONFIG_PATH, "utf8"));
 
-  const distDir = rawConfig.distDir ?? "..";
+  // Read from _site by default
+  const distDir = rawConfig.distDir ?? "_site";
+
   const baseUrl = rawConfig.baseUrl;
   if (!baseUrl) throw new Error("rag.config.json must include baseUrl");
 
   const include = rawConfig.include ?? ["**/*.html"];
   const exclude = rawConfig.exclude ?? [];
-  const urlStyle = rawConfig.urlStyle ?? "html"; // "html" | "pretty"
+  const urlStyle = rawConfig.urlStyle ?? "html";
 
   const maxTokens = rawConfig.chunk?.maxTokens ?? 450;
   const minTokens = rawConfig.chunk?.minTokens ?? 120;
@@ -221,7 +213,6 @@ async function main() {
   const encoding = get_encoding("cl100k_base");
 
   const pages = [];
-
   let pagesOk = 0;
   let pagesSkipped = 0;
   let totalChunks = 0;
@@ -229,7 +220,6 @@ async function main() {
   for (const fileAbs of files) {
     const relPath = path.relative(distDirAbs, fileAbs).replace(/\\/g, "/");
 
-    // Read file
     let html;
     try {
       html = await fsp.readFile(fileAbs, "utf8");
@@ -238,17 +228,14 @@ async function main() {
       continue;
     }
 
-    // Map to public URL
     const url = filePathToUrl(distDirAbs, fileAbs, baseUrl, urlStyle);
 
-    // Extract main content
     const extracted = extractMainContent(html, url);
     if (!extracted) {
       pagesSkipped++;
       continue;
     }
 
-    // Convert main HTML to markdown-like text
     const markdown = turndown.turndown(extracted.contentHtml).trim();
     if (markdown.length < 80) {
       pagesSkipped++;
@@ -257,7 +244,6 @@ async function main() {
 
     const title = extracted.title || url;
 
-    // Chunk it
     const chunks = chunkMarkdown({
       encoding,
       markdown,
@@ -279,7 +265,6 @@ async function main() {
       chunkCount: chunks.length
     });
 
-    // Write chunks as JSONL
     chunks.forEach((text, i) => {
       const record = {
         id: `${url}#chunk=${i}`,
