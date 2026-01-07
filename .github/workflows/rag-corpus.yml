@@ -39,22 +39,34 @@ jobs:
           RAG_OUT_DIR: ./rag
           RAG_CONFIG: ./rag.config.json
 
-      - name: Verify output exists
+      - name: Verify RAG output exists
         run: |
           ls -la rag || true
           test -f rag/chunks.jsonl || (echo "Missing rag/chunks.jsonl" && exit 1)
 
-      - name: Commit & push rag/ to main (if changed)
+      - name: Build MiniSearch index into _site/search
+        run: npm run search:build
+        env:
+          CHUNKS_PATH: rag/chunks.jsonl
+          SEARCH_OUT_DIR: _site/search
+
+      - name: Verify search output exists
+        run: |
+          ls -la _site/search || true
+          test -f _site/search/index.json || (echo "Missing _site/search/index.json" && exit 1)
+          test -f _site/search/docs.json || (echo "Missing _site/search/docs.json" && exit 1)
+
+      - name: Commit & push rag/ and _site/search/ to main (if changed)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add rag
+          git add rag _site/search
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
 
-          git commit -m "chore: update RAG corpus"
+          git commit -m "chore: update RAG corpus + search index"
           git push origin HEAD:main
