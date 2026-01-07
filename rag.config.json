@@ -1,0 +1,18 @@
+{
+  "distDir": ".",
+  "baseUrl": "https://gloucester.gov.uk",
+  "include": ["**/*.html"],
+  "exclude": [
+    "node_modules/**",
+    ".git/**",
+    ".github/**",
+    "rag/**",
+    "**/404.html",
+    "**/search/**",
+    "**/tags/**"
+  ],
+  "chunk": {
+    "maxTokens": 450,
+    "minTokens": 120
+  }
+}
