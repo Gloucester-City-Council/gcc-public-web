@@ -1,0 +1,48 @@
+name: Generate package-lock.json (main)
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  lockfile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate/refresh lockfile (root)
+        run: |
+          test -f package.json || (echo "No package.json in repo root" && exit 1)
+
+          # Creates/updates package-lock.json WITHOUT creating node_modules
+          npm install --package-lock-only --ignore-scripts
+
+          echo "Lockfile generated/updated."
+          ls -la package-lock.json
+
+      - name: Commit & push to main (only if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add package-lock.json package.json
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: generate package-lock.json"
+          git push origin HEAD:main
