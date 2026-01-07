@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "rag:corpus": "node scripts/rag/build-corpus.mjs"
+    "rag:corpus": "node scripts/rag/build-corpus.mjs",
+    "search:build": "node scripts/search/search-index.js"
   },
   "devDependencies": {
     "fast-glob": "^3.3.2",
