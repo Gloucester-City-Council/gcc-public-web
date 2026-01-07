@@ -2,7 +2,7 @@ name: Build RAG Corpus
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch: {}
 
 permissions:
@@ -12,42 +12,44 @@ jobs:
   build-rag:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: rag-tools
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Optional debug (keep until everything is stable)
+      - name: Debug - show repo root + lockfiles
+        run: |
+          echo "Repo root:"
+          ls -la
+          echo "Lockfiles:"
+          find . -maxdepth 3 -name "package-lock.json" -print || true
+
+      # IMPORTANT: No npm caching here (avoids the 'paths not resolved' error)
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
-          cache-dependency-path: rag-tools/package-lock.json
 
-      - name: Install
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+      - name: Install dependencies
+        run: npm install
 
-      - name: Generate corpus
-        run: npm run corpus
+      - name: Generate RAG corpus
+        run: npm run rag:corpus
 
-      - name: Commit to rag-corpus branch
-        working-directory: .
+      # Commit generated /rag outputs to a dedicated branch (keeps main clean)
+      - name: Commit corpus to rag-corpus branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          # Create a fresh orphan branch each time
           git checkout --orphan rag-corpus
           git rm -rf . >/dev/null 2>&1 || true
 
+          # Copy just the generated output
           mkdir -p rag
-          cp -R rag/* rag/ 2>/dev/null || true
-          cp -R rag-tools/../rag ./rag 2>/dev/null || true
+          cp -R rag/* rag/
 
-          # If your script writes to repo-root /rag, just add that:
           git add rag
           git commit -m "Update RAG corpus" || echo "Nothing to commit"
           git push -f origin rag-corpus
