@@ -8,7 +8,7 @@
     const config = window.GCC_CONFIG || {};
     const apiBaseUrl = config.API_BASE_URL || '';
     const apiToken = config.API_TOKEN || '';
-    const searchEndpoint = '/api/search/search';
+    const searchEndpoint = 'https://gccpublicliteapi-c3dsa8fmg7g3eydv.westeurope-01.azurewebsites.net/api/search/search';
     const defaultLimit = 10;
 
     const form = document.querySelector('.search-form');
@@ -93,7 +93,7 @@
             params.set('reload', form.dataset.reload);
         }
 
-        const url = `${apiBaseUrl}${searchEndpoint}?${params.toString()}`;
+        const url = `${searchEndpoint}?${params.toString()}`;
 
         try {
             const response = await fetch(url, {
