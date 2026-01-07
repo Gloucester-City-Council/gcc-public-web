@@ -36,5 +36,6 @@ jobs:
           app_location: "/"
           api_location: ""
           skip_app_build: true 
-          output_location: "."
+          output_location: ""
           github_id_token: ${{ steps.idtoken.outputs.result }}
+
