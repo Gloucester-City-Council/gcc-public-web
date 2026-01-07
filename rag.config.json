@@ -1,5 +1,5 @@
 {
-  "distDir": ".",
+  "distDir": "_site",
   "baseUrl": "https://gloucester.gov.uk",
   "include": ["**/*.html"],
   "exclude": [
