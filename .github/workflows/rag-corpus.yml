@@ -26,14 +26,15 @@ jobs:
 
       - name: Generate RAG corpus
         run: npm run rag:corpus
+        env:
+          RAG_OUT_DIR: ./rag
+          RAG_CONFIG: ./rag.config.json
 
       - name: Verify output exists
         run: |
-          echo "Repo root:"
-          ls -la
-          echo "RAG folder:"
+          echo "RAG folder contents:"
           ls -la rag || true
-          test -f rag/chunks.jsonl || (echo "Missing rag/chunks.jsonl - your build-corpus.mjs did not write to ./rag" && exit 1)
+          test -f rag/chunks.jsonl || (echo "Missing rag/chunks.jsonl - check build-corpus.mjs output path" && exit 1)
 
       - name: Stage output for publishing
         run: |
