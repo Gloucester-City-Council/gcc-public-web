@@ -16,6 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # IMPORTANT: no npm caching here (avoids the "paths not resolved" cache error)
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -34,13 +35,14 @@ jobs:
         run: |
           echo "RAG folder contents:"
           ls -la rag || true
-          test -f rag/chunks.jsonl || (echo "Missing rag/chunks.jsonl - check build-corpus.mjs output path" && exit 1)
+          test -f rag/chunks.jsonl || (echo "Missing rag/chunks.jsonl" && exit 1)
 
+      # Stage *contents* of ./rag so we don't end up with rag/rag nesting
       - name: Stage output for publishing
         run: |
           rm -rf /tmp/rag-out
           mkdir -p /tmp/rag-out
-          cp -R rag /tmp/rag-out/rag
+          cp -R rag/. /tmp/rag-out/
 
       - name: Publish corpus to rag-corpus branch
         run: |
@@ -50,7 +52,8 @@ jobs:
           git checkout --orphan rag-corpus
           git rm -rf . >/dev/null 2>&1 || true
 
-          cp -R /tmp/rag-out/rag ./rag
+          mkdir -p rag
+          cp -R /tmp/rag-out/. ./rag/
 
           git add rag
           git commit -m "Update RAG corpus" || echo "Nothing to commit"
