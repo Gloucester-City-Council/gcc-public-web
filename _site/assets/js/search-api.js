@@ -8,7 +8,7 @@
     const config = window.GCC_CONFIG || {};
     const apiBaseUrl = config.API_BASE_URL || '';
     const apiToken = config.API_TOKEN || '';
-    const searchEndpoint = 'https://gccpublicliteapi-c3dsa8fmg7g3eydv.westeurope-01.azurewebsites.net/api/search/search';
+    const searchEndpoint = `${apiBaseUrl}/api/search/search`;
     const defaultLimit = 10;
 
     const form = document.querySelector('.search-form');
@@ -25,6 +25,17 @@
     function clearResults() {
         resultsContainer.innerHTML = '';
         resultsContainer.hidden = true;
+        input.setAttribute('aria-expanded', 'false');
+    }
+
+    function showLoading() {
+        resultsContainer.innerHTML = '';
+        const wrapper = document.createElement('div');
+        wrapper.className = 'search-results__loading';
+        wrapper.textContent = 'Searching...';
+        resultsContainer.appendChild(wrapper);
+        resultsContainer.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
     }
 
     function showMessage(message, className) {
@@ -34,6 +45,7 @@
         wrapper.textContent = message;
         resultsContainer.appendChild(wrapper);
         resultsContainer.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
     }
 
     function renderResults(results) {
@@ -72,6 +84,7 @@
         resultsContainer.innerHTML = '';
         resultsContainer.appendChild(list);
         resultsContainer.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
     }
 
     async function fetchResults(query) {
@@ -83,6 +96,8 @@
         }
 
         const currentRequestId = ++lastRequestId;
+
+        showLoading();
 
         const params = new URLSearchParams({
             q: trimmedQuery,
@@ -137,6 +152,53 @@
     });
 
     input.addEventListener('input', handleInput);
+
+    // Keyboard navigation: Arrow down from input goes to first result
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown' && !resultsContainer.hidden) {
+            e.preventDefault();
+            const firstLink = resultsContainer.querySelector('a');
+            if (firstLink) firstLink.focus();
+        }
+    });
+
+    // Navigate within results
+    resultsContainer.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+            const links = Array.from(resultsContainer.querySelectorAll('a'));
+            const currentIndex = links.indexOf(document.activeElement);
+
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (currentIndex === 0) {
+                    input.focus();
+                } else if (currentIndex > 0) {
+                    links[currentIndex - 1].focus();
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (currentIndex < links.length - 1) {
+                    links[currentIndex + 1].focus();
+                }
+            }
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !resultsContainer.hidden) {
+            clearResults();
+            input.focus();
+        }
+    });
+
+    // Close on click outside
+    document.addEventListener('click', function(e) {
+        const searchWrapper = form.closest('.search-wrapper');
+        if (searchWrapper && !searchWrapper.contains(e.target)) {
+            clearResults();
+        }
+    });
 
     clearResults();
 })();
