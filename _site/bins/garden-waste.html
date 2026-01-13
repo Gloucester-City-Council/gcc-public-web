@@ -916,7 +916,62 @@
             const urlParams = new URLSearchParams(window.location.search);
             const paymentComplete = urlParams.get('payment');
 
+            // Dump all URL parameters from GOV.UK Pay redirect
             if (paymentComplete === 'complete') {
+                console.log('='.repeat(80));
+                console.log('🔍 GOV.UK PAY REDIRECT ANALYSIS');
+                console.log('='.repeat(80));
+                console.log('Full URL:', window.location.href);
+                console.log('Query String:', window.location.search);
+                console.log('\n📋 All URL Parameters:');
+
+                // Log all parameters
+                const allParams = {};
+                for (const [key, value] of urlParams.entries()) {
+                    allParams[key] = value;
+                    console.log(`  ${key}: ${value}`);
+                }
+
+                console.log('\n📦 Parameters as Object:', allParams);
+                console.log('\n🔢 Total parameters:', urlParams.size);
+
+                // Check for common GOV.UK Pay parameters
+                const govPayParams = [
+                    'payment',
+                    'paymentId',
+                    'payment_id',
+                    'status',
+                    'state',
+                    'reference',
+                    'success',
+                    'completed',
+                    'card_brand',
+                    'cardBrand',
+                    'amount',
+                    'description'
+                ];
+
+                console.log('\n🔍 Checking for GOV.UK Pay standard parameters:');
+                govPayParams.forEach(param => {
+                    const value = urlParams.get(param);
+                    if (value !== null) {
+                        console.log(`  ✅ ${param}: ${value}`);
+                    }
+                });
+
+                // Check hash/fragment
+                if (window.location.hash) {
+                    console.log('\n#️⃣ URL Hash:', window.location.hash);
+                }
+
+                // Check referrer
+                if (document.referrer) {
+                    console.log('\n🔗 Referrer:', document.referrer);
+                }
+
+                console.log('='.repeat(80));
+
+                // Proceed with status check
                 checkPaymentStatus();
             }
 
