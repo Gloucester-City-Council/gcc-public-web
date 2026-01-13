@@ -1005,15 +1005,28 @@
             }
 
             try {
-                const response = await fetch(
-                    `${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.PAYMENTS_STATUS}/${paymentId}/status`
-                );
+                const statusUrl = `${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.PAYMENTS_STATUS}/${paymentId}/status`;
+                console.log('Checking payment status at:', statusUrl);
+                console.log('Payment ID:', paymentId);
+
+                const response = await fetch(statusUrl);
+
+                console.log('Status check response:', response.status, response.statusText);
 
                 if (!response.ok) {
-                    throw new Error('Failed to check payment status');
+                    // Log the error response body
+                    const errorText = await response.text();
+                    console.error('Status check failed:', response.status, errorText);
+
+                    if (response.status === 404) {
+                        throw new Error('Payment status endpoint not found (404). The API endpoint may not be deployed yet.');
+                    }
+
+                    throw new Error(`Failed to check payment status: ${response.status} ${response.statusText}`);
                 }
 
                 const status = await response.json();
+                console.log('Payment status:', status);
 
                 // Show the appropriate status section
                 const statusSection = document.getElementById('payment-status-section');
@@ -1040,7 +1053,26 @@
 
             } catch (error) {
                 console.error('Status check error:', error);
-                alert('Failed to check payment status. Please contact us if you completed the payment.');
+
+                // Show user-friendly error message
+                const statusSection = document.getElementById('payment-status-section');
+                statusSection.style.display = 'block';
+
+                const errorDiv = document.createElement('div');
+                errorDiv.style.cssText = 'background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); padding: 2.5rem; border-radius: 16px; border-left: 6px solid #ef4444; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);';
+                errorDiv.innerHTML = `
+                    <h2 style="margin: 0 0 1rem 0; color: #991b1b; font-size: 2rem;">Unable to verify payment</h2>
+                    <p style="margin: 0.5rem 0; color: #991b1b; font-size: 1.1rem;">We cannot verify your payment status at this time.</p>
+                    <p style="margin-top: 1.5rem; color: #991b1b;">Your payment ID is: <strong>${paymentId}</strong></p>
+                    <p style="margin-top: 1rem; color: #991b1b;">Please contact us with this payment ID to complete your subscription.</p>
+                    <p style="margin-top: 1rem; color: #991b1b; font-size: 0.9rem;">Error: ${error.message}</p>
+                    <button onclick="window.location.href='/bins/garden-waste.html'" style="margin-top: 1rem; background: #dc2626; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Return to page</button>
+                `;
+
+                // Replace status section content
+                statusSection.innerHTML = '';
+                statusSection.appendChild(errorDiv);
+                statusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
