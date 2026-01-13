@@ -906,6 +906,13 @@
 
         // Check for payment completion on page load
         window.addEventListener('DOMContentLoaded', function() {
+            // Debug: Check config loaded
+            console.log('GCC_CONFIG loaded:', !!window.GCC_CONFIG);
+            if (window.GCC_CONFIG) {
+                console.log('API Base URL:', window.GCC_CONFIG.API_BASE_URL);
+                console.log('Payment endpoints:', window.GCC_CONFIG.ENDPOINTS.PAYMENTS_CREATE, window.GCC_CONFIG.ENDPOINTS.PAYMENTS_STATUS);
+            }
+
             const urlParams = new URLSearchParams(window.location.search);
             const paymentComplete = urlParams.get('payment');
 
@@ -922,22 +929,35 @@
             const payBtn2 = document.getElementById('pay-now-btn-2');
 
             if (payBtn1) {
-                payBtn1.addEventListener('click', initiatePayment);
+                payBtn1.addEventListener('click', function(e) {
+                    initiatePayment(e);
+                });
             }
             if (payBtn2) {
-                payBtn2.addEventListener('click', initiatePayment);
+                payBtn2.addEventListener('click', function(e) {
+                    initiatePayment(e);
+                });
             }
         }
 
-        async function initiatePayment() {
+        async function initiatePayment(event) {
+            const button = event.target;
+
             try {
+                // Check config is loaded
+                if (!window.GCC_CONFIG) {
+                    throw new Error('Configuration not loaded. Please refresh the page.');
+                }
+
                 // Disable button and show loading state
-                const button = event.target;
                 button.disabled = true;
                 button.textContent = 'Processing...';
 
+                const apiUrl = `${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.PAYMENTS_CREATE}`;
+                console.log('Creating payment with URL:', apiUrl);
+
                 // Create payment session
-                const response = await fetch(`${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.PAYMENTS_CREATE}`, {
+                const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -971,8 +991,8 @@
                 alert('Failed to start payment: ' + error.message);
 
                 // Re-enable button
-                event.target.disabled = false;
-                event.target.textContent = 'Pay £60 now →';
+                button.disabled = false;
+                button.textContent = 'Pay £60 now →';
             }
         }
 
