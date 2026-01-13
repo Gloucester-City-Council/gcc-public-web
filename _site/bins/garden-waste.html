@@ -996,6 +996,52 @@
             }
         }
 
+        // Diagnostic function to try different endpoint patterns
+        async function tryEndpointVariations(paymentId) {
+            const baseUrl = GCC_CONFIG.API_BASE_URL;
+
+            const variations = [
+                // Current pattern
+                { method: 'GET', url: `${baseUrl}/api/payments/${paymentId}/status`, desc: 'GET /api/payments/{id}/status' },
+                // POST instead of GET
+                { method: 'POST', url: `${baseUrl}/api/payments/${paymentId}/status`, desc: 'POST /api/payments/{id}/status' },
+                // Reversed path
+                { method: 'GET', url: `${baseUrl}/api/payments/status/${paymentId}`, desc: 'GET /api/payments/status/{id}' },
+                { method: 'POST', url: `${baseUrl}/api/payments/status/${paymentId}`, desc: 'POST /api/payments/status/{id}' },
+                // No /status suffix
+                { method: 'GET', url: `${baseUrl}/api/payments/${paymentId}`, desc: 'GET /api/payments/{id}' },
+                { method: 'POST', url: `${baseUrl}/api/payments/${paymentId}`, desc: 'POST /api/payments/{id}' },
+                // Query param
+                { method: 'GET', url: `${baseUrl}/api/payments/status?paymentId=${paymentId}`, desc: 'GET /api/payments/status?paymentId={id}' },
+                { method: 'POST', url: `${baseUrl}/api/payments/status?paymentId=${paymentId}`, desc: 'POST /api/payments/status?paymentId={id}' },
+            ];
+
+            console.log('🔍 Testing endpoint variations for payment ID:', paymentId);
+
+            for (const variation of variations) {
+                try {
+                    console.log(`Testing: ${variation.desc}`);
+                    const response = await fetch(variation.url, {
+                        method: variation.method,
+                        headers: variation.method === 'POST' ? { 'Content-Type': 'application/json' } : {}
+                    });
+
+                    console.log(`  → Status: ${response.status} ${response.statusText}`);
+
+                    if (response.ok) {
+                        console.log(`  ✅ SUCCESS! Working endpoint: ${variation.desc}`);
+                        const data = await response.json();
+                        console.log('  Response data:', data);
+                        return { success: true, data, method: variation.method, url: variation.url };
+                    }
+                } catch (error) {
+                    console.log(`  ✗ Error:`, error.message);
+                }
+            }
+
+            return { success: false };
+        }
+
         async function checkPaymentStatus() {
             const paymentId = sessionStorage.getItem('currentPaymentId');
 
@@ -1005,23 +1051,52 @@
             }
 
             try {
+                // First, try the expected endpoint
                 const statusUrl = `${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.PAYMENTS_STATUS}/${paymentId}/status`;
                 console.log('Checking payment status at:', statusUrl);
                 console.log('Payment ID:', paymentId);
 
-                const response = await fetch(statusUrl);
+                let response = await fetch(statusUrl);
 
                 console.log('Status check response:', response.status, response.statusText);
+
+                // If 404, try diagnostic variations
+                if (response.status === 404) {
+                    console.warn('⚠️ Got 404, trying alternative endpoint patterns...');
+                    const diagnostic = await tryEndpointVariations(paymentId);
+
+                    if (diagnostic.success) {
+                        console.log('✅ Found working endpoint!');
+                        // Use the successful response
+                        const status = diagnostic.data;
+                        const statusSection = document.getElementById('payment-status-section');
+                        statusSection.style.display = 'block';
+
+                        if (status.status === 'success') {
+                            showPaymentSuccess(status);
+                            sessionStorage.removeItem('currentPaymentId');
+                            statusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else if (status.status === 'failed') {
+                            showPaymentFailed(status);
+                            sessionStorage.removeItem('currentPaymentId');
+                            statusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else if (status.status === 'cancelled') {
+                            showPaymentCancelled(status);
+                            sessionStorage.removeItem('currentPaymentId');
+                            statusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else {
+                            showPaymentPending(status);
+                        }
+                        return;
+                    }
+
+                    throw new Error('Payment status endpoint not found (404). Tried multiple endpoint patterns - none worked.');
+                }
 
                 if (!response.ok) {
                     // Log the error response body
                     const errorText = await response.text();
                     console.error('Status check failed:', response.status, errorText);
-
-                    if (response.status === 404) {
-                        throw new Error('Payment status endpoint not found (404). The API endpoint may not be deployed yet.');
-                    }
-
                     throw new Error(`Failed to check payment status: ${response.status} ${response.statusText}`);
                 }
 
