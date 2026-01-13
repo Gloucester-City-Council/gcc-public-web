@@ -16,7 +16,9 @@ window.GCC_CONFIG = {
         SUBMIT_MISSED_COLLECTION: '/api/submitMissedCollection',
         SUBMIT_FEEDBACK: '/api/submitFeedback',
         SUBSCRIPTIONS_BINS: '/api/subscriptions/bins',
-        JOBS: '/api/jobs/getJobs'
+        JOBS: '/api/jobs/getJobs',
+        PAYMENTS_CREATE: '/api/payments/create',
+        PAYMENTS_STATUS: '/api/payments'
     },
 
     // Jobs API Configuration (uses same public API base)

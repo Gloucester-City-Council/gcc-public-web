@@ -539,8 +539,47 @@
 
             <!-- LEFT COLUMN -->
             <div class="service-main">
-                
+
                 <p class="intro-text">Subscribe to fortnightly garden waste collection in a brown bin. We collect from February to November every year.</p>
+
+                <!-- PAYMENT STATUS SECTION -->
+                <div id="payment-status-section" style="display: none; margin: 2rem 0;">
+                    <!-- Success -->
+                    <div id="payment-success" style="display: none; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 2.5rem; border-radius: 16px; border-left: 6px solid #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);">
+                        <h2 style="margin: 0 0 1rem 0; color: #065f46; font-size: 2rem;">✓ Payment successful!</h2>
+                        <p style="margin: 0.5rem 0; color: #065f46; font-size: 1.1rem;">Thank you for subscribing to garden waste collection.</p>
+                        <div style="background: rgba(255, 255, 255, 0.5); padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem;">
+                            <p style="margin: 0.5rem 0; color: #065f46;"><strong>Payment reference:</strong> <span id="payment-ref"></span></p>
+                            <p style="margin: 0.5rem 0; color: #065f46;"><strong>Amount paid:</strong> <span id="payment-amount"></span></p>
+                            <p style="margin: 0.5rem 0; color: #065f46;"><strong>Card used:</strong> <span id="payment-card"></span></p>
+                        </div>
+                        <p style="margin-top: 1.5rem; color: #065f46;">We'll send you confirmation within 2 working days, and your brown bin will be delivered within 10 working days.</p>
+                    </div>
+
+                    <!-- Failed -->
+                    <div id="payment-failed" style="display: none; background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); padding: 2.5rem; border-radius: 16px; border-left: 6px solid #ef4444; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);">
+                        <h2 style="margin: 0 0 1rem 0; color: #991b1b; font-size: 2rem;">✕ Payment failed</h2>
+                        <p style="margin: 0.5rem 0; color: #991b1b; font-size: 1.1rem;">Your payment could not be processed.</p>
+                        <p style="margin-top: 1.5rem; color: #991b1b;">Please try again or contact us if the problem persists.</p>
+                        <button onclick="window.location.reload()" style="margin-top: 1rem; background: #dc2626; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Try again</button>
+                    </div>
+
+                    <!-- Cancelled -->
+                    <div id="payment-cancelled" style="display: none; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 2.5rem; border-radius: 16px; border-left: 6px solid #f59e0b; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);">
+                        <h2 style="margin: 0 0 1rem 0; color: #92400e; font-size: 2rem;">Payment cancelled</h2>
+                        <p style="margin: 0.5rem 0; color: #92400e; font-size: 1.1rem;">You cancelled the payment.</p>
+                        <p style="margin-top: 1.5rem; color: #92400e;">You can try again when you're ready.</p>
+                        <button onclick="window.location.reload()" style="margin-top: 1rem; background: #d97706; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Start new payment</button>
+                    </div>
+
+                    <!-- Pending -->
+                    <div id="payment-pending" style="display: none; background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); padding: 2.5rem; border-radius: 16px; border-left: 6px solid #0284c7; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);">
+                        <h2 style="margin: 0 0 1rem 0; color: #0c4a6e; font-size: 2rem;">⏳ Payment processing</h2>
+                        <p style="margin: 0.5rem 0; color: #0c4a6e; font-size: 1.1rem;">Your payment is still being processed.</p>
+                        <p style="margin-top: 1.5rem; color: #0c4a6e;">Please wait a moment and refresh the page.</p>
+                        <button onclick="window.location.reload()" style="margin-top: 1rem; background: #0284c7; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Refresh page</button>
+                    </div>
+                </div>
 
                 <!-- HERO PRICE SECTION -->
                 <div class="hero-price">
@@ -554,7 +593,7 @@
                             <p>📅 February to November (10 months)</p>
                             <p>🗓️ That's about £6 per month during the collection season</p>
                         </div>
-                        <a href="https://gloucester-self.achieveservice.com/garden-waste" class="cta-button">Subscribe now →</a>
+                        <button id="pay-now-btn" class="cta-button" style="border: none; cursor: pointer;">Pay £60 now →</button>
                     </div>
                 </div>
 
@@ -614,7 +653,7 @@
                     </ol>
 
                     <div style="text-align: center; margin-top: 2rem;">
-                        <a href="https://gloucester-self.achieveservice.com/garden-waste" class="cta-button">Subscribe now →</a>
+                        <button id="pay-now-btn-2" class="cta-button" style="border: none; cursor: pointer;">Pay £60 now →</button>
                     </div>
                 </div>
 
@@ -859,6 +898,163 @@
     <script src="/assets/js/config.js"></script>
     <script src="/assets/js/main.js"></script>
     <script type="module" src="/assets/js/search-api.js"></script>
+
+    <!-- Payment Integration -->
+    <script>
+        // Payment amount in pence (£60.00)
+        const GARDEN_WASTE_PRICE = 6000;
+
+        // Check for payment completion on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paymentComplete = urlParams.get('payment');
+
+            if (paymentComplete === 'complete') {
+                checkPaymentStatus();
+            }
+
+            // Setup payment buttons
+            setupPaymentButtons();
+        });
+
+        function setupPaymentButtons() {
+            const payBtn1 = document.getElementById('pay-now-btn');
+            const payBtn2 = document.getElementById('pay-now-btn-2');
+
+            if (payBtn1) {
+                payBtn1.addEventListener('click', initiatePayment);
+            }
+            if (payBtn2) {
+                payBtn2.addEventListener('click', initiatePayment);
+            }
+        }
+
+        async function initiatePayment() {
+            try {
+                // Disable button and show loading state
+                const button = event.target;
+                button.disabled = true;
+                button.textContent = 'Processing...';
+
+                // Create payment session
+                const response = await fetch(`${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.PAYMENTS_CREATE}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        amount: GARDEN_WASTE_PRICE,
+                        description: 'Garden waste collection subscription',
+                        returnUrl: `${window.location.origin}${window.location.pathname}?payment=complete`,
+                        metadata: {
+                            serviceType: 'garden_waste',
+                            subscriptionYear: new Date().getFullYear()
+                        }
+                    })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error || 'Payment creation failed');
+                }
+
+                const payment = await response.json();
+
+                // Store payment ID in session storage
+                sessionStorage.setItem('currentPaymentId', payment.paymentId);
+
+                // Redirect to GOV.UK Pay
+                window.location.href = payment.nextUrl;
+
+            } catch (error) {
+                console.error('Payment error:', error);
+                alert('Failed to start payment: ' + error.message);
+
+                // Re-enable button
+                event.target.disabled = false;
+                event.target.textContent = 'Pay £60 now →';
+            }
+        }
+
+        async function checkPaymentStatus() {
+            const paymentId = sessionStorage.getItem('currentPaymentId');
+
+            if (!paymentId) {
+                console.error('No payment ID found');
+                return;
+            }
+
+            try {
+                const response = await fetch(
+                    `${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.PAYMENTS_STATUS}/${paymentId}/status`
+                );
+
+                if (!response.ok) {
+                    throw new Error('Failed to check payment status');
+                }
+
+                const status = await response.json();
+
+                // Show the appropriate status section
+                const statusSection = document.getElementById('payment-status-section');
+                statusSection.style.display = 'block';
+
+                // Handle different statuses
+                if (status.status === 'success') {
+                    showPaymentSuccess(status);
+                    // Clear payment ID from session storage
+                    sessionStorage.removeItem('currentPaymentId');
+                    // Scroll to status section
+                    statusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else if (status.status === 'failed') {
+                    showPaymentFailed(status);
+                    sessionStorage.removeItem('currentPaymentId');
+                    statusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else if (status.status === 'cancelled') {
+                    showPaymentCancelled(status);
+                    sessionStorage.removeItem('currentPaymentId');
+                    statusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    showPaymentPending(status);
+                }
+
+            } catch (error) {
+                console.error('Status check error:', error);
+                alert('Failed to check payment status. Please contact us if you completed the payment.');
+            }
+        }
+
+        function showPaymentSuccess(status) {
+            const successDiv = document.getElementById('payment-success');
+            successDiv.style.display = 'block';
+
+            // Fill in payment details
+            document.getElementById('payment-ref').textContent = status.paymentId;
+            document.getElementById('payment-amount').textContent = `£${(status.amount / 100).toFixed(2)}`;
+
+            if (status.cardBrand && status.cardLastFour) {
+                document.getElementById('payment-card').textContent =
+                    `${status.cardBrand} ending ${status.cardLastFour}`;
+            } else {
+                document.getElementById('payment-card').textContent = 'Card payment';
+            }
+        }
+
+        function showPaymentFailed(status) {
+            const failedDiv = document.getElementById('payment-failed');
+            failedDiv.style.display = 'block';
+        }
+
+        function showPaymentCancelled(status) {
+            const cancelledDiv = document.getElementById('payment-cancelled');
+            cancelledDiv.style.display = 'block';
+        }
+
+        function showPaymentPending(status) {
+            const pendingDiv = document.getElementById('payment-pending');
+            pendingDiv.style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
