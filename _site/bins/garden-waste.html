@@ -916,7 +916,62 @@
             const urlParams = new URLSearchParams(window.location.search);
             const paymentComplete = urlParams.get('payment');
 
+            // Dump all URL parameters from GOV.UK Pay redirect
             if (paymentComplete === 'complete') {
+                console.log('='.repeat(80));
+                console.log('🔍 GOV.UK PAY REDIRECT ANALYSIS');
+                console.log('='.repeat(80));
+                console.log('Full URL:', window.location.href);
+                console.log('Query String:', window.location.search);
+                console.log('\n📋 All URL Parameters:');
+
+                // Log all parameters
+                const allParams = {};
+                for (const [key, value] of urlParams.entries()) {
+                    allParams[key] = value;
+                    console.log(`  ${key}: ${value}`);
+                }
+
+                console.log('\n📦 Parameters as Object:', allParams);
+                console.log('\n🔢 Total parameters:', urlParams.size);
+
+                // Check for common GOV.UK Pay parameters
+                const govPayParams = [
+                    'payment',
+                    'paymentId',
+                    'payment_id',
+                    'status',
+                    'state',
+                    'reference',
+                    'success',
+                    'completed',
+                    'card_brand',
+                    'cardBrand',
+                    'amount',
+                    'description'
+                ];
+
+                console.log('\n🔍 Checking for GOV.UK Pay standard parameters:');
+                govPayParams.forEach(param => {
+                    const value = urlParams.get(param);
+                    if (value !== null) {
+                        console.log(`  ✅ ${param}: ${value}`);
+                    }
+                });
+
+                // Check hash/fragment
+                if (window.location.hash) {
+                    console.log('\n#️⃣ URL Hash:', window.location.hash);
+                }
+
+                // Check referrer
+                if (document.referrer) {
+                    console.log('\n🔗 Referrer:', document.referrer);
+                }
+
+                console.log('='.repeat(80));
+
+                // Proceed with status check
                 checkPaymentStatus();
             }
 
@@ -996,6 +1051,52 @@
             }
         }
 
+        // Diagnostic function to try different endpoint patterns
+        async function tryEndpointVariations(paymentId) {
+            const baseUrl = GCC_CONFIG.API_BASE_URL;
+
+            const variations = [
+                // Current pattern
+                { method: 'GET', url: `${baseUrl}/api/payments/${paymentId}/status`, desc: 'GET /api/payments/{id}/status' },
+                // POST instead of GET
+                { method: 'POST', url: `${baseUrl}/api/payments/${paymentId}/status`, desc: 'POST /api/payments/{id}/status' },
+                // Reversed path
+                { method: 'GET', url: `${baseUrl}/api/payments/status/${paymentId}`, desc: 'GET /api/payments/status/{id}' },
+                { method: 'POST', url: `${baseUrl}/api/payments/status/${paymentId}`, desc: 'POST /api/payments/status/{id}' },
+                // No /status suffix
+                { method: 'GET', url: `${baseUrl}/api/payments/${paymentId}`, desc: 'GET /api/payments/{id}' },
+                { method: 'POST', url: `${baseUrl}/api/payments/${paymentId}`, desc: 'POST /api/payments/{id}' },
+                // Query param
+                { method: 'GET', url: `${baseUrl}/api/payments/status?paymentId=${paymentId}`, desc: 'GET /api/payments/status?paymentId={id}' },
+                { method: 'POST', url: `${baseUrl}/api/payments/status?paymentId=${paymentId}`, desc: 'POST /api/payments/status?paymentId={id}' },
+            ];
+
+            console.log('🔍 Testing endpoint variations for payment ID:', paymentId);
+
+            for (const variation of variations) {
+                try {
+                    console.log(`Testing: ${variation.desc}`);
+                    const response = await fetch(variation.url, {
+                        method: variation.method,
+                        headers: variation.method === 'POST' ? { 'Content-Type': 'application/json' } : {}
+                    });
+
+                    console.log(`  → Status: ${response.status} ${response.statusText}`);
+
+                    if (response.ok) {
+                        console.log(`  ✅ SUCCESS! Working endpoint: ${variation.desc}`);
+                        const data = await response.json();
+                        console.log('  Response data:', data);
+                        return { success: true, data, method: variation.method, url: variation.url };
+                    }
+                } catch (error) {
+                    console.log(`  ✗ Error:`, error.message);
+                }
+            }
+
+            return { success: false };
+        }
+
         async function checkPaymentStatus() {
             const paymentId = sessionStorage.getItem('currentPaymentId');
 
@@ -1005,15 +1106,57 @@
             }
 
             try {
-                const response = await fetch(
-                    `${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.PAYMENTS_STATUS}/${paymentId}/status`
-                );
+                // First, try the expected endpoint
+                const statusUrl = `${GCC_CONFIG.API_BASE_URL}${GCC_CONFIG.ENDPOINTS.PAYMENTS_STATUS}/${paymentId}/status`;
+                console.log('Checking payment status at:', statusUrl);
+                console.log('Payment ID:', paymentId);
+
+                let response = await fetch(statusUrl);
+
+                console.log('Status check response:', response.status, response.statusText);
+
+                // If 404, try diagnostic variations
+                if (response.status === 404) {
+                    console.warn('⚠️ Got 404, trying alternative endpoint patterns...');
+                    const diagnostic = await tryEndpointVariations(paymentId);
+
+                    if (diagnostic.success) {
+                        console.log('✅ Found working endpoint!');
+                        // Use the successful response
+                        const status = diagnostic.data;
+                        const statusSection = document.getElementById('payment-status-section');
+                        statusSection.style.display = 'block';
+
+                        if (status.status === 'success') {
+                            showPaymentSuccess(status);
+                            sessionStorage.removeItem('currentPaymentId');
+                            statusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else if (status.status === 'failed') {
+                            showPaymentFailed(status);
+                            sessionStorage.removeItem('currentPaymentId');
+                            statusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else if (status.status === 'cancelled') {
+                            showPaymentCancelled(status);
+                            sessionStorage.removeItem('currentPaymentId');
+                            statusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else {
+                            showPaymentPending(status);
+                        }
+                        return;
+                    }
+
+                    throw new Error('Payment status endpoint not found (404). Tried multiple endpoint patterns - none worked.');
+                }
 
                 if (!response.ok) {
-                    throw new Error('Failed to check payment status');
+                    // Log the error response body
+                    const errorText = await response.text();
+                    console.error('Status check failed:', response.status, errorText);
+                    throw new Error(`Failed to check payment status: ${response.status} ${response.statusText}`);
                 }
 
                 const status = await response.json();
+                console.log('Payment status:', status);
 
                 // Show the appropriate status section
                 const statusSection = document.getElementById('payment-status-section');
@@ -1040,7 +1183,26 @@
 
             } catch (error) {
                 console.error('Status check error:', error);
-                alert('Failed to check payment status. Please contact us if you completed the payment.');
+
+                // Show user-friendly error message
+                const statusSection = document.getElementById('payment-status-section');
+                statusSection.style.display = 'block';
+
+                const errorDiv = document.createElement('div');
+                errorDiv.style.cssText = 'background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); padding: 2.5rem; border-radius: 16px; border-left: 6px solid #ef4444; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);';
+                errorDiv.innerHTML = `
+                    <h2 style="margin: 0 0 1rem 0; color: #991b1b; font-size: 2rem;">Unable to verify payment</h2>
+                    <p style="margin: 0.5rem 0; color: #991b1b; font-size: 1.1rem;">We cannot verify your payment status at this time.</p>
+                    <p style="margin-top: 1.5rem; color: #991b1b;">Your payment ID is: <strong>${paymentId}</strong></p>
+                    <p style="margin-top: 1rem; color: #991b1b;">Please contact us with this payment ID to complete your subscription.</p>
+                    <p style="margin-top: 1rem; color: #991b1b; font-size: 0.9rem;">Error: ${error.message}</p>
+                    <button onclick="window.location.href='/bins/garden-waste.html'" style="margin-top: 1rem; background: #dc2626; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Return to page</button>
+                `;
+
+                // Replace status section content
+                statusSection.innerHTML = '';
+                statusSection.appendChild(errorDiv);
+                statusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
