@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/assets/css/service-landing.css">
 
     <!-- Schema.org -->
+    <!-- SOURCE: package_identity.package_name, package_identity.package_description -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -101,6 +102,7 @@
     </nav>
 
     <!-- TOP TASKS SECTION -->
+    <!-- SOURCE: services[].service_id, services[].service_name (all 3 services) -->
     <section class="hero-section" aria-labelledby="top-tasks-title">
         <div class="hero-container">
             <div class="quick-actions">
@@ -112,19 +114,21 @@
                 </p>
 
                 <div class="actions-grid">
-
+                    <!-- SOURCE: services[0] events-in-parks-and-open-spaces -->
                     <a href="/events/parks-and-open-spaces.html" class="action-card">
                         <span class="action-icon" aria-hidden="true">🌳</span>
                         <span class="action-title">Events in parks</span><br>
                         <span class="action-description">Festivals, sports, and community events</span>
                     </a>
 
+                    <!-- SOURCE: services[1] street-parties -->
                     <a href="/events/street-parties.html" class="action-card">
                         <span class="action-icon" aria-hidden="true">🎉</span>
                         <span class="action-title">Street parties</span><br>
                         <span class="action-description">Road closures for community celebrations</span>
                     </a>
 
+                    <!-- SOURCE: services[2] guildhall-events -->
                     <a href="/events/guildhall.html" class="action-card">
                         <span class="action-icon" aria-hidden="true">🏛️</span>
                         <span class="action-title">Guildhall events</span><br>
@@ -145,12 +149,14 @@
             <div class="service-main">
 
                 <!-- OVERVIEW SECTION -->
+                <!-- SOURCE: package_identity.package_description, services[0].eligibility.who_can_access -->
                 <section aria-labelledby="overview-heading">
                     <h2 id="overview-heading" class="section-title">About organising events</h2>
                     <p>You need permission from Gloucester City Council to hold events on council-owned land or property. This includes parks, open spaces, and council buildings.</p>
 
                     <p>We help you plan safe events that work for everyone. Our team will guide you through what you need to do.</p>
 
+                    <!-- SOURCE: services[0].eligibility.who_can_access -->
                     <h3>Who can organise events</h3>
                     <p>Anyone can apply to organise an event, including:</p>
                     <ul>
@@ -159,6 +165,7 @@
                         <li>Individuals planning celebrations</li>
                     </ul>
 
+                    <!-- SOURCE: common_elements.timelines -->
                     <h3>How long it takes</h3>
                     <p>You must apply well in advance. The time needed depends on the size of your event:</p>
                     <ul>
@@ -170,27 +177,33 @@
                 </section>
 
                 <!-- VENUES SECTION -->
+                <!-- SOURCE: common_elements.venue_availability.popular_venues, services[0].service_definition.venues_available -->
                 <section aria-labelledby="venues-heading" style="margin-top: 3rem;">
                     <h2 id="venues-heading" class="section-title">Popular venues</h2>
 
                     <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                         <ul style="list-style: none; padding: 0; margin: 0;">
+                            <!-- SOURCE: services[0].service_definition.venues_available[0] -->
                             <li style="padding: 1rem 0; border-bottom: 1px solid #e0e0e0;">
                                 <strong style="color: #2d6a4f; font-size: 1.1rem;">Gloucester Park</strong><br>
                                 <span style="color: #4a5568;">Premier city park with 11 hectares of space</span>
                             </li>
+                            <!-- SOURCE: services[0].service_definition.venues_available[1] -->
                             <li style="padding: 1rem 0; border-bottom: 1px solid #e0e0e0;">
                                 <strong style="color: #2d6a4f; font-size: 1.1rem;">Hillfield Gardens</strong><br>
                                 <span style="color: #4a5568;">Community park suitable for smaller events</span>
                             </li>
+                            <!-- SOURCE: services[0].service_definition.venues_available[2] -->
                             <li style="padding: 1rem 0; border-bottom: 1px solid #e0e0e0;">
                                 <strong style="color: #2d6a4f; font-size: 1.1rem;">Barnwood Park & Arboretum</strong><br>
                                 <span style="color: #4a5568;">Green space with varied facilities</span>
                             </li>
+                            <!-- SOURCE: services[0].service_definition.venues_available[3] -->
                             <li style="padding: 1rem 0; border-bottom: 1px solid #e0e0e0;">
                                 <strong style="color: #2d6a4f; font-size: 1.1rem;">Plock Court & Oxstalls Sports Park</strong><br>
                                 <span style="color: #4a5568;">Sports facilities and outdoor space</span>
                             </li>
+                            <!-- SOURCE: services[2].service_definition.venue -->
                             <li style="padding: 1rem 0;">
                                 <strong style="color: #2d6a4f; font-size: 1.1rem;">Gloucester Guildhall</strong><br>
                                 <span style="color: #4a5568;">Historic building for performances and ceremonies</span>
@@ -198,6 +211,7 @@
                         </ul>
                     </div>
 
+                    <!-- SOURCE: common_elements.venue_availability.how_to_check, services[0].channels.email -->
                     <p style="margin-top: 1.5rem; padding: 1.5rem; background: #f0f9ff; border-left: 4px solid #0ea5e9; border-radius: 8px;">
                         <strong style="color: #075985;">Check if your venue is available</strong><br>
                         <span style="color: #0c4a6e;">Contact the City Events team at <a href="mailto:city.events@gloucester.gov.uk" style="color: #0ea5e9; font-weight: 600;">city.events@gloucester.gov.uk</a> or call <a href="tel:+441452396396" style="color: #0ea5e9; font-weight: 600;">01452 396396</a></span>
@@ -205,6 +219,7 @@
                 </section>
 
                 <!-- WHAT YOU NEED SECTION -->
+                <!-- SOURCE: common_elements.risk_assessment, common_elements.site_plan_requirements, common_elements.insurance_requirements, common_elements.licensing_requirements.temporary_event_notice -->
                 <section aria-labelledby="requirements-heading" style="margin-top: 3rem;">
                     <h2 id="requirements-heading" class="section-title">What you need to provide</h2>
                     <p>All events need:</p>
@@ -221,6 +236,7 @@
                 </section>
 
                 <!-- HELP SECTION -->
+                <!-- SOURCE: services[0].channels.email, services[0].channels.phone -->
                 <section class="service-help" aria-labelledby="help-heading">
                     <h2 id="help-heading" class="section-title">Get help and advice</h2>
                     <p>The City Events team can help you plan your event. Contact us before you apply:</p>
@@ -235,12 +251,14 @@
             <!-- RIGHT COLUMN (SIDEBAR) -->
             <aside class="service-sidebar">
 
+                <!-- SOURCE: common_elements.venue_availability.how_to_check -->
                 <section class="service-status">
                     <h2>Before you apply</h2>
                     <p>Contact the City Events team to discuss your plans and check if your chosen venue is available.</p>
                     <p style="margin-top: 1rem;"><a href="mailto:city.events@gloucester.gov.uk" style="display: inline-block; background: #2d6a4f; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600;">Email the team</a></p>
                 </section>
 
+                <!-- SOURCE: services[0].channels.email, services[0].channels.phone, common_elements.governance.responsible_manager -->
                 <section class="service-contact">
                     <h2>City Events team</h2>
 
@@ -248,6 +266,7 @@
                         <h3>Phone</h3>
                         <p>
                             <a href="tel:+441452396396">01452 396396</a><br>
+                            <!-- NO SOURCE: Office hours -->
                             Monday to Friday, 8:30am to 5pm
                         </p>
                     </div>
@@ -256,11 +275,13 @@
                         <h3>Email</h3>
                         <p>
                             <a href="mailto:city.events@gloucester.gov.uk">city.events@gloucester.gov.uk</a><br>
+                            <!-- NO SOURCE: Response time -->
                             We aim to reply within 2 working days
                         </p>
                     </div>
                 </section>
 
+                <!-- NO SOURCE: Related links section -->
                 <section class="service-related">
                     <h2>You might also need</h2>
                     <ul class="related-links">
