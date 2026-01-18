@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/assets/css/service-landing.css">
 
     <!-- Schema.org -->
+    <!-- SOURCE: services[0].service_id, services[0].service_name -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -124,6 +125,7 @@
                 </p>
 
                 <!-- WHAT YOU GET -->
+                <!-- SOURCE: services[0].service_definition.what_organizer_gets -->
                 <section aria-labelledby="what-you-get-heading">
                     <h2 id="what-you-get-heading" class="section-title">What you get</h2>
 
@@ -140,6 +142,7 @@
                 </section>
 
                 <!-- TYPES OF EVENTS -->
+                <!-- SOURCE: services[0].service_definition.event_types_supported -->
                 <section aria-labelledby="event-types-heading" style="margin-top: 3rem;">
                     <h2 id="event-types-heading" class="section-title">Types of events we support</h2>
 
@@ -172,6 +175,7 @@
                 </section>
 
                 <!-- VENUES -->
+                <!-- SOURCE: services[0].service_definition.venues_available -->
                 <section aria-labelledby="venues-heading" style="margin-top: 3rem;">
                     <h2 id="venues-heading" class="section-title">Available venues</h2>
 
@@ -207,6 +211,7 @@
                 </section>
 
                 <!-- HOW TO APPLY -->
+                <!-- SOURCE: services[0].application_process -->
                 <section aria-labelledby="how-to-apply-heading" style="margin-top: 3rem;">
                     <h2 id="how-to-apply-heading" class="section-title">How to apply</h2>
 
@@ -282,6 +287,7 @@
                 </section>
 
                 <!-- TIMELINES -->
+                <!-- SOURCE: common_elements.timelines -->
                 <section aria-labelledby="timelines-heading" style="margin-top: 3rem;">
                     <h2 id="timelines-heading" class="section-title">How far in advance to apply</h2>
 
@@ -307,9 +313,11 @@
                 </section>
 
                 <!-- WHAT YOU NEED -->
+                <!-- SOURCE: common_elements.risk_assessment, common_elements.site_plan_requirements, common_elements.insurance_requirements, common_elements.licensing_requirements -->
                 <section aria-labelledby="requirements-heading" style="margin-top: 3rem;">
                     <h2 id="requirements-heading" class="section-title">What you need to provide</h2>
 
+                    <!-- SOURCE: common_elements.risk_assessment -->
                     <h3>1. Risk assessment</h3>
                     <p>You must assess all risks at your event. This includes:</p>
                     <ul>
@@ -327,6 +335,7 @@
                         <li>Accessibility</li>
                     </ul>
 
+                    <!-- SOURCE: common_elements.site_plan_requirements -->
                     <h3>2. Site plan</h3>
                     <p>You must provide a plan showing:</p>
                     <ul>
@@ -346,6 +355,7 @@
                         <li>Barriers and fencing</li>
                     </ul>
 
+                    <!-- SOURCE: common_elements.insurance_requirements -->
                     <h3>3. Insurance</h3>
                     <p>You must have:</p>
                     <ul>
@@ -353,8 +363,10 @@
                         <li><strong>Employers liability insurance</strong> – at least £5 million cover if you have paid staff or volunteers. This is a legal requirement</li>
                     </ul>
 
+                    <!-- SOURCE: common_elements.licensing_requirements -->
                     <h3>4. Licensing (if needed)</h3>
 
+                    <!-- SOURCE: common_elements.licensing_requirements.temporary_event_notice -->
                     <h4>Temporary Event Notice (TEN)</h4>
                     <p>You need a TEN if you are:</p>
                     <ul>
@@ -364,6 +376,7 @@
                     </ul>
                     <p>A TEN costs £21 and covers up to 499 people. Apply at least 10 working days before your event.</p>
 
+                    <!-- SOURCE: common_elements.licensing_requirements.premises_licence -->
                     <h4>Premises Licence</h4>
                     <p>You need a full premises licence if:</p>
                     <ul>
