@@ -119,6 +119,13 @@
     "chunkCount": 1
   },
   {
+    "url": "https://gloucester.gov.uk/council-tax/second-homes.html",
+    "title": "Second Homes and Holiday Lets | Council Tax | Gloucester City Council",
+    "excerpt": "Find out about council tax premiums on second homes and when holiday lets pay business rates instead",
+    "source_path": "council-tax/second-homes.html",
+    "chunkCount": 2
+  },
+  {
     "url": "https://gloucester.gov.uk/council-tax/support.html",
     "title": "Council Tax Support | Council Tax | Gloucester City Council",
     "excerpt": "Get help paying council tax if you're on a low income",
@@ -187,6 +194,20 @@
     "excerpt": "Find out if you are exempt from council tax as a student and how to apply for a student exemption",
     "source_path": "council-tax/discounts/students.html",
     "chunkCount": 3
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/second-homes/exemptions.html",
+    "title": "Second Home Premium Exemptions | Council Tax | Gloucester City Council",
+    "excerpt": "Apply for an exemption from the second homes premium",
+    "source_path": "council-tax/second-homes/exemptions.html",
+    "chunkCount": 4
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/second-homes/holiday-lets.html",
+    "title": "Holiday Lets and Business Rates | Council Tax | Gloucester City Council",
+    "excerpt": "When holiday lets pay business rates instead of council tax",
+    "source_path": "council-tax/second-homes/holiday-lets.html",
+    "chunkCount": 5
   },
   {
     "url": "https://gloucester.gov.uk/council-tax/support/eligibility.html",
