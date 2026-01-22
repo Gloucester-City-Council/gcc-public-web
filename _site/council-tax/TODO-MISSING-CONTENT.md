@@ -5,6 +5,9 @@ This document lists all content on the council tax pages that currently has **NO
 ## Date Created
 2025-01-22
 
+## Last Updated
+2025-01-22 - Added second homes and holiday lets pages (3 new pages)
+
 ## Content Without Schema Source
 
 ### 1. Office Hours (CRITICAL - Appears on ALL Pages)
