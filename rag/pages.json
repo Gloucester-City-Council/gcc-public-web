@@ -70,6 +70,69 @@
     "chunkCount": 3
   },
   {
+    "url": "https://gloucester.gov.uk/council-tax/about.html",
+    "title": "Understanding Council Tax | Council Tax | Gloucester City Council",
+    "excerpt": "Learn how council tax works and what it pays for",
+    "source_path": "council-tax/about.html",
+    "chunkCount": 3
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/bands.html",
+    "title": "Council Tax Bands and Charges | Council Tax | Gloucester City Council",
+    "excerpt": "View council tax charges for each band and check your property's band",
+    "source_path": "council-tax/bands.html",
+    "chunkCount": 2
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/discounts.html",
+    "title": "Discounts and Exemptions | Council Tax | Gloucester City Council",
+    "excerpt": "Find out if you can get a discount or exemption on your council tax",
+    "source_path": "council-tax/discounts.html",
+    "chunkCount": 3
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/help.html",
+    "title": "Problems Paying Council Tax | Council Tax | Gloucester City Council",
+    "excerpt": "Get help if you're struggling to pay your council tax",
+    "source_path": "council-tax/help.html",
+    "chunkCount": 2
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/",
+    "title": "Council Tax | Gloucester City Council",
+    "excerpt": "Council tax helps pay for local services. Find out how to pay, get help, or update your details.",
+    "source_path": "council-tax/index.html",
+    "chunkCount": 2
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/moving.html",
+    "title": "Moving House | Council Tax | Gloucester City Council",
+    "excerpt": "Tell us when you're moving home and update your council tax details",
+    "source_path": "council-tax/moving.html",
+    "chunkCount": 2
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/pay.html",
+    "title": "Pay Your Council Tax | Council Tax | Gloucester City Council",
+    "excerpt": "Pay your council tax bill online or set up a payment plan",
+    "source_path": "council-tax/pay.html",
+    "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/support.html",
+    "title": "Council Tax Support | Council Tax | Gloucester City Council",
+    "excerpt": "Get help paying council tax if you're on a low income",
+    "source_path": "council-tax/support.html",
+    "chunkCount": 2
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/your-account.html",
+    "title": "View Your Council Tax Account | Council Tax | Gloucester City Council",
+    "excerpt": "Sign in to view your bill, check payments, and manage your account",
+    "source_path": "council-tax/your-account.html",
+    "chunkCount": 1
+  },
+  {
     "url": "https://gloucester.gov.uk/events/guildhall.html",
     "title": "Guildhall Events | Gloucester City Council",
     "excerpt": "Hire Gloucester Guildhall for events, performances, conferences, and ceremonies. Historic venue in the heart of Gloucester.",
@@ -117,6 +180,20 @@
     "excerpt": "Find out how Gloucester City Council works, meet your councillors, view meetings and decisions, and access council policies and data.",
     "source_path": "your-council/index.html",
     "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/discounts/students.html",
+    "title": "Students and Council Tax | Discounts and Exemptions | Council Tax | Gloucester City Council",
+    "excerpt": "Find out if you are exempt from council tax as a student and how to apply for a student exemption",
+    "source_path": "council-tax/discounts/students.html",
+    "chunkCount": 3
+  },
+  {
+    "url": "https://gloucester.gov.uk/council-tax/support/eligibility.html",
+    "title": "Eligibility for Council Tax Support | Council Tax Support | Council Tax | Gloucester City Council",
+    "excerpt": "Find out if you qualify for Council Tax Support and how we work out how much help you can get",
+    "source_path": "council-tax/support/eligibility.html",
+    "chunkCount": 3
   },
   {
     "url": "https://gloucester.gov.uk/your-council/how-were-organised/leadership-and-structure.html",
