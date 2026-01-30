@@ -8,15 +8,13 @@
 <body>
 
   <script>
-   // Gloucestershire Jobs Feed Widget
-
+// Gloucestershire Jobs Feed Widget - Direct Fetch Version
 (function() {
   'use strict';
   
   const FEED_URL = 'https://careers.gloucestershire.gov.uk/feed/354055';
-  const CORS_PROXY = 'https://api.allorigins.win/raw?url='; // CORS workaround
   
-  // Inject styles
+  // Inject styles (same as before)
   const styles = `
     <style>
       .glos-jobs-widget {
@@ -311,6 +309,31 @@
         font-size: 1.1rem;
       }
       
+      .glos-fallback-message {
+        background: #fef3c7;
+        border: 2px solid #fbbf24;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      
+      .glos-fallback-message h3 {
+        color: #92400e;
+        margin-bottom: 0.5rem;
+      }
+      
+      .glos-fallback-message p {
+        color: #78350f;
+        margin-bottom: 0.75rem;
+      }
+      
+      .glos-fallback-message code {
+        background: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+      }
+      
       @media (max-width: 768px) {
         .glos-jobs-grid {
           grid-template-columns: 1fr;
@@ -397,30 +420,23 @@
         ? 'Gloucester City Council' 
         : 'Gloucestershire County Council';
       
-      // Extract salary from description
       const salaryMatch = descriptionHTML.match(/Salary[:\s]*(?:&#160;)*([£\d,\s\-\.]+(?:per annum|MPS|UPS)?)/i);
       const salary = salaryMatch ? decodeHTML(salaryMatch[1].trim()) : 'Not specified';
       
-      // Extract hours
       const hoursMatch = descriptionHTML.match(/Hours per Week[:\s]*(?:&#160;)*(\d+(?:\.\d+)?)/i);
       const hours = hoursMatch ? hoursMatch[1] : '37';
       
-      // Extract location
       const locationMatch = descriptionHTML.match(/Job Location[:\s]*(?:&#160;)*([^<]+)/i);
       const location = locationMatch ? decodeHTML(locationMatch[1].trim()) : getTagValue(job, 'locationcity');
       
-      // Extract closing date
       const closingDate = getTagValue(job, 'type');
       const daysUntilClose = calculateDaysUntil(closingDate);
       
-      // Extract contact email
       const emailMatch = descriptionHTML.match(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/);
       const contactEmail = emailMatch ? emailMatch[1] : null;
       
-      // Parse salary for filtering
       const salaryRange = parseSalaryRange(salary);
       
-      // Extract key points from description
       const aboutRole = extractSection(descriptionHTML, 'About (The|the) Role');
       const aboutYou = extractSection(descriptionHTML, 'About You');
       const benefits = extractSection(descriptionHTML, 'About (Us|us)|What we can do for you');
@@ -449,7 +465,6 @@
     return jobs;
   }
   
-  // Helper functions
   function getTagValue(node, tagName) {
     const tags = node.getElementsByTagName(tagName);
     return tags.length > 0 ? tags[0].textContent : '';
@@ -501,20 +516,18 @@
     
     if (match) {
       let content = match[1];
-      // Strip HTML but keep structure
       content = content.replace(/<br[^>]*>/gi, '\n');
       content = content.replace(/<\/p>/gi, '\n\n');
       content = content.replace(/<li[^>]*>/gi, '• ');
       content = content.replace(/<\/li>/gi, '\n');
       content = content.replace(/<[^>]+>/g, '');
       content = decodeHTML(content);
-      return content.trim().substring(0, 500); // Limit length
+      return content.trim().substring(0, 500);
     }
     
     return '';
   }
   
-  // Render functions
   function renderStats(jobs) {
     const statsContainer = document.getElementById('glos-stats');
     
@@ -645,13 +658,11 @@
       </div>
     `;
     
-    // Click to expand/collapse
     card.addEventListener('click', (e) => {
       if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
       card.classList.toggle('expanded');
     });
     
-    // Collapse button
     const collapseBtn = card.querySelector('.glos-collapse-btn');
     if (collapseBtn) {
       collapseBtn.addEventListener('click', (e) => {
@@ -664,7 +675,6 @@
     return card;
   }
   
-  // Filter and sort
   function applyFilters() {
     const searchTerm = document.getElementById('glos-search').value.toLowerCase();
     const employerFilter = document.getElementById('glos-employer-filter').value;
@@ -688,7 +698,6 @@
       return matchesSearch && matchesEmployer && matchesSalary;
     });
     
-    // Sort
     filteredJobs.sort((a, b) => {
       switch(sortMethod) {
         case 'closing':
@@ -707,9 +716,7 @@
     renderJobs(filteredJobs);
   }
   
-  // Setup filters
   function setupFilters() {
-    // Populate employer filter
     const employers = [...new Set(allJobs.map(j => j.employer))];
     const employerFilter = document.getElementById('glos-employer-filter');
     employers.forEach(emp => {
@@ -719,17 +726,77 @@
       employerFilter.appendChild(option);
     });
     
-    // Add event listeners
     document.getElementById('glos-search').addEventListener('input', applyFilters);
     document.getElementById('glos-employer-filter').addEventListener('change', applyFilters);
     document.getElementById('glos-salary-filter').addEventListener('change', applyFilters);
     document.getElementById('glos-sort').addEventListener('change', applyFilters);
   }
   
-  // Fetch and render
+  function showCORSError() {
+    document.getElementById('glos-jobs-container').innerHTML = `
+      <div class="glos-fallback-message">
+        <h3>⚠️ Can't Load Jobs Directly</h3>
+        <p>The jobs feed can't be loaded due to CORS restrictions. Here are your options:</p>
+        <p><strong>Option 1:</strong> Save the feed data as a local file:</p>
+        <ol style="text-align: left; max-width: 600px; margin: 1rem auto;">
+          <li>Download the feed: <a href="${FEED_URL}" target="_blank" style="color: #3b82f6;">careers.gloucestershire.gov.uk/feed/354055</a></li>
+          <li>Save it as <code>jobs.xml</code> in the same directory as this page</li>
+          <li>Reload this page - it will automatically use the local file</li>
+        </ol>
+        <p><strong>Option 2:</strong> Host this on the gloucestershire.gov.uk domain (no CORS issues)</p>
+        <p><strong>Option 3:</strong> Set up a simple backend proxy (see console for code)</p>
+      </div>
+    `;
+    
+    console.log(`
+%c CORS Workaround Solutions
+
+%c1. Save feed locally:
+   • Visit: ${FEED_URL}
+   • Save as: jobs.xml
+   • Place next to your HTML file
+   
+%c2. Simple Node.js proxy:
+   
+const express = require('express');
+const cors = require('cors');
+const fetch = require('node-fetch');
+
+const app = express();
+app.use(cors());
+
+app.get('/api/jobs', async (req, res) => {
+  const response = await fetch('${FEED_URL}');
+  const xml = await response.text();
+  res.type('application/xml').send(xml);
+});
+
+app.listen(3000);
+
+%c3. PHP proxy (proxy.php):
+
+<?php
+header('Content-Type: application/xml');
+header('Access-Control-Allow-Origin: *');
+echo file_get_contents('${FEED_URL}');
+?>
+    `, 
+    'font-weight: bold; font-size: 16px;',
+    'color: #3b82f6;',
+    'color: #059669;',
+    'color: #dc2626;'
+    );
+  }
+  
   async function init() {
     try {
-      const response = await fetch(CORS_PROXY + encodeURIComponent(FEED_URL));
+      // Try direct fetch first
+      const response = await fetch(FEED_URL);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const xmlText = await response.text();
       
       allJobs = parseJobFeed(xmlText);
@@ -741,13 +808,25 @@
       
     } catch (error) {
       console.error('Error loading jobs:', error);
-      document.getElementById('glos-jobs-container').innerHTML = `
-        <div class="glos-no-results">
-          ⚠️ Unable to load jobs at this time. Please try again later.
-          <br><br>
-          <small>Error: ${error.message}</small>
-        </div>
-      `;
+      
+      // Try local file as fallback
+      try {
+        const localResponse = await fetch('./jobs.xml');
+        if (localResponse.ok) {
+          const xmlText = await localResponse.text();
+          allJobs = parseJobFeed(xmlText);
+          filteredJobs = [...allJobs];
+          renderStats(allJobs);
+          setupFilters();
+          renderJobs(filteredJobs);
+          return;
+        }
+      } catch (localError) {
+        // Local file also failed
+      }
+      
+      // Show CORS error with solutions
+      showCORSError();
     }
   }
   
