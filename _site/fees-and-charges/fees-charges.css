@@ -243,6 +243,18 @@
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
+/* Table caption - styled as prominent heading */
+.fees-table caption {
+    caption-side: top;
+    text-align: left;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-primary-dark, #003087);
+    padding: 0.75rem 0;
+    margin-bottom: 0.25rem;
+    border-bottom: 2px solid var(--color-primary, #005eb8);
+}
+
 .fees-table thead {
     background: #2d6a4f;
 }
@@ -453,6 +465,11 @@
 
     .service-group-title {
         font-size: 1rem;
+    }
+
+    .fees-table caption {
+        font-size: 1rem;
+        padding: 0.5rem 0;
     }
 
     .category-nav-list {
