@@ -13,7 +13,7 @@
     function init() {
         initAccordions();
         initSearch();
-        initSmoothScrolling();
+        initCategorySelect();
     }
 
     /**
@@ -174,43 +174,44 @@
     }
 
     /**
-     * Initialize smooth scrolling for anchor links
+     * Initialize category dropdown select
      */
-    function initSmoothScrolling() {
-        const categoryLinks = document.querySelectorAll('.category-nav-list a');
+    function initCategorySelect() {
+        const select = document.getElementById('category-select');
+        if (!select) return;
 
-        categoryLinks.forEach(link => {
-            link.addEventListener('click', function(event) {
-                const targetId = this.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
+        select.addEventListener('change', function() {
+            const targetId = this.value;
+            if (!targetId) return;
 
-                if (!targetSection) return;
+            const targetSection = document.getElementById(targetId);
+            if (!targetSection) return;
 
-                event.preventDefault();
+            // Expand the target accordion
+            const trigger = targetSection.querySelector('.accordion-trigger');
+            const contentId = trigger?.getAttribute('aria-controls');
+            const content = contentId ? document.getElementById(contentId) : null;
 
-                // Expand the target accordion
-                const trigger = targetSection.querySelector('.accordion-trigger');
-                const contentId = trigger?.getAttribute('aria-controls');
-                const content = contentId ? document.getElementById(contentId) : null;
+            if (trigger && content) {
+                trigger.setAttribute('aria-expanded', 'true');
+                content.hidden = false;
+            }
 
-                if (trigger && content) {
-                    trigger.setAttribute('aria-expanded', 'true');
-                    content.hidden = false;
-                }
-
-                // Smooth scroll to section
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-
-                // Set focus to the trigger for keyboard users
-                if (trigger) {
-                    setTimeout(() => {
-                        trigger.focus();
-                    }, 500);
-                }
+            // Smooth scroll to section
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
+
+            // Set focus to the trigger for keyboard users
+            if (trigger) {
+                setTimeout(() => {
+                    trigger.focus();
+                }, 500);
+            }
+
+            // Reset select to placeholder
+            this.value = '';
         });
     }
 
