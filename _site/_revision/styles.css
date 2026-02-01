@@ -560,6 +560,64 @@ body {
     border-color: var(--primary);
 }
 
+/* Ordering Controls (Mobile-Friendly) */
+.ordering-item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+}
+
+.ordering-item-wrapper .draggable-item {
+    flex: 1;
+}
+
+.order-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.order-btn {
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: var(--radius-sm);
+    color: var(--text-light);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    padding: 0;
+    font-family: inherit;
+}
+
+.order-btn:hover,
+.order-btn:focus {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: scale(1.1);
+}
+
+.order-btn:active {
+    transform: scale(0.95);
+}
+
+.order-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+    .order-btn {
+        width: 32px;
+        height: 32px;
+    }
+}
+
 /* ========================================
    RESULTS SCREEN
    ======================================== */

@@ -168,13 +168,17 @@ const UI = (function() {
                 choicesGrid.className = 'choices-grid';
                 question.options.forEach(option => {
                     const btn = document.createElement('button');
+                    btn.type = 'button'; // Prevent form submission
                     btn.className = 'choice-btn';
                     btn.textContent = option;
                     btn.dataset.questionId = question.id;
                     btn.dataset.choice = option;
                     btn.setAttribute('role', 'radio');
                     btn.setAttribute('aria-checked', 'false');
-                    btn.addEventListener('click', () => handleSingleChoice(btn, question.id));
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        handleSingleChoice(btn, question.id);
+                    });
                     choicesGrid.appendChild(btn);
                 });
                 container.appendChild(choicesGrid);
@@ -185,13 +189,17 @@ const UI = (function() {
                 multiGrid.className = 'choices-grid';
                 question.options.forEach(option => {
                     const btn = document.createElement('button');
+                    btn.type = 'button'; // Prevent form submission
                     btn.className = 'choice-btn';
                     btn.textContent = option;
                     btn.dataset.questionId = question.id;
                     btn.dataset.choice = option;
                     btn.setAttribute('role', 'checkbox');
                     btn.setAttribute('aria-checked', 'false');
-                    btn.addEventListener('click', () => handleMultiChoice(btn));
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        handleMultiChoice(btn);
+                    });
                     multiGrid.appendChild(btn);
                 });
                 container.appendChild(multiGrid);
@@ -206,6 +214,9 @@ const UI = (function() {
                 const shuffled = [...question.items].sort(() => Math.random() - 0.5);
 
                 shuffled.forEach((item, idx) => {
+                    const itemWrapper = document.createElement('div');
+                    itemWrapper.className = 'ordering-item-wrapper';
+
                     const itemEl = document.createElement('div');
                     itemEl.className = 'draggable-item';
                     itemEl.textContent = `${idx + 1}. ${item}`;
@@ -213,13 +224,44 @@ const UI = (function() {
                     itemEl.dataset.value = item;
                     itemEl.dataset.index = idx;
 
-                    // Drag and drop handlers
+                    // Drag and drop handlers (for desktop)
                     itemEl.addEventListener('dragstart', handleDragStart);
                     itemEl.addEventListener('dragover', handleDragOver);
                     itemEl.addEventListener('drop', handleDrop);
                     itemEl.addEventListener('dragend', handleDragEnd);
 
-                    orderList.appendChild(itemEl);
+                    // Mobile-friendly controls
+                    const controlsDiv = document.createElement('div');
+                    controlsDiv.className = 'order-controls';
+
+                    const upBtn = document.createElement('button');
+                    upBtn.className = 'order-btn order-up';
+                    upBtn.innerHTML = '▲';
+                    upBtn.setAttribute('aria-label', 'Move up');
+                    upBtn.type = 'button';
+                    upBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        moveItemUp(itemWrapper, orderList);
+                    });
+
+                    const downBtn = document.createElement('button');
+                    downBtn.className = 'order-btn order-down';
+                    downBtn.innerHTML = '▼';
+                    downBtn.setAttribute('aria-label', 'Move down');
+                    downBtn.type = 'button';
+                    downBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        moveItemDown(itemWrapper, orderList);
+                    });
+
+                    controlsDiv.appendChild(upBtn);
+                    controlsDiv.appendChild(downBtn);
+
+                    itemWrapper.appendChild(itemEl);
+                    itemWrapper.appendChild(controlsDiv);
+                    orderList.appendChild(itemWrapper);
                 });
                 container.appendChild(orderList);
                 break;
@@ -315,22 +357,24 @@ const UI = (function() {
         e.preventDefault();
         if (!draggedElement || draggedElement === e.target) return;
 
-        const parent = e.target.parentNode;
-        const draggedIndex = Array.from(parent.children).indexOf(draggedElement);
-        const targetIndex = Array.from(parent.children).indexOf(e.target);
+        // Get the wrapper elements
+        const draggedWrapper = draggedElement.closest('.ordering-item-wrapper');
+        const targetWrapper = e.target.closest('.ordering-item-wrapper');
+
+        if (!draggedWrapper || !targetWrapper || draggedWrapper === targetWrapper) return;
+
+        const parent = draggedWrapper.parentNode;
+        const draggedIndex = Array.from(parent.children).indexOf(draggedWrapper);
+        const targetIndex = Array.from(parent.children).indexOf(targetWrapper);
 
         if (draggedIndex < targetIndex) {
-            parent.insertBefore(draggedElement, e.target.nextSibling);
+            parent.insertBefore(draggedWrapper, targetWrapper.nextSibling);
         } else {
-            parent.insertBefore(draggedElement, e.target);
+            parent.insertBefore(draggedWrapper, targetWrapper);
         }
 
         // Renumber items
-        Array.from(parent.children).forEach((item, idx) => {
-            const text = item.dataset.value;
-            item.textContent = `${idx + 1}. ${text}`;
-            item.dataset.index = idx;
-        });
+        renumberOrderItems(parent);
     }
 
     function handleDragEnd(e) {
@@ -351,6 +395,41 @@ const UI = (function() {
         // Visual feedback
         leftItem.textContent = `${leftItem.dataset.leftValue} → ${rightValue}`;
         leftItem.classList.add('paired');
+    }
+
+    /**
+     * Move item up in ordering list (mobile-friendly)
+     */
+    function moveItemUp(itemWrapper, orderList) {
+        const prev = itemWrapper.previousElementSibling;
+        if (prev) {
+            orderList.insertBefore(itemWrapper, prev);
+            renumberOrderItems(orderList);
+        }
+    }
+
+    /**
+     * Move item down in ordering list (mobile-friendly)
+     */
+    function moveItemDown(itemWrapper, orderList) {
+        const next = itemWrapper.nextElementSibling;
+        if (next) {
+            orderList.insertBefore(next, itemWrapper);
+            renumberOrderItems(orderList);
+        }
+    }
+
+    /**
+     * Renumber items in ordering list
+     */
+    function renumberOrderItems(orderList) {
+        const wrappers = orderList.querySelectorAll('.ordering-item-wrapper');
+        wrappers.forEach((wrapper, idx) => {
+            const itemEl = wrapper.querySelector('.draggable-item');
+            const text = itemEl.dataset.value;
+            itemEl.textContent = `${idx + 1}. ${text}`;
+            itemEl.dataset.index = idx;
+        });
     }
 
     /**
@@ -381,8 +460,11 @@ const UI = (function() {
                 case 'ordering':
                     const orderList = document.querySelector(`.draggable-list[data-question-id="${qId}"]`);
                     if (orderList) {
-                        const items = Array.from(orderList.children);
-                        answers[qId] = items.map(item => item.dataset.value);
+                        const wrappers = Array.from(orderList.querySelectorAll('.ordering-item-wrapper'));
+                        answers[qId] = wrappers.map(wrapper => {
+                            const item = wrapper.querySelector('.draggable-item');
+                            return item.dataset.value;
+                        });
                     }
                     break;
 
