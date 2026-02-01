@@ -3,49 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reactivity Rush - GCSE Chemistry Game</title>
+    <title>Chemistry Quiz - Duolingo Style</title>
     <link rel="stylesheet" href="/_revision/styles.css">
-    <meta name="description" content="Super fun GCSE Chemistry quiz game for AQA Reactivity of Metals">
-    <meta name="theme-color" content="#FF6B9D">
+    <meta name="description" content="Fun GCSE Chemistry quiz - Duolingo style learning">
+    <meta name="theme-color" content="#1CB0F6">
 </head>
 <body>
-    <!-- Main App Container -->
     <div id="app" class="app-container">
 
         <!-- Home Screen -->
         <div id="home-screen" class="screen active">
-            <div class="game-header">
-                <h1 class="game-title">
-                    <span class="title-icon">⚡</span>
-                    Reactivity Rush
-                    <span class="title-icon">⚡</span>
-                </h1>
-                <p class="game-subtitle">AQA GCSE Chemistry - Reactivity of Metals</p>
+            <div class="home-header">
+                <h1 class="game-title">🧪 Chemistry Quiz</h1>
+                <p class="game-subtitle">GCSE Chemistry - Duolingo Style</p>
             </div>
 
             <div class="home-content">
-                <button id="play-btn" class="btn-primary btn-massive" aria-label="Start playing">
-                    <span class="btn-text">Play Now!</span>
-                    <span class="btn-icon">🚀</span>
+                <button id="play-btn" class="btn-primary btn-massive">
+                    Start Learning 🚀
                 </button>
-
-                <div class="difficulty-select">
-                    <h3>Choose Your Level:</h3>
-                    <div class="difficulty-options">
-                        <button class="difficulty-btn active" data-difficulty="mixed" aria-pressed="true">
-                            <span class="diff-emoji">🌈</span>
-                            <span class="diff-label">Mixed</span>
-                        </button>
-                        <button class="difficulty-btn" data-difficulty="foundation" aria-pressed="false">
-                            <span class="diff-emoji">📚</span>
-                            <span class="diff-label">Foundation</span>
-                        </button>
-                        <button class="difficulty-btn" data-difficulty="higher" aria-pressed="false">
-                            <span class="diff-emoji">🎓</span>
-                            <span class="diff-label">Higher</span>
-                        </button>
-                    </div>
-                </div>
 
                 <div class="stats-preview">
                     <div class="stat-card">
@@ -58,146 +34,75 @@
                     </div>
                 </div>
 
-                <div class="settings-toggle">
-                    <button id="sound-toggle" class="icon-btn" aria-label="Toggle sound">
-                        <span id="sound-icon">🔇</span>
-                        <span class="toggle-label">Sound</span>
-                    </button>
-                    <button id="timer-toggle" class="icon-btn active" aria-label="Toggle timer">
-                        <span id="timer-icon">⏱️</span>
-                        <span class="toggle-label">Timer</span>
-                    </button>
-                </div>
+                <button id="sound-toggle" class="icon-btn">
+                    <span id="sound-icon">🔇</span>
+                    <span class="toggle-label">Sound</span>
+                </button>
             </div>
         </div>
 
         <!-- Game Screen -->
         <div id="game-screen" class="screen">
-            <div class="game-header-compact">
-                <div class="header-info">
-                    <div class="round-indicator">
-                        Round <span id="current-round">1</span>/5
-                    </div>
-                    <div class="deck-title" id="deck-title">Loading...</div>
+            <div class="game-header-bar">
+                <div class="score-display">
+                    Score: <span id="score-value">0</span>
                 </div>
-                <div class="score-display-live">
-                    <div class="score-main">
-                        Score: <span id="current-score">0</span>
-                    </div>
-                    <div class="streak-display" id="streak-display" style="display: none;">
-                        🔥 <span id="streak-count">0</span> Streak!
-                    </div>
-                </div>
+                <div id="streak-display" class="streak-display"></div>
             </div>
 
-            <div class="timer-bar-container">
-                <div id="timer-bar" class="timer-bar"></div>
-                <div class="timer-text"><span id="timer-seconds">60</span>s</div>
-            </div>
-
-            <div class="question-progress">
-                Question <span id="question-current">1</span> of <span id="question-total">6</span>
-            </div>
-
-            <div class="single-question-container" id="single-question-container">
-                <!-- Single question rendered here -->
+            <div id="single-question-container" class="single-question-container">
+                <!-- Questions rendered here by ui.js -->
             </div>
 
             <div class="game-actions">
                 <button id="submit-answer-btn" class="btn-primary btn-large">
-                    Submit Answer
+                    Check Answer ✓
                 </button>
             </div>
 
-            <!-- Instant feedback after submission -->
+            <!-- Instant Feedback -->
             <div id="instant-feedback" class="instant-feedback" style="display: none;">
                 <div class="feedback-content">
-                    <div class="feedback-icon"></div>
                     <div class="feedback-message"></div>
                     <div class="feedback-points"></div>
-                    <button id="continue-btn" class="btn-primary btn-medium" style="margin-top: var(--spacing-md);">
+                    <button id="continue-btn" class="btn-primary btn-medium">
                         Continue
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Results Screen -->
-        <div id="results-screen" class="screen">
-            <div class="results-header">
-                <h2 class="results-title">Round Complete!</h2>
-            </div>
-
-            <div class="results-summary">
-                <div class="result-stat">
-                    <span class="result-label">Correct</span>
-                    <span class="result-value" id="correct-count">0</span>
-                </div>
-                <div class="result-stat">
-                    <span class="result-label">Points Earned</span>
-                    <span class="result-value" id="round-points">0</span>
-                </div>
-            </div>
-
-            <div id="results-list" class="results-list">
-                <!-- Dynamically filled with question results -->
-            </div>
-
-            <div class="revision-card" id="revision-card" style="display: none;">
-                <h3>📝 Quick Revision</h3>
-                <ul id="revision-facts"></ul>
-            </div>
-
-            <div class="retry-section" id="retry-section" style="display: none;">
-                <h3>⚡ Lightning Retry (15s)</h3>
-                <p>Fix your mistakes quickly!</p>
-                <div id="retry-timer-bar" class="timer-bar-small"></div>
-                <div id="retry-prompts"></div>
-            </div>
-
-            <div class="results-actions">
-                <button id="next-round-btn" class="btn-primary btn-large">
-                    Next Round
-                </button>
-            </div>
-        </div>
-
         <!-- Final Results Screen -->
         <div id="final-screen" class="screen">
             <div class="final-header">
-                <div id="final-celebration"></div>
-                <h2 class="final-title">Game Complete!</h2>
+                <h2 class="final-title">🎉 Game Complete!</h2>
             </div>
 
-            <div class="final-score-display">
-                <div class="final-score-main">
-                    <div class="final-score-label">Total Score</div>
-                    <div class="final-score-value" id="final-score">0</div>
+            <div class="final-stats">
+                <div class="final-stat-main">
+                    <div class="stat-label">Total Score</div>
+                    <div class="stat-value-huge" id="final-score">0</div>
                 </div>
+
                 <div class="final-stats-grid">
-                    <div class="final-stat">
-                        <div class="final-stat-label">Personal Best</div>
-                        <div class="final-stat-value" id="final-pb">0</div>
+                    <div class="stat-card">
+                        <div class="stat-label">Correct</div>
+                        <div class="stat-value" id="final-correct">0/10</div>
                     </div>
-                    <div class="final-stat">
-                        <div class="final-stat-label">Best Streak</div>
-                        <div class="final-stat-value" id="final-streak">0</div>
+                    <div class="stat-card">
+                        <div class="stat-label">Accuracy</div>
+                        <div class="stat-value" id="final-accuracy">0%</div>
                     </div>
-                    <div class="final-stat">
-                        <div class="final-stat-label">Correct</div>
-                        <div class="final-stat-value" id="final-correct">0</div>
+                    <div class="stat-card">
+                        <div class="stat-label">Best Streak</div>
+                        <div class="stat-value" id="final-streak">0</div>
                     </div>
                 </div>
-            </div>
-
-            <div id="improvement-section" class="improvement-section" style="display: none;">
-                <h3>🎯 Areas to Review:</h3>
-                <div id="improvement-tags"></div>
             </div>
 
             <div class="final-actions">
                 <button id="play-again-btn" class="btn-primary btn-massive">
-                    Play Again! 🎮
+                    Play Again 🎮
                 </button>
                 <button id="home-btn" class="btn-secondary">
                     Back to Home
@@ -207,10 +112,7 @@
 
     </div>
 
-    <!-- Confetti Canvas (for celebrations) -->
-    <canvas id="confetti-canvas"></canvas>
-
-    <!-- Load Scripts -->
+    <!-- Load Scripts with cache-busting -->
     <script src="/_revision/src/storage.js?v=4.0"></script>
     <script src="/_revision/src/marking.js?v=4.0"></script>
     <script src="/_revision/src/ui.js?v=4.0"></script>

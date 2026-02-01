@@ -52,6 +52,7 @@
      */
     function setupEventListeners() {
         document.getElementById('play-btn').addEventListener('click', startGame);
+        document.getElementById('play-again-btn')?.addEventListener('click', startGame);
         document.getElementById('sound-toggle').addEventListener('click', toggleSound);
         document.getElementById('submit-answer-btn').addEventListener('click', submitCurrentAnswer);
         document.getElementById('continue-btn').addEventListener('click', continueToNextQuestion);
