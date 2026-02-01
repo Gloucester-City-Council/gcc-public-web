@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "items": [
+    {
+      "pattern": "Reduction is loss of electrons.",
+      "whyWrong": "In electron-transfer redox, reduction is gain of electrons.",
+      "correctGuidance": "Use OILRIG: Reduction Is Gain (of electrons).",
+      "questionIds": ["reduction-electrons-definition", "half-equation-sodium-oxidation"]
+    },
+    {
+      "pattern": "Oxidation is gain of electrons.",
+      "whyWrong": "In electron-transfer redox, oxidation is loss of electrons.",
+      "correctGuidance": "Use OILRIG: Oxidation Is Loss (of electrons).",
+      "questionIds": ["oxidation-electrons-definition", "half-equation-sodium-oxidation"]
+    },
+    {
+      "pattern": "Metal + acid --> salt + water",
+      "whyWrong": "Acid + metal produces hydrogen gas, not water.",
+      "correctGuidance": "Metal + acid → salt + hydrogen.",
+      "questionIds": ["metal-plus-acid-word-equation"]
+    },
+    {
+      "pattern": "It relights a glowing splint.",
+      "whyWrong": "That’s the oxygen test; hydrogen gives a squeaky pop with a lit splint.",
+      "correctGuidance": "Hydrogen test: lit splint → squeaky pop.",
+      "questionIds": ["hydrogen-test", "hydrogen-observation"]
+    },
+    {
+      "pattern": "Oxidation means the metal loses oxygen.",
+      "whyWrong": "In oxygen-transfer terms, oxidation is gain of oxygen.",
+      "correctGuidance": "Oxidation (oxygen-transfer) = gain oxygen; reduction = loss oxygen.",
+      "questionIds": ["oxidation-as-gain-oxygen", "reduction-extraction-definition"]
+    },
+    {
+      "pattern": "M + H2O --> MOH + H2",
+      "whyWrong": "That is not balanced as written for Group 1 metals with water.",
+      "correctGuidance": "Use: 2M + 2H2O --> 2MOH + H2.",
+      "questionIds": ["group1-water-balanced-equation"]
+    },
+    {
+      "pattern": "Zinc + iron chloride --> iron chloride + zinc",
+      "whyWrong": "That keeps the same substances; displacement swaps the metal in the salt.",
+      "correctGuidance": "Zinc + iron chloride --> zinc chloride + iron.",
+      "questionIds": ["displacement-wordeq-zn-fecl2"]
+    }
+  ]
+}
