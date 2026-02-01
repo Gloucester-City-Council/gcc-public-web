@@ -369,6 +369,122 @@ body {
     background-clip: text;
 }
 
+/* Live Score & Streak Display */
+.score-display-live {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--spacing-xs);
+}
+
+.score-main {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.streak-display {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent);
+    animation: streakPulse 0.5s ease-in-out;
+}
+
+@keyframes streakPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Question Progress */
+.question-progress {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: rgba(255,255,255,0.05);
+    border-radius: var(--radius-md);
+}
+
+/* Single Question Container */
+.single-question-container {
+    max-width: 700px;
+    margin: 0 auto var(--spacing-lg);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Instant Feedback */
+.instant-feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: rgba(0,0,0,0.95);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    text-align: center;
+    min-width: 300px;
+    max-width: 90%;
+    box-shadow: var(--shadow-lg);
+    animation: feedbackPop 0.4s ease-out;
+}
+
+@keyframes feedbackPop {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.feedback-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.feedback-message {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-light);
+}
+
+.feedback-points {
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.feedback-content.correct .feedback-icon::before {
+    content: "✅";
+}
+
+.feedback-content.incorrect .feedback-icon::before {
+    content: "❌";
+}
+
 /* Timer */
 .timer-bar-container {
     position: relative;

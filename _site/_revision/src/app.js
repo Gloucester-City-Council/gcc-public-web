@@ -18,7 +18,9 @@
         totalRounds: 5,
         currentDeck: null,
         currentQuestions: [],
+        currentQuestionIndex: 0,
         currentAnswers: {},
+        roundResults: [],
         score: 0,
         correctCount: 0,
         totalQuestions: 0,
@@ -90,7 +92,7 @@
         document.getElementById('sound-toggle').addEventListener('click', toggleSound);
 
         // Game screen
-        document.getElementById('submit-round-btn').addEventListener('click', submitRound);
+        document.getElementById('submit-answer-btn').addEventListener('click', submitCurrentAnswer);
 
         // Results screen
         document.getElementById('next-round-btn').addEventListener('click', nextRound);
@@ -155,6 +157,10 @@
             return;
         }
 
+        // Reset for new round
+        gameState.currentQuestionIndex = 0;
+        gameState.roundResults = [];
+
         // Select a deck for this round
         selectDeck();
 
@@ -208,20 +214,20 @@
             }
         });
 
+        // ALWAYS shuffle questions for variety
+        gameState.currentQuestions = gameState.currentQuestions.sort(() => Math.random() - 0.5);
+
         // Limit to deck's numberOfPrompts
         const numberOfPrompts = deck.round?.numberOfPrompts || 6;
         if (gameState.currentQuestions.length > numberOfPrompts) {
-            // Shuffle and take the required number
-            gameState.currentQuestions = gameState.currentQuestions
-                .sort(() => Math.random() - 0.5)
-                .slice(0, numberOfPrompts);
+            gameState.currentQuestions = gameState.currentQuestions.slice(0, numberOfPrompts);
         }
 
         gameState.totalQuestions += gameState.currentQuestions.length;
     }
 
     /**
-     * Render the game screen
+     * Render the current single question
      */
     function renderGameScreen() {
         const deck = gameState.currentDeck;
@@ -233,17 +239,16 @@
             gameState.score
         );
 
-        // Render progress dots
-        UI.renderProgressDots(gameState.currentRound, gameState.totalRounds);
+        // Update question progress
+        document.getElementById('question-current').textContent = gameState.currentQuestionIndex + 1;
+        document.getElementById('question-total').textContent = gameState.currentQuestions.length;
 
-        // Render questions
-        const container = document.getElementById('prompts-container');
-        container.innerHTML = '';
+        // Render current question
+        const currentQuestion = gameState.currentQuestions[gameState.currentQuestionIndex];
+        UI.renderSingleQuestion(currentQuestion, gameState.currentQuestionIndex);
 
-        gameState.currentQuestions.forEach((question, idx) => {
-            const card = UI.renderQuestionCard(question, idx);
-            container.appendChild(card);
-        });
+        // Update streak display
+        UI.updateStreakDisplay(gameState.currentStreak);
     }
 
     /**
@@ -277,111 +282,111 @@
     }
 
     /**
-     * Submit the current round for marking
+     * Submit the current answer
      */
-    function submitRound() {
+    function submitCurrentAnswer() {
+        const currentQuestion = gameState.currentQuestions[gameState.currentQuestionIndex];
+
+        // Get user answer for current question
+        const userAnswer = UI.getCurrentAnswer(currentQuestion);
+
+        // Mark the answer
+        const result = Marking.markQuestion(currentQuestion, userAnswer);
+
+        // Store result
+        gameState.roundResults.push({
+            question: currentQuestion,
+            userAnswer: userAnswer,
+            ...result
+        });
+
+        // Update score and streak
+        if (result.correct) {
+            gameState.correctCount++;
+            gameState.currentStreak++;
+            if (gameState.currentStreak > gameState.bestStreak) {
+                gameState.bestStreak = gameState.currentStreak;
+            }
+
+            // Award points (+2 base)
+            const points = 2;
+            gameState.score += points;
+
+            // Show instant success feedback
+            UI.showInstantFeedback(true, UI.getRandomCompliment(), `+${points} points`);
+        } else {
+            gameState.currentStreak = 0;
+
+            // Track missed tags
+            if (currentQuestion.tags) {
+                gameState.missedTags.push(...currentQuestion.tags);
+            }
+
+            // Show instant feedback with hint
+            UI.showInstantFeedback(false, result.feedback, result.hint || '');
+        }
+
+        // Update streak display
+        UI.updateStreakDisplay(gameState.currentStreak);
+
+        // Update score display with animation
+        UI.updateScoreDisplay(gameState.score);
+
+        // Move to next question after delay
+        setTimeout(() => {
+            UI.hideInstantFeedback();
+            moveToNextQuestion();
+        }, 2000);
+    }
+
+    /**
+     * Move to the next question or end round
+     */
+    function moveToNextQuestion() {
+        gameState.currentQuestionIndex++;
+
+        if (gameState.currentQuestionIndex >= gameState.currentQuestions.length) {
+            // Round complete
+            endRound();
+        } else {
+            // Render next question
+            renderGameScreen();
+        }
+    }
+
+    /**
+     * End the current round and show results
+     */
+    function endRound() {
         // Stop timer
         if (gameState.timerInterval) {
             clearInterval(gameState.timerInterval);
             gameState.timerInterval = null;
         }
 
-        // Get user answers
-        const userAnswers = UI.getUserAnswers(gameState.currentQuestions);
-        gameState.currentAnswers = userAnswers;
-
-        // Mark answers
-        const results = markRound(userAnswers);
-
-        // Calculate points
-        const points = calculatePoints(results);
-
-        // Update game state
-        gameState.score += points;
-
-        // Show results
-        showRoundResults(results, points);
+        // Show round results
+        showRoundResults(gameState.roundResults, gameState.score);
     }
 
-    /**
-     * Mark all answers in the round
-     */
-    function markRound(userAnswers) {
-        const results = [];
-
-        gameState.currentQuestions.forEach(question => {
-            const userAnswer = userAnswers[question.id];
-            const result = Marking.markQuestion(question, userAnswer);
-
-            // Track correct answers
-            if (result.correct) {
-                gameState.correctCount++;
-                gameState.currentStreak++;
-
-                if (gameState.currentStreak > gameState.bestStreak) {
-                    gameState.bestStreak = gameState.currentStreak;
-                }
-            } else {
-                gameState.currentStreak = 0;
-
-                // Track missed tags for improvement
-                if (question.tags) {
-                    gameState.missedTags.push(...question.tags);
-                }
-            }
-
-            results.push({
-                question: question,
-                userAnswer: userAnswer,
-                ...result
-            });
-        });
-
-        return results;
-    }
-
-    /**
-     * Calculate points for the round
-     */
-    function calculatePoints(results) {
-        let points = 0;
-
-        // Base points: +2 per correct answer
-        const correctCount = results.filter(r => r.correct).length;
-        points += correctCount * 2;
-
-        // Speed bonus: +0 to +3 based on time remaining
-        const timerSeconds = gameState.currentDeck.round?.timerSeconds || 60;
-        const timeRemaining = gameState.secondsRemaining;
-        const timePercentage = timeRemaining / timerSeconds;
-
-        if (timePercentage > 0.5) {
-            points += 3; // Very fast
-        } else if (timePercentage > 0.25) {
-            points += 2; // Fast
-        } else if (timePercentage > 0) {
-            points += 1; // Some time left
-        }
-
-        // Streak bonus: +1 for every 3 correct in a row
-        const streakBonus = Math.floor(gameState.currentStreak / 3);
-        points += streakBonus;
-
-        return points;
-    }
+    // Marking is now done per-question in submitCurrentAnswer()
+    // Points are calculated per-question (+2 base)
 
     /**
      * Show round results
      */
-    function showRoundResults(results, points) {
+    function showRoundResults(results, totalScore) {
         // Render results
-        const correctCount = UI.renderResults(results, gameState.currentQuestions);
+        const questions = gameState.currentQuestions;
+        const correctCount = UI.renderResults(results, questions);
+
+        // Calculate round points (just for display)
+        const roundPoints = results.filter(r => r.correct).length * 2;
 
         // Update points display
-        document.getElementById('round-points').textContent = points;
+        document.getElementById('round-points').textContent = roundPoints;
 
         // Show revision card
-        UI.showRevisionCard(gameState.currentQuestions);
+        UI.showRevisionCard(questions);
 
         // Update button text
         const nextBtn = document.getElementById('next-round-btn');

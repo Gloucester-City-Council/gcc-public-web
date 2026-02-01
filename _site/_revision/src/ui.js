@@ -120,7 +120,36 @@ const UI = (function() {
     }
 
     /**
-     * Render a single question card
+     * Render a single question in the single-question container
+     */
+    function renderSingleQuestion(question, index) {
+        const container = document.getElementById('single-question-container');
+        container.innerHTML = '';
+
+        const card = document.createElement('div');
+        card.className = 'question-card bounce-in';
+        card.dataset.questionId = question.id;
+
+        const numberEl = document.createElement('div');
+        numberEl.className = 'question-number';
+        numberEl.textContent = `Question ${index + 1}`;
+
+        const promptEl = document.createElement('div');
+        promptEl.className = 'question-prompt';
+        promptEl.textContent = question.prompt;
+
+        card.appendChild(numberEl);
+        card.appendChild(promptEl);
+
+        // Render input based on question type
+        const inputEl = renderQuestionInput(question);
+        card.appendChild(inputEl);
+
+        container.appendChild(card);
+    }
+
+    /**
+     * Render a single question card (legacy - for results)
      */
     function renderQuestionCard(question, index) {
         const card = document.createElement('div');
@@ -166,7 +195,9 @@ const UI = (function() {
             case 'single_choice':
                 const choicesGrid = document.createElement('div');
                 choicesGrid.className = 'choices-grid';
-                question.options.forEach(option => {
+                // Shuffle options for variety
+                const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
+                shuffledOptions.forEach(option => {
                     const btn = document.createElement('button');
                     btn.type = 'button'; // Prevent form submission
                     btn.className = 'choice-btn';
@@ -187,7 +218,9 @@ const UI = (function() {
             case 'multi_choice':
                 const multiGrid = document.createElement('div');
                 multiGrid.className = 'choices-grid';
-                question.options.forEach(option => {
+                // Shuffle options for variety
+                const shuffledMultiOptions = [...question.options].sort(() => Math.random() - 0.5);
+                shuffledMultiOptions.forEach(option => {
                     const btn = document.createElement('button');
                     btn.type = 'button'; // Prevent form submission
                     btn.className = 'choice-btn';
@@ -719,6 +752,103 @@ const UI = (function() {
         }
     }
 
+    /**
+     * Get current answer for single question
+     */
+    function getCurrentAnswer(question) {
+        const qId = question.id;
+
+        switch (question.type) {
+            case 'short_text_exact':
+                const input = document.querySelector(`.answer-input[data-question-id="${qId}"]`);
+                return input ? input.value.trim() : '';
+
+            case 'single_choice':
+                const selected = document.querySelector(`[data-question-id="${qId}"].choice-btn.selected`);
+                return selected ? selected.dataset.choice : '';
+
+            case 'multi_choice':
+                const selectedMulti = document.querySelectorAll(`[data-question-id="${qId}"].choice-btn.selected`);
+                return Array.from(selectedMulti).map(btn => btn.dataset.choice);
+
+            case 'ordering':
+                const orderList = document.querySelector(`.draggable-list[data-question-id="${qId}"]`);
+                if (orderList) {
+                    const wrappers = Array.from(orderList.querySelectorAll('.ordering-item-wrapper'));
+                    return wrappers.map(wrapper => {
+                        const item = wrapper.querySelector('.draggable-item');
+                        return item.dataset.value;
+                    });
+                }
+                return [];
+
+            case 'match_pairs':
+                const pairsContainer = document.querySelector(`.pairs-container[data-question-id="${qId}"]`);
+                if (pairsContainer) {
+                    const leftItems = pairsContainer.querySelectorAll('.left-column .draggable-item');
+                    return Array.from(leftItems).map(item => ({
+                        left: item.dataset.leftValue,
+                        right: item.dataset.pairedWith || ''
+                    }));
+                }
+                return [];
+
+            default:
+                return '';
+        }
+    }
+
+    /**
+     * Show instant feedback after answer
+     */
+    function showInstantFeedback(isCorrect, message, pointsOrHint) {
+        const feedbackEl = document.getElementById('instant-feedback');
+        const contentEl = feedbackEl.querySelector('.feedback-content');
+        const messageEl = feedbackEl.querySelector('.feedback-message');
+        const pointsEl = feedbackEl.querySelector('.feedback-points');
+
+        contentEl.className = `feedback-content ${isCorrect ? 'correct' : 'incorrect'}`;
+        messageEl.textContent = message;
+        pointsEl.textContent = pointsOrHint;
+
+        feedbackEl.style.display = 'block';
+    }
+
+    /**
+     * Hide instant feedback
+     */
+    function hideInstantFeedback() {
+        const feedbackEl = document.getElementById('instant-feedback');
+        feedbackEl.style.display = 'none';
+    }
+
+    /**
+     * Update streak display
+     */
+    function updateStreakDisplay(streak) {
+        const streakEl = document.getElementById('streak-display');
+        const streakCount = document.getElementById('streak-count');
+
+        if (streak >= 2) {
+            streakCount.textContent = streak;
+            streakEl.style.display = 'block';
+            streakEl.classList.add('pulse');
+            setTimeout(() => streakEl.classList.remove('pulse'), 500);
+        } else {
+            streakEl.style.display = 'none';
+        }
+    }
+
+    /**
+     * Update score display with animation
+     */
+    function updateScoreDisplay(score) {
+        const scoreEl = document.getElementById('current-score');
+        scoreEl.textContent = score;
+        scoreEl.classList.add('pulse');
+        setTimeout(() => scoreEl.classList.remove('pulse'), 500);
+    }
+
     // Public API
     return {
         showScreen,
@@ -727,7 +857,9 @@ const UI = (function() {
         updateGameHeader,
         updateTimer,
         renderQuestionCard,
+        renderSingleQuestion,
         getUserAnswers,
+        getCurrentAnswer,
         renderResults,
         showRevisionCard,
         showFinalResults,
@@ -735,7 +867,11 @@ const UI = (function() {
         triggerConfetti,
         addFeedbackAnimation,
         getRandomCompliment,
-        getRandomEncouragement
+        getRandomEncouragement,
+        showInstantFeedback,
+        hideInstantFeedback,
+        updateStreakDisplay,
+        updateScoreDisplay
     };
 })();
 
