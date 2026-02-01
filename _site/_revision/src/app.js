@@ -361,8 +361,9 @@
                 gameState.missedTags.push(...currentQuestion.tags);
             }
 
-            // Show instant feedback with hint
-            UI.showInstantFeedback(false, result.feedback, result.hint || '');
+            // Show instant feedback with hint and correct answer
+            const hintText = result.hint ? `${result.hint}\n\n✓ Correct answer: ${result.correctAnswer}` : `✓ Correct answer: ${result.correctAnswer}`;
+            UI.showInstantFeedback(false, result.feedback, hintText);
         }
 
         // Update streak display
