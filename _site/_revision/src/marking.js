@@ -181,6 +181,7 @@ const Marking = (function() {
                 correct: false,
                 feedback: misconception.whyWrong,
                 hint: misconception.correctGuidance,
+                correctAnswer: correctAnswers[0],
                 isMisconception: true
             };
         }
@@ -229,13 +230,15 @@ const Marking = (function() {
                 correct: false,
                 feedback: misconception.whyWrong,
                 hint: misconception.correctGuidance,
+                correctAnswer: question.correctAnswer,
                 isMisconception: true
             };
         }
 
         return {
             correct: false,
-            feedback: question.feedback.incorrect
+            feedback: question.feedback.incorrect,
+            correctAnswer: question.correctAnswer
         };
     }
 
@@ -260,6 +263,7 @@ const Marking = (function() {
                         correct: false,
                         feedback: misconception.whyWrong,
                         hint: misconception.correctGuidance,
+                        correctAnswer: question.correctAnswers.join(', '),
                         isMisconception: true
                     };
                 }
@@ -267,7 +271,8 @@ const Marking = (function() {
 
             return {
                 correct: false,
-                feedback: question.feedback.incorrect
+                feedback: question.feedback.incorrect,
+                correctAnswer: question.correctAnswers.join(', ')
             };
         }
 
@@ -289,6 +294,7 @@ const Marking = (function() {
                     correct: false,
                     feedback: misconception.whyWrong,
                     hint: misconception.correctGuidance,
+                    correctAnswer: question.correctAnswers.join(', '),
                     isMisconception: true
                 };
             }
@@ -296,7 +302,8 @@ const Marking = (function() {
 
         return {
             correct: false,
-            feedback: question.feedback.incorrect
+            feedback: question.feedback.incorrect,
+            correctAnswer: question.correctAnswers.join(', ')
         };
     }
 
