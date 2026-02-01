@@ -221,6 +221,18 @@ const Marking = (function() {
             };
         }
 
+        // Check for misconception on incorrect answers
+        const misconception = checkMisconception(userAnswer, question.id);
+
+        if (misconception) {
+            return {
+                correct: false,
+                feedback: misconception.whyWrong,
+                hint: misconception.correctGuidance,
+                isMisconception: true
+            };
+        }
+
         return {
             correct: false,
             feedback: question.feedback.incorrect
@@ -240,6 +252,19 @@ const Marking = (function() {
 
         // Must match exactly (same items, same count)
         if (userNorm.length !== correctNorm.length) {
+            // Check for misconception in any of the selected answers
+            for (const answer of userAnswers) {
+                const misconception = checkMisconception(answer, question.id);
+                if (misconception) {
+                    return {
+                        correct: false,
+                        feedback: misconception.whyWrong,
+                        hint: misconception.correctGuidance,
+                        isMisconception: true
+                    };
+                }
+            }
+
             return {
                 correct: false,
                 feedback: question.feedback.incorrect
@@ -254,6 +279,19 @@ const Marking = (function() {
                 matchedAnswer: question.correctAnswers.join(', '),
                 feedback: question.feedback.correct
             };
+        }
+
+        // Check for misconception in any of the selected answers
+        for (const answer of userAnswers) {
+            const misconception = checkMisconception(answer, question.id);
+            if (misconception) {
+                return {
+                    correct: false,
+                    feedback: misconception.whyWrong,
+                    hint: misconception.correctGuidance,
+                    isMisconception: true
+                };
+            }
         }
 
         return {
