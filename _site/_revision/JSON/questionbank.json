@@ -1,6 +1,6 @@
 {
   "version": "4.0",
-  "totalQuestions": 50,
+  "totalQuestions": 45,
   "description": "Duolingo-style GCSE Chemistry questions",
   "questions": [
     {"id": "q001", "type": "fill_sentence", "prompt": "How are elements arranged in a periodic table?", "correctAnswer": "In order of atomic number so that elements with similar properties are in groups", "requiredKeywords": ["order", "atomic", "number"], "topic": "Periodic table", "explanation": {"why": "Elements are arranged by atomic number, which puts similar properties in columns (groups)", "tip": "Atomic NUMBER not weight! Groups = similar properties"}},
