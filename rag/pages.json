@@ -70,41 +70,6 @@
     "chunkCount": 3
   },
   {
-    "url": "https://gloucester.gov.uk/events/guildhall.html",
-    "title": "Guildhall Events | Gloucester City Council",
-    "excerpt": "Hire Gloucester Guildhall for events, performances, conferences, and ceremonies. Historic venue in the heart of Gloucester.",
-    "source_path": "events/guildhall.html",
-    "chunkCount": 1
-  },
-  {
-    "url": "https://gloucester.gov.uk/events/",
-    "title": "Events on Council Land | Gloucester City Council",
-    "excerpt": "Organise events on council land or property in Gloucester. Get permission for events in parks, open spaces, or book the Guildhall.",
-    "source_path": "events/index.html",
-    "chunkCount": 1
-  },
-  {
-    "url": "https://gloucester.gov.uk/events/parks-and-open-spaces.html",
-    "title": "Events in Parks and Open Spaces | Gloucester City Council",
-    "excerpt": "Organise events in Gloucester parks and open spaces. Apply for permission for festivals, sports tournaments, community events, and more.",
-    "source_path": "events/parks-and-open-spaces.html",
-    "chunkCount": 6
-  },
-  {
-    "url": "https://gloucester.gov.uk/events/privacy.html",
-    "title": "Privacy - Events on Council Land | Gloucester City Council",
-    "excerpt": "How Gloucester City Council uses your personal information when you apply to organise events on council land.",
-    "source_path": "events/privacy.html",
-    "chunkCount": 3
-  },
-  {
-    "url": "https://gloucester.gov.uk/events/street-parties.html",
-    "title": "Street Parties and Road Closures | Gloucester City Council",
-    "excerpt": "Organise a street party in Gloucester with road closure. Get help applying for permission to close your street for a community celebration.",
-    "source_path": "events/street-parties.html",
-    "chunkCount": 3
-  },
-  {
     "url": "https://gloucester.gov.uk/council-tax/about.html",
     "title": "Understanding Council Tax | Council Tax | Gloucester City Council",
     "excerpt": "Learn how council tax works and what it pays for",
@@ -173,6 +138,41 @@
     "excerpt": "Sign in to view your bill, check payments, and manage your account",
     "source_path": "council-tax/your-account.html",
     "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/events/guildhall.html",
+    "title": "Guildhall Events | Gloucester City Council",
+    "excerpt": "Hire Gloucester Guildhall for events, performances, conferences, and ceremonies. Historic venue in the heart of Gloucester.",
+    "source_path": "events/guildhall.html",
+    "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/events/",
+    "title": "Events on Council Land | Gloucester City Council",
+    "excerpt": "Organise events on council land or property in Gloucester. Get permission for events in parks, open spaces, or book the Guildhall.",
+    "source_path": "events/index.html",
+    "chunkCount": 1
+  },
+  {
+    "url": "https://gloucester.gov.uk/events/parks-and-open-spaces.html",
+    "title": "Events in Parks and Open Spaces | Gloucester City Council",
+    "excerpt": "Organise events in Gloucester parks and open spaces. Apply for permission for festivals, sports tournaments, community events, and more.",
+    "source_path": "events/parks-and-open-spaces.html",
+    "chunkCount": 6
+  },
+  {
+    "url": "https://gloucester.gov.uk/events/privacy.html",
+    "title": "Privacy - Events on Council Land | Gloucester City Council",
+    "excerpt": "How Gloucester City Council uses your personal information when you apply to organise events on council land.",
+    "source_path": "events/privacy.html",
+    "chunkCount": 3
+  },
+  {
+    "url": "https://gloucester.gov.uk/events/street-parties.html",
+    "title": "Street Parties and Road Closures | Gloucester City Council",
+    "excerpt": "Organise a street party in Gloucester with road closure. Get help applying for permission to close your street for a community celebration.",
+    "source_path": "events/street-parties.html",
+    "chunkCount": 3
   },
   {
     "url": "https://gloucester.gov.uk/fees-and-charges/",
