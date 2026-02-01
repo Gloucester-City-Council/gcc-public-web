@@ -1,456 +1,199 @@
 /**
- * MARKING MODULE
- * Handles strict answer validation with aliases and misconception detection
- * NO fuzzy matching, NO partial credit
+ * MARKING MODULE - Duolingo Style
+ * Handles answer validation for new question types
  */
 
 const Marking = (function() {
     'use strict';
 
-    let aliasesData = null;
-    let misconceptionsData = null;
-
-    /**
-     * Load aliases from JSON
-     */
-    async function loadAliases() {
-        try {
-            const response = await fetch('/_revision/JSON/aliases.json');
-            aliasesData = await response.json();
-            return true;
-        } catch (e) {
-            console.error('Failed to load aliases:', e);
-            return false;
-        }
-    }
-
-    /**
-     * Load misconceptions from JSON
-     */
-    async function loadMisconceptions() {
-        try {
-            const response = await fetch('/_revision/JSON/misconceptions.json');
-            misconceptionsData = await response.json();
-            return true;
-        } catch (e) {
-            console.error('Failed to load misconceptions:', e);
-            return false;
-        }
-    }
-
-    /**
-     * Initialize the marking module
-     */
-    async function init() {
-        await Promise.all([loadAliases(), loadMisconceptions()]);
-    }
-
     /**
      * Normalize text for comparison
-     * - Trim whitespace
-     * - Convert to lowercase
-     * - Remove extra spaces
-     * - Remove common punctuation at end
      */
     function normalizeText(text) {
         if (!text || typeof text !== 'string') return '';
-
-        return text
-            .trim()
-            .toLowerCase()
-            .replace(/\s+/g, ' ')  // Collapse multiple spaces
-            .replace(/[.,;!?]+$/, '');  // Remove trailing punctuation
+        return text.trim().toLowerCase().replace(/\s+/g, ' ').replace(/[.,;!?]+$/, '');
     }
 
     /**
-     * Check if answer matches using aliases
-     * Returns normalized form if match found, null otherwise
+     * Mark fill_blank questions
+     * Checks against acceptVariations array
      */
-    function checkWithAliases(userAnswer, correctAnswers) {
+    function markFillBlank(question, userAnswer) {
         const normalized = normalizeText(userAnswer);
+        const variations = question.acceptVariations || [question.correctAnswer];
 
-        // Direct match check
-        for (const correct of correctAnswers) {
-            if (normalizeText(correct) === normalized) {
-                return correct;
-            }
-        }
+        const isCorrect = variations.some(variant =>
+            normalizeText(variant) === normalized
+        );
 
-        // Element symbol/name alias check
-        if (aliasesData && aliasesData.elements) {
-            for (const element of aliasesData.elements) {
-                // Check if user answered with symbol or any alias
-                const allForms = [
-                    element.symbol,
-                    element.name,
-                    ...(element.aliases || [])
-                ];
-
-                const userMatchesElement = allForms.some(form =>
-                    normalizeText(form) === normalized
-                );
-
-                if (userMatchesElement) {
-                    // Check if any correct answer also matches this element
-                    for (const correct of correctAnswers) {
-                        const correctNorm = normalizeText(correct);
-                        if (allForms.some(form => normalizeText(form) === correctNorm)) {
-                            return correct;
-                        }
-                    }
-                }
-            }
-        }
-
-        // Spelling variants check
-        if (aliasesData && aliasesData.spellingVariants) {
-            for (const variant of aliasesData.spellingVariants) {
-                const allSpellings = [
-                    variant.preferredUK,
-                    ...(variant.allowed || [])
-                ];
-
-                const userMatchesVariant = allSpellings.some(spelling =>
-                    normalizeText(spelling) === normalized
-                );
-
-                if (userMatchesVariant) {
-                    // Check if any correct answer matches this variant
-                    for (const correct of correctAnswers) {
-                        if (allSpellings.some(spelling =>
-                            normalizeText(correct).includes(normalizeText(spelling))
-                        )) {
-                            return correct;
-                        }
-                    }
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Check if answer is a known misconception
-     * Returns misconception object if found, null otherwise
-     */
-    function checkMisconception(userAnswer, questionId) {
-        if (!misconceptionsData || !misconceptionsData.items) {
-            return null;
-        }
-
-        const normalized = normalizeText(userAnswer);
-
-        for (const item of misconceptionsData.items) {
-            // Check if this misconception applies to this question
-            if (item.questionIds && item.questionIds.includes(questionId)) {
-                if (normalizeText(item.pattern) === normalized) {
-                    return {
-                        whyWrong: item.whyWrong,
-                        correctGuidance: item.correctGuidance
-                    };
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Mark a short text answer (strict exact matching)
-     */
-    function markShortText(question, userAnswer) {
-        const correctAnswers = question.correctAnswers || [];
-
-        // Try direct match with aliases
-        const match = checkWithAliases(userAnswer, correctAnswers);
-
-        if (match) {
-            return {
-                correct: true,
-                matchedAnswer: match,
-                feedback: question.feedback.correct
-            };
-        }
-
-        // Check for misconception
-        const misconception = checkMisconception(userAnswer, question.id);
-
-        if (misconception) {
-            return {
-                correct: false,
-                feedback: misconception.whyWrong,
-                hint: misconception.correctGuidance,
-                correctAnswer: correctAnswers[0],
-                isMisconception: true
-            };
-        }
-
-        // Check for specific reject feedback
-        if (question.rejectFeedback) {
-            const normalized = normalizeText(userAnswer);
-            for (const [wrongAnswer, feedback] of Object.entries(question.rejectFeedback)) {
-                if (normalizeText(wrongAnswer) === normalized) {
-                    return {
-                        correct: false,
-                        feedback: feedback,
-                        hint: question.feedback.incorrect,
-                        correctAnswer: correctAnswers[0]
-                    };
-                }
-            }
-        }
-
-        // Generic incorrect
         return {
-            correct: false,
-            feedback: question.feedback.incorrect,
-            correctAnswer: correctAnswers[0]
+            correct: isCorrect,
+            correctAnswer: question.correctAnswer,
+            feedback: isCorrect ?
+                "Correct!" :
+                question.explanation?.why || "Not quite right",
+            tip: question.explanation?.tip || ""
         };
     }
 
     /**
-     * Mark a single choice answer
+     * Mark fill_sentence questions
+     * Checks for required keywords in any order
      */
-    function markSingleChoice(question, userAnswer) {
+    function markFillSentence(question, userAnswer) {
         const normalized = normalizeText(userAnswer);
-        const correctNorm = normalizeText(question.correctAnswer);
+        const keywords = question.requiredKeywords || [];
 
-        if (normalized === correctNorm) {
-            return {
-                correct: true,
-                matchedAnswer: question.correctAnswer,
-                feedback: question.feedback.correct
-            };
-        }
-
-        // Check for misconception on incorrect answers
-        const misconception = checkMisconception(userAnswer, question.id);
-
-        if (misconception) {
-            return {
-                correct: false,
-                feedback: misconception.whyWrong,
-                hint: misconception.correctGuidance,
-                correctAnswer: question.correctAnswer,
-                isMisconception: true
-            };
-        }
+        const hasAllKeywords = keywords.every(keyword =>
+            normalized.includes(normalizeText(keyword))
+        );
 
         return {
-            correct: false,
-            feedback: question.feedback.incorrect,
-            correctAnswer: question.correctAnswer
+            correct: hasAllKeywords,
+            correctAnswer: question.correctAnswer,
+            feedback: hasAllKeywords ?
+                "Perfect!" :
+                question.explanation?.why || "Make sure to include all key points",
+            tip: question.explanation?.tip || ""
         };
     }
 
     /**
-     * Mark a multi-choice answer
+     * Mark multiple_choice questions
+     * Exact match required
      */
-    function markMultiChoice(question, userAnswers) {
+    function markMultipleChoice(question, userAnswer) {
+        const isCorrect = normalizeText(userAnswer) === normalizeText(question.correctAnswer);
+
+        return {
+            correct: isCorrect,
+            correctAnswer: question.correctAnswer,
+            feedback: isCorrect ?
+                "Excellent!" :
+                question.explanation?.why || "Not the right answer",
+            tip: question.explanation?.tip || ""
+        };
+    }
+
+    /**
+     * Mark word_bank questions
+     * Constructed answer must match
+     */
+    function markWordBank(question, userAnswer) {
+        const isCorrect = normalizeText(userAnswer) === normalizeText(question.correctAnswer);
+
+        return {
+            correct: isCorrect,
+            correctAnswer: question.correctAnswer,
+            feedback: isCorrect ?
+                "Well done!" :
+                question.explanation?.why || "Check the order and words used",
+            tip: question.explanation?.tip || ""
+        };
+    }
+
+    /**
+     * Mark ordering questions
+     * Order must match exactly
+     */
+    function markOrdering(question, userOrder) {
+        if (!Array.isArray(userOrder) || !Array.isArray(question.correctOrder)) {
+            return {
+                correct: false,
+                correctAnswer: question.correctOrder?.join(' → ') || '',
+                feedback: "Invalid answer format",
+                tip: ""
+            };
+        }
+
+        const isCorrect = userOrder.length === question.correctOrder.length &&
+            userOrder.every((item, index) =>
+                normalizeText(item) === normalizeText(question.correctOrder[index])
+            );
+
+        return {
+            correct: isCorrect,
+            correctAnswer: question.correctOrder.join(' → '),
+            feedback: isCorrect ?
+                "Perfect order!" :
+                question.explanation?.why || "Not quite the right order",
+            tip: question.explanation?.tip || ""
+        };
+    }
+
+    /**
+     * Mark select_all questions
+     * All correct answers must be selected, no extras
+     */
+    function markSelectAll(question, userAnswers) {
         if (!Array.isArray(userAnswers)) {
             userAnswers = [userAnswers];
         }
 
+        const correctAnswers = question.correctAnswers || [question.correctAnswer];
+
         const userNorm = userAnswers.map(normalizeText).sort();
-        const correctNorm = (question.correctAnswers || []).map(normalizeText).sort();
+        const correctNorm = correctAnswers.map(normalizeText).sort();
 
-        // Must match exactly (same items, same count)
-        if (userNorm.length !== correctNorm.length) {
-            // Check for misconception in any of the selected answers
-            for (const answer of userAnswers) {
-                const misconception = checkMisconception(answer, question.id);
-                if (misconception) {
-                    return {
-                        correct: false,
-                        feedback: misconception.whyWrong,
-                        hint: misconception.correctGuidance,
-                        correctAnswer: question.correctAnswers.join(', '),
-                        isMisconception: true
-                    };
-                }
-            }
-
-            return {
-                correct: false,
-                feedback: question.feedback.incorrect,
-                correctAnswer: question.correctAnswers.join(', ')
-            };
-        }
-
-        const allMatch = userNorm.every((ans, idx) => ans === correctNorm[idx]);
-
-        if (allMatch) {
-            return {
-                correct: true,
-                matchedAnswer: question.correctAnswers.join(', '),
-                feedback: question.feedback.correct
-            };
-        }
-
-        // Check for misconception in any of the selected answers
-        for (const answer of userAnswers) {
-            const misconception = checkMisconception(answer, question.id);
-            if (misconception) {
-                return {
-                    correct: false,
-                    feedback: misconception.whyWrong,
-                    hint: misconception.correctGuidance,
-                    correctAnswer: question.correctAnswers.join(', '),
-                    isMisconception: true
-                };
-            }
-        }
+        const isCorrect = userNorm.length === correctNorm.length &&
+            userNorm.every((ans, idx) => ans === correctNorm[idx]);
 
         return {
-            correct: false,
-            feedback: question.feedback.incorrect,
-            correctAnswer: question.correctAnswers.join(', ')
+            correct: isCorrect,
+            correctAnswer: correctAnswers.join(', '),
+            feedback: isCorrect ?
+                "All correct!" :
+                question.explanation?.why || "Make sure you select all correct answers",
+            tip: question.explanation?.tip || ""
         };
     }
 
     /**
-     * Mark an ordering answer
-     */
-    function markOrdering(question, userOrder) {
-        const correctAnswerText = (question.correctOrder || []).join(' → ');
-
-        if (!Array.isArray(userOrder)) {
-            return {
-                correct: false,
-                feedback: 'Invalid answer format',
-                correctAnswer: correctAnswerText
-            };
-        }
-
-        const userNorm = userOrder.map(normalizeText);
-        const correctNorm = (question.correctOrder || []).map(normalizeText);
-
-        // Must match exactly in order
-        if (userNorm.length !== correctNorm.length) {
-            return {
-                correct: false,
-                feedback: question.feedback.incorrect,
-                correctAnswer: correctAnswerText
-            };
-        }
-
-        const allMatch = userNorm.every((ans, idx) => ans === correctNorm[idx]);
-
-        if (allMatch) {
-            return {
-                correct: true,
-                matchedAnswer: correctAnswerText,
-                feedback: question.feedback.correct
-            };
-        }
-
-        return {
-            correct: false,
-            feedback: question.feedback.incorrect,
-            correctAnswer: correctAnswerText
-        };
-    }
-
-    /**
-     * Mark a match pairs answer
-     */
-    function markMatchPairs(question, userPairs) {
-        const correctPairs = question.pairs || [];
-        const correctAnswerText = correctPairs.map(p => `${p.left} → ${p.right}`).join('; ');
-
-        if (!Array.isArray(userPairs)) {
-            return {
-                correct: false,
-                feedback: 'Invalid answer format',
-                correctAnswer: correctAnswerText
-            };
-        }
-
-        // Check if all pairs match (order doesn't matter for pairs array)
-        if (userPairs.length !== correctPairs.length) {
-            return {
-                correct: false,
-                feedback: question.feedback.incorrect,
-                correctAnswer: correctAnswerText
-            };
-        }
-
-        const allCorrect = correctPairs.every(correctPair => {
-            return userPairs.some(userPair =>
-                normalizeText(userPair.left) === normalizeText(correctPair.left) &&
-                normalizeText(userPair.right) === normalizeText(correctPair.right)
-            );
-        });
-
-        if (allCorrect) {
-            return {
-                correct: true,
-                matchedAnswer: correctAnswerText,
-                feedback: question.feedback.correct
-            };
-        }
-
-        return {
-            correct: false,
-            feedback: question.feedback.incorrect,
-            correctAnswer: correctAnswerText
-        };
-    }
-
-    /**
-     * Mark any question based on its type
+     * Main marking function
+     * Routes to appropriate marker based on question type
      */
     function markQuestion(question, userAnswer) {
         if (!question || !question.type) {
-            return { correct: false, feedback: 'Invalid question', correctAnswer: '' };
+            return {
+                correct: false,
+                feedback: 'Invalid question',
+                correctAnswer: '',
+                tip: ''
+            };
         }
 
         switch (question.type) {
-            case 'short_text_exact':
-                return markShortText(question, userAnswer);
+            case 'fill_blank':
+                return markFillBlank(question, userAnswer);
 
-            case 'single_choice':
-                return markSingleChoice(question, userAnswer);
+            case 'fill_sentence':
+                return markFillSentence(question, userAnswer);
 
-            case 'multi_choice':
-                return markMultiChoice(question, userAnswer);
+            case 'multiple_choice':
+                return markMultipleChoice(question, userAnswer);
+
+            case 'word_bank':
+                return markWordBank(question, userAnswer);
 
             case 'ordering':
                 return markOrdering(question, userAnswer);
 
-            case 'match_pairs':
-                return markMatchPairs(question, userAnswer);
-
-            case 'scenario_judgement':
-                // For scenario judgement, treat as single choice
-                return markSingleChoice(question, userAnswer);
+            case 'select_all':
+                return markSelectAll(question, userAnswers);
 
             default:
-                return { correct: false, feedback: 'Unknown question type', correctAnswer: '' };
+                return {
+                    correct: false,
+                    feedback: 'Unknown question type: ' + question.type,
+                    correctAnswer: question.correctAnswer || '',
+                    tip: ''
+                };
         }
-    }
-
-    /**
-     * Get a hint for a question
-     */
-    function getHint(question) {
-        return question.feedback?.incorrect || 'Try again!';
-    }
-
-    /**
-     * Get revision facts for a question
-     */
-    function getRevisionFacts(question) {
-        return question.revisionFacts || [];
     }
 
     // Public API
     return {
-        init,
         markQuestion,
-        getHint,
-        getRevisionFacts,
         normalizeText
     };
 })();
