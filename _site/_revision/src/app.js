@@ -10,6 +10,7 @@
     let questionBank = [];
     let deckBank = [];
     let soundEnabled = false;
+    let timerEnabled = true;
 
     // Game State
     const gameState = {
@@ -91,8 +92,12 @@
         // Sound toggle
         document.getElementById('sound-toggle').addEventListener('click', toggleSound);
 
+        // Timer toggle
+        document.getElementById('timer-toggle').addEventListener('click', toggleTimer);
+
         // Game screen
         document.getElementById('submit-answer-btn').addEventListener('click', submitCurrentAnswer);
+        document.getElementById('continue-btn').addEventListener('click', continueToNextQuestion);
 
         // Results screen
         document.getElementById('next-round-btn').addEventListener('click', nextRound);
@@ -126,6 +131,23 @@
         soundEnabled = !soundEnabled;
         const icon = document.getElementById('sound-icon');
         icon.textContent = soundEnabled ? '🔊' : '🔇';
+    }
+
+    /**
+     * Toggle timer
+     */
+    function toggleTimer() {
+        timerEnabled = !timerEnabled;
+        const btn = document.getElementById('timer-toggle');
+        const icon = document.getElementById('timer-icon');
+
+        if (timerEnabled) {
+            btn.classList.add('active');
+            icon.textContent = '⏱️';
+        } else {
+            btn.classList.remove('active');
+            icon.textContent = '⏱️';
+        }
     }
 
     /**
@@ -256,13 +278,30 @@
      */
     function startTimer() {
         const timerSeconds = gameState.currentDeck.round?.timerSeconds || 60;
-        gameState.secondsRemaining = timerSeconds;
         gameState.roundStartTime = Date.now();
 
         // Clear any existing timer
         if (gameState.timerInterval) {
             clearInterval(gameState.timerInterval);
         }
+
+        // If timer is disabled, hide timer bar and set infinite time
+        if (!timerEnabled) {
+            gameState.secondsRemaining = 999999;
+            const timerContainer = document.querySelector('.timer-bar-container');
+            if (timerContainer) {
+                timerContainer.style.display = 'none';
+            }
+            return;
+        }
+
+        // Show timer bar
+        const timerContainer = document.querySelector('.timer-bar-container');
+        if (timerContainer) {
+            timerContainer.style.display = 'flex';
+        }
+
+        gameState.secondsRemaining = timerSeconds;
 
         // Update timer display
         UI.updateTimer(gameState.secondsRemaining, timerSeconds);
@@ -274,7 +313,7 @@
             if (gameState.secondsRemaining <= 0) {
                 clearInterval(gameState.timerInterval);
                 gameState.secondsRemaining = 0;
-                submitRound(); // Auto-submit when timer runs out
+                endRound(); // Auto-end round when timer runs out
             }
 
             UI.updateTimer(gameState.secondsRemaining, timerSeconds);
@@ -331,12 +370,14 @@
 
         // Update score display with animation
         UI.updateScoreDisplay(gameState.score);
+    }
 
-        // Move to next question after delay
-        setTimeout(() => {
-            UI.hideInstantFeedback();
-            moveToNextQuestion();
-        }, 2000);
+    /**
+     * Continue to next question (after viewing feedback)
+     */
+    function continueToNextQuestion() {
+        UI.hideInstantFeedback();
+        moveToNextQuestion();
     }
 
     /**
