@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "scope": "Reactivity Rush strict marking approved aliases",
+  "version": "2.0",
+  "scope": "AQA GCSE Chemistry - Accepted spelling variants and abbreviations",
   "elements": [
     { "name": "potassium", "symbol": "K", "aliases": ["Potassium", "k"] },
     { "name": "sodium", "symbol": "Na", "aliases": ["Sodium", "na"] },
@@ -15,14 +15,192 @@
     { "name": "silver", "symbol": "Ag", "aliases": ["Silver", "ag"] },
     { "name": "gold", "symbol": "Au", "aliases": ["Gold", "au"] },
     { "name": "aluminium", "symbol": "Al", "aliases": ["Aluminium", "al", "aluminum", "Aluminum"] },
-    { "name": "oxygen", "symbol": "O", "aliases": ["Oxygen", "o"] }
+    { "name": "oxygen", "symbol": "O", "aliases": ["Oxygen", "o"] },
+    { "name": "chlorine", "symbol": "Cl", "aliases": ["Chlorine", "cl"] },
+    { "name": "fluorine", "symbol": "F", "aliases": ["Fluorine", "f"] },
+    { "name": "bromine", "symbol": "Br", "aliases": ["Bromine", "br"] },
+    { "name": "iodine", "symbol": "I", "aliases": ["Iodine", "i"] },
+    { "name": "helium", "symbol": "He", "aliases": ["Helium", "he"] }
+  ],
+  "compounds": [
+    { 
+      "name": "metal oxide", 
+      "aliases": ["metal oxides", "Metal oxide", "Metal Oxide"]
+    },
+    { 
+      "name": "metal hydroxide", 
+      "aliases": ["metal hydroxides", "Metal hydroxide", "Metal Hydroxide"]
+    },
+    { 
+      "name": "metal chloride", 
+      "aliases": ["metal chlorides", "Metal chloride", "Metal Chloride"]
+    },
+    {
+      "name": "salt",
+      "aliases": ["salts", "Salt"]
+    },
+    {
+      "name": "hydrogen",
+      "aliases": ["hydrogen gas", "H2", "H₂", "Hydrogen"]
+    },
+    {
+      "name": "water",
+      "aliases": ["H2O", "H₂O", "Water"]
+    },
+    {
+      "name": "carbon dioxide",
+      "aliases": ["CO2", "CO₂", "carbon-dioxide", "Carbon dioxide"]
+    }
+  ],
+  "acids": [
+    {
+      "name": "hydrochloric acid",
+      "formula": "HCl",
+      "aliases": ["Hydrochloric acid", "hydrochloric", "HCl"]
+    },
+    {
+      "name": "sulfuric acid",
+      "formula": "H2SO4",
+      "aliases": ["sulphuric acid", "Sulfuric acid", "Sulphuric acid", "H2SO4", "H₂SO₄"]
+    },
+    {
+      "name": "nitric acid",
+      "formula": "HNO3",
+      "aliases": ["Nitric acid", "HNO3", "HNO₃"]
+    },
+    {
+      "name": "carbonic acid",
+      "formula": "H2CO3",
+      "aliases": ["Carbonic acid", "H2CO3", "H₂CO₃"]
+    },
+    {
+      "name": "ethanoic acid",
+      "aliases": ["Ethanoic acid", "acetic acid", "Acetic acid"]
+    },
+    {
+      "name": "citric acid",
+      "aliases": ["Citric acid"]
+    }
   ],
   "spellingVariants": [
     { "preferredUK": "aluminium", "allowed": ["aluminum"] },
     { "preferredUK": "sulfuric acid", "allowed": ["sulphuric acid"] },
-    { "preferredUK": "crystalise", "allowed": ["crystallise", "crystallize", "crystalize"] }
+    { "preferredUK": "sulfate", "allowed": ["sulphate"] },
+    { "preferredUK": "crystallise", "allowed": ["crystallize", "crystalize", "crystalise"] },
+    { "preferredUK": "ionise", "allowed": ["ionize"] },
+    { "preferredUK": "neutralisation", "allowed": ["neutralization"] }
+  ],
+  "arrowVariants": [
+    { "symbols": ["→", "-->", "->"], "meaning": "yields" }
   ],
   "abbreviations": [
-    { "term": "OILRIG", "expandsTo": "Oxidation Is Loss Reduction Is Gain" }
+    { "term": "OILRIG", "expandsTo": "Oxidation Is Loss Reduction Is Gain" },
+    { "term": "MOH", "expandsTo": "metal hydroxide (M = metal)" },
+    { "term": "M2O", "expandsTo": "metal oxide (M = metal)" },
+    { "term": "MCl", "expandsTo": "metal chloride (M = metal)" }
+  ],
+  "chemicalNotation": [
+    {
+      "description": "Superscript numbers can be written as plain text",
+      "examples": [
+        { "standard": "2+", "accepted": ["2+", "²⁺"] },
+        { "standard": "2-", "accepted": ["2-", "²⁻"] },
+        { "standard": "e-", "accepted": ["e-", "e−", "e⁻"] }
+      ]
+    },
+    {
+      "description": "Subscript numbers can be written as plain text",
+      "examples": [
+        { "standard": "H2O", "accepted": ["H2O", "H₂O"] },
+        { "standard": "CO2", "accepted": ["CO2", "CO₂"] },
+        { "standard": "H2SO4", "accepted": ["H2SO4", "H₂SO₄"] }
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "term": "squeaky pop",
+      "aliases": ["squeaky pop", "popping sound", "pop", "squeaky-pop"]
+    },
+    {
+      "term": "fizzing",
+      "aliases": ["fizzing", "effervescence", "bubbling", "bubbles", "fizz"]
+    },
+    {
+      "term": "lilac flame",
+      "aliases": ["lilac flame", "purple flame", "lilac/purple flame", "violet flame"]
+    },
+    {
+      "term": "relights glowing splint",
+      "aliases": ["relights glowing splint", "relights a glowing splint", "glowing splint relights"]
+    }
+  ],
+  "ions": [
+    {
+      "name": "positive ion",
+      "aliases": ["positive ions", "cation", "cations", "+ve ion"]
+    },
+    {
+      "name": "negative ion",
+      "aliases": ["negative ions", "anion", "anions", "-ve ion"]
+    },
+    {
+      "name": "spectator ion",
+      "aliases": ["spectator ions", "Spectator ion"]
+    },
+    {
+      "name": "hydroxide ion",
+      "formula": "OH-",
+      "aliases": ["OH-", "OH⁻", "hydroxide"]
+    },
+    {
+      "name": "hydrogen ion",
+      "formula": "H+",
+      "aliases": ["H+", "H⁺", "proton"]
+    }
+  ],
+  "processTerms": [
+    {
+      "term": "oxidation",
+      "aliases": ["oxidation", "oxidised", "oxidized", "oxidise", "oxidize"]
+    },
+    {
+      "term": "reduction",
+      "aliases": ["reduction", "reduced", "reduce"]
+    },
+    {
+      "term": "displacement",
+      "aliases": ["displacement", "displaced", "displace"]
+    },
+    {
+      "term": "neutralisation",
+      "aliases": ["neutralisation", "neutralization", "neutralise", "neutralize", "neutralised", "neutralized"]
+    },
+    {
+      "term": "electrolysis",
+      "aliases": ["electrolysis", "electrolysed", "electrolyzed"]
+    },
+    {
+      "term": "ionisation",
+      "aliases": ["ionisation", "ionization", "ionise", "ionize", "ionises", "ionizes"]
+    }
+  ],
+  "generalTerms": [
+    {
+      "term": "unreactive",
+      "aliases": ["unreactive", "inert", "not reactive", "doesn't react", "non-reactive"]
+    },
+    {
+      "term": "reactive",
+      "aliases": ["reactive", "reacts easily", "reacts"]
+    },
+    {
+      "term": "outer shell",
+      "aliases": ["outer shell", "outer electron shell", "valence shell", "outermost shell"]
+    },
+    {
+      "term": "electron",
+      "aliases": ["electron", "electrons", "e-", "e−", "e⁻"]
+    }
   ]
 }

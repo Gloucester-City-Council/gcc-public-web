@@ -1,47 +1,206 @@
 {
-  "version": "1.0",
+  "version": "2.0",
+  "scope": "AQA GCSE Chemistry - Common student misconceptions",
   "items": [
     {
       "pattern": "Reduction is loss of electrons.",
-      "whyWrong": "In electron-transfer redox, reduction is gain of electrons.",
-      "correctGuidance": "Use OILRIG: Reduction Is Gain (of electrons).",
-      "questionIds": ["reduction-electrons-definition", "half-equation-sodium-oxidation"]
+      "whyWrong": "This is a common mix-up! In electron-transfer redox, reduction is GAIN of electrons, not loss.",
+      "correctGuidance": "Here's the correct way: Use OILRIG: Reduction Is Gain (of electrons). Loss is oxidation.",
+      "questionIds": [
+        "reduction-electron-definition",
+        "half-equation-sodium",
+        "oilrig-reminder"
+      ]
     },
     {
       "pattern": "Oxidation is gain of electrons.",
-      "whyWrong": "In electron-transfer redox, oxidation is loss of electrons.",
-      "correctGuidance": "Use OILRIG: Oxidation Is Loss (of electrons).",
-      "questionIds": ["oxidation-electrons-definition", "half-equation-sodium-oxidation"]
+      "whyWrong": "This is a common mix-up! In electron-transfer redox, oxidation is LOSS of electrons, not gain.",
+      "correctGuidance": "Here's the correct way: Use OILRIG: Oxidation Is Loss (of electrons). Gain is reduction.",
+      "questionIds": [
+        "oxidation-electron-definition",
+        "half-equation-magnesium",
+        "oilrig-reminder"
+      ]
     },
     {
-      "pattern": "Metal + acid --> salt + water",
-      "whyWrong": "Acid + metal produces hydrogen gas, not water.",
-      "correctGuidance": "Metal + acid → salt + hydrogen.",
-      "questionIds": ["metal-plus-acid-word-equation"]
+      "pattern": "Metal + acid → salt + water",
+      "whyWrong": "This is a common mix-up! Acid + metal produces hydrogen gas, NOT water. Water is produced in neutralisation with bases/alkalis.",
+      "correctGuidance": "Here's the correct way: Metal + acid → salt + hydrogen. Test the hydrogen with lit splint (squeaky pop).",
+      "questionIds": [
+        "metal-acid-products",
+        "hydrogen-test"
+      ]
     },
     {
       "pattern": "It relights a glowing splint.",
-      "whyWrong": "That’s the oxygen test; hydrogen gives a squeaky pop with a lit splint.",
-      "correctGuidance": "Hydrogen test: lit splint → squeaky pop.",
-      "questionIds": ["hydrogen-test", "hydrogen-observation"]
+      "whyWrong": "Easy mistake to make! That's the oxygen test. Hydrogen gives a squeaky pop with a LIT (burning) splint.",
+      "correctGuidance": "Here's the correct way: Hydrogen test: lit splint → squeaky pop. Oxygen test: relights glowing splint.",
+      "questionIds": [
+        "hydrogen-test"
+      ]
     },
     {
       "pattern": "Oxidation means the metal loses oxygen.",
-      "whyWrong": "In oxygen-transfer terms, oxidation is gain of oxygen.",
-      "correctGuidance": "Oxidation (oxygen-transfer) = gain oxygen; reduction = loss oxygen.",
-      "questionIds": ["oxidation-as-gain-oxygen", "reduction-extraction-definition"]
+      "whyWrong": "This is a common mix-up! In oxygen-transfer terms, oxidation is GAIN of oxygen, not loss.",
+      "correctGuidance": "Here's the correct way: Oxidation (oxygen-transfer) = gain oxygen. Reduction = loss oxygen. Example: metal + oxygen → metal oxide (metal is oxidised).",
+      "questionIds": [
+        "oxidation-oxygen-definition",
+        "metal-oxygen-equation",
+        "reduction-extraction"
+      ]
     },
     {
-      "pattern": "M + H2O --> MOH + H2",
-      "whyWrong": "That is not balanced as written for Group 1 metals with water.",
-      "correctGuidance": "Use: 2M + 2H2O --> 2MOH + H2.",
-      "questionIds": ["group1-water-balanced-equation"]
+      "pattern": "Reduction means gaining oxygen.",
+      "whyWrong": "This is a common mix-up! In oxygen-transfer terms, reduction is LOSS of oxygen, not gain.",
+      "correctGuidance": "Here's the correct way: Reduction (oxygen-transfer) = loss of oxygen. Example: metal oxide → metal (oxide is reduced).",
+      "questionIds": [
+        "reduction-extraction"
+      ]
     },
     {
-      "pattern": "Zinc + iron chloride --> iron chloride + zinc",
-      "whyWrong": "That keeps the same substances; displacement swaps the metal in the salt.",
-      "correctGuidance": "Zinc + iron chloride --> zinc chloride + iron.",
-      "questionIds": ["displacement-wordeq-zn-fecl2"]
+      "pattern": "M + H2O → MOH + H2",
+      "whyWrong": "This is a common mix-up! This is not balanced. You need 2 of each to balance the hydrogen atoms.",
+      "correctGuidance": "Here's the correct way: Correct balanced equation: 2M + 2H₂O → 2MOH + H₂",
+      "questionIds": [
+        "group-1-balanced-equation"
+      ]
+    },
+    {
+      "pattern": "Zinc + iron chloride → iron chloride + zinc",
+      "whyWrong": "Easy mistake to make! That keeps the same substances on both sides - no reaction! Displacement means the metals swap positions.",
+      "correctGuidance": "Here's the correct way: Zinc + iron chloride → zinc chloride + iron. The more reactive zinc displaces the iron.",
+      "questionIds": [
+        "displacement-zinc-iron",
+        "displacement-definition"
+      ]
+    },
+    {
+      "pattern": "Group 1 metals get less reactive down the group.",
+      "whyWrong": "This is a common mix-up! Group 1 metals get MORE reactive going down the group, not less.",
+      "correctGuidance": "Here's the correct way: Group 1 reactivity: Li < Na < K. Outer electron gets further from nucleus = easier to lose = more reactive.",
+      "questionIds": [
+        "group-1-reactivity-order",
+        "group-1-reactivity-explanation"
+      ]
+    },
+    {
+      "pattern": "Halogens get more reactive down the group.",
+      "whyWrong": "Easy mistake to make! Halogens get LESS reactive going down the group (opposite to Group 1).",
+      "correctGuidance": "Here's the correct way: Halogen reactivity: F > Cl > Br > I. Outer shell gets further from nucleus = harder to gain electron = less reactive.",
+      "questionIds": [
+        "group-7-reactivity-order"
+      ]
+    },
+    {
+      "pattern": "Acid + base → salt + hydrogen",
+      "whyWrong": "This is a common mix-up! Neutralisation produces water, not hydrogen. Only acid + metal produces hydrogen.",
+      "correctGuidance": "Here's the correct way: Acid + base → salt + water. Acid + metal → salt + hydrogen.",
+      "questionIds": [
+        "neutralisation-equation",
+        "metal-acid-products"
+      ]
+    },
+    {
+      "pattern": "Strong acid means concentrated acid.",
+      "whyWrong": "Easy mistake to make! Strong/weak refers to ionisation, concentrated/dilute refers to amount of acid per volume.",
+      "correctGuidance": "Here's the correct way: Strong = completely ionises. Weak = partially ionises. You can have strong dilute acid or weak concentrated acid.",
+      "questionIds": [
+        "strong-acid-definition",
+        "weak-acid-definition"
+      ]
+    },
+    {
+      "pattern": "pH 7 is alkaline.",
+      "whyWrong": "This is a common mix-up! pH 7 is neutral, not alkaline. Alkaline is above pH 7.",
+      "correctGuidance": "Here's the correct way: pH < 7 = acidic, pH = 7 = neutral, pH > 7 = alkaline.",
+      "questionIds": []
+    },
+    {
+      "pattern": "Inert means reactive.",
+      "whyWrong": "This is a common mix-up! Inert means UNreactive, not reactive.",
+      "correctGuidance": "Here's the correct way: Inert = unreactive. Noble gases are inert because they have full outer shells.",
+      "questionIds": [
+        "inert-meaning",
+        "noble-gases-name"
+      ]
+    },
+    {
+      "pattern": "Spectator ions change during the reaction.",
+      "whyWrong": "Easy mistake to make! Spectator ions DON'T change - they stay the same throughout.",
+      "correctGuidance": "Here's the correct way: Spectator ions remain unchanged (same charge, same state). They're omitted from ionic equations.",
+      "questionIds": [
+        "spectator-ion",
+        "ionic-equation-definition"
+      ]
+    },
+    {
+      "pattern": "Carbon can extract any metal from its ore.",
+      "whyWrong": "Easy mistake to make! Carbon can only extract metals LESS reactive than itself (below carbon in reactivity series).",
+      "correctGuidance": "Here's the correct way: Metals above carbon (K, Na, Li, Ca, Mg, Al) need electrolysis. Metals below carbon can be extracted by reduction with carbon.",
+      "questionIds": [
+        "carbon-reduction-why",
+        "electrolysis-when-used"
+      ]
+    },
+    {
+      "pattern": "Electrolysis is cheaper than reduction with carbon.",
+      "whyWrong": "Easy mistake to make! Electrolysis is MUCH more expensive - it requires continuous electrical energy.",
+      "correctGuidance": "Here's the correct way: Carbon reduction is cheap (just heat). Electrolysis is very expensive (continuous electricity).",
+      "questionIds": [
+        "electrolysis-disadvantage"
+      ]
+    },
+    {
+      "pattern": "Metals form negative ions.",
+      "whyWrong": "Easy mistake to make! Metals form POSITIVE ions (cations) by losing electrons.",
+      "correctGuidance": "Here's the correct way: Metals lose electrons → positive ions. Non-metals gain electrons → negative ions.",
+      "questionIds": [
+        "metal-ions-type",
+        "non-metal-ions-type"
+      ]
+    },
+    {
+      "pattern": "The period tells you the number of outer electrons.",
+      "whyWrong": "Easy mistake to make! The GROUP tells you the outer electrons. The PERIOD tells you the number of electron shells.",
+      "correctGuidance": "Here's the correct way: Group number = outer electrons (for groups 1-7). Period number = number of shells.",
+      "questionIds": [
+        "group-tells-us",
+        "period-tells-us"
+      ]
+    },
+    {
+      "pattern": "Acid + metal carbonate → salt + carbon dioxide only",
+      "whyWrong": "Easy mistake to make! You're missing water! Acid + carbonate produces THREE products: salt, water, AND carbon dioxide.",
+      "correctGuidance": "Here's the correct way: Acid + metal carbonate → salt + water + carbon dioxide",
+      "questionIds": [
+        "carbonate-reaction"
+      ]
+    },
+    {
+      "pattern": "Native metals are combined with other elements.",
+      "whyWrong": "This is a common mix-up! Native means NOT combined - found as pure element.",
+      "correctGuidance": "Here's the correct way: Native = found as pure metal, not combined with other elements. Only very unreactive metals (Au, Ag) are found native.",
+      "questionIds": [
+        "native-metals"
+      ]
+    },
+    {
+      "pattern": "All Group 1 metals explode with water.",
+      "whyWrong": "Easy mistake to make! Only the most reactive ones (like caesium) explode. Lithium, sodium, and potassium react vigorously but with different intensities.",
+      "correctGuidance": "Here's the correct way: Li fizzes gently, Na melts and moves quickly, K melts and ignites with lilac flame. Reactivity increases down the group.",
+      "questionIds": [
+        "lithium-water-observation",
+        "sodium-water-observation",
+        "potassium-water-observation"
+      ]
+    },
+    {
+      "pattern": "pH decrease of 1 means H+ concentration doubles.",
+      "whyWrong": "This is a common mix-up! pH is logarithmic - pH decrease of 1 means H+ concentration increases by factor of 10, not 2.",
+      "correctGuidance": "Here's the correct way: pH decrease of 1 = H+ concentration ×10. pH decrease of 2 = H+ concentration ×100.",
+      "questionIds": [
+        "ph-relationship"
+      ]
     }
   ]
 }

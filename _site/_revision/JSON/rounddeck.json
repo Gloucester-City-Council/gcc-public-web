@@ -1,123 +1,302 @@
 {
-  "version": "1.0",
-  "game": "Reactivity Rush",
+  "version": "2.0",
+  "game": "Chemistry Revision Rush",
+  "description": "Themed question decks for AQA GCSE Chemistry revision",
   "decks": [
     {
-      "id": "deck-reactivity-series-core",
-      "title": "Reactivity Ladder",
-      "themeTags": ["reactivity_series"],
-      "difficulty": "both",
+      "id": "deck-periodic-table-basics",
+      "title": "Periodic Table Foundations",
+      "themeTags": ["periodic_table", "electron_structure"],
+      "difficulty": "foundation",
       "round": { "timerSeconds": 60, "numberOfPrompts": 6, "uniqueness": "on" },
       "promptIds": [
-        "reactivity-series-order",
-        "metals-form-what-ions",
-        "reactivity-linked-to-electrons",
-        "what-is-displacement-metal",
-        "why-metals-above-carbon-not-reduced",
-        "metals-that-dont-react-with-acids"
+        "periodic-table-arrangement",
+        "periodic-table-name",
+        "group-tells-us",
+        "period-tells-us",
+        "mendeleev-gaps",
+        "ion-definition"
       ]
     },
     {
-      "id": "deck-water-group1-action",
-      "title": "Splash Zone (Group 1 + Water)",
-      "themeTags": ["water_reaction", "practical"],
+      "id": "deck-group-1-adventures",
+      "title": "Group 1: Alkali Metal Mayhem",
+      "themeTags": ["group_1", "water_reactions", "practical"],
       "difficulty": "foundation",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 7, "uniqueness": "on" },
+      "round": { "timerSeconds": 75, "numberOfPrompts": 7, "uniqueness": "on" },
       "promptIds": [
-        "group1-products-with-water",
-        "group1-water-word-equation",
-        "group1-water-balanced-equation",
-        "group1-common-observation-first-three",
-        "lithium-water-unique-observation",
-        "sodium-water-unique-observation",
-        "potassium-water-unique-observation"
+        "group-1-name",
+        "group-1-water-products",
+        "group-1-water-equation",
+        "group-1-balanced-equation",
+        "lithium-water-observation",
+        "sodium-water-observation",
+        "potassium-water-observation"
       ]
     },
     {
-      "id": "deck-water-trends",
-      "title": "Down the Group (Why More Reactive?)",
-      "themeTags": ["water_reaction", "reactivity_series"],
+      "id": "deck-group-1-reactivity",
+      "title": "Why Group 1 Gets Feisty",
+      "themeTags": ["group_1", "reactivity", "electron_structure"],
       "difficulty": "higher",
-      "round": { "timerSeconds": 75, "numberOfPrompts": 3, "uniqueness": "on" },
+      "round": { "timerSeconds": 60, "numberOfPrompts": 3, "uniqueness": "on" },
       "promptIds": [
-        "group1-reactivity-order-first-three",
-        "why-group1-more-reactive-down",
-        "reactivity-linked-to-electrons"
+        "group-1-reactivity-order",
+        "group-1-reactivity-explanation",
+        "metal-ions-type"
       ]
     },
     {
-      "id": "deck-acids-hydrogen-and-salts",
-      "title": "Fizz & Pop (Acids)",
-      "themeTags": ["acid_reaction", "practical"],
+      "id": "deck-group-7-halogens",
+      "title": "Group 7: Halogen Showdown",
+      "themeTags": ["group_7", "displacement"],
+      "difficulty": "foundation",
+      "round": { "timerSeconds": 60, "numberOfPrompts": 3, "uniqueness": "on" },
+      "promptIds": [
+        "group-7-name",
+        "group-7-reactivity-order",
+        "halogen-displacement"
+      ]
+    },
+    {
+      "id": "deck-group-0-nobles",
+      "title": "Group 0: Noble & Unreactive",
+      "themeTags": ["group_0", "noble_gases"],
+      "difficulty": "foundation",
+      "round": { "timerSeconds": 45, "numberOfPrompts": 2, "uniqueness": "on" },
+      "promptIds": [
+        "noble-gases-name",
+        "inert-meaning"
+      ]
+    },
+    {
+      "id": "deck-reactivity-series",
+      "title": "The Reactivity Ladder",
+      "themeTags": ["reactivity_series"],
       "difficulty": "both",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 7, "uniqueness": "on" },
+      "round": { "timerSeconds": 60, "numberOfPrompts": 4, "uniqueness": "on" },
       "promptIds": [
-        "metal-plus-acid-word-equation",
-        "hydrogen-test",
-        "hydrogen-observation",
-        "salt-prep-step-1",
-        "salt-prep-step-2",
-        "salt-prep-step-3",
-        "compare-metal-acid-reactions-how"
+        "reactivity-series-full",
+        "non-reactive-metals",
+        "displacement-definition",
+        "displacement-zinc-iron"
       ]
     },
     {
-      "id": "deck-displacement-battles",
-      "title": "Displacement Duels",
-      "themeTags": ["displacement", "redox"],
-      "difficulty": "both",
-      "round": { "timerSeconds": 75, "numberOfPrompts": 5, "uniqueness": "on" },
-      "promptIds": [
-        "what-is-displacement-metal",
-        "displacement-wordeq-zn-fecl2",
-        "displacement-symboleq-zn-fecl2",
-        "ionic-equation-ca-mgso4",
-        "spectator-ion-definition"
-      ]
-    },
-    {
-      "id": "deck-extraction-choices",
-      "title": "Extract or Electrolyse?",
-      "themeTags": ["extraction", "reactivity_series"],
+      "id": "deck-redox-basics",
+      "title": "Redox: The OILRIG Challenge",
+      "themeTags": ["redox", "oxidation", "reduction"],
       "difficulty": "both",
       "round": { "timerSeconds": 75, "numberOfPrompts": 6, "uniqueness": "on" },
       "promptIds": [
-        "reduction-extraction-definition",
-        "why-carbon-used-in-reduction",
-        "why-metals-above-carbon-not-reduced",
+        "oxidation-electron-definition",
+        "reduction-electron-definition",
+        "oxidation-oxygen-definition",
+        "oilrig-reminder",
+        "half-equation-sodium",
+        "half-equation-magnesium"
+      ]
+    },
+    {
+      "id": "deck-metal-reactions",
+      "title": "Metals React!",
+      "themeTags": ["metals", "oxidation", "combustion"],
+      "difficulty": "foundation",
+      "round": { "timerSeconds": 60, "numberOfPrompts": 5, "uniqueness": "on" },
+      "promptIds": [
+        "metal-oxygen-equation",
+        "oxidation-oxygen-definition",
+        "metal-acid-products",
+        "hydrogen-test",
+        "non-reactive-metals"
+      ]
+    },
+    {
+      "id": "deck-acids-reactions",
+      "title": "Acid Attack!",
+      "themeTags": ["acid_reactions", "practical"],
+      "difficulty": "foundation",
+      "round": { "timerSeconds": 75, "numberOfPrompts": 5, "uniqueness": "on" },
+      "promptIds": [
+        "metal-acid-products",
+        "hydrogen-test",
+        "neutralisation-equation",
+        "carbonate-reaction",
+        "salt-prep-steps"
+      ]
+    },
+    {
+      "id": "deck-acids-bases-ph",
+      "title": "Acids, Bases & pH",
+      "themeTags": ["acids", "alkalis", "neutralisation", "pH"],
+      "difficulty": "both",
+      "round": { "timerSeconds": 75, "numberOfPrompts": 6, "uniqueness": "on" },
+      "promptIds": [
+        "acid-definition",
+        "alkali-definition",
+        "neutralisation-equation",
+        "neutralisation-ionic",
+        "strong-acid-definition",
+        "weak-acid-definition"
+      ]
+    },
+    {
+      "id": "deck-strong-weak-acids",
+      "title": "Strong vs Weak Acids",
+      "themeTags": ["acids", "strong_weak", "pH", "concentration"],
+      "difficulty": "higher",
+      "round": { "timerSeconds": 60, "numberOfPrompts": 3, "uniqueness": "on" },
+      "promptIds": [
+        "strong-acid-definition",
+        "weak-acid-definition",
+        "ph-relationship"
+      ]
+    },
+    {
+      "id": "deck-extraction",
+      "title": "Metal Extraction Methods",
+      "themeTags": ["extraction", "reactivity_series"],
+      "difficulty": "both",
+      "round": { "timerSeconds": 75, "numberOfPrompts": 7, "uniqueness": "on" },
+      "promptIds": [
+        "ore-definition",
+        "native-metals",
+        "reduction-extraction",
+        "carbon-reduction-why",
         "electrolysis-definition",
-        "when-electrolysis-used-for-extraction",
+        "electrolysis-when-used",
         "electrolysis-disadvantage"
       ]
     },
     {
-      "id": "deck-aluminium-extraction-mini",
-      "title": "Aluminium: The Hard Way",
-      "themeTags": ["extraction", "redox"],
+      "id": "deck-ionic-equations",
+      "title": "Ionic & Spectator Ions",
+      "themeTags": ["ionic_equations", "redox", "ions"],
       "difficulty": "higher",
       "round": { "timerSeconds": 60, "numberOfPrompts": 4, "uniqueness": "on" },
       "promptIds": [
-        "alumina-cryolite-why",
-        "alumina-products-cathode-anode",
-        "why-carbon-anode-replaced",
-        "electrolysis-disadvantage"
+        "spectator-ion",
+        "ionic-equation-definition",
+        "neutralisation-ionic",
+        "displacement-zinc-iron"
       ]
     },
     {
-      "id": "deck-mixed-review-speedrun",
-      "title": "Mixed Mayhem (Speedrun)",
-      "themeTags": ["reactivity_series", "water_reaction", "acid_reaction", "displacement", "extraction", "redox", "practical"],
-      "difficulty": "both",
-      "round": { "timerSeconds": 45, "numberOfPrompts": 8, "uniqueness": "off" },
+      "id": "deck-ions-formation",
+      "title": "Ion Formation & Charges",
+      "themeTags": ["ions", "electron_transfer"],
+      "difficulty": "foundation",
+      "round": { "timerSeconds": 60, "numberOfPrompts": 5, "uniqueness": "on" },
       "promptIds": [
-        "metal-plus-oxygen-word-equation",
-        "oxidation-as-gain-oxygen",
-        "oxidation-electrons-definition",
-        "reduction-electrons-definition",
-        "half-equation-sodium-oxidation",
-        "variables-control-variable-definition",
-        "group1-products-with-water",
-        "metal-plus-acid-word-equation"
+        "ion-definition",
+        "metal-ions-type",
+        "non-metal-ions-type",
+        "half-equation-sodium",
+        "half-equation-magnesium"
+      ]
+    },
+    {
+      "id": "deck-mixed-foundation",
+      "title": "Foundation Mix",
+      "themeTags": ["periodic_table", "group_1", "acids", "metals"],
+      "difficulty": "foundation",
+      "round": { "timerSeconds": 60, "numberOfPrompts": 8, "uniqueness": "off" },
+      "promptIds": [
+        "periodic-table-arrangement",
+        "group-1-name",
+        "metal-acid-products",
+        "hydrogen-test",
+        "group-1-water-equation",
+        "metal-oxygen-equation",
+        "ion-definition",
+        "noble-gases-name"
+      ]
+    },
+    {
+      "id": "deck-mixed-higher",
+      "title": "Higher Tier Challenge",
+      "themeTags": ["redox", "reactivity_series", "extraction", "strong_weak"],
+      "difficulty": "higher",
+      "round": { "timerSeconds": 75, "numberOfPrompts": 8, "uniqueness": "off" },
+      "promptIds": [
+        "oxidation-electron-definition",
+        "reduction-electron-definition",
+        "group-1-reactivity-explanation",
+        "spectator-ion",
+        "ionic-equation-definition",
+        "electrolysis-when-used",
+        "strong-acid-definition",
+        "ph-relationship"
+      ]
+    },
+    {
+      "id": "deck-speedrun-quick-fire",
+      "title": "Quick Fire Speedrun",
+      "themeTags": ["periodic_table", "group_1", "group_7", "acids", "redox"],
+      "difficulty": "both",
+      "round": { "timerSeconds": 45, "numberOfPrompts": 10, "uniqueness": "off" },
+      "promptIds": [
+        "group-tells-us",
+        "period-tells-us",
+        "group-1-name",
+        "group-7-name",
+        "inert-meaning",
+        "metal-acid-products",
+        "hydrogen-test",
+        "oxidation-electron-definition",
+        "reduction-electron-definition",
+        "oilrig-reminder"
+      ]
+    },
+    {
+      "id": "deck-observations-practical",
+      "title": "Practical Observations",
+      "themeTags": ["practical", "water_reactions", "gas_tests"],
+      "difficulty": "foundation",
+      "round": { "timerSeconds": 60, "numberOfPrompts": 5, "uniqueness": "on" },
+      "promptIds": [
+        "lithium-water-observation",
+        "sodium-water-observation",
+        "potassium-water-observation",
+        "hydrogen-test",
+        "salt-prep-steps"
+      ]
+    },
+    {
+      "id": "deck-equations-mastery",
+      "title": "Equation Writing",
+      "themeTags": ["equations", "group_1", "acids", "displacement"],
+      "difficulty": "both",
+      "round": { "timerSeconds": 90, "numberOfPrompts": 7, "uniqueness": "on" },
+      "promptIds": [
+        "group-1-water-equation",
+        "group-1-balanced-equation",
+        "metal-oxygen-equation",
+        "metal-acid-products",
+        "neutralisation-equation",
+        "carbonate-reaction",
+        "displacement-zinc-iron"
+      ]
+    },
+    {
+      "id": "deck-ultimate-challenge",
+      "title": "Ultimate Chemistry Challenge",
+      "themeTags": ["periodic_table", "group_1", "group_7", "redox", "extraction", "acids"],
+      "difficulty": "both",
+      "round": { "timerSeconds": 90, "numberOfPrompts": 12, "uniqueness": "off" },
+      "promptIds": [
+        "periodic-table-arrangement",
+        "group-1-reactivity-explanation",
+        "group-7-reactivity-order",
+        "reactivity-series-full",
+        "oxidation-electron-definition",
+        "reduction-electron-definition",
+        "spectator-ion",
+        "electrolysis-when-used",
+        "strong-acid-definition",
+        "ph-relationship",
+        "displacement-zinc-iron",
+        "oilrig-reminder"
       ]
     }
   ]
