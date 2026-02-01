@@ -1,14 +1,21 @@
 {
-  "version": "2.0",
+  "version": "2.1",
   "game": "Chemistry Revision Rush",
   "description": "Themed question decks for AQA GCSE Chemistry revision",
   "decks": [
     {
       "id": "deck-periodic-table-basics",
       "title": "Periodic Table Foundations",
-      "themeTags": ["periodic_table", "electron_structure"],
+      "themeTags": [
+        "periodic_table",
+        "electron_structure"
+      ],
       "difficulty": "foundation",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 6, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 6,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "periodic-table-arrangement",
         "periodic-table-name",
@@ -21,9 +28,17 @@
     {
       "id": "deck-group-1-adventures",
       "title": "Group 1: Alkali Metal Mayhem",
-      "themeTags": ["group_1", "water_reactions", "practical"],
+      "themeTags": [
+        "group_1",
+        "water_reactions",
+        "practical"
+      ],
       "difficulty": "foundation",
-      "round": { "timerSeconds": 75, "numberOfPrompts": 7, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 75,
+        "numberOfPrompts": 7,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "group-1-name",
         "group-1-water-products",
@@ -37,9 +52,17 @@
     {
       "id": "deck-group-1-reactivity",
       "title": "Why Group 1 Gets Feisty",
-      "themeTags": ["group_1", "reactivity", "electron_structure"],
+      "themeTags": [
+        "group_1",
+        "reactivity",
+        "electron_structure"
+      ],
       "difficulty": "higher",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 3, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 3,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "group-1-reactivity-order",
         "group-1-reactivity-explanation",
@@ -49,9 +72,16 @@
     {
       "id": "deck-group-7-halogens",
       "title": "Group 7: Halogen Showdown",
-      "themeTags": ["group_7", "displacement"],
+      "themeTags": [
+        "group_7",
+        "displacement"
+      ],
       "difficulty": "foundation",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 3, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 3,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "group-7-name",
         "group-7-reactivity-order",
@@ -61,9 +91,16 @@
     {
       "id": "deck-group-0-nobles",
       "title": "Group 0: Noble & Unreactive",
-      "themeTags": ["group_0", "noble_gases"],
+      "themeTags": [
+        "group_0",
+        "noble_gases"
+      ],
       "difficulty": "foundation",
-      "round": { "timerSeconds": 45, "numberOfPrompts": 2, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 45,
+        "numberOfPrompts": 2,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "noble-gases-name",
         "inert-meaning"
@@ -72,9 +109,15 @@
     {
       "id": "deck-reactivity-series",
       "title": "The Reactivity Ladder",
-      "themeTags": ["reactivity_series"],
+      "themeTags": [
+        "reactivity_series"
+      ],
       "difficulty": "both",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 4, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 4,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "reactivity-series-full",
         "non-reactive-metals",
@@ -85,9 +128,17 @@
     {
       "id": "deck-redox-basics",
       "title": "Redox: The OILRIG Challenge",
-      "themeTags": ["redox", "oxidation", "reduction"],
+      "themeTags": [
+        "redox",
+        "oxidation",
+        "reduction"
+      ],
       "difficulty": "both",
-      "round": { "timerSeconds": 75, "numberOfPrompts": 6, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 75,
+        "numberOfPrompts": 6,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "oxidation-electron-definition",
         "reduction-electron-definition",
@@ -100,9 +151,17 @@
     {
       "id": "deck-metal-reactions",
       "title": "Metals React!",
-      "themeTags": ["metals", "oxidation", "combustion"],
+      "themeTags": [
+        "metals",
+        "oxidation",
+        "combustion"
+      ],
       "difficulty": "foundation",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 5, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 5,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "metal-oxygen-equation",
         "oxidation-oxygen-definition",
@@ -114,9 +173,16 @@
     {
       "id": "deck-acids-reactions",
       "title": "Acid Attack!",
-      "themeTags": ["acid_reactions", "practical"],
+      "themeTags": [
+        "acid_reactions",
+        "practical"
+      ],
       "difficulty": "foundation",
-      "round": { "timerSeconds": 75, "numberOfPrompts": 5, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 75,
+        "numberOfPrompts": 5,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "metal-acid-products",
         "hydrogen-test",
@@ -128,9 +194,18 @@
     {
       "id": "deck-acids-bases-ph",
       "title": "Acids, Bases & pH",
-      "themeTags": ["acids", "alkalis", "neutralisation", "pH"],
+      "themeTags": [
+        "acids",
+        "alkalis",
+        "neutralisation",
+        "pH"
+      ],
       "difficulty": "both",
-      "round": { "timerSeconds": 75, "numberOfPrompts": 6, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 75,
+        "numberOfPrompts": 6,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "acid-definition",
         "alkali-definition",
@@ -143,9 +218,18 @@
     {
       "id": "deck-strong-weak-acids",
       "title": "Strong vs Weak Acids",
-      "themeTags": ["acids", "strong_weak", "pH", "concentration"],
+      "themeTags": [
+        "acids",
+        "strong_weak",
+        "pH",
+        "concentration"
+      ],
       "difficulty": "higher",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 3, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 3,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "strong-acid-definition",
         "weak-acid-definition",
@@ -155,9 +239,16 @@
     {
       "id": "deck-extraction",
       "title": "Metal Extraction Methods",
-      "themeTags": ["extraction", "reactivity_series"],
+      "themeTags": [
+        "extraction",
+        "reactivity_series"
+      ],
       "difficulty": "both",
-      "round": { "timerSeconds": 75, "numberOfPrompts": 7, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 75,
+        "numberOfPrompts": 7,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "ore-definition",
         "native-metals",
@@ -171,9 +262,17 @@
     {
       "id": "deck-ionic-equations",
       "title": "Ionic & Spectator Ions",
-      "themeTags": ["ionic_equations", "redox", "ions"],
+      "themeTags": [
+        "ionic_equations",
+        "redox",
+        "ions"
+      ],
       "difficulty": "higher",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 4, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 4,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "spectator-ion",
         "ionic-equation-definition",
@@ -184,9 +283,16 @@
     {
       "id": "deck-ions-formation",
       "title": "Ion Formation & Charges",
-      "themeTags": ["ions", "electron_transfer"],
+      "themeTags": [
+        "ions",
+        "electron_transfer"
+      ],
       "difficulty": "foundation",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 5, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 5,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "ion-definition",
         "metal-ions-type",
@@ -198,9 +304,18 @@
     {
       "id": "deck-mixed-foundation",
       "title": "Foundation Mix",
-      "themeTags": ["periodic_table", "group_1", "acids", "metals"],
+      "themeTags": [
+        "periodic_table",
+        "group_1",
+        "acids",
+        "metals"
+      ],
       "difficulty": "foundation",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 8, "uniqueness": "off" },
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 8,
+        "uniqueness": "off"
+      },
       "promptIds": [
         "periodic-table-arrangement",
         "group-1-name",
@@ -215,9 +330,18 @@
     {
       "id": "deck-mixed-higher",
       "title": "Higher Tier Challenge",
-      "themeTags": ["redox", "reactivity_series", "extraction", "strong_weak"],
+      "themeTags": [
+        "redox",
+        "reactivity_series",
+        "extraction",
+        "strong_weak"
+      ],
       "difficulty": "higher",
-      "round": { "timerSeconds": 75, "numberOfPrompts": 8, "uniqueness": "off" },
+      "round": {
+        "timerSeconds": 75,
+        "numberOfPrompts": 8,
+        "uniqueness": "off"
+      },
       "promptIds": [
         "oxidation-electron-definition",
         "reduction-electron-definition",
@@ -232,9 +356,19 @@
     {
       "id": "deck-speedrun-quick-fire",
       "title": "Quick Fire Speedrun",
-      "themeTags": ["periodic_table", "group_1", "group_7", "acids", "redox"],
+      "themeTags": [
+        "periodic_table",
+        "group_1",
+        "group_7",
+        "acids",
+        "redox"
+      ],
       "difficulty": "both",
-      "round": { "timerSeconds": 45, "numberOfPrompts": 10, "uniqueness": "off" },
+      "round": {
+        "timerSeconds": 45,
+        "numberOfPrompts": 10,
+        "uniqueness": "off"
+      },
       "promptIds": [
         "group-tells-us",
         "period-tells-us",
@@ -251,9 +385,17 @@
     {
       "id": "deck-observations-practical",
       "title": "Practical Observations",
-      "themeTags": ["practical", "water_reactions", "gas_tests"],
+      "themeTags": [
+        "practical",
+        "water_reactions",
+        "gas_tests"
+      ],
       "difficulty": "foundation",
-      "round": { "timerSeconds": 60, "numberOfPrompts": 5, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 5,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "lithium-water-observation",
         "sodium-water-observation",
@@ -265,9 +407,18 @@
     {
       "id": "deck-equations-mastery",
       "title": "Equation Writing",
-      "themeTags": ["equations", "group_1", "acids", "displacement"],
+      "themeTags": [
+        "equations",
+        "group_1",
+        "acids",
+        "displacement"
+      ],
       "difficulty": "both",
-      "round": { "timerSeconds": 90, "numberOfPrompts": 7, "uniqueness": "on" },
+      "round": {
+        "timerSeconds": 90,
+        "numberOfPrompts": 7,
+        "uniqueness": "on"
+      },
       "promptIds": [
         "group-1-water-equation",
         "group-1-balanced-equation",
@@ -281,9 +432,20 @@
     {
       "id": "deck-ultimate-challenge",
       "title": "Ultimate Chemistry Challenge",
-      "themeTags": ["periodic_table", "group_1", "group_7", "redox", "extraction", "acids"],
+      "themeTags": [
+        "periodic_table",
+        "group_1",
+        "group_7",
+        "redox",
+        "extraction",
+        "acids"
+      ],
       "difficulty": "both",
-      "round": { "timerSeconds": 90, "numberOfPrompts": 12, "uniqueness": "off" },
+      "round": {
+        "timerSeconds": 90,
+        "numberOfPrompts": 12,
+        "uniqueness": "off"
+      },
       "promptIds": [
         "periodic-table-arrangement",
         "group-1-reactivity-explanation",
@@ -297,6 +459,95 @@
         "ph-relationship",
         "displacement-zinc-iron",
         "oilrig-reminder"
+      ]
+    },
+    {
+      "id": "deck-quick-quiz-interactive",
+      "title": "Quick Quiz (Interactive!)",
+      "themeTags": [
+        "periodic_table",
+        "group_1",
+        "acids"
+      ],
+      "difficulty": "foundation",
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 8,
+        "uniqueness": "on"
+      },
+      "promptIds": [
+        "group-tells-us",
+        "period-tells-us",
+        "group-1-properties-multi",
+        "acid-products-multi",
+        "group-1-reactivity-order",
+        "acid-salt-matching",
+        "ion-charge-matching",
+        "metal-reactivity-true-false"
+      ]
+    },
+    {
+      "id": "deck-gas-tests-practical",
+      "title": "Gas Tests Lab",
+      "themeTags": [
+        "practical",
+        "gas_tests"
+      ],
+      "difficulty": "foundation",
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 4,
+        "uniqueness": "on"
+      },
+      "promptIds": [
+        "hydrogen-test",
+        "observation-test-matching",
+        "acid-products-multi",
+        "carbonate-reaction"
+      ]
+    },
+    {
+      "id": "deck-matching-challenge",
+      "title": "Match It Up!",
+      "themeTags": [
+        "acids",
+        "ions",
+        "practical",
+        "redox"
+      ],
+      "difficulty": "both",
+      "round": {
+        "timerSeconds": 75,
+        "numberOfPrompts": 4,
+        "uniqueness": "on"
+      },
+      "promptIds": [
+        "acid-salt-matching",
+        "ion-charge-matching",
+        "observation-test-matching",
+        "process-definition-matching"
+      ]
+    },
+    {
+      "id": "deck-visual-ordering",
+      "title": "Put Them In Order!",
+      "themeTags": [
+        "reactivity_series",
+        "group_7",
+        "group_0"
+      ],
+      "difficulty": "both",
+      "round": {
+        "timerSeconds": 60,
+        "numberOfPrompts": 5,
+        "uniqueness": "on"
+      },
+      "promptIds": [
+        "reactivity-series-full",
+        "reactivity-series-metals-only",
+        "group-1-reactivity-order",
+        "group-7-reactivity-order",
+        "halogen-colours-order"
       ]
     }
   ]
