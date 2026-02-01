@@ -9,7 +9,8 @@
     "rag/**",
     "**/404.html",
     "**/search/**",
-    "**/tags/**"
+    "**/tags/**",
+    "**/_*/**"
   ],
   "chunk": {
     "maxTokens": 450,
