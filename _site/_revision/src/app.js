@@ -37,13 +37,10 @@
      * Initialize the app
      */
     async function init() {
-        console.log('🚀 Reactivity Rush - Initializing...');
+        console.log('🚀 Chemistry Quiz - Duolingo Style!');
 
-        // Load data
+        // Load questions
         await loadGameData();
-
-        // Initialize modules
-        await Marking.init();
 
         // Set up event listeners
         setupEventListeners();
@@ -51,29 +48,21 @@
         // Update home screen
         UI.updateHomeStats();
 
-        console.log('✅ Reactivity Rush - Ready!');
+        console.log('✅ Ready to play!');
     }
 
     /**
-     * Load question bank and deck data
+     * Load question bank (simplified - no decks)
      */
     async function loadGameData() {
         try {
-            const [questionsResponse, decksResponse] = await Promise.all([
-                fetch('/_revision/JSON/questionbank.json'),
-                fetch('/_revision/JSON/rounddeck.json')
-            ]);
-
-            const questionsData = await questionsResponse.json();
-            const decksData = await decksResponse.json();
-
-            questionBank = questionsData.questions || [];
-            deckBank = decksData.decks || [];
-
-            console.log(`Loaded ${questionBank.length} questions and ${deckBank.length} decks`);
+            const response = await fetch('/_revision/JSON/questionbank.json');
+            const data = await response.json();
+            questionBank = data.questions || [];
+            console.log(`✅ Loaded ${questionBank.length} Duolingo-style questions`);
         } catch (error) {
             console.error('Failed to load game data:', error);
-            alert('Failed to load game data. Please refresh the page.');
+            alert('Failed to load questions. Please refresh the page.');
         }
     }
 
