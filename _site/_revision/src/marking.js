@@ -15,7 +15,7 @@ const Marking = (function() {
      */
     async function loadAliases() {
         try {
-            const response = await fetch('./JSON/aliases.json');
+            const response = await fetch('/_revision/JSON/aliases.json');
             aliasesData = await response.json();
             return true;
         } catch (e) {
@@ -29,7 +29,7 @@ const Marking = (function() {
      */
     async function loadMisconceptions() {
         try {
-            const response = await fetch('./JSON/misconceptions.json');
+            const response = await fetch('/_revision/JSON/misconceptions.json');
             misconceptionsData = await response.json();
             return true;
         } catch (e) {
