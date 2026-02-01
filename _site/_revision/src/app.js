@@ -362,7 +362,8 @@
             }
 
             // Show instant feedback with hint and correct answer
-            const hintText = result.hint ? `${result.hint}\n\n✓ Correct answer: ${result.correctAnswer}` : `✓ Correct answer: ${result.correctAnswer}`;
+            const correctAnswerText = result.correctAnswer || 'N/A';
+            const hintText = result.hint ? `${result.hint}\n\n✓ Correct answer: ${correctAnswerText}` : `✓ Correct answer: ${correctAnswerText}`;
             UI.showInstantFeedback(false, result.feedback, hintText);
         }
 

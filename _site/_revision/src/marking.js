@@ -194,7 +194,8 @@ const Marking = (function() {
                     return {
                         correct: false,
                         feedback: feedback,
-                        hint: question.feedback.incorrect
+                        hint: question.feedback.incorrect,
+                        correctAnswer: correctAnswers[0]
                     };
                 }
             }
@@ -203,7 +204,8 @@ const Marking = (function() {
         // Generic incorrect
         return {
             correct: false,
-            feedback: question.feedback.incorrect
+            feedback: question.feedback.incorrect,
+            correctAnswer: correctAnswers[0]
         };
     }
 
@@ -311,10 +313,13 @@ const Marking = (function() {
      * Mark an ordering answer
      */
     function markOrdering(question, userOrder) {
+        const correctAnswerText = (question.correctOrder || []).join(' → ');
+
         if (!Array.isArray(userOrder)) {
             return {
                 correct: false,
-                feedback: 'Invalid answer format'
+                feedback: 'Invalid answer format',
+                correctAnswer: correctAnswerText
             };
         }
 
@@ -325,7 +330,8 @@ const Marking = (function() {
         if (userNorm.length !== correctNorm.length) {
             return {
                 correct: false,
-                feedback: question.feedback.incorrect
+                feedback: question.feedback.incorrect,
+                correctAnswer: correctAnswerText
             };
         }
 
@@ -334,14 +340,15 @@ const Marking = (function() {
         if (allMatch) {
             return {
                 correct: true,
-                matchedAnswer: question.correctOrder.join(' → '),
+                matchedAnswer: correctAnswerText,
                 feedback: question.feedback.correct
             };
         }
 
         return {
             correct: false,
-            feedback: question.feedback.incorrect
+            feedback: question.feedback.incorrect,
+            correctAnswer: correctAnswerText
         };
     }
 
@@ -349,20 +356,23 @@ const Marking = (function() {
      * Mark a match pairs answer
      */
     function markMatchPairs(question, userPairs) {
+        const correctPairs = question.pairs || [];
+        const correctAnswerText = correctPairs.map(p => `${p.left} → ${p.right}`).join('; ');
+
         if (!Array.isArray(userPairs)) {
             return {
                 correct: false,
-                feedback: 'Invalid answer format'
+                feedback: 'Invalid answer format',
+                correctAnswer: correctAnswerText
             };
         }
-
-        const correctPairs = question.pairs || [];
 
         // Check if all pairs match (order doesn't matter for pairs array)
         if (userPairs.length !== correctPairs.length) {
             return {
                 correct: false,
-                feedback: question.feedback.incorrect
+                feedback: question.feedback.incorrect,
+                correctAnswer: correctAnswerText
             };
         }
 
@@ -376,14 +386,15 @@ const Marking = (function() {
         if (allCorrect) {
             return {
                 correct: true,
-                matchedAnswer: correctPairs.map(p => `${p.left} → ${p.right}`).join('; '),
+                matchedAnswer: correctAnswerText,
                 feedback: question.feedback.correct
             };
         }
 
         return {
             correct: false,
-            feedback: question.feedback.incorrect
+            feedback: question.feedback.incorrect,
+            correctAnswer: correctAnswerText
         };
     }
 
@@ -392,7 +403,7 @@ const Marking = (function() {
      */
     function markQuestion(question, userAnswer) {
         if (!question || !question.type) {
-            return { correct: false, feedback: 'Invalid question' };
+            return { correct: false, feedback: 'Invalid question', correctAnswer: '' };
         }
 
         switch (question.type) {
@@ -416,7 +427,7 @@ const Marking = (function() {
                 return markSingleChoice(question, userAnswer);
 
             default:
-                return { correct: false, feedback: 'Unknown question type' };
+                return { correct: false, feedback: 'Unknown question type', correctAnswer: '' };
         }
     }
 
