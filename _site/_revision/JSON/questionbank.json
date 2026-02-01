@@ -1,0 +1,676 @@
+{
+  "version": "1.0",
+  "topic": "AQA GCSE Chemistry - Reactivity of Metals",
+  "questions": [
+    {
+      "id": "reactivity-series-order",
+      "type": "ordering",
+      "prompt": "Put these metals in order from MOST to LEAST reactive:",
+      "items": ["potassium", "magnesium", "copper", "zinc"],
+      "correctOrder": ["potassium", "zinc", "magnesium", "copper"],
+      "feedback": {
+        "correct": "Perfect! The reactivity series shows how easily metals lose electrons.",
+        "incorrect": "Not quite. Remember: Potassium Please (K) → Sodium (Na) → Calcium (Ca) → Magnesium (Mg) → Aluminium (Al) → Carbon (C) → Zinc (Zn) → Iron (Fe) → Copper (Cu) → Silver (Ag) → Gold (Au)."
+      },
+      "tags": ["reactivity_series"],
+      "revisionFacts": [
+        "The reactivity series ranks metals by how easily they lose electrons to form positive ions.",
+        "Potassium is the most reactive common metal; gold is the least reactive.",
+        "Metals above carbon in the series must be extracted by electrolysis."
+      ]
+    },
+    {
+      "id": "metals-form-what-ions",
+      "type": "single_choice",
+      "prompt": "What type of ions do metals form when they react?",
+      "options": ["Positive ions", "Negative ions", "Neutral particles", "Free electrons"],
+      "correctAnswer": "Positive ions",
+      "feedback": {
+        "correct": "Yes! Metals lose electrons to form positive ions (cations).",
+        "incorrect": "Think about what metals do with their outer electrons during reactions."
+      },
+      "tags": ["reactivity_series", "redox"],
+      "revisionFacts": [
+        "Metals form positive ions by losing outer shell electrons.",
+        "More reactive metals lose electrons more easily.",
+        "This electron loss is called oxidation."
+      ]
+    },
+    {
+      "id": "reactivity-linked-to-electrons",
+      "type": "short_text_exact",
+      "prompt": "More reactive metals lose electrons _______ easily.",
+      "correctAnswers": ["more"],
+      "rejectFeedback": {
+        "less": "Actually, it's the opposite! More reactive metals lose electrons MORE easily.",
+        "harder": "Not quite - think about what 'more reactive' means for electron loss."
+      },
+      "feedback": {
+        "correct": "Exactly right! Reactivity is all about how easily a metal gives up electrons.",
+        "incorrect": "Hint: More reactive means it's easier for the metal to react, so..."
+      },
+      "tags": ["reactivity_series", "redox"],
+      "revisionFacts": [
+        "Reactivity increases as you go down Group 1 because outer electrons are further from the nucleus.",
+        "Distance from nucleus makes electrons easier to lose.",
+        "This is why potassium is more reactive than lithium."
+      ]
+    },
+    {
+      "id": "what-is-displacement-metal",
+      "type": "short_text_exact",
+      "prompt": "A displacement reaction happens when a more ________ metal pushes out a less reactive metal from its compound.",
+      "correctAnswers": ["reactive"],
+      "feedback": {
+        "correct": "Spot on! The reactivity series predicts displacement reactions.",
+        "incorrect": "Hint: Which type of metal 'wins' and takes the compound for itself?"
+      },
+      "tags": ["displacement", "reactivity_series"],
+      "revisionFacts": [
+        "A more reactive metal displaces a less reactive metal from its compound.",
+        "Example: Zinc + copper sulfate → zinc sulfate + copper",
+        "No reaction occurs if the metal is less reactive than the one in the compound."
+      ]
+    },
+    {
+      "id": "why-metals-above-carbon-not-reduced",
+      "type": "short_text_exact",
+      "prompt": "Why can't we use carbon to extract metals that are above carbon in the reactivity series?",
+      "correctAnswers": ["they are more reactive than carbon", "more reactive than carbon", "they're more reactive than carbon", "more reactive"],
+      "feedback": {
+        "correct": "Perfect! Carbon can't displace more reactive metals from their ores.",
+        "incorrect": "Hint: Think about displacement - can a less reactive element displace a more reactive one?"
+      },
+      "tags": ["extraction", "reactivity_series"],
+      "revisionFacts": [
+        "Carbon can only reduce metals less reactive than itself.",
+        "Metals more reactive than carbon must be extracted by electrolysis.",
+        "This includes potassium, sodium, calcium, magnesium, and aluminium."
+      ]
+    },
+    {
+      "id": "metals-that-dont-react-with-acids",
+      "type": "multi_choice",
+      "prompt": "Which metals do NOT react with dilute acids? (Select all that apply)",
+      "options": ["Copper", "Gold", "Magnesium", "Zinc", "Silver"],
+      "correctAnswers": ["Copper", "Gold", "Silver"],
+      "feedback": {
+        "correct": "Brilliant! Metals below hydrogen in the reactivity series don't react with acids.",
+        "incorrect": "Remember: only metals ABOVE hydrogen react with acids. Copper, silver, and gold are below hydrogen."
+      },
+      "tags": ["acid_reaction", "reactivity_series"],
+      "revisionFacts": [
+        "Only metals above hydrogen in the reactivity series react with acids.",
+        "Copper, silver, and gold are below hydrogen - no reaction with dilute acids.",
+        "Magnesium and zinc react vigorously with dilute acids, producing hydrogen."
+      ]
+    },
+    {
+      "id": "group1-products-with-water",
+      "type": "short_text_exact",
+      "prompt": "When Group 1 metals react with water, they produce a metal hydroxide and which gas?",
+      "correctAnswers": ["hydrogen", "hydrogen gas", "H2"],
+      "feedback": {
+        "correct": "Correct! Group 1 + water → metal hydroxide + hydrogen.",
+        "incorrect": "Hint: Think about the gas you can test with a lit splint (squeaky pop)."
+      },
+      "tags": ["water_reaction"],
+      "revisionFacts": [
+        "Group 1 metals react with water to produce metal hydroxide + hydrogen gas.",
+        "The solution formed is alkaline (metal hydroxide dissolves).",
+        "Reactivity increases down Group 1: lithium < sodium < potassium."
+      ]
+    },
+    {
+      "id": "group1-water-word-equation",
+      "type": "short_text_exact",
+      "prompt": "Write the general word equation for a Group 1 metal reacting with water:",
+      "correctAnswers": ["metal + water -> metal hydroxide + hydrogen", "metal + water → metal hydroxide + hydrogen", "metal + water --> metal hydroxide + hydrogen"],
+      "feedback": {
+        "correct": "Perfect word equation!",
+        "incorrect": "Hint: Group 1 metal + water → metal ________ + hydrogen"
+      },
+      "tags": ["water_reaction"],
+      "revisionFacts": [
+        "General equation: Metal + water → metal hydroxide + hydrogen",
+        "Example: 2Na + 2H₂O → 2NaOH + H₂",
+        "The metal hydroxide makes the solution alkaline (pH > 7)."
+      ]
+    },
+    {
+      "id": "group1-water-balanced-equation",
+      "type": "short_text_exact",
+      "prompt": "Write the balanced symbol equation for sodium reacting with water (use M for the metal):",
+      "correctAnswers": ["2M + 2H2O -> 2MOH + H2", "2M + 2H2O → 2MOH + H2", "2M + 2H2O --> 2MOH + H2"],
+      "feedback": {
+        "correct": "Excellent balancing!",
+        "incorrect": "Remember to balance: you need 2 metal atoms, 2 water molecules to produce 2 MOH and 1 H₂."
+      },
+      "tags": ["water_reaction"],
+      "revisionFacts": [
+        "Balanced equation: 2M + 2H₂O → 2MOH + H₂",
+        "The '2' is needed because H₂O has 2 hydrogens, and we make H₂.",
+        "For sodium specifically: 2Na + 2H₂O → 2NaOH + H₂"
+      ]
+    },
+    {
+      "id": "group1-common-observation-first-three",
+      "type": "multi_choice",
+      "prompt": "What observations are common when lithium, sodium, or potassium react with water? (Select all)",
+      "options": ["Metal floats on water", "Fizzing/bubbles appear", "Solution becomes warm", "Metal sinks", "Precipitate forms"],
+      "correctAnswers": ["Metal floats on water", "Fizzing/bubbles appear", "Solution becomes warm"],
+      "feedback": {
+        "correct": "Perfect observation skills!",
+        "incorrect": "Think about: Does the metal float? Is gas produced? Does the reaction release energy?"
+      },
+      "tags": ["water_reaction", "practical"],
+      "revisionFacts": [
+        "All Group 1 metals float (they're less dense than water).",
+        "Fizzing shows hydrogen gas being released.",
+        "The reaction is exothermic - releases heat energy."
+      ]
+    },
+    {
+      "id": "lithium-water-unique-observation",
+      "type": "short_text_exact",
+      "prompt": "What unique observation do you see with lithium and water (compared to sodium/potassium)?",
+      "correctAnswers": ["it moves slowly on the surface", "moves slowly", "moves around slowly", "it floats and fizzes gently"],
+      "feedback": {
+        "correct": "Yes! Lithium is the least reactive of the three.",
+        "incorrect": "Hint: Lithium is the LEAST reactive - how does it move on the water?"
+      },
+      "tags": ["water_reaction", "practical"],
+      "revisionFacts": [
+        "Lithium moves slowly on the water surface and fizzes gently.",
+        "It's the least reactive Group 1 metal (of the first three).",
+        "The reaction is slower and less vigorous than sodium or potassium."
+      ]
+    },
+    {
+      "id": "sodium-water-unique-observation",
+      "type": "short_text_exact",
+      "prompt": "What unique observation do you see with sodium and water?",
+      "correctAnswers": ["it melts into a ball", "melts into a ball", "forms a ball", "melts to a ball"],
+      "feedback": {
+        "correct": "Exactly! The heat from the reaction melts the sodium.",
+        "incorrect": "Hint: The exothermic reaction releases enough heat to melt sodium into a ____."
+      },
+      "tags": ["water_reaction", "practical"],
+      "revisionFacts": [
+        "Sodium melts into a ball due to the heat of the reaction.",
+        "It moves quickly on the water surface.",
+        "More reactive than lithium, less reactive than potassium."
+      ]
+    },
+    {
+      "id": "potassium-water-unique-observation",
+      "type": "short_text_exact",
+      "prompt": "What unique observation do you see with potassium and water?",
+      "correctAnswers": ["it burns with a lilac flame", "lilac flame", "burns with lilac flame", "purple flame"],
+      "feedback": {
+        "correct": "Perfect! The hydrogen produced ignites, giving a lilac flame.",
+        "incorrect": "Hint: The hydrogen catches fire - what colour flame does potassium produce?"
+      },
+      "tags": ["water_reaction", "practical"],
+      "revisionFacts": [
+        "Potassium reacts so vigorously the hydrogen ignites.",
+        "The flame is lilac/purple (characteristic of potassium).",
+        "It's the most reactive of lithium, sodium, and potassium."
+      ]
+    },
+    {
+      "id": "group1-reactivity-order-first-three",
+      "type": "ordering",
+      "prompt": "Order these Group 1 metals from LEAST to MOST reactive:",
+      "items": ["potassium", "lithium", "sodium"],
+      "correctOrder": ["lithium", "sodium", "potassium"],
+      "feedback": {
+        "correct": "Spot on! Reactivity increases as you go DOWN Group 1.",
+        "incorrect": "Remember: reactivity increases down the group. Lithium is at the top, potassium lower down."
+      },
+      "tags": ["water_reaction", "reactivity_series"],
+      "revisionFacts": [
+        "Group 1 reactivity increases down the group: Li < Na < K < Rb < Cs.",
+        "Outer electrons are further from nucleus down the group.",
+        "Easier to lose outer electron = more reactive."
+      ]
+    },
+    {
+      "id": "why-group1-more-reactive-down",
+      "type": "short_text_exact",
+      "prompt": "Why do Group 1 metals become more reactive going down the group?",
+      "correctAnswers": ["outer electron is further from nucleus", "outer electron further from nucleus", "electron shielding increases", "more electron shells"],
+      "feedback": {
+        "correct": "Excellent understanding of electron structure!",
+        "incorrect": "Hint: Think about distance from the nucleus and how many electron shells there are."
+      },
+      "tags": ["water_reaction", "reactivity_series"],
+      "revisionFacts": [
+        "More electron shells = outer electron further from nucleus.",
+        "Weaker attraction between nucleus and outer electron.",
+        "Outer electron lost more easily = more reactive metal."
+      ]
+    },
+    {
+      "id": "metal-plus-acid-word-equation",
+      "type": "short_text_exact",
+      "prompt": "Complete the word equation: Metal + acid →",
+      "correctAnswers": ["salt + hydrogen", "salt + hydrogen gas"],
+      "rejectFeedback": {
+        "salt + water": "Not water! Acids and metals produce hydrogen gas, not water."
+      },
+      "feedback": {
+        "correct": "Perfect! Metal + acid always gives salt + hydrogen.",
+        "incorrect": "Hint: Metal + acid → salt + _________ gas"
+      },
+      "tags": ["acid_reaction"],
+      "revisionFacts": [
+        "Metal + acid → salt + hydrogen (not water!).",
+        "Only metals above hydrogen in reactivity series react with acids.",
+        "The salt name depends on the acid used."
+      ]
+    },
+    {
+      "id": "hydrogen-test",
+      "type": "short_text_exact",
+      "prompt": "How do you test for hydrogen gas?",
+      "correctAnswers": ["lit splint gives squeaky pop", "squeaky pop with lit splint", "lit splint squeaky pop", "burning splint squeaky pop"],
+      "rejectFeedback": {
+        "relights a glowing splint": "That's the test for oxygen! Hydrogen gives a squeaky pop with a LIT splint."
+      },
+      "feedback": {
+        "correct": "Exactly! Hydrogen burns with a distinctive squeaky pop.",
+        "incorrect": "Hint: Put a LIT splint near the gas - what sound does it make?"
+      },
+      "tags": ["acid_reaction", "practical"],
+      "revisionFacts": [
+        "Hydrogen test: lit splint → squeaky pop.",
+        "Hydrogen is flammable and burns in air.",
+        "Don't confuse with oxygen test (relights glowing splint)."
+      ]
+    },
+    {
+      "id": "hydrogen-observation",
+      "type": "short_text_exact",
+      "prompt": "What do you observe when hydrogen is produced in a metal + acid reaction?",
+      "correctAnswers": ["fizzing", "bubbles", "effervescence", "fizzing/bubbles"],
+      "feedback": {
+        "correct": "Yes! The fizzing/bubbles are hydrogen gas being released.",
+        "incorrect": "Hint: What do you see around the metal as gas is produced?"
+      },
+      "tags": ["acid_reaction", "practical"],
+      "revisionFacts": [
+        "Fizzing/bubbles indicate gas (hydrogen) being released.",
+        "More reactive metals fizz more vigorously.",
+        "The reaction is exothermic (releases heat)."
+      ]
+    },
+    {
+      "id": "salt-prep-step-1",
+      "type": "short_text_exact",
+      "prompt": "In salt preparation, what do you add excess metal to?",
+      "correctAnswers": ["acid", "the acid", "dilute acid"],
+      "feedback": {
+        "correct": "Correct! Excess metal ensures all acid is used up.",
+        "incorrect": "Hint: You're trying to neutralize all the ____."
+      },
+      "tags": ["acid_reaction", "practical"],
+      "revisionFacts": [
+        "Step 1: Add excess metal to acid until no more reacts.",
+        "Excess ensures all acid is neutralized.",
+        "You'll see fizzing stop when acid is used up."
+      ]
+    },
+    {
+      "id": "salt-prep-step-2",
+      "type": "short_text_exact",
+      "prompt": "After the reaction, what do you do to remove excess metal?",
+      "correctAnswers": ["filter", "filter it", "filtration"],
+      "feedback": {
+        "correct": "Perfect! Filtration removes solid unreacted metal.",
+        "incorrect": "Hint: How do you separate a solid from a liquid?"
+      },
+      "tags": ["acid_reaction", "practical"],
+      "revisionFacts": [
+        "Step 2: Filter to remove excess unreacted metal.",
+        "The filtrate contains the dissolved salt.",
+        "The residue is the unreacted metal."
+      ]
+    },
+    {
+      "id": "salt-prep-step-3",
+      "type": "short_text_exact",
+      "prompt": "To get solid salt crystals from the solution, what do you do?",
+      "correctAnswers": ["evaporate", "crystallise", "heat to evaporate water", "evaporate the water", "crystallize"],
+      "feedback": {
+        "correct": "Exactly! Evaporation removes water, leaving salt crystals.",
+        "incorrect": "Hint: How do you remove the water to leave solid crystals?"
+      },
+      "tags": ["acid_reaction", "practical"],
+      "revisionFacts": [
+        "Step 3: Evaporate water to crystallize the salt.",
+        "Heat gently or leave to evaporate slowly.",
+        "You can also use crystallization by cooling a saturated solution."
+      ]
+    },
+    {
+      "id": "compare-metal-acid-reactions-how",
+      "type": "short_text_exact",
+      "prompt": "How can you tell which metal is more reactive when comparing reactions with acid?",
+      "correctAnswers": ["rate of fizzing", "speed of reaction", "how fast it fizzes", "amount of bubbles"],
+      "feedback": {
+        "correct": "Great! More reactive metals react faster and fizz more.",
+        "incorrect": "Hint: What do you observe that tells you the reaction is faster?"
+      },
+      "tags": ["acid_reaction", "practical"],
+      "revisionFacts": [
+        "More reactive metals fizz faster and more vigorously.",
+        "You can measure reaction rate by volume of hydrogen produced per minute.",
+        "Temperature increase also indicates faster reaction."
+      ]
+    },
+    {
+      "id": "displacement-wordeq-zn-fecl2",
+      "type": "short_text_exact",
+      "prompt": "Write the word equation for: zinc + iron chloride →",
+      "correctAnswers": ["zinc chloride + iron", "iron + zinc chloride"],
+      "rejectFeedback": {
+        "iron chloride + zinc": "That's what you started with! Displacement means the metals swap places."
+      },
+      "feedback": {
+        "correct": "Perfect! Zinc displaces iron because it's more reactive.",
+        "incorrect": "Hint: Zinc is MORE reactive than iron, so it takes the chloride."
+      },
+      "tags": ["displacement"],
+      "revisionFacts": [
+        "Zinc + iron chloride → zinc chloride + iron.",
+        "Zinc is more reactive, so displaces iron from the compound.",
+        "The more reactive metal 'steals' the non-metal."
+      ]
+    },
+    {
+      "id": "displacement-symboleq-zn-fecl2",
+      "type": "short_text_exact",
+      "prompt": "Write the balanced symbol equation for zinc displacing iron from iron chloride:",
+      "correctAnswers": ["Zn + FeCl2 -> ZnCl2 + Fe", "Zn + FeCl2 → ZnCl2 + Fe", "Zn + FeCl2 --> ZnCl2 + Fe"],
+      "feedback": {
+        "correct": "Brilliant! That's already balanced as written.",
+        "incorrect": "Hint: Zn + FeCl₂ → ZnCl₂ + Fe (it's already balanced!)"
+      },
+      "tags": ["displacement"],
+      "revisionFacts": [
+        "Zn + FeCl₂ → ZnCl₂ + Fe",
+        "Already balanced: 1 Zn, 1 Fe, 2 Cl on each side.",
+        "Zinc goes from 0 to +2 oxidation state (loses 2 electrons)."
+      ]
+    },
+    {
+      "id": "ionic-equation-ca-mgso4",
+      "type": "short_text_exact",
+      "prompt": "Write the ionic equation for calcium displacing magnesium from magnesium sulfate:",
+      "correctAnswers": ["Ca + Mg2+ -> Ca2+ + Mg", "Ca + Mg2+ → Ca2+ + Mg"],
+      "feedback": {
+        "correct": "Perfect ionic equation! You've removed the spectator ions.",
+        "incorrect": "Hint: Show only the ions that change. Sulfate (SO₄²⁻) is a spectator."
+      },
+      "tags": ["displacement", "redox"],
+      "revisionFacts": [
+        "Ionic equation: Ca + Mg²⁺ → Ca²⁺ + Mg",
+        "Spectator ions (SO₄²⁻) are left out of ionic equations.",
+        "Shows the actual displacement more clearly."
+      ]
+    },
+    {
+      "id": "spectator-ion-definition",
+      "type": "short_text_exact",
+      "prompt": "What is a spectator ion?",
+      "correctAnswers": ["an ion that doesn't change in a reaction", "ion that doesn't change", "ion that stays the same"],
+      "feedback": {
+        "correct": "Exactly! Spectator ions are present but don't participate.",
+        "incorrect": "Hint: Think about ions that just 'watch' the reaction without changing."
+      },
+      "tags": ["displacement", "redox"],
+      "revisionFacts": [
+        "Spectator ions don't change during the reaction.",
+        "They appear unchanged on both sides of the equation.",
+        "We omit them in ionic equations to show the actual change."
+      ]
+    },
+    {
+      "id": "reduction-extraction-definition",
+      "type": "short_text_exact",
+      "prompt": "In metal extraction, reduction means the ore _______ oxygen.",
+      "correctAnswers": ["loses", "loss of"],
+      "feedback": {
+        "correct": "Yes! Reduction = loss of oxygen (in oxygen-transfer terms).",
+        "incorrect": "Hint: OIL RIG helps with electrons, but for oxygen-transfer: reduction removes oxygen."
+      },
+      "tags": ["extraction", "redox"],
+      "revisionFacts": [
+        "Reduction (oxygen-transfer) = loss of oxygen from ore.",
+        "Reduction (electron-transfer) = gain of electrons.",
+        "Metal ores are reduced to extract the pure metal."
+      ]
+    },
+    {
+      "id": "why-carbon-used-in-reduction",
+      "type": "short_text_exact",
+      "prompt": "Why is carbon used in reduction of metal ores?",
+      "correctAnswers": ["it's cheaper than electrolysis", "cheaper", "less expensive", "more cost effective"],
+      "feedback": {
+        "correct": "Exactly! Carbon reduction is much cheaper than electrolysis.",
+        "incorrect": "Hint: Think about cost - is heating with carbon cheap or expensive?"
+      },
+      "tags": ["extraction", "reactivity_series"],
+      "revisionFacts": [
+        "Carbon reduction is cheaper than electrolysis.",
+        "Carbon removes oxygen from metal oxides.",
+        "Only works for metals less reactive than carbon."
+      ]
+    },
+    {
+      "id": "electrolysis-definition",
+      "type": "short_text_exact",
+      "prompt": "What is electrolysis?",
+      "correctAnswers": ["splitting a compound using electricity", "using electricity to split a compound", "decomposition using electricity"],
+      "feedback": {
+        "correct": "Perfect definition!",
+        "incorrect": "Hint: Electro = electricity, lysis = splitting."
+      },
+      "tags": ["extraction"],
+      "revisionFacts": [
+        "Electrolysis = splitting a compound using electricity.",
+        "Used to extract reactive metals (above carbon in series).",
+        "Requires molten or dissolved ionic compound."
+      ]
+    },
+    {
+      "id": "when-electrolysis-used-for-extraction",
+      "type": "short_text_exact",
+      "prompt": "When is electrolysis used to extract metals?",
+      "correctAnswers": ["when metal is more reactive than carbon", "for metals more reactive than carbon", "metals above carbon"],
+      "feedback": {
+        "correct": "Spot on! Carbon can't reduce more reactive metals.",
+        "incorrect": "Hint: Which metals can't be extracted using carbon?"
+      },
+      "tags": ["extraction", "reactivity_series"],
+      "revisionFacts": [
+        "Electrolysis extracts metals MORE reactive than carbon.",
+        "Includes K, Na, Ca, Mg, Al.",
+        "Carbon reduction doesn't work for these metals."
+      ]
+    },
+    {
+      "id": "electrolysis-disadvantage",
+      "type": "short_text_exact",
+      "prompt": "What is the main disadvantage of electrolysis for metal extraction?",
+      "correctAnswers": ["expensive", "high cost", "uses a lot of energy", "energy intensive"],
+      "feedback": {
+        "correct": "Yes! Electrolysis needs lots of electrical energy.",
+        "incorrect": "Hint: Think about the energy costs."
+      },
+      "tags": ["extraction"],
+      "revisionFacts": [
+        "Electrolysis is expensive - needs continuous electricity.",
+        "This is why aluminium used to be very expensive.",
+        "Carbon reduction is much cheaper if it works."
+      ]
+    },
+    {
+      "id": "alumina-cryolite-why",
+      "type": "short_text_exact",
+      "prompt": "Why is cryolite added to aluminium oxide in aluminium extraction?",
+      "correctAnswers": ["to lower the melting point", "lowers melting point", "reduce melting point", "lower the temperature"],
+      "feedback": {
+        "correct": "Perfect! This saves energy and cost.",
+        "incorrect": "Hint: Pure aluminium oxide melts at over 2000°C - how can we make this cheaper?"
+      },
+      "tags": ["extraction"],
+      "revisionFacts": [
+        "Cryolite lowers aluminium oxide's melting point from 2050°C to about 950°C.",
+        "This saves huge amounts of energy and money.",
+        "The mixture is then electrolyzed."
+      ]
+    },
+    {
+      "id": "alumina-products-cathode-anode",
+      "type": "match_pairs",
+      "prompt": "Match the electrode to what's produced during aluminium extraction:",
+      "pairs": [
+        {"left": "Cathode (negative)", "right": "Aluminium metal"},
+        {"left": "Anode (positive)", "right": "Oxygen gas"}
+      ],
+      "feedback": {
+        "correct": "Excellent! Al³⁺ gains electrons at cathode; O²⁻ loses electrons at anode.",
+        "incorrect": "Remember: cathode attracts positive Al³⁺ ions, anode attracts negative O²⁻ ions."
+      },
+      "tags": ["extraction", "redox"],
+      "revisionFacts": [
+        "Cathode (-): Al³⁺ + 3e⁻ → Al (reduction).",
+        "Anode (+): 2O²⁻ → O₂ + 4e⁻ (oxidation).",
+        "Molten aluminium sinks to bottom and is tapped off."
+      ]
+    },
+    {
+      "id": "why-carbon-anode-replaced",
+      "type": "short_text_exact",
+      "prompt": "Why must the carbon anode be regularly replaced in aluminium extraction?",
+      "correctAnswers": ["it reacts with oxygen", "oxygen burns it away", "it burns in oxygen", "reacts with oxygen to form carbon dioxide"],
+      "feedback": {
+        "correct": "Exactly! The oxygen produced reacts with the carbon anode.",
+        "incorrect": "Hint: What happens when carbon (from the anode) meets oxygen (produced at the anode)?"
+      },
+      "tags": ["extraction", "redox"],
+      "revisionFacts": [
+        "Carbon anode reacts with oxygen: C + O₂ → CO₂.",
+        "This gradually burns away the anode.",
+        "Replacement adds to the cost of aluminium production."
+      ]
+    },
+    {
+      "id": "metal-plus-oxygen-word-equation",
+      "type": "short_text_exact",
+      "prompt": "Complete: Metal + oxygen →",
+      "correctAnswers": ["metal oxide"],
+      "feedback": {
+        "correct": "Correct! Combustion of metals produces oxides.",
+        "incorrect": "Hint: When metals burn in oxygen, they form metal _____."
+      },
+      "tags": ["redox"],
+      "revisionFacts": [
+        "Metal + oxygen → metal oxide (combustion).",
+        "Example: 2Mg + O₂ → 2MgO",
+        "This is an oxidation reaction (metal gains oxygen)."
+      ]
+    },
+    {
+      "id": "oxidation-as-gain-oxygen",
+      "type": "short_text_exact",
+      "prompt": "In oxygen-transfer reactions, oxidation means _______ of oxygen.",
+      "correctAnswers": ["gain", "gaining"],
+      "rejectFeedback": {
+        "loss": "Not for oxygen-transfer! Oxidation = GAIN of oxygen. (You might be thinking of electron-transfer where oxidation = LOSS of electrons.)"
+      },
+      "feedback": {
+        "correct": "Yes! Oxidation (oxygen-transfer) = gain of oxygen.",
+        "incorrect": "Hint: When something is oxidised, it combines with oxygen."
+      },
+      "tags": ["redox"],
+      "revisionFacts": [
+        "Oxidation (oxygen-transfer) = gain of oxygen.",
+        "Example: 2Mg + O₂ → 2MgO (magnesium is oxidised).",
+        "Don't confuse with electron-transfer definition."
+      ]
+    },
+    {
+      "id": "oxidation-electrons-definition",
+      "type": "short_text_exact",
+      "prompt": "In electron-transfer reactions, oxidation means _______ of electrons.",
+      "correctAnswers": ["loss", "losing"],
+      "rejectFeedback": {
+        "gain": "Not for electrons! Oxidation = LOSS of electrons. Remember OIL RIG: Oxidation Is Loss."
+      },
+      "feedback": {
+        "correct": "Perfect! OIL: Oxidation Is Loss (of electrons).",
+        "incorrect": "Hint: Remember OIL RIG - what does OIL stand for?"
+      },
+      "tags": ["redox"],
+      "revisionFacts": [
+        "Oxidation (electron-transfer) = loss of electrons.",
+        "OIL RIG: Oxidation Is Loss, Reduction Is Gain.",
+        "Example: Na → Na⁺ + e⁻ (sodium is oxidised)."
+      ]
+    },
+    {
+      "id": "reduction-electrons-definition",
+      "type": "short_text_exact",
+      "prompt": "In electron-transfer reactions, reduction means _______ of electrons.",
+      "correctAnswers": ["gain", "gaining"],
+      "rejectFeedback": {
+        "loss": "Not for electrons! Reduction = GAIN of electrons. Remember OIL RIG: Reduction Is Gain."
+      },
+      "feedback": {
+        "correct": "Perfect! RIG: Reduction Is Gain (of electrons).",
+        "incorrect": "Hint: Remember OIL RIG - what does RIG stand for?"
+      },
+      "tags": ["redox"],
+      "revisionFacts": [
+        "Reduction (electron-transfer) = gain of electrons.",
+        "OIL RIG: Oxidation Is Loss, Reduction Is Gain.",
+        "Example: Na⁺ + e⁻ → Na (sodium ion is reduced)."
+      ]
+    },
+    {
+      "id": "half-equation-sodium-oxidation",
+      "type": "short_text_exact",
+      "prompt": "Write the half-equation for sodium being oxidised:",
+      "correctAnswers": ["Na -> Na+ + e-", "Na → Na+ + e-", "Na --> Na+ + e-"],
+      "feedback": {
+        "correct": "Excellent! Sodium loses 1 electron when oxidised.",
+        "incorrect": "Hint: Oxidation = loss of electrons. Na loses 1 electron to form Na⁺."
+      },
+      "tags": ["redox"],
+      "revisionFacts": [
+        "Half-equation: Na → Na⁺ + e⁻",
+        "Shows loss of 1 electron (oxidation).",
+        "Group 1 metals form +1 ions."
+      ]
+    },
+    {
+      "id": "variables-control-variable-definition",
+      "type": "short_text_exact",
+      "prompt": "What is a control variable in an experiment?",
+      "correctAnswers": ["variable kept constant", "kept the same", "variable kept the same", "kept constant"],
+      "feedback": {
+        "correct": "Correct! Control variables ensure a fair test.",
+        "incorrect": "Hint: What do you keep the SAME to make the test fair?"
+      },
+      "tags": ["practical"],
+      "revisionFacts": [
+        "Control variable = kept constant throughout the experiment.",
+        "Ensures only the independent variable affects the dependent variable.",
+        "Example: same volume of acid, same temperature, same surface area."
+      ]
+    }
+  ]
+}
