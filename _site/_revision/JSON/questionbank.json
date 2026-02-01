@@ -1,5 +1,5 @@
 {
-  "version": "2.0",
+  "version": "2.1",
   "topic": "AQA GCSE Chemistry - Combined Science",
   "sources": [
     "Unit 1 Parts 6-12 Periodic Table",
@@ -19,7 +19,7 @@
       ],
       "feedback": {
         "correct": "Perfect! Elements are arranged by atomic number, which groups similar elements together.",
-        "incorrect": "Good try! Not quite, but you're thinking! Elements are arranged by atomic number, which puts similar elements in the same group."
+        "incorrect": "Good try! Elements aren't in mass order - hydrogen (1) comes before helium (4), but lithium (7) comes before beryllium (9). What number ARE they in order of?"
       },
       "tags": [
         "periodic_table"
@@ -42,7 +42,7 @@
       ],
       "feedback": {
         "correct": "Exactly right! 'Periodic' means repeating at regular intervals.",
-        "incorrect": "Here's a helpful hint: Think about what 'periodic' means - something that repeats regularly."
+        "incorrect": "Good try! Think about the word 'periodic' - like a periodic table in maths, or a periodic wave. What does periodic mean?"
       },
       "tags": [
         "periodic_table"
@@ -55,18 +55,18 @@
     },
     {
       "id": "group-tells-us",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "What does the group number tell us about an element?",
-      "correctAnswers": [
-        "number of electrons in outer shell",
-        "the number of outer shell electrons",
-        "how many outer electrons",
-        "number of electrons in outer electron shell",
-        "outer shell electron number"
+      "options": [
+        "Outer shell electrons",
+        "Electron shells total",
+        "Proton number",
+        "Neutron number"
       ],
+      "correctAnswer": "Outer shell electrons",
       "feedback": {
-        "correct": "Spot on! The group number = number of outer shell electrons (for most groups).",
-        "incorrect": "Here's a helpful hint: Look at the outer electron shell - what does the group number match?"
+        "correct": "Spot on! Group number = number of outer shell electrons (for most groups).",
+        "incorrect": "Good try! Look at Group 1 - they all have 1 electron in common. What do you think that electron is?"
       },
       "tags": [
         "periodic_table",
@@ -80,17 +80,18 @@
     },
     {
       "id": "period-tells-us",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "What does the period number tell us about an element?",
-      "correctAnswers": [
-        "number of electron shells",
-        "the number of electron shells",
-        "how many electron shells",
-        "number of shells"
+      "options": [
+        "Number of shells",
+        "Outer electrons",
+        "Atomic mass",
+        "Reactivity level"
       ],
+      "correctAnswer": "Number of shells",
       "feedback": {
         "correct": "Perfect! Period number = number of electron shells.",
-        "incorrect": "Here's a helpful hint: Count the electron shells for elements in the same horizontal row."
+        "incorrect": "Good try! Draw out sodium (Period 3) and lithium (Period 2). What's different about their structure?"
       },
       "tags": [
         "periodic_table",
@@ -114,7 +115,7 @@
       ],
       "feedback": {
         "correct": "Brilliant! Mendeleev's genius was leaving gaps for elements that fit the pattern.",
-        "incorrect": "Here's a helpful hint: What did Mendeleev do when an element seemed to be missing?"
+        "incorrect": "Good try! Mendeleev was bold - when his pattern didn't work, he assumed elements were missing. What did he do about those missing spots?"
       },
       "tags": [
         "periodic_table_history"
@@ -137,7 +138,7 @@
       ],
       "feedback": {
         "correct": "Exactly! Ions are atoms that have become charged by losing or gaining electrons.",
-        "incorrect": "Here's a helpful hint: What happens to an atom when it loses or gains electrons?"
+        "incorrect": "Good try! An atom normally has equal protons (+) and electrons (-). What happens when this balance changes?"
       },
       "tags": [
         "ions",
@@ -154,15 +155,15 @@
       "type": "single_choice",
       "prompt": "What type of ions do metals form?",
       "options": [
-        "Positive ions (cations)",
-        "Negative ions (anions)",
-        "Neutral atoms",
-        "No ions"
+        "Positive ions",
+        "Negative ions",
+        "Neutral particles",
+        "No charge"
       ],
-      "correctAnswer": "Positive ions (cations)",
+      "correctAnswer": "Positive ions",
       "feedback": {
         "correct": "Perfect! Metals lose electrons to form positive ions (cations).",
-        "incorrect": "Let's remember: metals LOSE electrons, making them positively charged."
+        "incorrect": "Good try! Metals sit on the left of the periodic table and lose electrons easily. When you lose negative charges, what charge are you left with?"
       },
       "tags": [
         "ions",
@@ -187,7 +188,7 @@
       "correctAnswer": "Loss of electrons",
       "feedback": {
         "correct": "Perfect! OILRIG: Oxidation Is Loss (of electrons).",
-        "incorrect": "Good try! Remember OILRIG - Oxidation Is Loss, Reduction Is Gain."
+        "incorrect": "Good try! Think: OIL RIG. What does the OIL stand for?"
       },
       "tags": [
         "redox",
@@ -212,7 +213,7 @@
       "correctAnswer": "Gain of electrons",
       "feedback": {
         "correct": "Perfect! OILRIG: Reduction Is Gain (of electrons).",
-        "incorrect": "Good try! Remember OILRIG - Oxidation Is Loss, Reduction Is Gain."
+        "incorrect": "Good try! Think: OIL RIG. What does the RIG stand for?"
       },
       "tags": [
         "redox",
@@ -229,15 +230,15 @@
       "type": "single_choice",
       "prompt": "What type of ions do non-metals form?",
       "options": [
-        "Negative ions (anions)",
-        "Positive ions (cations)",
+        "Negative ions",
+        "Positive ions",
         "Neutral atoms",
-        "No ions"
+        "No charge"
       ],
-      "correctAnswer": "Negative ions (anions)",
+      "correctAnswer": "Negative ions",
       "feedback": {
         "correct": "Yes! Non-metals gain electrons to form negative ions (anions).",
-        "incorrect": "Let's remember: non-metals GAIN electrons, making them negatively charged."
+        "incorrect": "Good try! Non-metals sit on the right and want to gain electrons. When you gain negative charges, what overall charge do you have?"
       },
       "tags": [
         "ions",
@@ -261,7 +262,7 @@
       ],
       "feedback": {
         "correct": "Exactly! Full outer shells make them stable and unreactive (noble/inert).",
-        "incorrect": "Here's a helpful hint: What's special about their electron shells?"
+        "incorrect": "Good try! Count the outer electrons: He has 2, Ne has 8, Ar has 8. What's special about these numbers?"
       },
       "tags": [
         "group_0",
@@ -284,7 +285,7 @@
       ],
       "feedback": {
         "correct": "Correct! Inert = unreactive.",
-        "incorrect": "Here's a helpful hint: Noble gases don't react easily - what word describes this?"
+        "incorrect": "Good try! Think about the noble gases - do they react with other elements easily or not at all?"
       },
       "tags": [
         "group_0",
@@ -302,11 +303,13 @@
       "prompt": "What is the name of the Group 1 elements?",
       "correctAnswers": [
         "alkali metals",
-        "the alkali metals"
+        "the alkali metals",
+        "Alkali metals",
+        "alkali metal"
       ],
       "feedback": {
         "correct": "Perfect! Group 1 = alkali metals.",
-        "incorrect": "Here's a helpful hint: They form alkaline solutions when they react with water."
+        "incorrect": "Good try! When Group 1 metals react with water, they make hydroxides (like NaOH). Solutions of hydroxides are alkaline. So we call Group 1..."
       },
       "tags": [
         "group_1"
@@ -329,7 +332,7 @@
       ],
       "feedback": {
         "correct": "Spot on! Metal + water → metal hydroxide + hydrogen.",
-        "incorrect": "Here's a helpful hint: One product is a gas (test with lit splint), the other makes the solution alkaline."
+        "incorrect": "Good try! When sodium reacts with water, you see fizzing (a gas) and the solution goes alkaline (a base). What gas gives a squeaky pop?"
       },
       "tags": [
         "group_1",
@@ -352,7 +355,7 @@
       ],
       "feedback": {
         "correct": "Perfect word equation!",
-        "incorrect": "Here's a helpful hint: Metal + water → metal _______ + hydrogen"
+        "incorrect": "Good try! The products are metal hydroxide (like NaOH) + a gas that tests with squeaky pop. Complete: Metal + water → ..."
       },
       "tags": [
         "group_1",
@@ -375,7 +378,7 @@
       ],
       "feedback": {
         "correct": "Excellent! Perfect balancing.",
-        "incorrect": "Let's remember: you need 2 metal atoms and 2 water molecules to make 2 MOH and 1 H₂."
+        "incorrect": "Good try! Count the H atoms: 2 in H₂O on left, but we need 2 in H₂ on right AND some in MOH. How many M and H₂O do we need?"
       },
       "tags": [
         "group_1",
@@ -401,7 +404,7 @@
       ],
       "feedback": {
         "correct": "Yes! Lithium is the least reactive - it fizzes gently and doesn't melt.",
-        "incorrect": "Here's a helpful hint: Lithium is the LEAST reactive of the first three Group 1 metals."
+        "incorrect": "Good try! Li is the LEAST reactive. Compare it to Na which melts and K which burns. What does Li do differently?"
       },
       "tags": [
         "group_1",
@@ -426,7 +429,7 @@
       ],
       "feedback": {
         "correct": "Perfect! The heat from the reaction melts sodium into a ball.",
-        "incorrect": "Here's a helpful hint: The exothermic reaction releases enough heat to change sodium's state."
+        "incorrect": "Good try! The reaction releases heat. Na's melting point is 98°C. What happens to sodium metal when it gets that hot?"
       },
       "tags": [
         "group_1",
@@ -452,7 +455,7 @@
       ],
       "feedback": {
         "correct": "Excellent! The hydrogen ignites, giving a lilac/purple flame.",
-        "incorrect": "Here's a helpful hint: Potassium is so reactive the hydrogen catches fire - what colour?"
+        "incorrect": "Good try! K is SO reactive the hydrogen catches fire. Metal flames have specific colours - what colour flame does potassium give?"
       },
       "tags": [
         "group_1",
@@ -481,7 +484,7 @@
       ],
       "feedback": {
         "correct": "Perfect! Reactivity increases DOWN Group 1.",
-        "incorrect": "Let's remember: Li → Na → K (reactivity increases as you go down the group)."
+        "incorrect": "Good try! As you go DOWN Group 1 (Li → Na → K), reactivity increases. Which is at the top?"
       },
       "tags": [
         "group_1",
@@ -505,7 +508,7 @@
       ],
       "feedback": {
         "correct": "Spot on! More shells = weaker attraction to outer electron.",
-        "incorrect": "Here's a helpful hint: Think about electron shells and distance from the nucleus."
+        "incorrect": "Good try! Compare Li (2 shells) with K (4 shells). Which one has its outer electron further from the nucleus? Is it easier or harder to remove?"
       },
       "tags": [
         "group_1",
@@ -524,11 +527,13 @@
       "prompt": "What is the name of the Group 7 elements?",
       "correctAnswers": [
         "halogens",
-        "the halogens"
+        "the halogens",
+        "Halogens",
+        "halogen"
       ],
       "feedback": {
         "correct": "Correct! Group 7 = halogens.",
-        "incorrect": "Here's a helpful hint: These are very reactive non-metals with 7 outer electrons."
+        "incorrect": "Good try! They all have 7 outer electrons. Fluo-, Chloro-, Bromo-, Iodo-... what's the pattern in their names?"
       },
       "tags": [
         "group_7"
@@ -555,7 +560,7 @@
       ],
       "feedback": {
         "correct": "Perfect! Halogen reactivity DECREASES down the group.",
-        "incorrect": "Let's remember: F > Cl > Br (reactivity decreases down Group 7)."
+        "incorrect": "Good try! Unlike Group 1, Group 7 reactivity DECREASES down the group. Fluorine is at the top - is it most or least reactive?"
       },
       "tags": [
         "group_7",
@@ -578,7 +583,7 @@
       ],
       "feedback": {
         "correct": "Perfect! More reactive chlorine displaces less reactive bromine.",
-        "incorrect": "Here's a helpful hint: Chlorine 'steals' the sodium from sodium bromide."
+        "incorrect": "Good try! Chlorine is above bromine in Group 7, so more reactive. Can Cl kick Br out of its compound?"
       },
       "tags": [
         "group_7",
@@ -612,7 +617,7 @@
       ],
       "feedback": {
         "correct": "Excellent knowledge of the reactivity series!",
-        "incorrect": "Let's remember: K > Na > Li > Ca > Mg > (C) > Zn > Fe > (H) > Cu > Ag > Au"
+        "incorrect": "Good try! Use the mnemonic: Please Stop Calling Me A Careless Zebra, Instead Call Me A Solid Gold. Where does each metal go?"
       },
       "tags": [
         "reactivity_series"
@@ -634,7 +639,7 @@
       ],
       "feedback": {
         "correct": "Perfect! Combustion of metals produces oxides.",
-        "incorrect": "Here's a helpful hint: When metals burn in oxygen, they form metal _______."
+        "incorrect": "Good try! When magnesium burns in oxygen, it forms magnesium oxide (MgO). What's the pattern?"
       },
       "tags": [
         "oxidation",
@@ -657,7 +662,7 @@
       ],
       "feedback": {
         "correct": "Yes! Oxidation = gain of oxygen (in oxygen-transfer terms).",
-        "incorrect": "Here's a helpful hint: What does the metal gain in this reaction?"
+        "incorrect": "Good try! Look at the name 'oxidation' - what element is in that word? Does the metal gain or lose that element?"
       },
       "tags": [
         "oxidation",
@@ -683,7 +688,7 @@
       },
       "feedback": {
         "correct": "Perfect! Metal + acid → salt + hydrogen (NOT water!).",
-        "incorrect": "Here's a helpful hint: What gas is produced that gives a squeaky pop?"
+        "incorrect": "Good try! Drop Mg into HCl - you get fizzing (a gas) and a solution left behind (salt). What gas squeaks with a lit splint?"
       },
       "tags": [
         "acid_reactions",
@@ -710,7 +715,7 @@
       },
       "feedback": {
         "correct": "Perfect! Hydrogen + oxygen → water (explosive reaction = squeaky pop).",
-        "incorrect": "Here's a helpful hint: Use a LIT splint - what sound does burning hydrogen make?"
+        "incorrect": "Good try! We use a BURNING splint (lit, with flame). What sound does hydrogen + oxygen make when they react?"
       },
       "tags": [
         "practical",
@@ -740,7 +745,7 @@
       ],
       "feedback": {
         "correct": "Correct! Metals below hydrogen don't react with acids.",
-        "incorrect": "Let's remember: only metals ABOVE hydrogen in the reactivity series react with acids."
+        "incorrect": "Good try! Look at the reactivity series. Only metals ABOVE hydrogen react with acids. Which are below?"
       },
       "tags": [
         "reactivity_series",
@@ -763,7 +768,7 @@
       ],
       "feedback": {
         "correct": "Excellent! The reactivity series predicts displacement reactions.",
-        "incorrect": "Here's a helpful hint: Which metal 'wins' and takes the compound for itself?"
+        "incorrect": "Good try! Imagine a boxing match - which metal is stronger (more reactive) and can kick out the weaker one?"
       },
       "tags": [
         "displacement",
@@ -789,7 +794,7 @@
       },
       "feedback": {
         "correct": "Perfect! Zinc is more reactive, so displaces iron.",
-        "incorrect": "Here's a helpful hint: Zinc 'steals' the chloride from iron."
+        "incorrect": "Good try! Check the reactivity series: is Zn above or below Fe? The higher one 'steals' the chloride."
       },
       "tags": [
         "displacement"
@@ -812,7 +817,7 @@
       ],
       "feedback": {
         "correct": "Exactly! Spectator ions are present but don't participate.",
-        "incorrect": "Here's a helpful hint: Think about ions that just 'watch' without changing."
+        "incorrect": "Good try! In Ca + MgSO₄ → CaSO₄ + Mg, the SO₄²⁻ appears on both sides unchanged. What do we call ions that just 'watch'?"
       },
       "tags": [
         "ionic_equations",
@@ -835,7 +840,7 @@
       ],
       "feedback": {
         "correct": "Perfect! Ionic equations show only the ions that actually react.",
-        "incorrect": "Here's a helpful hint: What type of ions do we leave out of ionic equations?"
+        "incorrect": "Good try! If SO₄²⁻ doesn't change, why write it twice? What type of equation leaves out the 'spectator' ions?"
       },
       "tags": [
         "ionic_equations",
@@ -858,7 +863,7 @@
       ],
       "feedback": {
         "correct": "Yes! Ores contain metal compounds that can be extracted.",
-        "incorrect": "Here's a helpful hint: Where do we find metals in the ground?"
+        "incorrect": "Good try! We dig up rock containing iron oxide (Fe₂O₃). What do we call this useful rock that contains metal compounds?"
       },
       "tags": [
         "extraction"
@@ -881,7 +886,7 @@
       ],
       "feedback": {
         "correct": "Perfect! Native metals are unreactive enough to exist uncombined.",
-        "incorrect": "Here's a helpful hint: Very unreactive metals can be found as pure elements."
+        "incorrect": "Good try! Gold is so unreactive we find it as pure Au, not combined. What word describes 'found naturally as an element'?"
       },
       "tags": [
         "extraction"
@@ -894,16 +899,18 @@
     },
     {
       "id": "reduction-extraction",
-      "type": "short_text_exact",
-      "prompt": "What is meant by 'reduction' in metal extraction?",
-      "correctAnswers": [
-        "loss of oxygen",
-        "removal of oxygen",
-        "metal oxide loses oxygen"
+      "type": "single_choice",
+      "prompt": "In metal extraction, what does 'reduction' mean?",
+      "options": [
+        "Loss of oxygen",
+        "Gain of oxygen",
+        "Loss of electrons",
+        "Getting smaller"
       ],
+      "correctAnswer": "Loss of oxygen",
       "feedback": {
         "correct": "Exactly! Reduction = loss of oxygen (from the ore).",
-        "incorrect": "Here's a helpful hint: What does the metal oxide lose when we extract the metal?"
+        "incorrect": "Good try! Iron oxide (Fe₂O₃) becomes iron (Fe). What has the oxygen done - been gained or lost?"
       },
       "tags": [
         "extraction",
@@ -926,7 +933,7 @@
       ],
       "feedback": {
         "correct": "Yes! Carbon must be more reactive to 'steal' the oxygen.",
-        "incorrect": "Here's a helpful hint: Think about the reactivity series - where is carbon?"
+        "incorrect": "Good try! For carbon to remove oxygen from iron oxide, carbon must 'want' oxygen more than iron does. Where is carbon in the reactivity series?"
       },
       "tags": [
         "extraction",
@@ -949,7 +956,7 @@
       ],
       "feedback": {
         "correct": "Perfect! Electrolysis = using electricity to split compounds.",
-        "incorrect": "Here's a helpful hint: Electro = electricity, lysis = splitting/breaking."
+        "incorrect": "Good try! Think about the words: electro = electricity, lysis = breaking/splitting. What does electrolysis do?"
       },
       "tags": [
         "extraction",
@@ -972,7 +979,7 @@
       ],
       "feedback": {
         "correct": "Spot on! Carbon can't reduce more reactive metals.",
-        "incorrect": "Here's a helpful hint: Which metals can't be extracted using carbon?"
+        "incorrect": "Good try! Carbon can't take oxygen from very reactive metal oxides. Which metals are MORE reactive than carbon?"
       },
       "tags": [
         "extraction",
@@ -997,7 +1004,7 @@
       ],
       "feedback": {
         "correct": "Yes! Continuous electricity supply is very expensive.",
-        "incorrect": "Here's a helpful hint: Think about the energy costs."
+        "incorrect": "Good try! Electrolysis needs constant electrical current - think about your electricity bill. Is this cheap or expensive?"
       },
       "tags": [
         "extraction",
@@ -1020,7 +1027,7 @@
       ],
       "feedback": {
         "correct": "Perfect! Those are the three essential steps.",
-        "incorrect": "Here's a helpful hint: Think about ensuring all acid reacts, removing solid, and getting crystals."
+        "incorrect": "Good try! Think: (1) make sure all acid reacts, (2) remove solid metal, (3) get solid salt crystals. What are the 3 steps?"
       },
       "tags": [
         "practical",
@@ -1043,7 +1050,7 @@
       ],
       "feedback": {
         "correct": "Perfect neutralisation equation!",
-        "incorrect": "Here's a helpful hint: Acid + alkali → _____ + _____"
+        "incorrect": "Good try! Acid + alkali makes the pH go to 7 (neutral). What two products form when we neutralise an acid?"
       },
       "tags": [
         "neutralisation",
@@ -1066,7 +1073,7 @@
       ],
       "feedback": {
         "correct": "Excellent! Don't forget the carbon dioxide!",
-        "incorrect": "Here's a helpful hint: Three products - salt, water, and a gas that turns limewater milky."
+        "incorrect": "Good try! Acid + CaCO₃ gives fizzing (gas) + liquid left behind. You get salt + water + which gas turns limewater milky?"
       },
       "tags": [
         "acid_reactions",
@@ -1089,7 +1096,7 @@
       ],
       "feedback": {
         "correct": "Perfect! Acids produce H⁺ ions in solution.",
-        "incorrect": "Here's a helpful hint: What positive ion do acids release in water?"
+        "incorrect": "Good try! HCl in water splits into H⁺ and Cl⁻. What ion do all acids release?"
       },
       "tags": [
         "acids",
@@ -1112,7 +1119,7 @@
       ],
       "feedback": {
         "correct": "Yes! Alkalis produce OH⁻ (hydroxide) ions.",
-        "incorrect": "Here's a helpful hint: What negative ion do alkalis release in water?"
+        "incorrect": "Good try! NaOH in water splits into Na⁺ and OH⁻. What ion do all alkalis release?"
       },
       "tags": [
         "alkalis",
@@ -1135,7 +1142,7 @@
       ],
       "feedback": {
         "correct": "Perfect! This is the fundamental neutralisation equation.",
-        "incorrect": "Here's a helpful hint: Hydrogen ions + hydroxide ions → _____"
+        "incorrect": "Good try! Acid releases H⁺, alkali releases OH⁻. What do these combine to make?"
       },
       "tags": [
         "neutralisation",
@@ -1158,7 +1165,7 @@
       ],
       "feedback": {
         "correct": "Yes! Strong acids ionise completely.",
-        "incorrect": "Here's a helpful hint: Think about the percentage of acid molecules that split into ions."
+        "incorrect": "Good try! In strong acids, ALL HCl molecules split into H⁺ and Cl⁻ ions. What percentage ionises - some or all?"
       },
       "tags": [
         "acids",
@@ -1182,7 +1189,7 @@
       ],
       "feedback": {
         "correct": "Perfect! Weak acids only partially ionise.",
-        "incorrect": "Here's a helpful hint: Not all molecules split into ions - only some do."
+        "incorrect": "Good try! In weak acids, only SOME molecules split into ions. Is this complete or partial ionisation?"
       },
       "tags": [
         "acids",
@@ -1206,7 +1213,7 @@
       ],
       "feedback": {
         "correct": "Exactly! pH is a logarithmic scale.",
-        "incorrect": "Here's a helpful hint: pH scale is logarithmic - each step is a factor of 10."
+        "incorrect": "Good try! pH is logarithmic. Each pH unit is a factor of 10. If pH drops by 1, does H⁺ concentration ×2, ×10, or ×100?"
       },
       "tags": [
         "pH",
@@ -1229,7 +1236,7 @@
       ],
       "feedback": {
         "correct": "Perfect! Sodium loses 1 electron to form Na⁺.",
-        "incorrect": "Here's a helpful hint: Sodium forms a +1 ion - what must it lose?"
+        "incorrect": "Good try! Na has 1 outer electron. To become Na⁺, does it gain or lose that electron? Show this with e⁻."
       },
       "tags": [
         "half_equations",
@@ -1252,7 +1259,7 @@
       ],
       "feedback": {
         "correct": "Excellent! Magnesium loses 2 electrons to form Mg²⁺.",
-        "incorrect": "Here's a helpful hint: Magnesium is in Group 2 - how many electrons does it lose?"
+        "incorrect": "Good try! Mg is in Group 2, so has 2 outer electrons. To become Mg²⁺, how many e⁻ must it lose?"
       },
       "tags": [
         "half_equations",
@@ -1275,7 +1282,7 @@
       ],
       "feedback": {
         "correct": "Perfect memory aid! Use this for all redox questions.",
-        "incorrect": "Here's a helpful hint: OIL = Oxidation Is Loss, RIG = Reduction Is Gain"
+        "incorrect": "Good try! It's a memory trick: OIL RIG. What does each part stand for?"
       },
       "tags": [
         "redox",
@@ -1285,6 +1292,370 @@
         "OILRIG = Oxidation Is Loss, Reduction Is Gain (of electrons)",
         "Essential for understanding redox reactions.",
         "Loss/gain refers to electrons, not oxygen."
+      ]
+    },
+    {
+      "id": "group-1-properties-multi",
+      "type": "multi_choice",
+      "prompt": "Which properties are common to Group 1 metals? (Select all that apply)",
+      "options": [
+        "Shiny when freshly cut",
+        "Very hard",
+        "Good conductors",
+        "High melting points",
+        "Soft and can be cut with a knife"
+      ],
+      "correctAnswers": [
+        "Shiny when freshly cut",
+        "Good conductors",
+        "Soft and can be cut with a knife"
+      ],
+      "feedback": {
+        "correct": "Excellent! You know the key properties of alkali metals.",
+        "incorrect": "Good try! Remember: Group 1 metals are soft, shiny when fresh, and good conductors - but they have LOW melting points for metals."
+      },
+      "tags": [
+        "group_1",
+        "properties"
+      ],
+      "revisionFacts": [
+        "Group 1 metals are soft (can be cut with knife).",
+        "They're shiny when freshly cut but tarnish quickly in air.",
+        "Good conductors of heat and electricity (like all metals)."
+      ]
+    },
+    {
+      "id": "acid-products-multi",
+      "type": "multi_choice",
+      "prompt": "Which reactions produce water as a product? (Select all that apply)",
+      "options": [
+        "Metal + acid",
+        "Acid + alkali",
+        "Acid + metal carbonate",
+        "Metal + oxygen",
+        "Acid + base"
+      ],
+      "correctAnswers": [
+        "Acid + alkali",
+        "Acid + metal carbonate",
+        "Acid + base"
+      ],
+      "feedback": {
+        "correct": "Perfect! You know which acid reactions produce water!",
+        "incorrect": "Good thinking! Remember: neutralisation reactions (acid + alkali/base) produce water. Metal + acid produces hydrogen gas instead."
+      },
+      "tags": [
+        "acid_reactions",
+        "neutralisation"
+      ],
+      "revisionFacts": [
+        "Acid + alkali/base → salt + water (neutralisation)",
+        "Acid + metal carbonate → salt + water + CO₂",
+        "Metal + acid → salt + hydrogen (NOT water!)"
+      ]
+    },
+    {
+      "id": "extraction-methods-multi",
+      "type": "multi_choice",
+      "prompt": "Which metals need electrolysis to extract them? (Select all that apply)",
+      "options": [
+        "Potassium",
+        "Iron",
+        "Aluminium",
+        "Copper",
+        "Sodium",
+        "Zinc"
+      ],
+      "correctAnswers": [
+        "Potassium",
+        "Aluminium",
+        "Sodium"
+      ],
+      "feedback": {
+        "correct": "Brilliant! You know which metals are too reactive for carbon reduction!",
+        "incorrect": "Good try! Metals MORE reactive than carbon need electrolysis: K, Na, Li, Ca, Mg, Al."
+      },
+      "tags": [
+        "extraction",
+        "reactivity_series"
+      ],
+      "revisionFacts": [
+        "Metals above carbon need electrolysis: K, Na, Li, Ca, Mg, Al",
+        "Metals below carbon can use reduction: Zn, Fe, Cu",
+        "More reactive = harder (more expensive) to extract"
+      ]
+    },
+    {
+      "id": "reactivity-series-metals-only",
+      "type": "ordering",
+      "prompt": "Order these metals from MOST to LEAST reactive:",
+      "items": [
+        "calcium",
+        "iron",
+        "magnesium",
+        "copper"
+      ],
+      "correctOrder": [
+        "calcium",
+        "magnesium",
+        "iron",
+        "copper"
+      ],
+      "feedback": {
+        "correct": "Perfect knowledge of the reactivity series!",
+        "incorrect": "Good try! Remember: Ca > Mg > (Al > C > Zn >) Fe > (H >) Cu"
+      },
+      "tags": [
+        "reactivity_series"
+      ],
+      "revisionFacts": [
+        "Reactivity series: K, Na, Li, Ca, Mg, (C), Zn, Fe, (H), Cu, Ag, Au",
+        "Learn it with a mnemonic or by finding them on periodic table",
+        "More reactive = loses electrons more easily"
+      ]
+    },
+    {
+      "id": "halogen-colours-order",
+      "type": "ordering",
+      "prompt": "Order these halogens from LIGHTEST to DARKEST colour:",
+      "items": [
+        "chlorine",
+        "bromine",
+        "iodine"
+      ],
+      "correctOrder": [
+        "chlorine",
+        "bromine",
+        "iodine"
+      ],
+      "feedback": {
+        "correct": "Excellent! You know your halogen colours!",
+        "incorrect": "Good try! Colours get darker down the group: Cl₂ (pale green) → Br₂ (red-brown) → I₂ (grey/purple)"
+      },
+      "tags": [
+        "group_7",
+        "practical"
+      ],
+      "revisionFacts": [
+        "Chlorine: pale green/yellow gas",
+        "Bromine: red-brown liquid",
+        "Iodine: dark grey solid (purple vapour)"
+      ]
+    },
+    {
+      "id": "noble-gas-boiling-points",
+      "type": "ordering",
+      "prompt": "Order these noble gases from LOWEST to HIGHEST boiling point:",
+      "items": [
+        "helium",
+        "argon",
+        "neon"
+      ],
+      "correctOrder": [
+        "helium",
+        "neon",
+        "argon"
+      ],
+      "feedback": {
+        "correct": "Spot on! Boiling points increase down Group 0!",
+        "incorrect": "Good thinking! Boiling points increase down Group 0 as atoms get bigger and heavier."
+      },
+      "tags": [
+        "group_0",
+        "trends"
+      ],
+      "revisionFacts": [
+        "Noble gas boiling points increase down the group",
+        "This is due to increasing atomic mass",
+        "Helium has the lowest boiling point of all elements!"
+      ]
+    },
+    {
+      "id": "acid-salt-matching",
+      "type": "match_pairs",
+      "prompt": "Match each acid to the salt it produces:",
+      "pairs": [
+        {
+          "left": "Hydrochloric acid",
+          "right": "Chloride"
+        },
+        {
+          "left": "Sulfuric acid",
+          "right": "Sulfate"
+        },
+        {
+          "left": "Nitric acid",
+          "right": "Nitrate"
+        },
+        {
+          "left": "Carbonic acid",
+          "right": "Carbonate"
+        }
+      ],
+      "feedback": {
+        "correct": "Perfect matching! You know which acids make which salts!",
+        "incorrect": "Good try! Remember: the acid name tells you the salt name - hydrochloric → chloride, sulfuric → sulfate, nitric → nitrate."
+      },
+      "tags": [
+        "acids",
+        "salts"
+      ],
+      "revisionFacts": [
+        "Acid name → salt name pattern",
+        "Hydrochloric acid (HCl) → chloride salts",
+        "Sulfuric acid (H₂SO₄) → sulfate salts",
+        "Nitric acid (HNO₃) → nitrate salts"
+      ]
+    },
+    {
+      "id": "ion-charge-matching",
+      "type": "match_pairs",
+      "prompt": "Match each metal to its typical ion charge:",
+      "pairs": [
+        {
+          "left": "Sodium",
+          "right": "+1"
+        },
+        {
+          "left": "Magnesium",
+          "right": "+2"
+        },
+        {
+          "left": "Aluminium",
+          "right": "+3"
+        },
+        {
+          "left": "Copper (common)",
+          "right": "+2"
+        }
+      ],
+      "feedback": {
+        "correct": "Brilliant! You know your ion charges!",
+        "incorrect": "Good effort! Hint: Group 1 = +1, Group 2 = +2, Group 3 (Al) = +3."
+      },
+      "tags": [
+        "ions",
+        "charges"
+      ],
+      "revisionFacts": [
+        "Group 1 metals form +1 ions (lose 1 electron)",
+        "Group 2 metals form +2 ions (lose 2 electrons)",
+        "Aluminium (Group 3) forms +3 ions",
+        "Transition metals can form different charges (Fe²⁺ or Fe³⁺)"
+      ]
+    },
+    {
+      "id": "observation-test-matching",
+      "type": "match_pairs",
+      "prompt": "Match each gas to its test observation:",
+      "pairs": [
+        {
+          "left": "Hydrogen",
+          "right": "Squeaky pop with lit splint"
+        },
+        {
+          "left": "Oxygen",
+          "right": "Relights glowing splint"
+        },
+        {
+          "left": "Carbon dioxide",
+          "right": "Turns limewater milky"
+        }
+      ],
+      "feedback": {
+        "correct": "Perfect! You know all your gas tests!",
+        "incorrect": "Good try! Remember: hydrogen = squeaky pop, oxygen = relights glowing splint, CO₂ = limewater milky."
+      },
+      "tags": [
+        "practical",
+        "gas_tests"
+      ],
+      "revisionFacts": [
+        "Hydrogen: lit splint → squeaky pop",
+        "Oxygen: glowing splint → relights",
+        "Carbon dioxide: limewater → turns milky/cloudy"
+      ]
+    },
+    {
+      "id": "process-definition-matching",
+      "type": "match_pairs",
+      "prompt": "Match each process to its definition:",
+      "pairs": [
+        {
+          "left": "Oxidation",
+          "right": "Loss of electrons"
+        },
+        {
+          "left": "Reduction",
+          "right": "Gain of electrons"
+        },
+        {
+          "left": "Displacement",
+          "right": "More reactive metal replaces less reactive"
+        },
+        {
+          "left": "Neutralisation",
+          "right": "Acid reacts with base to form salt and water"
+        }
+      ],
+      "feedback": {
+        "correct": "Excellent understanding of key chemistry processes!",
+        "incorrect": "Good thinking! Remember OILRIG for redox, and think about reactivity for displacement."
+      },
+      "tags": [
+        "redox",
+        "displacement",
+        "neutralisation"
+      ],
+      "revisionFacts": [
+        "OILRIG: Oxidation Is Loss, Reduction Is Gain (of electrons)",
+        "Displacement: more reactive displaces less reactive",
+        "Neutralisation: acid + base → salt + water"
+      ]
+    },
+    {
+      "id": "metal-reactivity-true-false",
+      "type": "single_choice",
+      "prompt": "True or False: Metals at the top of the reactivity series are the most reactive.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "feedback": {
+        "correct": "Correct! Potassium is at the top and is very reactive!",
+        "incorrect": "Good try! The reactivity series goes from most reactive (top) to least reactive (bottom)."
+      },
+      "tags": [
+        "reactivity_series"
+      ],
+      "revisionFacts": [
+        "Reactivity series: most reactive at top, least at bottom",
+        "Potassium (top) is very reactive",
+        "Gold (bottom) is very unreactive"
+      ]
+    },
+    {
+      "id": "electrolysis-expensive-true-false",
+      "type": "single_choice",
+      "prompt": "True or False: Electrolysis is more expensive than reduction with carbon.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "feedback": {
+        "correct": "Yes! Electrolysis needs continuous electricity which is very expensive.",
+        "incorrect": "Good thinking! Actually, electrolysis is much more expensive - it needs lots of electrical energy."
+      },
+      "tags": [
+        "extraction",
+        "electrolysis"
+      ],
+      "revisionFacts": [
+        "Electrolysis is very expensive (continuous electricity)",
+        "Carbon reduction is much cheaper (just heat)",
+        "This is why aluminium used to be very valuable"
       ]
     }
   ]
