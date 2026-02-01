@@ -57,8 +57,8 @@
     async function loadGameData() {
         try {
             const [questionsResponse, decksResponse] = await Promise.all([
-                fetch('JSON/questionbank.json'),
-                fetch('JSON/rounddeck.json')
+                fetch('./JSON/questionbank.json'),
+                fetch('./JSON/rounddeck.json')
             ]);
 
             const questionsData = await questionsResponse.json();
