@@ -97,6 +97,7 @@
 
         // Game screen
         document.getElementById('submit-answer-btn').addEventListener('click', submitCurrentAnswer);
+        document.getElementById('continue-btn').addEventListener('click', continueToNextQuestion);
 
         // Results screen
         document.getElementById('next-round-btn').addEventListener('click', nextRound);
@@ -369,12 +370,14 @@
 
         // Update score display with animation
         UI.updateScoreDisplay(gameState.score);
+    }
 
-        // Move to next question after delay
-        setTimeout(() => {
-            UI.hideInstantFeedback();
-            moveToNextQuestion();
-        }, 2000);
+    /**
+     * Continue to next question (after viewing feedback)
+     */
+    function continueToNextQuestion() {
+        UI.hideInstantFeedback();
+        moveToNextQuestion();
     }
 
     /**
