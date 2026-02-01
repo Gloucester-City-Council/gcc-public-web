@@ -76,8 +76,13 @@
                     </div>
                     <div class="deck-title" id="deck-title">Loading...</div>
                 </div>
-                <div class="score-display">
-                    Score: <span id="current-score">0</span>
+                <div class="score-display-live">
+                    <div class="score-main">
+                        Score: <span id="current-score">0</span>
+                    </div>
+                    <div class="streak-display" id="streak-display" style="display: none;">
+                        🔥 <span id="streak-count">0</span> Streak!
+                    </div>
                 </div>
             </div>
 
@@ -86,18 +91,27 @@
                 <div class="timer-text"><span id="timer-seconds">60</span>s</div>
             </div>
 
-            <div class="progress-dots" id="progress-dots">
-                <!-- Dynamically filled with round indicators -->
+            <div class="question-progress">
+                Question <span id="question-current">1</span> of <span id="question-total">6</span>
             </div>
 
-            <div class="prompts-container" id="prompts-container">
-                <!-- Dynamically filled with question cards -->
+            <div class="single-question-container" id="single-question-container">
+                <!-- Single question rendered here -->
             </div>
 
             <div class="game-actions">
-                <button id="submit-round-btn" class="btn-primary btn-large">
-                    Submit Answers
+                <button id="submit-answer-btn" class="btn-primary btn-large">
+                    Submit Answer
                 </button>
+            </div>
+
+            <!-- Instant feedback after submission -->
+            <div id="instant-feedback" class="instant-feedback" style="display: none;">
+                <div class="feedback-content">
+                    <div class="feedback-icon"></div>
+                    <div class="feedback-message"></div>
+                    <div class="feedback-points"></div>
+                </div>
             </div>
         </div>
 
