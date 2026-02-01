@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "game": "Reactivity Rush",
+  "decks": [
+    {
+      "id": "deck-reactivity-series-core",
+      "title": "Reactivity Ladder",
+      "themeTags": ["reactivity_series"],
+      "difficulty": "both",
+      "round": { "timerSeconds": 60, "numberOfPrompts": 6, "uniqueness": "on" },
+      "promptIds": [
+        "reactivity-series-order",
+        "metals-form-what-ions",
+        "reactivity-linked-to-electrons",
+        "what-is-displacement-metal",
+        "why-metals-above-carbon-not-reduced",
+        "metals-that-dont-react-with-acids"
+      ]
+    },
+    {
+      "id": "deck-water-group1-action",
+      "title": "Splash Zone (Group 1 + Water)",
+      "themeTags": ["water_reaction", "practical"],
+      "difficulty": "foundation",
+      "round": { "timerSeconds": 60, "numberOfPrompts": 7, "uniqueness": "on" },
+      "promptIds": [
+        "group1-products-with-water",
+        "group1-water-word-equation",
+        "group1-water-balanced-equation",
+        "group1-common-observation-first-three",
+        "lithium-water-unique-observation",
+        "sodium-water-unique-observation",
+        "potassium-water-unique-observation"
+      ]
+    },
+    {
+      "id": "deck-water-trends",
+      "title": "Down the Group (Why More Reactive?)",
+      "themeTags": ["water_reaction", "reactivity_series"],
+      "difficulty": "higher",
+      "round": { "timerSeconds": 75, "numberOfPrompts": 3, "uniqueness": "on" },
+      "promptIds": [
+        "group1-reactivity-order-first-three",
+        "why-group1-more-reactive-down",
+        "reactivity-linked-to-electrons"
+      ]
+    },
+    {
+      "id": "deck-acids-hydrogen-and-salts",
+      "title": "Fizz & Pop (Acids)",
+      "themeTags": ["acid_reaction", "practical"],
+      "difficulty": "both",
+      "round": { "timerSeconds": 60, "numberOfPrompts": 7, "uniqueness": "on" },
+      "promptIds": [
+        "metal-plus-acid-word-equation",
+        "hydrogen-test",
+        "hydrogen-observation",
+        "salt-prep-step-1",
+        "salt-prep-step-2",
+        "salt-prep-step-3",
+        "compare-metal-acid-reactions-how"
+      ]
+    },
+    {
+      "id": "deck-displacement-battles",
+      "title": "Displacement Duels",
+      "themeTags": ["displacement", "redox"],
+      "difficulty": "both",
+      "round": { "timerSeconds": 75, "numberOfPrompts": 5, "uniqueness": "on" },
+      "promptIds": [
+        "what-is-displacement-metal",
+        "displacement-wordeq-zn-fecl2",
+        "displacement-symboleq-zn-fecl2",
+        "ionic-equation-ca-mgso4",
+        "spectator-ion-definition"
+      ]
+    },
+    {
+      "id": "deck-extraction-choices",
+      "title": "Extract or Electrolyse?",
+      "themeTags": ["extraction", "reactivity_series"],
+      "difficulty": "both",
+      "round": { "timerSeconds": 75, "numberOfPrompts": 6, "uniqueness": "on" },
+      "promptIds": [
+        "reduction-extraction-definition",
+        "why-carbon-used-in-reduction",
+        "why-metals-above-carbon-not-reduced",
+        "electrolysis-definition",
+        "when-electrolysis-used-for-extraction",
+        "electrolysis-disadvantage"
+      ]
+    },
+    {
+      "id": "deck-aluminium-extraction-mini",
+      "title": "Aluminium: The Hard Way",
+      "themeTags": ["extraction", "redox"],
+      "difficulty": "higher",
+      "round": { "timerSeconds": 60, "numberOfPrompts": 4, "uniqueness": "on" },
+      "promptIds": [
+        "alumina-cryolite-why",
+        "alumina-products-cathode-anode",
+        "why-carbon-anode-replaced",
+        "electrolysis-disadvantage"
+      ]
+    },
+    {
+      "id": "deck-mixed-review-speedrun",
+      "title": "Mixed Mayhem (Speedrun)",
+      "themeTags": ["reactivity_series", "water_reaction", "acid_reaction", "displacement", "extraction", "redox", "practical"],
+      "difficulty": "both",
+      "round": { "timerSeconds": 45, "numberOfPrompts": 8, "uniqueness": "off" },
+      "promptIds": [
+        "metal-plus-oxygen-word-equation",
+        "oxidation-as-gain-oxygen",
+        "oxidation-electrons-definition",
+        "reduction-electrons-definition",
+        "half-equation-sodium-oxidation",
+        "variables-control-variable-definition",
+        "group1-products-with-water",
+        "metal-plus-acid-word-equation"
+      ]
+    }
+  ]
+}
