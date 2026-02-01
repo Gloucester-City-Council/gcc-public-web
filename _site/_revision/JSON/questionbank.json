@@ -1,47 +1,3081 @@
 {
   "version": "4.0",
-  "totalQuestions": 45,
+  "totalQuestions": 173,
   "description": "Duolingo-style GCSE Chemistry questions",
   "questions": [
-    {"id": "q001", "type": "fill_sentence", "prompt": "How are elements arranged in a periodic table?", "correctAnswer": "In order of atomic number so that elements with similar properties are in groups", "requiredKeywords": ["order", "atomic", "number"], "topic": "Periodic table", "explanation": {"why": "Elements are arranged by atomic number, which puts similar properties in columns (groups)", "tip": "Atomic NUMBER not weight! Groups = similar properties"}},
-    {"id": "q002", "type": "fill_sentence", "prompt": "Why is the periodic table named as such?", "correctAnswer": "Because similar properties occur at regular intervals", "requiredKeywords": ["similar", "properties", "regular"], "topic": "Periodic table", "explanation": {"why": "Properties repeat in a pattern - periodic means repeating!", "tip": "'Periodic' = repeating pattern"}},
-    {"id": "q003", "type": "fill_sentence", "prompt": "What does a group tell us?", "correctAnswer": "The number of electrons in the outer electron shell", "requiredKeywords": ["number", "electrons", "outer"], "topic": "Periodic table", "explanation": {"why": "Group number = outer electrons", "tip": "Group 1 → 1e⁻, Group 7 → 7e⁻"}},
-    {"id": "q004", "type": "multiple_choice", "prompt": "What does the period tell us?", "correctAnswer": "The number of electron shells in an element", "options": ["The number of electron shells in an element", "The number of protons", "The number of neutrons", "The atomic mass"], "topic": "Periodic table", "explanation": {"why": "Period number = number of shells", "tip": "Period 2 = 2 shells, Period 3 = 3 shells"}},
-    {"id": "q011", "type": "fill_sentence", "prompt": "What is an ion?", "correctAnswer": "An atom which has lost or gained an electron to become electrically charged", "requiredKeywords": ["atom", "electron", "charged"], "topic": "Ions", "explanation": {"why": "Ions are charged atoms - lost/gained electrons", "tip": "Ion = charged atom"}},
-    {"id": "q012", "type": "multiple_choice", "prompt": "What type of ions do metals form?", "correctAnswer": "Positive ions (cations)", "options": ["Positive ions (cations)", "Negative ions (anions)", "Neutral atoms", "No ions"], "topic": "Ions", "explanation": {"why": "Metals LOSE electrons → positive charge", "tip": "Metals = positive ions"}},
-    {"id": "q014", "type": "fill_blank", "prompt": "What is oxidation?", "correctAnswer": "Loss of electrons", "acceptVariations": ["Loss of electrons", "loss of electrons", "Loss of electrons."], "topic": "Redox", "explanation": {"why": "Oxidation = loss of electrons", "tip": "OILRIG: Oxidation Is Loss"}},
-    {"id": "q017", "type": "fill_blank", "prompt": "What is reduction?", "correctAnswer": "Gain of electrons", "acceptVariations": ["Gain of electrons", "gain of electrons", "Gain of electrons."], "topic": "Redox", "explanation": {"why": "Reduction = gain of electrons", "tip": "OILRIG: Reduction Is Gain"}},
-    {"id": "q021", "type": "multiple_choice", "prompt": "What does inert mean?", "correctAnswer": "Unreactive", "options": ["Unreactive", "Very reactive", "Explosive", "Radioactive"], "topic": "Group 0", "explanation": {"why": "Inert = unreactive (noble gases)", "tip": "Noble gases are inert"}},
-    {"id": "q024", "type": "multiple_choice", "prompt": "What is the name of the Group 1 elements?", "correctAnswer": "Alkali metals", "options": ["Alkali metals", "Halogens", "Noble gases", "Transition metals"], "topic": "Group 1", "explanation": {"why": "Group 1 = alkali metals", "tip": "Li, Na, K = alkali metals"}},
-    {"id": "q035", "type": "fill_sentence", "prompt": "What products are formed when group 1 metals react with water?", "correctAnswer": "Metal hydroxide and hydrogen", "requiredKeywords": ["hydroxide", "hydrogen"], "topic": "Group 1", "explanation": {"why": "Metal + water → metal hydroxide + hydrogen gas", "tip": "NOT water - that's neutralisation!"}},
-    {"id": "q039", "type": "multiple_choice", "prompt": "What are the unique observations for the reaction of lithium in water?", "correctAnswer": "It doesn't melt, it effervesces more slowly than the others", "options": ["It doesn't melt, it effervesces more slowly than the others", "It melts into a ball", "It burns with a lilac flame", "It explodes"], "topic": "Group 1", "explanation": {"why": "Lithium is least reactive - gentle fizz, no melting", "tip": "Li = least reactive"}},
-    {"id": "q040", "type": "fill_sentence", "prompt": "What are the unique observations for the reaction of sodium in water?", "correctAnswer": "It melts into a ball, it effervesces more quickly than lithium", "requiredKeywords": ["melts", "ball"], "topic": "Group 1", "explanation": {"why": "Sodium reaction releases heat → melts the metal", "tip": "Na = melts into ball"}},
-    {"id": "q041", "type": "fill_sentence", "prompt": "What are the unique observations for the reaction of potassium in water?", "correctAnswer": "It melts into a ball, it burns with a lilac flame", "requiredKeywords": ["melts", "lilac"], "topic": "Group 1", "explanation": {"why": "Potassium SO reactive the hydrogen ignites!", "tip": "K = LILAC flame"}},
-    {"id": "q043", "type": "ordering", "prompt": "List the order of reactivity of the first three group 1 metals from least to most", "items": ["Lithium", "Sodium", "Potassium"], "correctOrder": ["Lithium", "Sodium", "Potassium"], "topic": "Group 1", "explanation": {"why": "Reactivity increases down Group 1", "tip": "Li < Na < K"}},
-    {"id": "q045", "type": "multiple_choice", "prompt": "What is the name of the Group 7 elements?", "correctAnswer": "Halogens", "options": ["Halogens", "Alkali metals", "Noble gases", "Transition metals"], "topic": "Group 7", "explanation": {"why": "Group 7 = halogens (salt-formers)", "tip": "Halogen = salt-former"}},
-    {"id": "q063", "type": "word_bank", "prompt": "Write a general equation for the reaction of a metal with an acid", "correctAnswer": "Metal + acid → salt + hydrogen", "wordBank": ["Metal", "acid", "salt", "hydrogen", "water", "oxygen"], "topic": "Acids", "explanation": {"why": "Metal + acid → salt + hydrogen (NOT water!)", "tip": "Hydrogen gas = squeaky pop test"}},
-    {"id": "q084", "type": "multiple_choice", "prompt": "What is the general equation for the reaction of an acid with a base or alkali?", "correctAnswer": "Acid + alkali → salt + water", "options": ["Acid + alkali → salt + water", "Acid + alkali → salt + hydrogen", "Acid + alkali → salt + oxygen", "Acid + alkali → salt only"], "topic": "Neutralisation", "explanation": {"why": "Neutralisation always makes salt + water", "tip": "H⁺ + OH⁻ → H₂O"}},
-    {"id": "q085", "type": "word_bank", "prompt": "What is the general equation for the reaction of an acid with a metal carbonate?", "correctAnswer": "Acid + metal carbonate → salt + water + carbon dioxide", "wordBank": ["Acid", "metal carbonate", "salt", "water", "carbon dioxide", "hydrogen"], "topic": "Neutralisation", "explanation": {"why": "Carbonate + acid → 3 products!", "tip": "Fizzing = CO₂"}},
-    {"id": "q091", "type": "fill_blank", "prompt": "Describe the pH of acids", "correctAnswer": "Less than 7", "acceptVariations": ["Less than 7", "less than 7", "< 7"], "topic": "pH", "explanation": {"why": "pH < 7 = acidic", "tip": "Acids are sour, pH < 7"}},
-    {"id": "q092", "type": "fill_blank", "prompt": "Describe the pH of alkalis", "correctAnswer": "Greater than 7", "acceptVariations": ["Greater than 7", "greater than 7", "> 7"], "topic": "pH", "explanation": {"why": "pH > 7 = alkaline", "tip": "Alkalis are soapy, pH > 7"}},
-    {"id": "q111", "type": "fill_sentence", "prompt": "What is a strong acid?", "correctAnswer": "An acid which completely ionises to form H+ ions in water", "requiredKeywords": ["completely", "ionises", "ions"], "topic": "Acids", "explanation": {"why": "Strong = 100% ionised", "tip": "Don't confuse with concentrated!"}},
-    {"id": "q113", "type": "fill_sentence", "prompt": "What is a weak acid?", "correctAnswer": "An acid which partially ionises to form H+ ions in water", "requiredKeywords": ["partially", "ionises"], "topic": "Acids", "explanation": {"why": "Weak = partially ionised", "tip": "Example: ethanoic acid"}},
-    {"id": "q123", "type": "ordering", "prompt": "List all the elements in the reactivity series in order of most reactive to least", "items": ["Potassium", "Sodium", "Lithium", "Calcium", "Magnesium", "Carbon", "Zinc", "Iron", "Hydrogen", "Copper", "Silver", "Gold"], "correctOrder": ["Potassium", "Sodium", "Lithium", "Calcium", "Magnesium", "Carbon", "Zinc", "Iron", "Hydrogen", "Copper", "Silver", "Gold"], "topic": "Reactivity", "explanation": {"why": "Most reactive at top, least at bottom", "tip": "Please Stop Calling Me A Careless Zebra..."}},
-    {"id": "q126", "type": "fill_sentence", "prompt": "Why are reactions of metals with oxygen described as oxidation?", "correctAnswer": "Because the metal gains oxygen", "requiredKeywords": ["metal", "gains", "oxygen"], "topic": "Redox", "explanation": {"why": "Oxidation = gain oxygen (oxygen-transfer definition)", "tip": "Different from electron definition!"}},
-    {"id": "q130", "type": "word_bank", "prompt": "Write a general word equation for the reaction of metal with acid", "correctAnswer": "Metal + Acid → Salt + Hydrogen", "wordBank": ["Metal", "Acid", "Salt", "Hydrogen", "Water", "Oxygen"], "topic": "Acids", "explanation": {"why": "Always salt + hydrogen from metal + acid", "tip": "Squeaky pop = hydrogen"}},
-    {"id": "q131", "type": "fill_sentence", "prompt": "Describe the test of hydrogen gas", "correctAnswer": "Ignite the gas with a lit splint", "requiredKeywords": ["lit", "splint"], "topic": "Tests", "explanation": {"why": "LIT splint → squeaky pop = hydrogen", "tip": "Like tiny explosion!"}},
-    {"id": "q132", "type": "fill_blank", "prompt": "Describe the observation of the hydrogen gas test", "correctAnswer": "A squeaky pop", "acceptVariations": ["a squeaky pop", "A squeaky pop", "squeaky pop"], "topic": "Tests", "explanation": {"why": "Hydrogen burns with squeaky pop sound", "tip": "Squeaky pop = hydrogen confirmed"}},
-    {"id": "q134", "type": "fill_sentence", "prompt": "What is a metal displacement reaction?", "correctAnswer": "A reaction whereby a more reactive metal takes the place of a less reactive metal from its salt", "requiredKeywords": ["reactive", "metal", "place"], "topic": "Displacement", "explanation": {"why": "More reactive displaces less reactive", "tip": "Check reactivity series!"}},
-    {"id": "q140", "type": "multiple_choice", "prompt": "What is an ore?", "correctAnswer": "A metal combined with other elements found in rock", "options": ["A metal combined with other elements found in rock", "Pure metal found in rock", "A type of rock", "A chemical element"], "topic": "Extraction", "explanation": {"why": "Ore = rock with metal compounds", "tip": "Extract → pure metal"}},
-    {"id": "q142", "type": "fill_sentence", "prompt": "What does 'native' mean?", "correctAnswer": "Metals that are found in rock but not combined with other elements", "requiredKeywords": ["metals", "not", "combined"], "topic": "Extraction", "explanation": {"why": "Native = found pure (uncombined)", "tip": "Only Au, Ag are native"}},
-    {"id": "q144", "type": "fill_sentence", "prompt": "Why is carbon used in 'reduction' of metal oxides?", "correctAnswer": "It is more reactive than the metal being extracted", "requiredKeywords": ["reactive", "metal"], "topic": "Extraction", "explanation": {"why": "Carbon removes oxygen from less reactive metals", "tip": "Below carbon → use carbon reduction"}},
-    {"id": "q146", "type": "fill_sentence", "prompt": "What is meant by reduction?", "correctAnswer": "Reduction is loss of oxygen", "requiredKeywords": ["loss", "oxygen"], "topic": "Redox", "explanation": {"why": "Reduction = loss of oxygen (oxygen-transfer)", "tip": "Opposite of oxidation"}},
-    {"id": "q147", "type": "fill_sentence", "prompt": "What is electrolysis?", "correctAnswer": "Breaking down of a compound using electrical energy", "requiredKeywords": ["breaking", "compound", "electrical"], "topic": "Electrolysis", "explanation": {"why": "Electrolysis splits compounds with electricity", "tip": "For very reactive metals"}},
-    {"id": "q148", "type": "fill_sentence", "prompt": "When is electrolysis used in extraction?", "correctAnswer": "With compounds containing metals above carbon in the reactivity series", "requiredKeywords": ["metals", "above", "carbon"], "topic": "Electrolysis", "explanation": {"why": "Above carbon → need electrolysis", "tip": "Very expensive but only way!"}},
-    {"id": "q150", "type": "fill_blank", "prompt": "Define oxidation in terms of electrons", "correctAnswer": "Loss of electrons", "acceptVariations": ["Loss of electrons", "loss of electrons", "Loss of electrons."], "topic": "Redox", "explanation": {"why": "Oxidation = loss of electrons", "tip": "OILRIG: Oxidation Is Loss"}},
-    {"id": "q151", "type": "fill_blank", "prompt": "Define reduction in terms of electrons", "correctAnswer": "Gain of electrons", "acceptVariations": ["Gain of electrons", "gain of electrons", "Gain of electrons."], "topic": "Redox", "explanation": {"why": "Reduction = gain of electrons", "tip": "OILRIG: Reduction Is Gain"}},
-    {"id": "q152", "type": "multiple_choice", "prompt": "What is the easiest way to remember the meaning of oxidation and reduction?", "correctAnswer": "OILRIG (Oxidation Is Loss Reduction Is Gain)", "options": ["OILRIG (Oxidation Is Loss Reduction Is Gain)", "LEORA", "REDOX", "OXY-RED"], "topic": "Redox", "explanation": {"why": "OILRIG is the classic mnemonic", "tip": "Never forget this!"}},
-    {"id": "q153", "type": "multiple_choice", "prompt": "What is a spectator ion?", "correctAnswer": "An ion that does not change in a reaction", "options": ["An ion that does not change in a reaction", "An ion that gains electrons", "An ion that loses electrons", "An ion that is oxidised"], "topic": "Ionic equations", "explanation": {"why": "Spectator = doesn't change, just watches", "tip": "Leave out of ionic equations"}},
-    {"id": "q155", "type": "multiple_choice", "prompt": "What is an ionic equation?", "correctAnswer": "A balanced equation that omits spectator ions", "options": ["A balanced equation that omits spectator ions", "An equation with only ions", "An equation with only metals", "An equation with electrons"], "topic": "Ionic equations", "explanation": {"why": "Ionic equations show only changing species", "tip": "Remove spectators!"}}
+    {
+      "id": "q001",
+      "type": "fill_sentence",
+      "questionText": "How are elements arranged in a periodic table?",
+      "answerText": "In order of atomic number so that elements with similar properties are in groups.",
+      "topic": "Periodic table",
+      "source": "Periodic Table",
+      "prompt": "How are elements arranged in a periodic table?",
+      "correctAnswer": "In order of atomic number so that elements with similar properties are in groups.",
+      "requiredKeywords": [
+        "order",
+        "atomic",
+        "number"
+      ],
+      "explanation": {
+        "why": "Remember: In order of atomic number so that elements with similar properties are in groups",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q002",
+      "type": "fill_sentence",
+      "questionText": "Why is the periodic table named as such?",
+      "answerText": "Because similar properties occur at regular intervals.",
+      "topic": "Periodic table",
+      "source": "Periodic Table",
+      "prompt": "Why is the periodic table named as such?",
+      "correctAnswer": "Because similar properties occur at regular intervals.",
+      "requiredKeywords": [
+        "because",
+        "similar",
+        "properties",
+        "occur"
+      ],
+      "explanation": {
+        "why": "Properties repeat in a pattern across each period (row). Group 1 metals, less metallic elements, then Group 7 non-metals - this pattern repeats.",
+        "tip": "'Periodic' = repeating pattern. Same types keep coming back!"
+      }
+    },
+    {
+      "id": "q003",
+      "type": "fill_sentence",
+      "questionText": "What does a group tell us?",
+      "answerText": "The number of electrons in the outer electron shell and which elements have similar chemical properties.",
+      "topic": "Periodic table",
+      "source": "Periodic Table",
+      "prompt": "What does a group tell us?",
+      "correctAnswer": "The number of electrons in the outer electron shell and which elements have similar chemical properties.",
+      "requiredKeywords": [
+        "number",
+        "electrons",
+        "outer"
+      ],
+      "explanation": {
+        "why": "The group number equals the number of electrons in the outer shell. Same outer electrons = similar chemical properties.",
+        "tip": "Group number = outer electrons (Group 1\u21921e\u207b, Group 7\u21927e\u207b)"
+      }
+    },
+    {
+      "id": "q004",
+      "type": "multiple_choice",
+      "questionText": "What does the period tell us?",
+      "answerText": "The number of electron shells in an element.",
+      "topic": "Periodic table",
+      "source": "Periodic Table",
+      "prompt": "What does the period tell us?",
+      "correctAnswer": "The number of electron shells in an element.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "The period number tells you how many electron shells the atom has. Period 2 = 2 shells, Period 3 = 3 shells, etc.",
+        "tip": "Period number = number of shells going down the table"
+      }
+    },
+    {
+      "id": "q005",
+      "type": "ordering",
+      "questionText": "The group number and period number is given for the following elements (in that order), write their electron configuration: Mg 2, 3. C 4, 2. Al 3, 3. Ca 2, 4.",
+      "answerText": "Mg 2.8.2, C 2.4, Al 2.8.3, Ca 2.8.8.2",
+      "topic": "Periodic table",
+      "source": "Periodic Table",
+      "prompt": "The group number and period number is given for the following elements (in that order), write their electron configuration: Mg 2, 3. C 4, 2. Al 3, 3. Ca 2, 4.",
+      "items": [
+        "Mg 2.8.2",
+        "C 2.4",
+        "Al 2.8.3",
+        "Ca 2.8.8.2"
+      ],
+      "correctOrder": [
+        "Mg 2.8.2",
+        "C 2.4",
+        "Al 2.8.3",
+        "Ca 2.8.8.2"
+      ],
+      "explanation": {
+        "why": "Use the group number for outer electrons and period number for total shells. Shells fill with: 2 in first shell, 8 in second, 8 in third.",
+        "tip": "Pattern: 2, 8, 8 for GCSE. Example: Mg (Period 3, Group 2) = 2.8.2"
+      }
+    },
+    {
+      "id": "q006",
+      "type": "fill_sentence",
+      "questionText": "Prior to the discovery of sub atomic particles, how did scientists classify elements?",
+      "answerText": "In order of atomic weight.",
+      "topic": "Development of periodic table",
+      "source": "Periodic Table",
+      "prompt": "Prior to the discovery of sub atomic particles, how did scientists classify elements?",
+      "correctAnswer": "In order of atomic weight.",
+      "requiredKeywords": [
+        "order",
+        "atomic",
+        "weight"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: In order of atomic weight.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q007",
+      "type": "fill_sentence",
+      "questionText": "Explain why early periodic tables lacked discernible patterns.",
+      "answerText": "The early periodic tables were incomplete and some elements were placed in inappropriate groups if the order of atomic weights was followed.",
+      "topic": "Development of periodic table",
+      "source": "Periodic Table",
+      "prompt": "Explain why early periodic tables lacked discernible patterns.",
+      "correctAnswer": "The early periodic tables were incomplete and some elements were placed in inappropriate groups if the order of atomic weights was followed.",
+      "requiredKeywords": [
+        "early",
+        "periodic",
+        "tables"
+      ],
+      "explanation": {
+        "why": "Remember: The early periodic tables were incomplete and some elements were placed in inappropriate groups if the order of atomic weights was followed",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q008",
+      "type": "fill_sentence",
+      "questionText": "How did Mendeleev overcome the problems of earlier periodic tables?",
+      "answerText": "By leaving gaps for elements that he thought had not been discovered and in some places changing the order of elements so they were in groups with similar chemical properties.",
+      "topic": "Development of periodic table",
+      "source": "Periodic Table",
+      "prompt": "How did Mendeleev overcome the problems of earlier periodic tables?",
+      "correctAnswer": "By leaving gaps for elements that he thought had not been discovered and in some places changing the order of elements so they were in groups with similar chemical properties.",
+      "requiredKeywords": [
+        "leaving",
+        "gaps",
+        "elements"
+      ],
+      "explanation": {
+        "why": "Remember: By leaving gaps for elements that he thought had not been discovered and in some places changing the order of elements so they were in groups with similar chemical properties",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q009",
+      "type": "fill_sentence",
+      "questionText": "Why was Mendeleev's table more acceptable than previous versions?",
+      "answerText": "Elements with properties predicted by Mendeleev were discovered and filled the gaps.",
+      "topic": "Development of periodic table",
+      "source": "Periodic Table",
+      "prompt": "Why was Mendeleev's table more acceptable than previous versions?",
+      "correctAnswer": "Elements with properties predicted by Mendeleev were discovered and filled the gaps.",
+      "requiredKeywords": [
+        "elements",
+        "properties",
+        "predicted"
+      ],
+      "explanation": {
+        "why": "Elements like gallium and germanium were discovered with exactly the properties Mendeleev predicted. This proved his periodic table correct.",
+        "tip": "Predictions came TRUE \u2192 table accepted by scientists"
+      }
+    },
+    {
+      "id": "q010",
+      "type": "fill_sentence",
+      "questionText": "Iodine and Tellurium were swapped by Mendeleev even though their weights were then in the wrong order. Why did he do that?",
+      "answerText": "So that they were placed in correct groups and their chemical properties matched the other elements in their new groups.",
+      "topic": "Development of periodic table",
+      "source": "Periodic Table",
+      "prompt": "Iodine and Tellurium were swapped by Mendeleev even though their weights were then in the wrong order. Why did he do that?",
+      "correctAnswer": "So that they were placed in correct groups and their chemical properties matched the other elements in their new groups.",
+      "requiredKeywords": [
+        "that",
+        "they",
+        "placed"
+      ],
+      "explanation": {
+        "why": "He prioritized chemical properties over atomic weight. Iodine belongs with halogens (Group 7) based on how it reacts, even though it's lighter.",
+        "tip": "Properties matter more than weight! Chemical behavior wins"
+      }
+    },
+    {
+      "id": "q011",
+      "type": "fill_sentence",
+      "questionText": "What is an ion?",
+      "answerText": "An atom which has lost or gained an electron to become electrically charged.",
+      "topic": "Metals and non-metals",
+      "source": "Periodic Table",
+      "prompt": "What is an ion?",
+      "correctAnswer": "An atom which has lost or gained an electron to become electrically charged.",
+      "requiredKeywords": [
+        "atom",
+        "which",
+        "has"
+      ],
+      "explanation": {
+        "why": "Atoms are normally neutral (equal protons and electrons). When they lose or gain electrons, they become charged particles called ions.",
+        "tip": "Ion = charged atom. Lost e\u207b \u2192 positive, gained e\u207b \u2192 negative"
+      }
+    },
+    {
+      "id": "q012",
+      "type": "multiple_choice",
+      "questionText": "What type of ions to metals form?",
+      "answerText": "Positive ions (cations).",
+      "topic": "Metals and non-metals",
+      "source": "Periodic Table",
+      "prompt": "What type of ions to metals form?",
+      "correctAnswer": "Positive ions (cations).",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Metals have few outer electrons and lose them easily. Losing negative electrons leaves more protons than electrons \u2192 positive charge.",
+        "tip": "Metals LOSE electrons \u2192 POSITIVE ions (left of periodic table)"
+      }
+    },
+    {
+      "id": "q013",
+      "type": "fill_sentence",
+      "questionText": "Why do positive ions form?",
+      "answerText": "Because the atom has lost electrons.",
+      "topic": "Metals and non-metals",
+      "source": "Periodic Table",
+      "prompt": "Why do positive ions form?",
+      "correctAnswer": "Because the atom has lost electrons.",
+      "requiredKeywords": [
+        "because",
+        "atom",
+        "has",
+        "lost"
+      ],
+      "explanation": {
+        "why": "When atoms lose electrons (which are negative), there are more positive protons than negative electrons, making the ion positive overall.",
+        "tip": "Lose (\u2212) electrons \u2192 more (+) protons \u2192 positive ion"
+      }
+    },
+    {
+      "id": "q014",
+      "type": "fill_blank",
+      "questionText": "What is oxidation?",
+      "answerText": "Loss of electrons.",
+      "topic": "Metals and non-metals",
+      "source": "Periodic Table",
+      "prompt": "What is oxidation?",
+      "correctAnswer": "Loss of electrons.",
+      "acceptVariations": [
+        "Loss of electrons",
+        "loss of electrons.",
+        "Loss of electrons."
+      ],
+      "explanation": {
+        "why": "Oxidation means losing electrons. It's paired with reduction (gaining electrons) in redox reactions - they always happen together.",
+        "tip": "OILRIG: Oxidation Is Loss (of electrons). Example: Na \u2192 Na\u207a + e\u207b"
+      }
+    },
+    {
+      "id": "q015",
+      "type": "multiple_choice",
+      "questionText": "What type of ions do non-metals form?",
+      "answerText": "Negative ions (anions).",
+      "topic": "Metals and non-metals",
+      "source": "Periodic Table",
+      "prompt": "What type of ions do non-metals form?",
+      "correctAnswer": "Negative ions (anions).",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Metals have few outer electrons and lose them easily. Losing negative electrons leaves more protons than electrons \u2192 positive charge.",
+        "tip": "Metals LOSE electrons \u2192 POSITIVE ions (left of periodic table)"
+      }
+    },
+    {
+      "id": "q016",
+      "type": "fill_sentence",
+      "questionText": "Why do negative ions form?",
+      "answerText": "Because the atom has gained electrons.",
+      "topic": "Metals and non-metals",
+      "source": "Periodic Table",
+      "prompt": "Why do negative ions form?",
+      "correctAnswer": "Because the atom has gained electrons.",
+      "requiredKeywords": [
+        "because",
+        "atom",
+        "has",
+        "gained"
+      ],
+      "explanation": {
+        "why": "When atoms gain electrons (which are negative), there are more negative electrons than positive protons, making the ion negative overall.",
+        "tip": "Gain (\u2212) electrons \u2192 more (\u2212) than (+) \u2192 negative ion"
+      }
+    },
+    {
+      "id": "q017",
+      "type": "fill_blank",
+      "questionText": "What is reduction?",
+      "answerText": "Gain of electrons.",
+      "topic": "Metals and non-metals",
+      "source": "Periodic Table",
+      "prompt": "What is reduction?",
+      "correctAnswer": "Gain of electrons.",
+      "acceptVariations": [
+        "Gain of electrons",
+        "Gain of electrons.",
+        "gain of electrons."
+      ],
+      "explanation": {
+        "why": "Reduction means gaining electrons. It's paired with oxidation (losing electrons) in redox reactions - they always happen together.",
+        "tip": "OILRIG: Reduction Is Gain (of electrons). Example: Cl + e\u207b \u2192 Cl\u207b"
+      }
+    },
+    {
+      "id": "q018",
+      "type": "fill_sentence",
+      "questionText": "Where are metals found in the Periodic Table?",
+      "answerText": "Towards the bottom left.",
+      "topic": "Metals and non-metals",
+      "source": "Periodic Table",
+      "prompt": "Where are metals found in the Periodic Table?",
+      "correctAnswer": "Towards the bottom left.",
+      "requiredKeywords": [
+        "towards",
+        "bottom",
+        "left"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Towards the bottom left.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q019",
+      "type": "fill_sentence",
+      "questionText": "Where are non-metals found in the Periodic Table?",
+      "answerText": "Towards the top right.",
+      "topic": "Metals and non-metals",
+      "source": "Periodic Table",
+      "prompt": "Where are non-metals found in the Periodic Table?",
+      "correctAnswer": "Towards the top right.",
+      "requiredKeywords": [
+        "towards",
+        "top",
+        "right"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Towards the top right.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q020",
+      "type": "fill_sentence",
+      "questionText": "Why are group 0 elements called the noble gases?",
+      "answerText": "Because they have a complete outer electron shell and are inert.",
+      "topic": "Group 0",
+      "source": "Periodic Table",
+      "prompt": "Why are group 0 elements called the noble gases?",
+      "correctAnswer": "Because they have a complete outer electron shell and are inert.",
+      "requiredKeywords": [
+        "because",
+        "they",
+        "have"
+      ],
+      "explanation": {
+        "why": "Noble gases have full outer electron shells (He=2, others=8). Full shells are very stable, so they don't need to gain or lose electrons.",
+        "tip": "Full shell \u2192 stable \u2192 unreactive. They're 'noble' - don't mix!"
+      }
+    },
+    {
+      "id": "q021",
+      "type": "multiple_choice",
+      "questionText": "What does inert mean?",
+      "answerText": "Unreactive.",
+      "topic": "Group 0",
+      "source": "Periodic Table",
+      "prompt": "What does inert mean?",
+      "correctAnswer": "Unreactive.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Noble gases have full outer electron shells (He=2, others=8). Full shells are very stable, so they don't need to gain or lose electrons.",
+        "tip": "Full shell \u2192 stable \u2192 unreactive. They're 'noble' - don't mix!"
+      }
+    },
+    {
+      "id": "q022",
+      "type": "fill_sentence",
+      "questionText": "How many electrons do group 0 elements have in their outer shell?",
+      "answerText": "Helium has 2, the rest have 8, this is why they are often more correctly called group 0 instead of group 8.",
+      "topic": "Group 0",
+      "source": "Periodic Table",
+      "prompt": "How many electrons do group 0 elements have in their outer shell?",
+      "correctAnswer": "Helium has 2, the rest have 8, this is why they are often more correctly called group 0 instead of group 8.",
+      "requiredKeywords": [
+        "helium",
+        "has",
+        "rest"
+      ],
+      "explanation": {
+        "why": "Noble gases have full outer electron shells (He=2, others=8). Full shells are very stable, so they don't need to gain or lose electrons.",
+        "tip": "Full shell \u2192 stable \u2192 unreactive. They're 'noble' - don't mix!"
+      }
+    },
+    {
+      "id": "q023",
+      "type": "fill_sentence",
+      "questionText": "Describe the trend in the boiling points of group 0 elements.",
+      "answerText": "They increase with increasing relative atomic mass (going down the group).",
+      "topic": "Group 0",
+      "source": "Periodic Table",
+      "prompt": "Describe the trend in the boiling points of group 0 elements.",
+      "correctAnswer": "They increase with increasing relative atomic mass (going down the group).",
+      "requiredKeywords": [
+        "they",
+        "increase",
+        "increasing"
+      ],
+      "explanation": {
+        "why": "Noble gases have full outer electron shells (He=2, others=8). Full shells are very stable, so they don't need to gain or lose electrons.",
+        "tip": "Full shell \u2192 stable \u2192 unreactive. They're 'noble' - don't mix!"
+      }
+    },
+    {
+      "id": "q024",
+      "type": "multiple_choice",
+      "questionText": "What is the name of the Group 1 elements?",
+      "answerText": "Alkali metals.",
+      "topic": "Group 1",
+      "source": "Periodic Table",
+      "prompt": "What is the name of the Group 1 elements?",
+      "correctAnswer": "Alkali metals.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Alkali metals.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q025",
+      "type": "fill_sentence",
+      "questionText": "What do elements in group 1 have in common?",
+      "answerText": "All have 1 outer shell electron and similar chemical properties.",
+      "topic": "Group 1",
+      "source": "Periodic Table",
+      "prompt": "What do elements in group 1 have in common?",
+      "correctAnswer": "All have 1 outer shell electron and similar chemical properties.",
+      "requiredKeywords": [
+        "all",
+        "have",
+        "outer",
+        "shell"
+      ],
+      "explanation": {
+        "why": "Remember: All have 1 outer shell electron and similar chemical properties",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q026",
+      "type": "fill_sentence",
+      "questionText": "What properties do group 1 metals have that are uncommon for metals?",
+      "answerText": "They are soft and can be easily cut with a knife. They react easily in air and water. The first 4 float on the surface of water.",
+      "topic": "Group 1",
+      "source": "Periodic Table",
+      "prompt": "What properties do group 1 metals have that are uncommon for metals?",
+      "correctAnswer": "They are soft and can be easily cut with a knife. They react easily in air and water. The first 4 float on the surface of water.",
+      "requiredKeywords": [
+        "they",
+        "soft",
+        "can"
+      ],
+      "explanation": {
+        "why": "Remember: They are soft and can be easily cut with a knife",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q027",
+      "type": "fill_sentence",
+      "questionText": "What properties do group 1 metals have that are common for metals?",
+      "answerText": "They are shiny when freshly cut. Good conductors of heat and electricity.",
+      "topic": "Group 1",
+      "source": "Periodic Table",
+      "prompt": "What properties do group 1 metals have that are common for metals?",
+      "correctAnswer": "They are shiny when freshly cut. Good conductors of heat and electricity.",
+      "requiredKeywords": [
+        "they",
+        "shiny",
+        "when"
+      ],
+      "explanation": {
+        "why": "Remember: They are shiny when freshly cut",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q028",
+      "type": "fill_blank",
+      "questionText": "What product is formed when group 1 metals react with oxygen?",
+      "answerText": "Metal oxide.",
+      "topic": "Group 1",
+      "source": "Periodic Table",
+      "prompt": "What product is formed when group 1 metals react with oxygen?",
+      "correctAnswer": "Metal oxide.",
+      "acceptVariations": [
+        "Metal oxide",
+        "metal oxide.",
+        "Metal oxide."
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Metal oxide.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q029",
+      "type": "multiple_choice",
+      "questionText": "What is the general word equation for the reaction of group 1 metals with oxygen?",
+      "answerText": "Metal + Oxygen \u2013> Metal oxide",
+      "topic": "Group 1",
+      "source": "Periodic Table",
+      "prompt": "What is the general word equation for the reaction of group 1 metals with oxygen?",
+      "correctAnswer": "Metal + Oxygen \u2013> Metal oxide",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Metal + Oxygen \u2013> Metal oxide",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q030",
+      "type": "multiple_choice",
+      "questionText": "What is the general balanced symbol equation for group 1 metals reacting with oxygen?",
+      "answerText": "4M + O2 \u2013> 2M2O",
+      "topic": "Group 1",
+      "source": "Periodic Table",
+      "prompt": "What is the general balanced symbol equation for group 1 metals reacting with oxygen?",
+      "correctAnswer": "4M + O2 \u2013> 2M2O",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: 4M + O2 \u2013> 2M2O",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q031",
+      "type": "fill_blank",
+      "questionText": "What product is formed when group 1 metals react with chlorine?",
+      "answerText": "Metal chloride.",
+      "topic": "Group 1",
+      "source": "Periodic Table",
+      "prompt": "What product is formed when group 1 metals react with chlorine?",
+      "correctAnswer": "Metal chloride.",
+      "acceptVariations": [
+        "Metal chloride.",
+        "Metal chloride",
+        "metal chloride."
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Metal chloride.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q032",
+      "type": "multiple_choice",
+      "questionText": "What is the general word equation for the reaction of group 1 metals with chlorine?",
+      "answerText": "Metal + Chlorine \u2013> Metal Chloride",
+      "topic": "Group 1",
+      "source": "Periodic Table",
+      "prompt": "What is the general word equation for the reaction of group 1 metals with chlorine?",
+      "correctAnswer": "Metal + Chlorine \u2013> Metal Chloride",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Metal + Chlorine \u2013> Metal Chloride",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q033",
+      "type": "multiple_choice",
+      "questionText": "What is the general balanced symbol equation for group 1 metals reacting with chlorine?",
+      "answerText": "2M + Cl2 \u2013> 2MCl",
+      "topic": "Group 1",
+      "source": "Periodic Table",
+      "prompt": "What is the general balanced symbol equation for group 1 metals reacting with chlorine?",
+      "correctAnswer": "2M + Cl2 \u2013> 2MCl",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: 2M + Cl2 \u2013> 2MCl",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q034",
+      "type": "multiple_choice",
+      "questionText": "What is the observation for the reaction of a group 1 metal with chlorine?",
+      "answerText": "Bright flame, white solid forms, green chlorine colour fades.",
+      "topic": "Group 1",
+      "source": "Periodic Table",
+      "prompt": "What is the observation for the reaction of a group 1 metal with chlorine?",
+      "correctAnswer": "Bright flame, white solid forms, green chlorine colour fades.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Remember: Bright flame, white solid forms, green chlorine colour fades",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q035",
+      "type": "fill_sentence",
+      "questionText": "What products are formed when group 1 metals react with water?",
+      "answerText": "Metal hydroxide + Hydrogen.",
+      "topic": "Group 1 Reactions with water",
+      "source": "Periodic Table",
+      "prompt": "What products are formed when group 1 metals react with water?",
+      "correctAnswer": "Metal hydroxide + Hydrogen.",
+      "requiredKeywords": [
+        "metal",
+        "hydroxide",
+        "hydrogen"
+      ],
+      "explanation": {
+        "why": "Group 1 metals break apart water molecules to form metal hydroxide (makes solution alkaline) plus hydrogen gas (squeaky pop test).",
+        "tip": "Metal + water \u2192 metal hydroxide + hydrogen (H\u2082 gas!)"
+      }
+    },
+    {
+      "id": "q036",
+      "type": "multiple_choice",
+      "questionText": "What is the general word equation for the reaction of group 1 metals with water?",
+      "answerText": "Metal + Water \u2013> Metal Hydroxide + Hydrogen",
+      "topic": "Group 1 Reactions with water",
+      "source": "Periodic Table",
+      "prompt": "What is the general word equation for the reaction of group 1 metals with water?",
+      "correctAnswer": "Metal + Water \u2013> Metal Hydroxide + Hydrogen",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Group 1 metals break apart water molecules to form metal hydroxide (makes solution alkaline) plus hydrogen gas (squeaky pop test).",
+        "tip": "Metal + water \u2192 metal hydroxide + hydrogen (H\u2082 gas!)"
+      }
+    },
+    {
+      "id": "q037",
+      "type": "multiple_choice",
+      "questionText": "What is the general balanced symbol equation for group 1 metals reacting with water?",
+      "answerText": "2M + 2H2O \u2013> 2MOH + H2",
+      "topic": "Group 1 Reactions with water",
+      "source": "Periodic Table",
+      "prompt": "What is the general balanced symbol equation for group 1 metals reacting with water?",
+      "correctAnswer": "2M + 2H2O \u2013> 2MOH + H2",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: 2M + 2H2O \u2013> 2MOH + H2",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q038",
+      "type": "multiple_choice",
+      "questionText": "What are the common observations for the reactions of the first 3 group 1 metals with water?",
+      "answerText": "All float on the surface and move around.",
+      "topic": "Group 1 Reactions with water",
+      "source": "Periodic Table",
+      "prompt": "What are the common observations for the reactions of the first 3 group 1 metals with water?",
+      "correctAnswer": "All float on the surface and move around.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: All float on the surface and move around.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q039",
+      "type": "multiple_choice",
+      "questionText": "What are the unique observations for the reaction of lithium in water?",
+      "answerText": "It doesn't melt, it effervesces more slowly than the others.",
+      "topic": "Group 1 Reactions with water",
+      "source": "Periodic Table",
+      "prompt": "What are the unique observations for the reaction of lithium in water?",
+      "correctAnswer": "It doesn't melt, it effervesces more slowly than the others.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Lithium is the LEAST reactive of Group 1 (Li, Na, K). It fizzes gently and moves slowly - not hot enough to melt.",
+        "tip": "Li = least reactive. Gentle fizz, no melting"
+      }
+    },
+    {
+      "id": "q040",
+      "type": "fill_sentence",
+      "questionText": "What are the unique observations for the reaction of sodium in water?",
+      "answerText": "It melts into a ball, it effervesces more quickly than lithium.",
+      "topic": "Group 1 Reactions with water",
+      "source": "Periodic Table",
+      "prompt": "What are the unique observations for the reaction of sodium in water?",
+      "correctAnswer": "It melts into a ball, it effervesces more quickly than lithium.",
+      "requiredKeywords": [
+        "melts",
+        "into",
+        "ball"
+      ],
+      "explanation": {
+        "why": "Sodium melts into a ball because the reaction releases lots of heat (exothermic). Sodium melts at 98\u00b0C and the reaction gets that hot!",
+        "tip": "Na = melts into ball. Reaction heat melts it!"
+      }
+    },
+    {
+      "id": "q041",
+      "type": "fill_sentence",
+      "questionText": "What are the unique observations for the reaction of potassium in water?",
+      "answerText": "It melts into a ball, it burns with a lilac flame.",
+      "topic": "Group 1 Reactions with water",
+      "source": "Periodic Table",
+      "prompt": "What are the unique observations for the reaction of potassium in water?",
+      "correctAnswer": "It melts into a ball, it burns with a lilac flame.",
+      "requiredKeywords": [
+        "melts",
+        "into",
+        "ball"
+      ],
+      "explanation": {
+        "why": "Potassium is SO reactive the hydrogen gas catches fire! Burns with lilac (purple) flame - that's potassium's flame test color.",
+        "tip": "K = most reactive. Hydrogen ignites with LILAC flame!"
+      }
+    },
+    {
+      "id": "q042",
+      "type": "fill_blank",
+      "questionText": "Predict the unique observation for the reaction of caesium in water.",
+      "answerText": "It explodes.",
+      "topic": "Group 1 Reactions with water",
+      "source": "Periodic Table",
+      "prompt": "Predict the unique observation for the reaction of caesium in water.",
+      "correctAnswer": "It explodes.",
+      "acceptVariations": [
+        "It explodes",
+        "It explodes.",
+        "it explodes."
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: It explodes.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q043",
+      "type": "ordering",
+      "questionText": "List the order of reactivity of the first three group 1 metals from least to most.",
+      "answerText": "Lithium, sodium, potassium.",
+      "topic": "Group 1 Reactions with water",
+      "source": "Periodic Table",
+      "prompt": "List the order of reactivity of the first three group 1 metals from least to most.",
+      "items": [
+        "Lithium",
+        "sodium",
+        "potassium"
+      ],
+      "correctOrder": [
+        "Lithium",
+        "sodium",
+        "potassium"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Lithium, sodium, potassium.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q044",
+      "type": "fill_sentence",
+      "questionText": "Why do the group 1 metals become more reactive as you go down the group?",
+      "answerText": "Their outer shell electron is further away from the positively charged nucleus. There is less attraction between the electron and the nucleus. It is easier to lose the outer shell electron.",
+      "topic": "Group 1 Reactions with water",
+      "source": "Periodic Table",
+      "prompt": "Why do the group 1 metals become more reactive as you go down the group?",
+      "correctAnswer": "Their outer shell electron is further away from the positively charged nucleus. There is less attraction between the electron and the nucleus. It is easier to lose the outer shell electron.",
+      "requiredKeywords": [
+        "their",
+        "outer",
+        "shell"
+      ],
+      "explanation": {
+        "why": "Down Group 1: more electron shells \u2192 outer electron further from nucleus \u2192 weaker attraction \u2192 easier to lose \u2192 MORE reactive.",
+        "tip": "More shells \u2192 further away \u2192 easier to lose \u2192 MORE reactive"
+      }
+    },
+    {
+      "id": "q045",
+      "type": "multiple_choice",
+      "questionText": "What is the name of the Group 7 elements?",
+      "answerText": "Halogens",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "What is the name of the Group 7 elements?",
+      "correctAnswer": "Halogens",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Greek: 'halo' = salt, 'gen' = forming. They make salts when they react with metals (like NaCl, KBr). All have 7 outer electrons.",
+        "tip": "Halogen = salt-former. React with metals \u2192 salts"
+      }
+    },
+    {
+      "id": "q046",
+      "type": "fill_sentence",
+      "questionText": "What do elements in group 7 have in common?",
+      "answerText": "They all have 7 outer shell electrons and similar chemical properties.",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "What do elements in group 7 have in common?",
+      "correctAnswer": "They all have 7 outer shell electrons and similar chemical properties.",
+      "requiredKeywords": [
+        "they",
+        "all",
+        "have"
+      ],
+      "explanation": {
+        "why": "Remember: They all have 7 outer shell electrons and similar chemical properties",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q047",
+      "type": "fill_blank",
+      "questionText": "Are group 7 elements metals or non-metals?",
+      "answerText": "Non-metals.",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "Are group 7 elements metals or non-metals?",
+      "correctAnswer": "Non-metals.",
+      "acceptVariations": [
+        "Non-metals",
+        "Non-metals.",
+        "non-metals."
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Non-metals.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q048",
+      "type": "fill_sentence",
+      "questionText": "What are the colours and states of group 7 elements?",
+      "answerText": "Fluorine - Yellow gas, chlorine - green gas, bromine - red liquid, iodine - grey solid.",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "What are the colours and states of group 7 elements?",
+      "correctAnswer": "Fluorine - Yellow gas, chlorine - green gas, bromine - red liquid, iodine - grey solid.",
+      "requiredKeywords": [
+        "fluorine",
+        "yellow",
+        "gas"
+      ],
+      "explanation": {
+        "why": "Remember: Fluorine - Yellow gas, chlorine - green gas, bromine - red liquid, iodine - grey solid",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q049",
+      "type": "fill_sentence",
+      "questionText": "Describe the trend in the boiling points of group 7 elements.",
+      "answerText": "The boiling points increase down the group because their relative molecular mass increases.",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "Describe the trend in the boiling points of group 7 elements.",
+      "correctAnswer": "The boiling points increase down the group because their relative molecular mass increases.",
+      "requiredKeywords": [
+        "boiling",
+        "points",
+        "increase"
+      ],
+      "explanation": {
+        "why": "Remember: The boiling points increase down the group because their relative molecular mass increases",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q050",
+      "type": "select_all",
+      "questionText": "Give the molecular formulae of the first 3 halogens.",
+      "answerText": "F2, Cl2, Br2.",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "Give the molecular formulae of the first 3 halogens.",
+      "correctAnswers": [
+        "F2",
+        "Cl2",
+        "Br2"
+      ],
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: F2, Cl2, Br2.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q051",
+      "type": "multiple_choice",
+      "questionText": "Group 7 molecules are diatomic, what does that mean?",
+      "answerText": "They naturally exist as pairs of atoms.",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "Group 7 molecules are diatomic, what does that mean?",
+      "correctAnswer": "They naturally exist as pairs of atoms.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Halogens naturally exist as molecules of two atoms (F\u2082, Cl\u2082, Br\u2082, I\u2082). The two atoms share electrons to fill their outer shells.",
+        "tip": "Diatomic = two atoms. Halogens always in pairs: X\u2082"
+      }
+    },
+    {
+      "id": "q052",
+      "type": "ordering",
+      "questionText": "List the order of reactivity of the first three group 7 elements from least to most.",
+      "answerText": "Bromine, chlorine and fluorine.",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "List the order of reactivity of the first three group 7 elements from least to most.",
+      "items": [
+        "Bromine",
+        "chlorine and fluorine"
+      ],
+      "correctOrder": [
+        "Bromine",
+        "chlorine and fluorine"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Bromine, chlorine and fluorine.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q053",
+      "type": "fill_sentence",
+      "questionText": "Why do the group 7 elements become less reactive as you go down the group?",
+      "answerText": "Their outer shell electrons are further away from the positively charged nucleus. There is less attraction between the electrons and the nucleus. It is harder to gain an outer shell electron.",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "Why do the group 7 elements become less reactive as you go down the group?",
+      "correctAnswer": "Their outer shell electrons are further away from the positively charged nucleus. There is less attraction between the electrons and the nucleus. It is harder to gain an outer shell electron.",
+      "requiredKeywords": [
+        "their",
+        "outer",
+        "shell"
+      ],
+      "explanation": {
+        "why": "Down Group 7: outer shell gets further from nucleus \u2192 HARDER to attract extra electron \u2192 LESS reactive (opposite to Group 1!).",
+        "tip": "Group 7: reactivity DECREASES down. F > Cl > Br > I"
+      }
+    },
+    {
+      "id": "q054",
+      "type": "fill_sentence",
+      "questionText": "Describe displacement reactions of group 7 elements.",
+      "answerText": "More reactive halogens take the place of less reactive halogens from aqueous solutions of their salts.",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "Describe displacement reactions of group 7 elements.",
+      "correctAnswer": "More reactive halogens take the place of less reactive halogens from aqueous solutions of their salts.",
+      "requiredKeywords": [
+        "more",
+        "reactive",
+        "halogens"
+      ],
+      "explanation": {
+        "why": "Greek: 'halo' = salt, 'gen' = forming. They make salts when they react with metals (like NaCl, KBr). All have 7 outer electrons.",
+        "tip": "Halogen = salt-former. React with metals \u2192 salts"
+      }
+    },
+    {
+      "id": "q055",
+      "type": "word_bank",
+      "questionText": "Write a word equation for the displacement reaction of chlorine with sodium bromide.",
+      "answerText": "Chlorine + sodium bromide \u2013> bromine + sodium chloride",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "Write a word equation for the displacement reaction of chlorine with sodium bromide.",
+      "correctAnswer": "Chlorine + sodium bromide \u2013> bromine + sodium chloride",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "Remember: Chlorine + sodium bromide \u2013> bromine + sodium chloride",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q056",
+      "type": "word_bank",
+      "questionText": "Write a balanced symbol equation for displacement of chlorine and sodium bromide.",
+      "answerText": "Cl2 + 2NaBr \u2013> Br2 + 2NaCl",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "Write a balanced symbol equation for displacement of chlorine and sodium bromide.",
+      "correctAnswer": "Cl2 + 2NaBr \u2013> Br2 + 2NaCl",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Cl2 + 2NaBr \u2013> Br2 + 2NaCl",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q057",
+      "type": "fill_sentence",
+      "questionText": "Describe the observations you would see in the displacement of chlorine with sodium bromide.",
+      "answerText": "The green solution would turn red.",
+      "topic": "Group 7",
+      "source": "Periodic Table",
+      "prompt": "Describe the observations you would see in the displacement of chlorine with sodium bromide.",
+      "correctAnswer": "The green solution would turn red.",
+      "requiredKeywords": [
+        "green",
+        "solution",
+        "would",
+        "turn"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: The green solution would turn red.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q058",
+      "type": "fill_sentence",
+      "questionText": "What are the unique properties of transition metals?",
+      "answerText": "Form ions with different charges, form coloured compounds and are useful as catalysts.",
+      "topic": "Transition metals",
+      "source": "Periodic Table",
+      "prompt": "What are the unique properties of transition metals?",
+      "correctAnswer": "Form ions with different charges, form coloured compounds and are useful as catalysts.",
+      "requiredKeywords": [
+        "form",
+        "ions",
+        "different"
+      ],
+      "explanation": {
+        "why": "Remember: Form ions with different charges, form coloured compounds and are useful as catalysts",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q059",
+      "type": "multiple_choice",
+      "questionText": "What is the basic function of a catalyst?",
+      "answerText": "Catalysts speed up chemical reactions.",
+      "topic": "Transition metals",
+      "source": "Periodic Table",
+      "prompt": "What is the basic function of a catalyst?",
+      "correctAnswer": "Catalysts speed up chemical reactions.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Catalysts speed up chemical reactions.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q060",
+      "type": "fill_blank",
+      "questionText": "What are biological catalysts called?",
+      "answerText": "Enzymes.",
+      "topic": "Transition metals",
+      "source": "Periodic Table",
+      "prompt": "What are biological catalysts called?",
+      "correctAnswer": "Enzymes.",
+      "acceptVariations": [
+        "Enzymes.",
+        "enzymes.",
+        "Enzymes"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Enzymes.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q061",
+      "type": "select_all",
+      "questionText": "Can you state the common ions and their colours for Fe and Cu?",
+      "answerText": "Fe2+ green, Fe3+ brown, Cu2+ blue.",
+      "topic": "Transition metals",
+      "source": "Periodic Table",
+      "prompt": "Can you state the common ions and their colours for Fe and Cu?",
+      "correctAnswers": [
+        "Fe2+ green",
+        "Fe3+ brown",
+        "Cu2+ blue"
+      ],
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Fe2+ green, Fe3+ brown, Cu2+ blue.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q062",
+      "type": "fill_sentence",
+      "questionText": "What are the differences in the physical properties of transition elements and group 1 metals?",
+      "answerText": "Melting points are higher, densities are higher (sink in water), stronger, harder, don't react as easily with oxygen, water or halogens.",
+      "topic": "Transition metals",
+      "source": "Periodic Table",
+      "prompt": "What are the differences in the physical properties of transition elements and group 1 metals?",
+      "correctAnswer": "Melting points are higher, densities are higher (sink in water), stronger, harder, don't react as easily with oxygen, water or halogens.",
+      "requiredKeywords": [
+        "melting",
+        "points",
+        "higher"
+      ],
+      "explanation": {
+        "why": "Greek: 'halo' = salt, 'gen' = forming. They make salts when they react with metals (like NaCl, KBr). All have 7 outer electrons.",
+        "tip": "Halogen = salt-former. React with metals \u2192 salts"
+      }
+    },
+    {
+      "id": "q063",
+      "type": "word_bank",
+      "questionText": "Write a general equation for the reaction of a metal with an acid.",
+      "answerText": "Metal + acid \u2192 salt + hydrogen",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "Write a general equation for the reaction of a metal with an acid.",
+      "correctAnswer": "Metal + acid \u2192 salt + hydrogen",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "Metals react with H\u207a ions in acids to form a salt, and the H\u207a becomes H\u2082 gas. Test hydrogen with lit splint = squeaky pop!",
+        "tip": "Metal + acid \u2192 salt + HYDROGEN (NOT water - that's neutralisation!)"
+      }
+    },
+    {
+      "id": "q064",
+      "type": "multiple_choice",
+      "questionText": "When metals react with acids they lose electrons, what type of reaction is that?",
+      "answerText": "Oxidation.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "When metals react with acids they lose electrons, what type of reaction is that?",
+      "correctAnswer": "Oxidation.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Oxidation.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q065",
+      "type": "multiple_choice",
+      "questionText": "Which metals do not react with acids?",
+      "answerText": "Copper, silver and gold.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "Which metals do not react with acids?",
+      "correctAnswer": "Copper, silver and gold.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Copper, silver and gold.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q066",
+      "type": "fill_sentence",
+      "questionText": "How can you identify an acid and metal from a salt?",
+      "answerText": "The metal is the same as the metal in the salt and the acid name matches the non-metal part of the salt.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "How can you identify an acid and metal from a salt?",
+      "correctAnswer": "The metal is the same as the metal in the salt and the acid name matches the non-metal part of the salt.",
+      "requiredKeywords": [
+        "metal",
+        "same",
+        "metal"
+      ],
+      "explanation": {
+        "why": "Remember: The metal is the same as the metal in the salt and the acid name matches the non-metal part of the salt",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q067",
+      "type": "multiple_choice",
+      "questionText": "Name the acid used to make sodium chloride.",
+      "answerText": "Hydrochloric acid.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "Name the acid used to make sodium chloride.",
+      "correctAnswer": "Hydrochloric acid.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Hydrochloric acid.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q068",
+      "type": "multiple_choice",
+      "questionText": "Name the acid used to make iron nitrate.",
+      "answerText": "Nitric acid.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "Name the acid used to make iron nitrate.",
+      "correctAnswer": "Nitric acid.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Nitric acid.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q069",
+      "type": "multiple_choice",
+      "questionText": "Name the acid used to make copper sulfate.",
+      "answerText": "Sulfuric acid.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "Name the acid used to make copper sulfate.",
+      "correctAnswer": "Sulfuric acid.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Sulfuric acid.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q070",
+      "type": "multiple_choice",
+      "questionText": "Name the aicd used to make calcium carbonate.",
+      "answerText": "Carbonic acid.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "Name the aicd used to make calcium carbonate.",
+      "correctAnswer": "Carbonic acid.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Carbonic acid.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q071",
+      "type": "multiple_choice",
+      "questionText": "What is the chemical formula of hydrochloric acid?",
+      "answerText": "HCl",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "What is the chemical formula of hydrochloric acid?",
+      "correctAnswer": "HCl",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: HCl",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q072",
+      "type": "multiple_choice",
+      "questionText": "What is the chemical formula of nitric acid?",
+      "answerText": "HNO3",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "What is the chemical formula of nitric acid?",
+      "correctAnswer": "HNO3",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: HNO3",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q073",
+      "type": "multiple_choice",
+      "questionText": "What is the chemical formula of sulfuric acid?",
+      "answerText": "H2SO4",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "What is the chemical formula of sulfuric acid?",
+      "correctAnswer": "H2SO4",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: H2SO4",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q074",
+      "type": "multiple_choice",
+      "questionText": "What is the chemical formula of carbonic acid?",
+      "answerText": "H2CO3",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "What is the chemical formula of carbonic acid?",
+      "correctAnswer": "H2CO3",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: H2CO3",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q075",
+      "type": "fill_sentence",
+      "questionText": "What are the three key steps in preparing a salt from an acid and a metal?",
+      "answerText": "Add excess metal to acid until it stops fizzing. Filter off unreacted metal. Evaporate off some of the water and leave to cool and crystalise.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "What are the three key steps in preparing a salt from an acid and a metal?",
+      "correctAnswer": "Add excess metal to acid until it stops fizzing. Filter off unreacted metal. Evaporate off some of the water and leave to cool and crystalise.",
+      "requiredKeywords": [
+        "add",
+        "excess",
+        "metal"
+      ],
+      "explanation": {
+        "why": "Remember: Add excess metal to acid until it stops fizzing",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q076",
+      "type": "fill_sentence",
+      "questionText": "How can a prepared salt be dried?",
+      "answerText": "By patting dry with filter paper.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "How can a prepared salt be dried?",
+      "correctAnswer": "By patting dry with filter paper.",
+      "requiredKeywords": [
+        "patting",
+        "dry",
+        "filter",
+        "paper"
+      ],
+      "explanation": {
+        "why": "Steps: (1) Add EXCESS metal to acid until fizzing stops, (2) FILTER off unreacted metal, (3) EVAPORATE water to get crystals.",
+        "tip": "Excess metal \u2192 filter \u2192 evaporate. Simple 3 steps!"
+      }
+    },
+    {
+      "id": "q077",
+      "type": "fill_sentence",
+      "questionText": "How should a salt solution be heated?",
+      "answerText": "Gently with a water bath.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "How should a salt solution be heated?",
+      "correctAnswer": "Gently with a water bath.",
+      "requiredKeywords": [
+        "gently",
+        "water",
+        "bath"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Gently with a water bath.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q078",
+      "type": "fill_sentence",
+      "questionText": "When describing preparation of a salt, how can you be specific to the exam question?",
+      "answerText": "By naming the acid and metal needed to make the salt.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "When describing preparation of a salt, how can you be specific to the exam question?",
+      "correctAnswer": "By naming the acid and metal needed to make the salt.",
+      "requiredKeywords": [
+        "naming",
+        "acid",
+        "metal"
+      ],
+      "explanation": {
+        "why": "Steps: (1) Add EXCESS metal to acid until fizzing stops, (2) FILTER off unreacted metal, (3) EVAPORATE water to get crystals.",
+        "tip": "Excess metal \u2192 filter \u2192 evaporate. Simple 3 steps!"
+      }
+    },
+    {
+      "id": "q079",
+      "type": "fill_blank",
+      "questionText": "When adding metal to acid in preparation of a salt, what is used to contain the reaction?",
+      "answerText": "A beaker.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "When adding metal to acid in preparation of a salt, what is used to contain the reaction?",
+      "correctAnswer": "A beaker.",
+      "acceptVariations": [
+        "a beaker.",
+        "A beaker",
+        "A beaker."
+      ],
+      "explanation": {
+        "why": "Steps: (1) Add EXCESS metal to acid until fizzing stops, (2) FILTER off unreacted metal, (3) EVAPORATE water to get crystals.",
+        "tip": "Excess metal \u2192 filter \u2192 evaporate. Simple 3 steps!"
+      }
+    },
+    {
+      "id": "q080",
+      "type": "fill_sentence",
+      "questionText": "What 3 other substances can be used to prepare a soluble salt other than a metal?",
+      "answerText": "Metal oxide, metal hydroxide or metal carbonate.",
+      "topic": "Acid reactions with metal",
+      "source": "Reactions of Acids",
+      "prompt": "What 3 other substances can be used to prepare a soluble salt other than a metal?",
+      "correctAnswer": "Metal oxide, metal hydroxide or metal carbonate.",
+      "requiredKeywords": [
+        "metal",
+        "oxide",
+        "metal",
+        "hydroxide"
+      ],
+      "explanation": {
+        "why": "Steps: (1) Add EXCESS metal to acid until fizzing stops, (2) FILTER off unreacted metal, (3) EVAPORATE water to get crystals.",
+        "tip": "Excess metal \u2192 filter \u2192 evaporate. Simple 3 steps!"
+      }
+    },
+    {
+      "id": "q081",
+      "type": "fill_blank",
+      "questionText": "Name two substances used to neutralise an acid.",
+      "answerText": "Alkali or base.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "Name two substances used to neutralise an acid.",
+      "correctAnswer": "Alkali or base.",
+      "acceptVariations": [
+        "Alkali or base.",
+        "alkali or base.",
+        "Alkali or base"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Alkali or base.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q082",
+      "type": "fill_sentence",
+      "questionText": "Name a type of substance that is an alkali.",
+      "answerText": "A soluble metal hydroxide.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "Name a type of substance that is an alkali.",
+      "correctAnswer": "A soluble metal hydroxide.",
+      "requiredKeywords": [
+        "soluble",
+        "metal",
+        "hydroxide"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: A soluble metal hydroxide.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q083",
+      "type": "fill_sentence",
+      "questionText": "Name a type of substance that is an base.",
+      "answerText": "An insoluble metal hydroxide.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "Name a type of substance that is an base.",
+      "correctAnswer": "An insoluble metal hydroxide.",
+      "requiredKeywords": [
+        "insoluble",
+        "metal",
+        "hydroxide"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: An insoluble metal hydroxide.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q084",
+      "type": "multiple_choice",
+      "questionText": "What is the general equation for the reaction of an acid with a base or alkali?",
+      "answerText": "Acid + alkali (or base) \u2013> salt + water",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "What is the general equation for the reaction of an acid with a base or alkali?",
+      "correctAnswer": "Acid + alkali (or base) \u2013> salt + water",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Neutralisation: acid's H\u207a reacts with alkali's OH\u207b to form water. Also makes a salt. This brings pH to 7 (neutral).",
+        "tip": "Acid + alkali \u2192 salt + WATER. H\u207a + OH\u207b \u2192 H\u2082O"
+      }
+    },
+    {
+      "id": "q085",
+      "type": "word_bank",
+      "questionText": "What is the general equation for the reaction of an acid with a metal carbonate?",
+      "answerText": "Acid + metal carbonate \u2013> salt + water + carbon dioxide",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "What is the general equation for the reaction of an acid with a metal carbonate?",
+      "correctAnswer": "Acid + metal carbonate \u2013> salt + water + carbon dioxide",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "Acid + carbonate makes salt + water + carbon dioxide. The CO\u2082 causes fizzing and turns limewater milky (test for CO\u2082).",
+        "tip": "Carbonate + acid \u2192 3 products (salt, water, CO\u2082). Fizzing!"
+      }
+    },
+    {
+      "id": "q086",
+      "type": "multiple_choice",
+      "questionText": "What is an acid?",
+      "answerText": "Acids ionise to form H+ ions in water.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "What is an acid?",
+      "correctAnswer": "Acids ionise to form H+ ions in water.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Acids ionise to form H+ ions in water.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q087",
+      "type": "multiple_choice",
+      "questionText": "What is an alkali?",
+      "answerText": "Alkalis ionise to form OH- ions in water.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "What is an alkali?",
+      "correctAnswer": "Alkalis ionise to form OH- ions in water.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Alkalis ionise to form OH- ions in water.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q088",
+      "type": "multiple_choice",
+      "questionText": "Name the ion that makes a substance alkaline.",
+      "answerText": "Hydroxide.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "Name the ion that makes a substance alkaline.",
+      "correctAnswer": "Hydroxide.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Hydroxide.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q089",
+      "type": "fill_sentence",
+      "questionText": "State two ways pH can be measured.",
+      "answerText": "Using universal indicator with colour chart or a pH probe.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "State two ways pH can be measured.",
+      "correctAnswer": "Using universal indicator with colour chart or a pH probe.",
+      "requiredKeywords": [
+        "using",
+        "universal",
+        "indicator",
+        "colour"
+      ],
+      "explanation": {
+        "why": "Remember: Using universal indicator with colour chart or a pH probe",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q090",
+      "type": "fill_blank",
+      "questionText": "What types of substances have a pH of 7?",
+      "answerText": "Neutral substances.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "What types of substances have a pH of 7?",
+      "correctAnswer": "Neutral substances.",
+      "acceptVariations": [
+        "Neutral substances.",
+        "Neutral substances",
+        "neutral substances."
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Neutral substances.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q091",
+      "type": "fill_blank",
+      "questionText": "Describe the pH of acids.",
+      "answerText": "Less than 7.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "Describe the pH of acids.",
+      "correctAnswer": "Less than 7.",
+      "acceptVariations": [
+        "Less than 7.",
+        "Less than 7",
+        "less than 7."
+      ],
+      "explanation": {
+        "why": "pH 7 is neutral (equal H\u207a and OH\u207b). pH < 7 = acidic (more H\u207a), pH > 7 = alkaline (more OH\u207b). pH scale is logarithmic!",
+        "tip": "pH 7 = neutral (pure water). Each pH step = \u00d710 change in H\u207a"
+      }
+    },
+    {
+      "id": "q092",
+      "type": "fill_blank",
+      "questionText": "Describe the pH of alkalis.",
+      "answerText": "Greater than 7.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "Describe the pH of alkalis.",
+      "correctAnswer": "Greater than 7.",
+      "acceptVariations": [
+        "Greater than 7.",
+        "Greater than 7",
+        "greater than 7."
+      ],
+      "explanation": {
+        "why": "pH 7 is neutral (equal H\u207a and OH\u207b). pH < 7 = acidic (more H\u207a), pH > 7 = alkaline (more OH\u207b). pH scale is logarithmic!",
+        "tip": "pH 7 = neutral (pure water). Each pH step = \u00d710 change in H\u207a"
+      }
+    },
+    {
+      "id": "q093",
+      "type": "multiple_choice",
+      "questionText": "What is the ionic equation for all neutralisation reactions.",
+      "answerText": "H+(aq) + OH-(aq) \u2013> H2O(l)",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "What is the ionic equation for all neutralisation reactions.",
+      "correctAnswer": "H+(aq) + OH-(aq) \u2013> H2O(l)",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "In all neutralisation reactions, H\u207a from acid reacts with OH\u207b from alkali to make water. This is the core reaction happening!",
+        "tip": "All neutralisation: H\u207a + OH\u207b \u2192 H\u2082O (water formation)"
+      }
+    },
+    {
+      "id": "q094",
+      "type": "multiple_choice",
+      "questionText": "Name the alkali that reacts with acid to form a salt but not water.",
+      "answerText": "Ammonia.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "Name the alkali that reacts with acid to form a salt but not water.",
+      "correctAnswer": "Ammonia.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Ammonia.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q095",
+      "type": "fill_blank",
+      "questionText": "Give the formula of the alkali that reacts with acid to form a salt but not water.",
+      "answerText": "NH3.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "Give the formula of the alkali that reacts with acid to form a salt but not water.",
+      "correctAnswer": "NH3.",
+      "acceptVariations": [
+        "NH3",
+        "Nh3.",
+        "NH3.",
+        "nh3."
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: NH3.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q096",
+      "type": "multiple_choice",
+      "questionText": "Name the salt formed from reaction of ammonia and nitric acid.",
+      "answerText": "Ammonium nitrate.",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "Name the salt formed from reaction of ammonia and nitric acid.",
+      "correctAnswer": "Ammonium nitrate.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Ammonium nitrate.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q097",
+      "type": "fill_blank",
+      "questionText": "Give the formula of the salt formed from reaction of ammonia and nitric acid.",
+      "answerText": "NH4NO3",
+      "topic": "Neutralisation",
+      "source": "Reactions of Acids",
+      "prompt": "Give the formula of the salt formed from reaction of ammonia and nitric acid.",
+      "correctAnswer": "NH4NO3",
+      "acceptVariations": [
+        "NH4NO3",
+        "nh4no3",
+        "Nh4no3"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: NH4NO3",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q098",
+      "type": "multiple_choice",
+      "questionText": "What is a burrette?",
+      "answerText": "Accurately measures a variable volume.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "What is a burrette?",
+      "correctAnswer": "Accurately measures a variable volume.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Accurately measures a variable volume.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q099",
+      "type": "multiple_choice",
+      "questionText": "What is a pipette?",
+      "answerText": "Accurately measures a fixed volume.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "What is a pipette?",
+      "correctAnswer": "Accurately measures a fixed volume.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Accurately measures a fixed volume.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q100",
+      "type": "multiple_choice",
+      "questionText": "What is added to the flask in titration to find the end point?",
+      "answerText": "An indicator.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "What is added to the flask in titration to find the end point?",
+      "correctAnswer": "An indicator.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: An indicator.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q101",
+      "type": "fill_blank",
+      "questionText": "Name a suitable indicator.",
+      "answerText": "Litmus dye.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "Name a suitable indicator.",
+      "correctAnswer": "Litmus dye.",
+      "acceptVariations": [
+        "litmus dye.",
+        "Litmus dye.",
+        "Litmus dye"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Litmus dye.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q102",
+      "type": "multiple_choice",
+      "questionText": "What colour is litmus dye in acid?",
+      "answerText": "Red.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "What colour is litmus dye in acid?",
+      "correctAnswer": "Red.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Red.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q103",
+      "type": "multiple_choice",
+      "questionText": "What colour is litmus dye in alkali?",
+      "answerText": "Blue.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "What colour is litmus dye in alkali?",
+      "correctAnswer": "Blue.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Blue.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q104",
+      "type": "multiple_choice",
+      "questionText": "If acid is in the burette and alkali in the flask, what colour change would be seen at the end point of titration?",
+      "answerText": "Red to purple (or blue).",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "If acid is in the burette and alkali in the flask, what colour change would be seen at the end point of titration?",
+      "correctAnswer": "Red to purple (or blue).",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Red to purple (or blue).",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q105",
+      "type": "fill_sentence",
+      "questionText": "How many repeat readings should be taken for a titration?",
+      "answerText": "As many as needed until concordant results are obtained.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "How many repeat readings should be taken for a titration?",
+      "correctAnswer": "As many as needed until concordant results are obtained.",
+      "requiredKeywords": [
+        "many",
+        "needed",
+        "until",
+        "concordant"
+      ],
+      "explanation": {
+        "why": "Remember: As many as needed until concordant results are obtained",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q106",
+      "type": "fill_sentence",
+      "questionText": "What are concordant results?",
+      "answerText": "Volumes that are within 0.10 cm3 of each other.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "What are concordant results?",
+      "correctAnswer": "Volumes that are within 0.10 cm3 of each other.",
+      "requiredKeywords": [
+        "volumes",
+        "that",
+        "within",
+        "cm3"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Volumes that are within 0.10 cm3 of each other.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q107",
+      "type": "multiple_choice",
+      "questionText": "Which repeat readings are used when calculating a mean titration volume?",
+      "answerText": "Concordant results only.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "Which repeat readings are used when calculating a mean titration volume?",
+      "correctAnswer": "Concordant results only.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Concordant results only.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q108",
+      "type": "fill_blank",
+      "questionText": "To how many decimal places should all burette readings be taken?",
+      "answerText": "2 d.p.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "To how many decimal places should all burette readings be taken?",
+      "correctAnswer": "2 d.p.",
+      "acceptVariations": [
+        "2 d.p.",
+        "2 dp"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: 2 d.p.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q109",
+      "type": "multiple_choice",
+      "questionText": "How could you find out which of two acids are most concentrated using titration?",
+      "answerText": "By comparing the final volumes.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "How could you find out which of two acids are most concentrated using titration?",
+      "correctAnswer": "By comparing the final volumes.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: By comparing the final volumes.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q110",
+      "type": "fill_sentence",
+      "questionText": "What equipment could be used to make pH readings more accurate?",
+      "answerText": "pH probe and data logger.",
+      "topic": "Titration",
+      "source": "Reactions of Acids",
+      "prompt": "What equipment could be used to make pH readings more accurate?",
+      "correctAnswer": "pH probe and data logger.",
+      "requiredKeywords": [
+        "probe",
+        "data",
+        "logger"
+      ],
+      "explanation": {
+        "why": "Ore is rock containing useful metal compounds (usually metal oxides). We extract pure metal from ores by removing the oxygen.",
+        "tip": "Ore = rock with metal compounds. Extract \u2192 pure metal"
+      }
+    },
+    {
+      "id": "q111",
+      "type": "fill_sentence",
+      "questionText": "What is a strong acid?",
+      "answerText": "An acid which completely ionises to form H+ ions in water.",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "What is a strong acid?",
+      "correctAnswer": "An acid which completely ionises to form H+ ions in water.",
+      "requiredKeywords": [
+        "acid",
+        "which",
+        "completely"
+      ],
+      "explanation": {
+        "why": "Strong acids COMPLETELY ionise in water (all molecules split into H\u207a and anions). Examples: HCl, H\u2082SO\u2084, HNO\u2083.",
+        "tip": "Strong = 100% ionised. Don't confuse with concentrated!"
+      }
+    },
+    {
+      "id": "q112",
+      "type": "fill_sentence",
+      "questionText": "Name three examples of strong acids.",
+      "answerText": "Hydrochloric acid, nitric acid and sulfuric acid.",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "Name three examples of strong acids.",
+      "correctAnswer": "Hydrochloric acid, nitric acid and sulfuric acid.",
+      "requiredKeywords": [
+        "hydrochloric",
+        "acid",
+        "nitric",
+        "acid"
+      ],
+      "explanation": {
+        "why": "Strong acids COMPLETELY ionise in water (all molecules split into H\u207a and anions). Examples: HCl, H\u2082SO\u2084, HNO\u2083.",
+        "tip": "Strong = 100% ionised. Don't confuse with concentrated!"
+      }
+    },
+    {
+      "id": "q113",
+      "type": "fill_sentence",
+      "questionText": "What is a weak acid?",
+      "answerText": "An acid which partially ionises to form H+ ions in water.",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "What is a weak acid?",
+      "correctAnswer": "An acid which partially ionises to form H+ ions in water.",
+      "requiredKeywords": [
+        "acid",
+        "which",
+        "partially"
+      ],
+      "explanation": {
+        "why": "Weak acids only PARTIALLY ionise in water (only some molecules split into H\u207a). Lower H\u207a concentration than strong acids.",
+        "tip": "Weak = partially ionised. Example: ethanoic acid"
+      }
+    },
+    {
+      "id": "q114",
+      "type": "fill_sentence",
+      "questionText": "Name three examples of weak acids.",
+      "answerText": "Ethanoic acid, citric acid and carbonic acid.",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "Name three examples of weak acids.",
+      "correctAnswer": "Ethanoic acid, citric acid and carbonic acid.",
+      "requiredKeywords": [
+        "ethanoic",
+        "acid",
+        "citric",
+        "acid"
+      ],
+      "explanation": {
+        "why": "Weak acids only PARTIALLY ionise in water (only some molecules split into H\u207a). Lower H\u207a concentration than strong acids.",
+        "tip": "Weak = partially ionised. Example: ethanoic acid"
+      }
+    },
+    {
+      "id": "q115",
+      "type": "fill_sentence",
+      "questionText": "What is a concentrated acid?",
+      "answerText": "A high number of acid particles per unit volume in the water.",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "What is a concentrated acid?",
+      "correctAnswer": "A high number of acid particles per unit volume in the water.",
+      "requiredKeywords": [
+        "high",
+        "number",
+        "acid"
+      ],
+      "explanation": {
+        "why": "Remember: A high number of acid particles per unit volume in the water",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q116",
+      "type": "fill_sentence",
+      "questionText": "What is a dilute acid?",
+      "answerText": "A low number of acid particles per unit volume in the water.",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "What is a dilute acid?",
+      "correctAnswer": "A low number of acid particles per unit volume in the water.",
+      "requiredKeywords": [
+        "low",
+        "number",
+        "acid"
+      ],
+      "explanation": {
+        "why": "Remember: A low number of acid particles per unit volume in the water",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q117",
+      "type": "fill_sentence",
+      "questionText": "How can an acid be both strong and dilute?",
+      "answerText": "A low number of acid particles per unit volume that completely ionise to form H+ ions in water.",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "How can an acid be both strong and dilute?",
+      "correctAnswer": "A low number of acid particles per unit volume that completely ionise to form H+ ions in water.",
+      "requiredKeywords": [
+        "low",
+        "number",
+        "acid"
+      ],
+      "explanation": {
+        "why": "Remember: A low number of acid particles per unit volume that completely ionise to form H+ ions in water",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q118",
+      "type": "fill_sentence",
+      "questionText": "If both a weak and a strong acid have the same concentration, how will their pH differ?",
+      "answerText": "The strong acid will have a lower pH.",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "If both a weak and a strong acid have the same concentration, how will their pH differ?",
+      "correctAnswer": "The strong acid will have a lower pH.",
+      "requiredKeywords": [
+        "strong",
+        "acid",
+        "will",
+        "have"
+      ],
+      "explanation": {
+        "why": "Strong acids COMPLETELY ionise in water (all molecules split into H\u207a and anions). Examples: HCl, H\u2082SO\u2084, HNO\u2083.",
+        "tip": "Strong = 100% ionised. Don't confuse with concentrated!"
+      }
+    },
+    {
+      "id": "q119",
+      "type": "fill_sentence",
+      "questionText": "What is pH?",
+      "answerText": "A measure of the concentration of H+ ions in water.",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "What is pH?",
+      "correctAnswer": "A measure of the concentration of H+ ions in water.",
+      "requiredKeywords": [
+        "measure",
+        "concentration",
+        "ions",
+        "water"
+      ],
+      "explanation": {
+        "why": "Remember: A measure of the concentration of H+ ions in water",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q120",
+      "type": "fill_sentence",
+      "questionText": "What is the relationship between pH and H+ ion concentration?",
+      "answerText": "As pH decreases by 1 the H+ ion concentration increases by x10.",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "What is the relationship between pH and H+ ion concentration?",
+      "correctAnswer": "As pH decreases by 1 the H+ ion concentration increases by x10.",
+      "requiredKeywords": [
+        "decreases",
+        "ion",
+        "concentration"
+      ],
+      "explanation": {
+        "why": "Remember: As pH decreases by 1 the H+ ion concentration increases by x10",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q121",
+      "type": "multiple_choice",
+      "questionText": "What is the equation linking H+ ion concentration change to pH change?",
+      "answerText": "H+ ion concentration change = 10pH change",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "What is the equation linking H+ ion concentration change to pH change?",
+      "correctAnswer": "H+ ion concentration change = 10pH change",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: H+ ion concentration change = 10pH change",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q122",
+      "type": "multiple_choice",
+      "questionText": "A 1.0 x10-3 mol/dm3 solution of HCl has a pH of 3.0. What is the pH of a 1 x10-5 mol/dm3 solution of HCl?",
+      "answerText": "5.0",
+      "topic": "Strong and weak acids",
+      "source": "Reactions of Acids",
+      "prompt": "A 1.0 x10-3 mol/dm3 solution of HCl has a pH of 3.0. What is the pH of a 1 x10-5 mol/dm3 solution of HCl?",
+      "correctAnswer": "5.0",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: 5.0",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q123",
+      "type": "ordering",
+      "questionText": "List all the elements in the reactivity series in order of most reactive to least.",
+      "answerText": "Potassium, sodium, lithium, calcium, magnesium, carbon, zinc, iron, hydrogen, copper, silver, gold.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "List all the elements in the reactivity series in order of most reactive to least.",
+      "items": [
+        "Potassium",
+        "sodium",
+        "lithium",
+        "calcium",
+        "magnesium",
+        "carbon",
+        "zinc",
+        "iron",
+        "hydrogen",
+        "copper",
+        "silver",
+        "gold"
+      ],
+      "correctOrder": [
+        "Potassium",
+        "sodium",
+        "lithium",
+        "calcium",
+        "magnesium",
+        "carbon",
+        "zinc",
+        "iron",
+        "hydrogen",
+        "copper",
+        "silver",
+        "gold"
+      ],
+      "explanation": {
+        "why": "The reactivity series lists metals from most to least reactive. More reactive metals lose electrons more easily.",
+        "tip": "Mnemonic: Please Stop Calling Me A Careless Zebra (K,Na,Li,Ca,Mg,Al,C,Zn\u2026)"
+      }
+    },
+    {
+      "id": "q124",
+      "type": "fill_sentence",
+      "questionText": "What makes the reactivity series easier to learn?",
+      "answerText": "Finding them in the periodic table with your finger as you learn them.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "What makes the reactivity series easier to learn?",
+      "correctAnswer": "Finding them in the periodic table with your finger as you learn them.",
+      "requiredKeywords": [
+        "finding",
+        "them",
+        "periodic"
+      ],
+      "explanation": {
+        "why": "Remember: Finding them in the periodic table with your finger as you learn them",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q125",
+      "type": "word_bank",
+      "questionText": "Write a general word equation for the reaction of metal with oxygen.",
+      "answerText": "Metal + Oxygen \u2013> Metal oxide",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "Write a general word equation for the reaction of metal with oxygen.",
+      "correctAnswer": "Metal + Oxygen \u2013> Metal oxide",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Metal + Oxygen \u2013> Metal oxide",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q126",
+      "type": "fill_sentence",
+      "questionText": "Why are reactions of metals with oxygen described as oxidation?",
+      "answerText": "Because the metal gains oxygen.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "Why are reactions of metals with oxygen described as oxidation?",
+      "correctAnswer": "Because the metal gains oxygen.",
+      "requiredKeywords": [
+        "because",
+        "metal",
+        "gains",
+        "oxygen"
+      ],
+      "explanation": {
+        "why": "In oxygen-transfer reactions, oxidation means gaining oxygen. The metal combines with oxygen to form metal oxide.",
+        "tip": "Oxygen-transfer: oxidation = GAIN oxygen (different from e\u207b definition!)"
+      }
+    },
+    {
+      "id": "q127",
+      "type": "multiple_choice",
+      "questionText": "What type of ion do metals form when they react?",
+      "answerText": "Positive ions (cations).",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "What type of ion do metals form when they react?",
+      "correctAnswer": "Positive ions (cations).",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Metals have few outer electrons and lose them easily. Losing negative electrons leaves more protons than electrons \u2192 positive charge.",
+        "tip": "Metals LOSE electrons \u2192 POSITIVE ions (left of periodic table)"
+      }
+    },
+    {
+      "id": "q128",
+      "type": "fill_sentence",
+      "questionText": "How is reactivity of metals related to its electrons?",
+      "answerText": "Metals that lose their outer shell electrons most easily are more reactive.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "How is reactivity of metals related to its electrons?",
+      "correctAnswer": "Metals that lose their outer shell electrons most easily are more reactive.",
+      "requiredKeywords": [
+        "metals",
+        "that",
+        "lose"
+      ],
+      "explanation": {
+        "why": "Remember: Metals that lose their outer shell electrons most easily are more reactive",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q129",
+      "type": "fill_blank",
+      "questionText": "Why can't potassium be reacted with acid in school?",
+      "answerText": "It will explode.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "Why can't potassium be reacted with acid in school?",
+      "correctAnswer": "It will explode.",
+      "acceptVariations": [
+        "It will explode",
+        "it will explode.",
+        "It will explode."
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: It will explode.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q130",
+      "type": "word_bank",
+      "questionText": "Write a general word equation for the reaction of metal with acid.",
+      "answerText": "Metal + Acid \u2013> Salt + Hydrogen",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "Write a general word equation for the reaction of metal with acid.",
+      "correctAnswer": "Metal + Acid \u2013> Salt + Hydrogen",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "Metals react with H\u207a ions in acids to form a salt, and the H\u207a becomes H\u2082 gas. Test hydrogen with lit splint = squeaky pop!",
+        "tip": "Metal + acid \u2192 salt + HYDROGEN (NOT water - that's neutralisation!)"
+      }
+    },
+    {
+      "id": "q131",
+      "type": "fill_sentence",
+      "questionText": "Describe the test of hydrogen gas.",
+      "answerText": "Ignite the gas with a lit splint.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "Describe the test of hydrogen gas.",
+      "correctAnswer": "Ignite the gas with a lit splint.",
+      "requiredKeywords": [
+        "ignite",
+        "gas",
+        "lit",
+        "splint"
+      ],
+      "explanation": {
+        "why": "Put a LIT splint near the gas. Hydrogen burns rapidly with oxygen from air (H\u2082 + O\u2082 \u2192 H\u2082O) making a squeaky pop sound!",
+        "tip": "LIT splint \u2192 SQUEAKY POP = hydrogen. Like tiny explosion!"
+      }
+    },
+    {
+      "id": "q132",
+      "type": "fill_blank",
+      "questionText": "Describe the observation of the hydrogen gas test.",
+      "answerText": "A squeaky pop.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "Describe the observation of the hydrogen gas test.",
+      "correctAnswer": "A squeaky pop.",
+      "acceptVariations": [
+        "a squeaky pop.",
+        "A squeaky pop",
+        "A squeaky pop."
+      ],
+      "explanation": {
+        "why": "Put a LIT splint near the gas. Hydrogen burns rapidly with oxygen from air (H\u2082 + O\u2082 \u2192 H\u2082O) making a squeaky pop sound!",
+        "tip": "LIT splint \u2192 SQUEAKY POP = hydrogen. Like tiny explosion!"
+      }
+    },
+    {
+      "id": "q133",
+      "type": "fill_sentence",
+      "questionText": "How can the reactions of metals with acid be compared?",
+      "answerText": "By measuring the temperature change during the reaction.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "How can the reactions of metals with acid be compared?",
+      "correctAnswer": "By measuring the temperature change during the reaction.",
+      "requiredKeywords": [
+        "measuring",
+        "temperature",
+        "change",
+        "during"
+      ],
+      "explanation": {
+        "why": "Remember: By measuring the temperature change during the reaction",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q134",
+      "type": "fill_sentence",
+      "questionText": "What is a metal displacement reaction?",
+      "answerText": "A reaction whereby a more reactive metal takes the place of a less reactive metal from it's salt.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "What is a metal displacement reaction?",
+      "correctAnswer": "A reaction whereby a more reactive metal takes the place of a less reactive metal from it's salt.",
+      "requiredKeywords": [
+        "reaction",
+        "whereby",
+        "more"
+      ],
+      "explanation": {
+        "why": "More reactive metals can 'kick out' less reactive metals from compounds. Like a stronger boxer taking the prize!",
+        "tip": "More reactive displaces less reactive. Check reactivity series!"
+      }
+    },
+    {
+      "id": "q135",
+      "type": "word_bank",
+      "questionText": "Write a word equation for the displacement reaction between zinc and iron chloride.",
+      "answerText": "Zinc + iron chloride \u2013> zinc chloride + iron",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "Write a word equation for the displacement reaction between zinc and iron chloride.",
+      "correctAnswer": "Zinc + iron chloride \u2013> zinc chloride + iron",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Zinc + iron chloride \u2013> zinc chloride + iron",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q136",
+      "type": "word_bank",
+      "questionText": "Write a balanced symbol equation for the reaction of zinc with iron chloride.",
+      "answerText": "Zn + FeCl2 \u2013> Fe + ZnCl2",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "Write a balanced symbol equation for the reaction of zinc with iron chloride.",
+      "correctAnswer": "Zn + FeCl2 \u2013> Fe + ZnCl2",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Zn + FeCl2 \u2013> Fe + ZnCl2",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q137",
+      "type": "multiple_choice",
+      "questionText": "What is a control variable?",
+      "answerText": "A variable that is kept the same to ensure validity.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "What is a control variable?",
+      "correctAnswer": "A variable that is kept the same to ensure validity.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Remember: A variable that is kept the same to ensure validity",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q138",
+      "type": "fill_sentence",
+      "questionText": "What is an independent variable?",
+      "answerText": "Variables that do not alter when other factors are changed in an experiment.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "What is an independent variable?",
+      "correctAnswer": "Variables that do not alter when other factors are changed in an experiment.",
+      "requiredKeywords": [
+        "variables",
+        "that",
+        "not"
+      ],
+      "explanation": {
+        "why": "Remember: Variables that do not alter when other factors are changed in an experiment",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q139",
+      "type": "multiple_choice",
+      "questionText": "What is a dependent variable?",
+      "answerText": "Variables that will alter when the independent variable is changed.",
+      "topic": "Reactivity of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "What is a dependent variable?",
+      "correctAnswer": "Variables that will alter when the independent variable is changed.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Remember: Variables that will alter when the independent variable is changed",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q140",
+      "type": "multiple_choice",
+      "questionText": "What is an ore?",
+      "answerText": "A metal combined with other elements found in rock.",
+      "topic": "Extraction of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "What is an ore?",
+      "correctAnswer": "A metal combined with other elements found in rock.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Ore is rock containing useful metal compounds (usually metal oxides). We extract pure metal from ores by removing the oxygen.",
+        "tip": "Ore = rock with metal compounds. Extract \u2192 pure metal"
+      }
+    },
+    {
+      "id": "q141",
+      "type": "fill_sentence",
+      "questionText": "How are metals such as copper, silver and gold extracted?",
+      "answerText": "They aren't because the are found native.",
+      "topic": "Extraction of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "How are metals such as copper, silver and gold extracted?",
+      "correctAnswer": "They aren't because the are found native.",
+      "requiredKeywords": [
+        "they",
+        "aren",
+        "because",
+        "found"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: They aren't because the are found native.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q142",
+      "type": "fill_sentence",
+      "questionText": "What does 'native' mean?",
+      "answerText": "Metals that are found in rock but not combined with other elements.",
+      "topic": "Extraction of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "What does 'native' mean?",
+      "correctAnswer": "Metals that are found in rock but not combined with other elements.",
+      "requiredKeywords": [
+        "metals",
+        "that",
+        "found"
+      ],
+      "explanation": {
+        "why": "Very unreactive metals like gold and silver are found 'native' (uncombined as pure elements) because they don't react with oxygen.",
+        "tip": "Native = found pure. Only very unreactive metals (Au, Ag)"
+      }
+    },
+    {
+      "id": "q143",
+      "type": "fill_sentence",
+      "questionText": "Describe 'reduction' as a form of extraction.",
+      "answerText": "Metals below carbon can be extracted from compounds by reacting with carbon.",
+      "topic": "Extraction of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "Describe 'reduction' as a form of extraction.",
+      "correctAnswer": "Metals below carbon can be extracted from compounds by reacting with carbon.",
+      "requiredKeywords": [
+        "metals",
+        "below",
+        "carbon"
+      ],
+      "explanation": {
+        "why": "Remember: Metals below carbon can be extracted from compounds by reacting with carbon",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q144",
+      "type": "fill_sentence",
+      "questionText": "Why is carbon used in 'reduction' of metal oxides?",
+      "answerText": "It is more reactive than the metal being extracted.",
+      "topic": "Extraction of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "Why is carbon used in 'reduction' of metal oxides?",
+      "correctAnswer": "It is more reactive than the metal being extracted.",
+      "requiredKeywords": [
+        "more",
+        "reactive",
+        "than",
+        "metal"
+      ],
+      "explanation": {
+        "why": "Carbon removes oxygen from metal oxides (reduction = loss of oxygen). Only works for metals less reactive than carbon.",
+        "tip": "Below carbon \u2192 use carbon reduction. Cheaper than electrolysis!"
+      }
+    },
+    {
+      "id": "q145",
+      "type": "fill_sentence",
+      "questionText": "Why can't metals placed above carbon in the reactivity series be extracted by reduction?",
+      "answerText": "Because they are more reactive than carbon.",
+      "topic": "Extraction of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "Why can't metals placed above carbon in the reactivity series be extracted by reduction?",
+      "correctAnswer": "Because they are more reactive than carbon.",
+      "requiredKeywords": [
+        "because",
+        "they",
+        "more",
+        "reactive"
+      ],
+      "explanation": {
+        "why": "Carbon removes oxygen from metal oxides (reduction = loss of oxygen). Only works for metals less reactive than carbon.",
+        "tip": "Below carbon \u2192 use carbon reduction. Cheaper than electrolysis!"
+      }
+    },
+    {
+      "id": "q146",
+      "type": "fill_sentence",
+      "questionText": "What is meant by reduction?",
+      "answerText": "Reduction is loss of oxygen.",
+      "topic": "Extraction of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "What is meant by reduction?",
+      "correctAnswer": "Reduction is loss of oxygen.",
+      "requiredKeywords": [
+        "reduction",
+        "loss",
+        "oxygen"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Reduction is loss of oxygen.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q147",
+      "type": "fill_sentence",
+      "questionText": "What is electrolysis?",
+      "answerText": "Breaking down of a compound using electrical energy.",
+      "topic": "Extraction of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "What is electrolysis?",
+      "correctAnswer": "Breaking down of a compound using electrical energy.",
+      "requiredKeywords": [
+        "breaking",
+        "down",
+        "compound",
+        "using"
+      ],
+      "explanation": {
+        "why": "Remember: Breaking down of a compound using electrical energy",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q148",
+      "type": "fill_sentence",
+      "questionText": "When is electrolysis used in extraction?",
+      "answerText": "With compounds containing metals above carbon in the reactivity series.",
+      "topic": "Extraction of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "When is electrolysis used in extraction?",
+      "correctAnswer": "With compounds containing metals above carbon in the reactivity series.",
+      "requiredKeywords": [
+        "compounds",
+        "containing",
+        "metals",
+        "above"
+      ],
+      "explanation": {
+        "why": "Electrolysis (splitting with electricity) is needed for very reactive metals above carbon in the series (K, Na, Li, Ca, Mg, Al). Carbon can't reduce them.",
+        "tip": "Above carbon \u2192 need electrolysis. Very expensive but only way!"
+      }
+    },
+    {
+      "id": "q149",
+      "type": "fill_sentence",
+      "questionText": "What is the disadvantage of electrolysis?",
+      "answerText": "It requires a large amount of electrical energy and is expensive.",
+      "topic": "Extraction of Metals",
+      "source": "Reactivity of Metals",
+      "prompt": "What is the disadvantage of electrolysis?",
+      "correctAnswer": "It requires a large amount of electrical energy and is expensive.",
+      "requiredKeywords": [
+        "requires",
+        "large",
+        "amount"
+      ],
+      "explanation": {
+        "why": "Remember: It requires a large amount of electrical energy and is expensive",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q150",
+      "type": "fill_blank",
+      "questionText": "Define oxidation in terms of electrons.",
+      "answerText": "Loss of electrons.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Define oxidation in terms of electrons.",
+      "correctAnswer": "Loss of electrons.",
+      "acceptVariations": [
+        "Loss of electrons",
+        "loss of electrons.",
+        "Loss of electrons."
+      ],
+      "explanation": {
+        "why": "Oxidation means losing electrons. It's paired with reduction (gaining electrons) in redox reactions - they always happen together.",
+        "tip": "OILRIG: Oxidation Is Loss (of electrons). Example: Na \u2192 Na\u207a + e\u207b"
+      }
+    },
+    {
+      "id": "q151",
+      "type": "fill_blank",
+      "questionText": "Define reduction in terms of electrons.",
+      "answerText": "Gain of electrons.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Define reduction in terms of electrons.",
+      "correctAnswer": "Gain of electrons.",
+      "acceptVariations": [
+        "Gain of electrons",
+        "Gain of electrons.",
+        "gain of electrons."
+      ],
+      "explanation": {
+        "why": "Reduction means gaining electrons. It's paired with oxidation (losing electrons) in redox reactions - they always happen together.",
+        "tip": "OILRIG: Reduction Is Gain (of electrons). Example: Cl + e\u207b \u2192 Cl\u207b"
+      }
+    },
+    {
+      "id": "q152",
+      "type": "multiple_choice",
+      "questionText": "What is the easiest way to remember the meaning of oxidation and reduction?",
+      "answerText": "OILRIG (Oxidation Is Loss Reduction Is Gain)",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "What is the easiest way to remember the meaning of oxidation and reduction?",
+      "correctAnswer": "OILRIG (Oxidation Is Loss Reduction Is Gain)",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: OILRIG (Oxidation Is Loss Reduction Is Gain)",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q153",
+      "type": "multiple_choice",
+      "questionText": "What is a spectator ion?",
+      "answerText": "An ion that does not change in a reaction.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "What is a spectator ion?",
+      "correctAnswer": "An ion that does not change in a reaction.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Spectator ions don't change in the reaction - same charge and state on both sides. They just 'watch' without participating.",
+        "tip": "Spectator = doesn't change. Leave them out of ionic equations!"
+      }
+    },
+    {
+      "id": "q154",
+      "type": "fill_sentence",
+      "questionText": "How can a spectator ion be identified?",
+      "answerText": "It hasn't changed its state or its charge.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "How can a spectator ion be identified?",
+      "correctAnswer": "It hasn't changed its state or its charge.",
+      "requiredKeywords": [
+        "hasn",
+        "changed",
+        "its",
+        "state"
+      ],
+      "explanation": {
+        "why": "Spectator ions don't change in the reaction - same charge and state on both sides. They just 'watch' without participating.",
+        "tip": "Spectator = doesn't change. Leave them out of ionic equations!"
+      }
+    },
+    {
+      "id": "q155",
+      "type": "multiple_choice",
+      "questionText": "What is an ionic equation?",
+      "answerText": "A balanced equation that omits spectator ions.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "What is an ionic equation?",
+      "correctAnswer": "A balanced equation that omits spectator ions.",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Atoms are normally neutral (equal protons and electrons). When they lose or gain electrons, they become charged particles called ions.",
+        "tip": "Ion = charged atom. Lost e\u207b \u2192 positive, gained e\u207b \u2192 negative"
+      }
+    },
+    {
+      "id": "q156",
+      "type": "fill_sentence",
+      "questionText": "What are the steps required for working out an ionic equation?",
+      "answerText": "1. Use the periodic table and own knowledge to label the charges on the ions. 2. Identify and remove spectator ions.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "What are the steps required for working out an ionic equation?",
+      "correctAnswer": "1. Use the periodic table and own knowledge to label the charges on the ions. 2. Identify and remove spectator ions.",
+      "requiredKeywords": [
+        "use",
+        "periodic",
+        "table"
+      ],
+      "explanation": {
+        "why": "Remember: 1",
+        "tip": "Review this concept in your revision notes"
+      }
+    },
+    {
+      "id": "q157",
+      "type": "fill_sentence",
+      "questionText": "What charge do elements have?",
+      "answerText": "No charge, they are not ionic.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "What charge do elements have?",
+      "correctAnswer": "No charge, they are not ionic.",
+      "requiredKeywords": [
+        "charge",
+        "they",
+        "not",
+        "ionic"
+      ],
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: No charge, they are not ionic.",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q158",
+      "type": "word_bank",
+      "questionText": "Write an ionic equation for this reaction: Ca(s) + MgSO4(aq) \u2013> CaSO4(aq) + Mg(s)",
+      "answerText": "Ca(s) + Mg2+(aq) \u2013> Ca2+(aq) + Mg(s)",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Write an ionic equation for this reaction: Ca(s) + MgSO4(aq) \u2013> CaSO4(aq) + Mg(s)",
+      "correctAnswer": "Ca(s) + Mg2+(aq) \u2013> Ca2+(aq) + Mg(s)",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Ca(s) + Mg2+(aq) \u2013> Ca2+(aq) + Mg(s)",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q159",
+      "type": "word_bank",
+      "questionText": "Write an ionic equation for this reaction: Cl2(aq) + 2NaI(aq) \u2013> 2NaCl(aq) + I2(aq)",
+      "answerText": "Cl2(aq) + 2I-(aq) \u2013> 2Cl-(aq) + I2(aq)",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Write an ionic equation for this reaction: Cl2(aq) + 2NaI(aq) \u2013> 2NaCl(aq) + I2(aq)",
+      "correctAnswer": "Cl2(aq) + 2I-(aq) \u2013> 2Cl-(aq) + I2(aq)",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "This is an important GCSE chemistry concept: Cl2(aq) + 2I-(aq) \u2013> 2Cl-(aq) + I2(aq)",
+        "tip": "Make sure you understand this for your exam!"
+      }
+    },
+    {
+      "id": "q160",
+      "type": "fill_sentence",
+      "questionText": "What is a half equation?",
+      "answerText": "It shows us what happens to one of the reactants in an ionic equation.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "What is a half equation?",
+      "correctAnswer": "It shows us what happens to one of the reactants in an ionic equation.",
+      "requiredKeywords": [
+        "shows",
+        "what",
+        "happens"
+      ],
+      "explanation": {
+        "why": "Half equations show oxidation or reduction separately. Shows which species loses electrons (oxidation) or gains them (reduction).",
+        "tip": "Electrons on RIGHT (\u2192 e\u207b) = oxidation. Electrons on LEFT (e\u207b \u2192) = reduction"
+      }
+    },
+    {
+      "id": "q161",
+      "type": "multiple_choice",
+      "questionText": "What type of ions do metals form?",
+      "answerText": "Positive ions (cations).",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "What type of ions do metals form?",
+      "correctAnswer": "Positive ions (cations).",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Metals have few outer electrons and lose them easily. Losing negative electrons leaves more protons than electrons \u2192 positive charge.",
+        "tip": "Metals LOSE electrons \u2192 POSITIVE ions (left of periodic table)"
+      }
+    },
+    {
+      "id": "q162",
+      "type": "multiple_choice",
+      "questionText": "What type of ions do non-metals form?",
+      "answerText": "Negative ions (anions).",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "What type of ions do non-metals form?",
+      "correctAnswer": "Negative ions (anions).",
+      "requiresOptions": true,
+      "explanation": {
+        "why": "Metals have few outer electrons and lose them easily. Losing negative electrons leaves more protons than electrons \u2192 positive charge.",
+        "tip": "Metals LOSE electrons \u2192 POSITIVE ions (left of periodic table)"
+      }
+    },
+    {
+      "id": "q163",
+      "type": "fill_sentence",
+      "questionText": "Why do metals form positive ions?",
+      "answerText": "They lose their outer shell electrons.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Why do metals form positive ions?",
+      "correctAnswer": "They lose their outer shell electrons.",
+      "requiredKeywords": [
+        "they",
+        "lose",
+        "their",
+        "outer"
+      ],
+      "explanation": {
+        "why": "When atoms lose electrons (which are negative), there are more positive protons than negative electrons, making the ion positive overall.",
+        "tip": "Lose (\u2212) electrons \u2192 more (+) protons \u2192 positive ion"
+      }
+    },
+    {
+      "id": "q164",
+      "type": "word_bank",
+      "questionText": "Complete the half equation: _____ \u2013> Na+ + ____",
+      "answerText": "Na \u2013> Na+ + e-",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Complete the half equation: _____ \u2013> Na+ + ____",
+      "correctAnswer": "Na \u2013> Na+ + e-",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "Half equations show oxidation or reduction separately. Shows which species loses electrons (oxidation) or gains them (reduction).",
+        "tip": "Electrons on RIGHT (\u2192 e\u207b) = oxidation. Electrons on LEFT (e\u207b \u2192) = reduction"
+      }
+    },
+    {
+      "id": "q165",
+      "type": "word_bank",
+      "questionText": "Complete the half equation: _____ \u2013> Mg2+ + ____",
+      "answerText": "Mg \u2013> Mg2+ + 2e-",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Complete the half equation: _____ \u2013> Mg2+ + ____",
+      "correctAnswer": "Mg \u2013> Mg2+ + 2e-",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "Half equations show oxidation or reduction separately. Shows which species loses electrons (oxidation) or gains them (reduction).",
+        "tip": "Electrons on RIGHT (\u2192 e\u207b) = oxidation. Electrons on LEFT (e\u207b \u2192) = reduction"
+      }
+    },
+    {
+      "id": "q166",
+      "type": "word_bank",
+      "questionText": "Complete the half equation: _____ + ____ \u2013> Li",
+      "answerText": "Li+ + e- \u2013> Li",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Complete the half equation: _____ + ____ \u2013> Li",
+      "correctAnswer": "Li+ + e- \u2013> Li",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "Half equations show oxidation or reduction separately. Shows which species loses electrons (oxidation) or gains them (reduction).",
+        "tip": "Electrons on RIGHT (\u2192 e\u207b) = oxidation. Electrons on LEFT (e\u207b \u2192) = reduction"
+      }
+    },
+    {
+      "id": "q167",
+      "type": "word_bank",
+      "questionText": "Complete the half equation: _____ + ____ \u2013> Ca",
+      "answerText": "Ca2+ + 2e- \u2013> Ca",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Complete the half equation: _____ + ____ \u2013> Ca",
+      "correctAnswer": "Ca2+ + 2e- \u2013> Ca",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "Half equations show oxidation or reduction separately. Shows which species loses electrons (oxidation) or gains them (reduction).",
+        "tip": "Electrons on RIGHT (\u2192 e\u207b) = oxidation. Electrons on LEFT (e\u207b \u2192) = reduction"
+      }
+    },
+    {
+      "id": "q168",
+      "type": "word_bank",
+      "questionText": "Complete the half equation: _____ \u2013> Cl2 + ____",
+      "answerText": "2Cl- \u2013> Cl2 + 2e-",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Complete the half equation: _____ \u2013> Cl2 + ____",
+      "correctAnswer": "2Cl- \u2013> Cl2 + 2e-",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "Half equations show oxidation or reduction separately. Shows which species loses electrons (oxidation) or gains them (reduction).",
+        "tip": "Electrons on RIGHT (\u2192 e\u207b) = oxidation. Electrons on LEFT (e\u207b \u2192) = reduction"
+      }
+    },
+    {
+      "id": "q169",
+      "type": "word_bank",
+      "questionText": "Complete the half equation: _____ \u2013> O2 + ____",
+      "answerText": "2O2- \u2013> O2 + 4e-",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Complete the half equation: _____ \u2013> O2 + ____",
+      "correctAnswer": "2O2- \u2013> O2 + 4e-",
+      "requiresWordBank": true,
+      "explanation": {
+        "why": "Half equations show oxidation or reduction separately. Shows which species loses electrons (oxidation) or gains them (reduction).",
+        "tip": "Electrons on RIGHT (\u2192 e\u207b) = oxidation. Electrons on LEFT (e\u207b \u2192) = reduction"
+      }
+    },
+    {
+      "id": "q170",
+      "type": "fill_sentence",
+      "questionText": "Why is this equation oxidation, K \u2013> K+ + e-",
+      "answerText": "The potassium has lost 1 electron.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Why is this equation oxidation, K \u2013> K+ + e-",
+      "correctAnswer": "The potassium has lost 1 electron.",
+      "requiredKeywords": [
+        "potassium",
+        "has",
+        "lost",
+        "electron"
+      ],
+      "explanation": {
+        "why": "Oxidation means losing electrons. It's paired with reduction (gaining electrons) in redox reactions - they always happen together.",
+        "tip": "OILRIG: Oxidation Is Loss (of electrons). Example: Na \u2192 Na\u207a + e\u207b"
+      }
+    },
+    {
+      "id": "q171",
+      "type": "fill_sentence",
+      "questionText": "Why is this equation oxidation, Be \u2013> Be2+ + 2e-?",
+      "answerText": "The beryllium has lost 2 electrons.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Why is this equation oxidation, Be \u2013> Be2+ + 2e-?",
+      "correctAnswer": "The beryllium has lost 2 electrons.",
+      "requiredKeywords": [
+        "beryllium",
+        "has",
+        "lost",
+        "electrons"
+      ],
+      "explanation": {
+        "why": "Oxidation means losing electrons. It's paired with reduction (gaining electrons) in redox reactions - they always happen together.",
+        "tip": "OILRIG: Oxidation Is Loss (of electrons). Example: Na \u2192 Na\u207a + e\u207b"
+      }
+    },
+    {
+      "id": "q172",
+      "type": "fill_sentence",
+      "questionText": "Why is this equation reduction, Rb+ + e- \u2013> Rb",
+      "answerText": "The rubidium has gained 1 electron.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Why is this equation reduction, Rb+ + e- \u2013> Rb",
+      "correctAnswer": "The rubidium has gained 1 electron.",
+      "requiredKeywords": [
+        "rubidium",
+        "has",
+        "gained",
+        "electron"
+      ],
+      "explanation": {
+        "why": "Reduction means gaining electrons. It's paired with oxidation (losing electrons) in redox reactions - they always happen together.",
+        "tip": "OILRIG: Reduction Is Gain (of electrons). Example: Cl + e\u207b \u2192 Cl\u207b"
+      }
+    },
+    {
+      "id": "q173",
+      "type": "fill_sentence",
+      "questionText": "Why is this equation reduction, Sr2+ + 2e- \u2013> Sr",
+      "answerText": "The strontium has gained 2 electrons.",
+      "topic": "Redox",
+      "source": "Reactivity of Metals",
+      "prompt": "Why is this equation reduction, Sr2+ + 2e- \u2013> Sr",
+      "correctAnswer": "The strontium has gained 2 electrons.",
+      "requiredKeywords": [
+        "strontium",
+        "has",
+        "gained",
+        "electrons"
+      ],
+      "explanation": {
+        "why": "Reduction means gaining electrons. It's paired with oxidation (losing electrons) in redox reactions - they always happen together.",
+        "tip": "OILRIG: Reduction Is Gain (of electrons). Example: Cl + e\u207b \u2192 Cl\u207b"
+      }
+    }
   ]
 }
