@@ -38,13 +38,10 @@
     },
     {
       "id": "reactivity-linked-to-electrons",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "More reactive metals lose electrons _______ easily.",
-      "correctAnswers": ["more"],
-      "rejectFeedback": {
-        "less": "Actually, it's the opposite! More reactive metals lose electrons MORE easily.",
-        "harder": "Not quite - think about what 'more reactive' means for electron loss."
-      },
+      "options": ["more", "less", "equally", "never"],
+      "correctAnswer": "more",
       "feedback": {
         "correct": "Exactly right! Reactivity is all about how easily a metal gives up electrons.",
         "incorrect": "Hint: More reactive means it's easier for the metal to react, so..."
@@ -107,9 +104,10 @@
     },
     {
       "id": "group1-products-with-water",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "When Group 1 metals react with water, they produce a metal hydroxide and which gas?",
-      "correctAnswers": ["hydrogen", "hydrogen gas", "H2"],
+      "options": ["Hydrogen", "Oxygen", "Carbon dioxide", "Chlorine"],
+      "correctAnswer": "Hydrogen",
       "feedback": {
         "correct": "Correct! Group 1 + water → metal hydroxide + hydrogen.",
         "incorrect": "Hint: Think about the gas you can test with a lit splint (squeaky pop)."
@@ -237,9 +235,15 @@
     },
     {
       "id": "why-group1-more-reactive-down",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "Why do Group 1 metals become more reactive going down the group?",
-      "correctAnswers": ["outer electron is further from nucleus", "outer electron further from nucleus", "electron shielding increases", "more electron shells"],
+      "options": [
+        "Outer electron is further from nucleus",
+        "Outer electron is closer to nucleus",
+        "Atoms get smaller",
+        "Fewer electron shells"
+      ],
+      "correctAnswer": "Outer electron is further from nucleus",
       "feedback": {
         "correct": "Excellent understanding of electron structure!",
         "incorrect": "Hint: Think about distance from the nucleus and how many electron shells there are."
@@ -438,9 +442,10 @@
     },
     {
       "id": "reduction-extraction-definition",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "In metal extraction, reduction means the ore _______ oxygen.",
-      "correctAnswers": ["loses", "loss of"],
+      "options": ["loses", "gains", "shares", "transfers"],
+      "correctAnswer": "loses",
       "feedback": {
         "correct": "Yes! Reduction = loss of oxygen (in oxygen-transfer terms).",
         "incorrect": "Hint: OIL RIG helps with electrons, but for oxygen-transfer: reduction removes oxygen."
@@ -454,9 +459,15 @@
     },
     {
       "id": "why-carbon-used-in-reduction",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "Why is carbon used in reduction of metal ores?",
-      "correctAnswers": ["it's cheaper than electrolysis", "cheaper", "less expensive", "more cost effective"],
+      "options": [
+        "It's cheaper than electrolysis",
+        "It's more reactive than all metals",
+        "It produces pure oxygen",
+        "It's the only method that works"
+      ],
+      "correctAnswer": "It's cheaper than electrolysis",
       "feedback": {
         "correct": "Exactly! Carbon reduction is much cheaper than electrolysis.",
         "incorrect": "Hint: Think about cost - is heating with carbon cheap or expensive?"
@@ -486,9 +497,15 @@
     },
     {
       "id": "when-electrolysis-used-for-extraction",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "When is electrolysis used to extract metals?",
-      "correctAnswers": ["when metal is more reactive than carbon", "for metals more reactive than carbon", "metals above carbon"],
+      "options": [
+        "For metals more reactive than carbon",
+        "For metals less reactive than carbon",
+        "For all metals",
+        "Only for copper and zinc"
+      ],
+      "correctAnswer": "For metals more reactive than carbon",
       "feedback": {
         "correct": "Spot on! Carbon can't reduce more reactive metals.",
         "incorrect": "Hint: Which metals can't be extracted using carbon?"
@@ -502,9 +519,15 @@
     },
     {
       "id": "electrolysis-disadvantage",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "What is the main disadvantage of electrolysis for metal extraction?",
-      "correctAnswers": ["expensive", "high cost", "uses a lot of energy", "energy intensive"],
+      "options": [
+        "It's very expensive",
+        "It's too fast",
+        "It produces impure metals",
+        "It only works in sunlight"
+      ],
+      "correctAnswer": "It's very expensive",
       "feedback": {
         "correct": "Yes! Electrolysis needs lots of electrical energy.",
         "incorrect": "Hint: Think about the energy costs."
@@ -518,9 +541,15 @@
     },
     {
       "id": "alumina-cryolite-why",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "Why is cryolite added to aluminium oxide in aluminium extraction?",
-      "correctAnswers": ["to lower the melting point", "lowers melting point", "reduce melting point", "lower the temperature"],
+      "options": [
+        "To lower the melting point",
+        "To increase electrical conductivity",
+        "To make it dissolve in water",
+        "To speed up the reaction"
+      ],
+      "correctAnswer": "To lower the melting point",
       "feedback": {
         "correct": "Perfect! This saves energy and cost.",
         "incorrect": "Hint: Pure aluminium oxide melts at over 2000°C - how can we make this cheaper?"
@@ -553,9 +582,15 @@
     },
     {
       "id": "why-carbon-anode-replaced",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "Why must the carbon anode be regularly replaced in aluminium extraction?",
-      "correctAnswers": ["it reacts with oxygen", "oxygen burns it away", "it burns in oxygen", "reacts with oxygen to form carbon dioxide"],
+      "options": [
+        "It reacts with oxygen and burns away",
+        "It gets coated with aluminium",
+        "It dissolves in the molten mixture",
+        "It becomes too cold"
+      ],
+      "correctAnswer": "It reacts with oxygen and burns away",
       "feedback": {
         "correct": "Exactly! The oxygen produced reacts with the carbon anode.",
         "incorrect": "Hint: What happens when carbon (from the anode) meets oxygen (produced at the anode)?"
@@ -585,12 +620,10 @@
     },
     {
       "id": "oxidation-as-gain-oxygen",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "In oxygen-transfer reactions, oxidation means _______ of oxygen.",
-      "correctAnswers": ["gain", "gaining"],
-      "rejectFeedback": {
-        "loss": "Not for oxygen-transfer! Oxidation = GAIN of oxygen. (You might be thinking of electron-transfer where oxidation = LOSS of electrons.)"
-      },
+      "options": ["gain", "loss", "transfer", "sharing"],
+      "correctAnswer": "gain",
       "feedback": {
         "correct": "Yes! Oxidation (oxygen-transfer) = gain of oxygen.",
         "incorrect": "Hint: When something is oxidised, it combines with oxygen."
@@ -604,12 +637,10 @@
     },
     {
       "id": "oxidation-electrons-definition",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "In electron-transfer reactions, oxidation means _______ of electrons.",
-      "correctAnswers": ["loss", "losing"],
-      "rejectFeedback": {
-        "gain": "Not for electrons! Oxidation = LOSS of electrons. Remember OIL RIG: Oxidation Is Loss."
-      },
+      "options": ["loss", "gain", "sharing", "neutral"],
+      "correctAnswer": "loss",
       "feedback": {
         "correct": "Perfect! OIL: Oxidation Is Loss (of electrons).",
         "incorrect": "Hint: Remember OIL RIG - what does OIL stand for?"
@@ -623,12 +654,10 @@
     },
     {
       "id": "reduction-electrons-definition",
-      "type": "short_text_exact",
+      "type": "single_choice",
       "prompt": "In electron-transfer reactions, reduction means _______ of electrons.",
-      "correctAnswers": ["gain", "gaining"],
-      "rejectFeedback": {
-        "loss": "Not for electrons! Reduction = GAIN of electrons. Remember OIL RIG: Reduction Is Gain."
-      },
+      "options": ["gain", "loss", "sharing", "transfer"],
+      "correctAnswer": "gain",
       "feedback": {
         "correct": "Perfect! RIG: Reduction Is Gain (of electrons).",
         "incorrect": "Hint: Remember OIL RIG - what does RIG stand for?"
