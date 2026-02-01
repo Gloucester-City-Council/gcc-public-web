@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "scope": "Reactivity Rush strict marking approved aliases",
+  "elements": [
+    { "name": "potassium", "symbol": "K", "aliases": ["Potassium", "k"] },
+    { "name": "sodium", "symbol": "Na", "aliases": ["Sodium", "na"] },
+    { "name": "lithium", "symbol": "Li", "aliases": ["Lithium", "li"] },
+    { "name": "calcium", "symbol": "Ca", "aliases": ["Calcium", "ca"] },
+    { "name": "magnesium", "symbol": "Mg", "aliases": ["Magnesium", "mg"] },
+    { "name": "carbon", "symbol": "C", "aliases": ["Carbon", "c"] },
+    { "name": "zinc", "symbol": "Zn", "aliases": ["Zinc", "zn"] },
+    { "name": "iron", "symbol": "Fe", "aliases": ["Iron", "fe"] },
+    { "name": "hydrogen", "symbol": "H", "aliases": ["Hydrogen", "h"] },
+    { "name": "copper", "symbol": "Cu", "aliases": ["Copper", "cu"] },
+    { "name": "silver", "symbol": "Ag", "aliases": ["Silver", "ag"] },
+    { "name": "gold", "symbol": "Au", "aliases": ["Gold", "au"] },
+    { "name": "aluminium", "symbol": "Al", "aliases": ["Aluminium", "al", "aluminum", "Aluminum"] },
+    { "name": "oxygen", "symbol": "O", "aliases": ["Oxygen", "o"] }
+  ],
+  "spellingVariants": [
+    { "preferredUK": "aluminium", "allowed": ["aluminum"] },
+    { "preferredUK": "sulfuric acid", "allowed": ["sulphuric acid"] },
+    { "preferredUK": "crystalise", "allowed": ["crystallise", "crystallize", "crystalize"] }
+  ],
+  "abbreviations": [
+    { "term": "OILRIG", "expandsTo": "Oxidation Is Loss Reduction Is Gain" }
+  ]
+}
