@@ -14,30 +14,67 @@
   <!-- Skip link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Header -->
-  <header>
-    <div class="header-container">
-      <a href="/" class="logo">Gloucester City Council</a>
+  <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <div class="header-top">
+                <a href="/" class="logo-link" aria-label="Gloucester City Council homepage">
+                    <img src="/assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="site-logo"
+                         width="250"
+                         height="70">
+                </a>
 
-      <nav aria-label="Primary navigation" class="primary-nav">
-        <a href="/licensing/taxis/index.html">Home</a>
-        <a href="/licensing/taxis/drivers">Drivers</a>
-        <a href="/licensing/taxis/vehicles">Vehicles</a>
-        <a href="/licensing/taxis/operators" aria-current="page">Operators</a>
-        <a href="/licensing/taxis/information">Information</a>
-      </nav>
+                <div class="search-wrapper">
+                    <form class="search-form" role="search">
+                        <label for="search-input" class="sr-only">Search the website</label>
+                        <input
+                            type="search"
+                            id="search-input"
+                            name="q"
+                            class="search-input"
+                            placeholder="Search..."
+                            aria-label="Search the website"
+                            aria-controls="search-results"
+                            aria-expanded="false"
+                            aria-autocomplete="list"
+                            autocomplete="off"
+                        >
+                        <button type="submit" class="search-button">
+                            <span>Search</span>
+                        </button>
+                    </form>
+                    <div
+                        id="search-results"
+                        class="search-results"
+                        role="region"
+                        aria-label="Search results"
+                        aria-live="polite"
+                        hidden
+                    ></div>
+                </div>
+            </div>
+        </div>
 
-      <button class="mobile-menu-button" aria-expanded="false">☰ Menu</button>
-    </div>
+        <!-- Welcome Banner -->
+        <h1 class="welcome-banner">
+            Operator Licences
+        </h1>
+    </header>
 
-    <nav aria-label="Mobile navigation" class="mobile-nav">
-      <a href="/licensing/taxis/index.html">Home</a>
-      <a href="/licensing/taxis/drivers">Drivers</a>
-      <a href="/licensing/taxis/vehicles">Vehicles</a>
-      <a href="/licensing/taxis/operators" aria-current="page">Operators</a>
-      <a href="/licensing/taxis/information">Information</a>
+    <!-- MAIN NAV -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <button class="menu-toggle" aria-expanded="false">Menu</button>
+            <ul class="nav-list">
+                <li><a href="/contact">Contact us</a></li>
+                <li><a href="https://gloucester-self.achieveservice.com/">My Gloucester</a></li>
+                <li><a href="/news">News</a></li>
+                <li><a href="https://public.govdelivery.com/accounts/UKGCCA/subscriber/new">Subscribe</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
   <!-- Breadcrumbs -->
   <nav aria-label="Breadcrumbs" class="breadcrumbs">
@@ -348,43 +385,54 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="mailto:licensing@gloucester.gov.uk">Contact licensing team</a></li>
-          <li><a href="information.html#contact">Make a complaint</a></li>
-          <li><a href="https://gloucester-self.achieveservice.com/">Apply online</a></li>
-          <li><a href="information.html#public-register">Check licence status</a></li>
-        </ul>
-      </div>
+  <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
 
-      <div class="footer-section">
-        <h3>Related Services</h3>
-        <ul>
-          <li><a href="/planning">Planning permission</a></li>
-          <li><a href="/business-rates">Business rates</a></li>
-          <li><a href="/parking">Parking</a></li>
-          <li><a href="/licensing/street-trading">Street trading</a></li>
-        </ul>
-      </div>
+            <div class="footer-grid">
 
-      <div class="footer-section">
-        <h3>Legal</h3>
-        <ul>
-          <li><a href="/privacy">Privacy policy</a></li>
-          <li><a href="/accessibility">Accessibility statement</a></li>
-          <li><a href="/terms">Terms and conditions</a></li>
-        </ul>
-      </div>
+                <div class="footer-section">
+                    <img src="/assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="footer-logo">
+                </div>
 
-      <div class="footer-copyright">
-        &copy; 2025 Gloucester City Council. All rights reserved.
-      </div>
-    </div>
-  </footer>
+                <div class="footer-section">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/licensing/taxis/drivers">Driver licences</a></li>
+                        <li><a href="/licensing/taxis/vehicles">Vehicle licences</a></li>
+                        <li><a href="/licensing/taxis/operators">Operator licences</a></li>
+                        <li><a href="/licensing/taxis/information">Information & FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Gloucester</h3>
+                    <ul class="footer-links">
+                        <li><a href="http://visitgloucester.co.uk/">Visit Gloucester</a></li>
+                        <li><a href="/find-councillor">Find your councillor</a></li>
+                        <li><a href="/jobs">Jobs & careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Using our site</h3>
+                    <ul class="footer-links">
+                        <li><a href="/privacy">Privacy & cookies</a></li>
+                        <li><a href="/accessibility">Accessibility</a></li>
+                        <li><a href="/contact">Contact us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Gloucester City Council. All rights reserved.</p>
+                <p>Registered office: Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</p>
+            </div>
+        </div>
+    </footer>
 
   <script src="/assets/js/config.js"></script>
     <script src="/assets/js/main.js"></script>
