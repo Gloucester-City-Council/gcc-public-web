@@ -1,0 +1,15 @@
+{
+  "schemas": [
+    {
+      "schema_id": "taxi-licensing",
+      "file": "taxi_licensing_schema_v1.1.json",
+      "version": "1.1.0",
+      "hash": "9152c66d",
+      "last_updated": "2025-02-03T00:00:00Z",
+      "author": "transformation@gloucester.gov.uk",
+      "change_summary": "Schema v1.1: Added online_forms section, enhanced contact_points, added implementation_checklist"
+    }
+  ],
+  "index_version": "1.0.0",
+  "index_updated": "2026-02-03T08:23:40.254116Z"
+}

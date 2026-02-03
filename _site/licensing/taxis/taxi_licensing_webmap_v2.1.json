@@ -1,0 +1,991 @@
+{
+  "webmap_metadata": {
+    "version": "2.1.0",
+    "created": "2025-02-02",
+    "updated": "2025-02-02",
+    "service": "taxi-licensing",
+    "service_schema_reference": "taxi_licensing_schema.json v1.0.0",
+    "site_purpose": "Enable taxi and private hire drivers, vehicle owners, and operators to understand requirements and complete licensing processes online",
+    "coverage": "95% of schema - all user-facing content plus transparency/governance sections",
+    "design_principles": [
+      "Mobile-first (70%+ mobile traffic expected)",
+      "Task-based not org-chart-based structure",
+      "Progressive disclosure - simple to complex",
+      "Plain English - assume ESL users",
+      "Visual communication - photos, diagrams, icons",
+      "2 clicks maximum to any task",
+      "Single source of truth - all content from schema",
+      "Transparency by default - GDPR, safeguarding, accountability"
+    ]
+  },
+  "site_structure": {
+    "total_pages": 5,
+    "navigation_model": "hub and spoke",
+    "max_depth": 2,
+    "pages": [
+      {
+        "page_id": "landing",
+        "url": "/licensing/taxis",
+        "title": "Taxi and Private Hire Licensing",
+        "purpose": "Fast triage to correct journey",
+        "target_time": "30 seconds",
+        "schema_coverage": [
+          "package_identity",
+          "service_overview",
+          "licence_types (overview)",
+          "key_differences"
+        ]
+      },
+      {
+        "page_id": "drivers",
+        "url": "/licensing/taxis/drivers",
+        "title": "Driver Licences - New Applications and Renewals",
+        "purpose": "Complete driver licensing journey with safeguarding and conduct guidance",
+        "target_time": "5-10 minutes",
+        "schema_coverage": [
+          "application_processes.driver_licence_new_application (COMPLETE)",
+          "application_processes.driver_licence_renewal",
+          "licence_types (driver types)",
+          "fit_and_proper_person_test",
+          "convictions_policy",
+          "safeguarding (NEW in v2)",
+          "driver_conduct (NEW in v2 - FAQ format)"
+        ]
+      },
+      {
+        "page_id": "vehicles",
+        "url": "/licensing/taxis/vehicles",
+        "title": "Vehicle Licences - Hackney Carriage and Private Hire",
+        "purpose": "License vehicles for taxi/PHV work",
+        "target_time": "3-5 minutes",
+        "schema_coverage": [
+          "application_processes.vehicle_licence_* (all types)",
+          "vehicle_standards",
+          "key_differences",
+          "hackney_carriage_fares (reference only)"
+        ]
+      },
+      {
+        "page_id": "operators",
+        "url": "/licensing/taxis/operators",
+        "title": "Private Hire Operator Licences",
+        "purpose": "License private hire booking businesses",
+        "target_time": "3-5 minutes",
+        "schema_coverage": [
+          "licence_types.private_hire_operator",
+          "application_processes.operator_licence",
+          "related_services (NEW in v2 - planning permission)"
+        ]
+      },
+      {
+        "page_id": "information",
+        "url": "/licensing/taxis/information",
+        "title": "FAQs, Policies and Information",
+        "purpose": "Deep dive content, policies, tools, transparency",
+        "target_time": "Variable - reference",
+        "schema_coverage": [
+          "faqs_and_common_scenarios (ALL)",
+          "convictions_policy (interactive tool)",
+          "legal_framework (ALL)",
+          "fees_and_charges",
+          "hackney_carriage_fares (NEW in v2 - full tariff display)",
+          "taxi_ranks",
+          "enforcement",
+          "data_protection_and_information_governance (NEW in v2)",
+          "fit_and_proper_person_test (NEW in v2 - full explanation)",
+          "service_delivery.contact_points",
+          "related_services (NEW in v2)"
+        ]
+      }
+    ]
+  },
+  "schema_to_page_mapping": {
+    "landing_page": {
+      "hero": {
+        "schema": "package_identity + service_overview.what_is_taxi_licensing",
+        "components": [
+          "Hero",
+          "StatusAlert"
+        ]
+      },
+      "journey_cards": {
+        "schema": "licence_types (overview summaries)",
+        "components": [
+          "CardGrid with 4 journey cards"
+        ]
+      },
+      "quick_links": {
+        "schema": "service_delivery.operational_guidance.contact_points + application_processes",
+        "components": [
+          "QuickLinks list"
+        ]
+      },
+      "key_differences": {
+        "schema": "key_differences.hackney_carriage_vs_private_hire",
+        "components": [
+          "Expandable comparison table"
+        ]
+      },
+      "related_services": {
+        "schema": "related_services (NEW v2)",
+        "components": [
+          "Related services footer links"
+        ]
+      }
+    },
+    "drivers_page": {
+      "page_header": {
+        "schema": "package_identity",
+        "components": [
+          "PageHeader"
+        ]
+      },
+      "tab_switcher": {
+        "schema": "N/A - UX pattern",
+        "components": [
+          "TabSwitcher (New vs Renewal)"
+        ]
+      },
+      "new_application": {
+        "summary_cards": {
+          "schema": "application_processes.driver_licence_new_application.eligibility_requirements + total_typical_costs + timeframe_estimate",
+          "components": [
+            "SummaryCards (3 cards: eligibility, cost, timeline)"
+          ]
+        },
+        "interactive_checklist": {
+          "schema": "application_processes.driver_licence_new_application.process_steps (COMPLETE - all 12 steps)",
+          "components": [
+            "InteractiveChecklist with progress tracking, printable"
+          ],
+          "features": [
+            "Checkbox for each step",
+            "Expandable detail per step",
+            "Cost badges",
+            "Direct booking links",
+            "Progress bar",
+            "LocalStorage persistence",
+            "Print/email options"
+          ]
+        },
+        "dual_licence_explainer": {
+          "schema": "licence_types.hackney_carriage_driver + licence_types.private_hire_driver + key_differences",
+          "components": [
+            "InfoPanel with comparison table"
+          ]
+        },
+        "conviction_warning": {
+          "schema": "convictions_policy.notification_requirement",
+          "components": [
+            "Alert box linking to conviction checker"
+          ]
+        },
+        "safeguarding_section": {
+          "schema": "safeguarding (NEW v2 - COMPLETE)",
+          "components": [
+            "Expandable section with subsections"
+          ],
+          "subsections": [
+            "What to look for (CSE, trafficking, abuse, Prevent)",
+            "How to report (emergency, child, adult, licensing)",
+            "DBS checks explained",
+            "Update Service requirement",
+            "Whistleblowing protection"
+          ]
+        },
+        "cta": {
+          "schema": "online_forms.driver_application.new_application_url",
+          "components": [
+            "CTA buttons (primary + secondary)"
+          ]
+        }
+      },
+      "renewal": {
+        "renewal_alert": {
+          "schema": "application_processes.driver_licence_renewal.when",
+          "components": [
+            "Warning alert - renew before expiry"
+          ]
+        },
+        "requirements": {
+          "schema": "application_processes.driver_licence_renewal.requirements (COMPLETE)",
+          "components": [
+            "RequirementsList with expandable cards"
+          ],
+          "items": [
+            "Medical certificate",
+            "DBS Update Service check",
+            "DVLA check",
+            "Tax check",
+            "Conviction disclosure"
+          ]
+        },
+        "conviction_reminder": {
+          "schema": "convictions_policy.notification_requirement",
+          "components": [
+            "Danger alert - 48 hour disclosure rule"
+          ]
+        },
+        "cta": {
+          "schema": "online_forms.driver_application.renewal_url",
+          "components": [
+            "Primary CTA button"
+          ]
+        }
+      },
+      "downloads": {
+        "schema": "legal_framework.local_policies (driver rule books + forms)",
+        "components": [
+          "DocumentLibrary"
+        ],
+        "documents": [
+          "Hackney Carriage Driver Rule Book",
+          "Private Hire Driver Rule Book",
+          "Medical Examination Form",
+          "Conviction Notification Form",
+          "Guidance for New Applicants"
+        ]
+      },
+      "faqs": {
+        "schema": "faqs_and_common_scenarios (driver-related) + driver_conduct (NEW v2 - highlights)",
+        "components": [
+          "FAQAccordion with categories"
+        ],
+        "categories": [
+          "Getting licensed (4 FAQs)",
+          "Working as driver (NEW v2 - 6 conduct FAQs including badge, smoking, phone, lost property, HC rules, PH rules)"
+        ]
+      }
+    },
+    "vehicles_page": {
+      "page_header": {
+        "schema": "package_identity",
+        "components": [
+          "PageHeader"
+        ]
+      },
+      "decision_helper": {
+        "schema": "key_differences.hackney_carriage_vs_private_hire",
+        "components": [
+          "ComparisonCards HC vs PH"
+        ],
+        "features": [
+          "Visual icons",
+          "Critical difference warning"
+        ]
+      },
+      "application_type_tabs": {
+        "schema": "application_processes (vehicle types)",
+        "components": [
+          "TabSwitcher (New, Renewal, Change, Transfer)"
+        ]
+      },
+      "new_vehicle": {
+        "vehicle_type_toggle": {
+          "schema": "N/A - UX pattern",
+          "components": [
+            "Toggle (HC vs PH)"
+          ]
+        },
+        "hc_requirements": {
+          "schema": "application_processes.vehicle_licence_new_application.hackney_carriage (COMPLETE)",
+          "components": [
+            "RequirementsPanel"
+          ],
+          "highlights": [
+            "Wheelchair accessibility (NEW HC must be WAV)",
+            "Mandatory equipment",
+            "Grandfather rights",
+            "Age limits"
+          ]
+        },
+        "ph_requirements": {
+          "schema": "application_processes.vehicle_licence_new_application.private_hire (COMPLETE)",
+          "components": [
+            "RequirementsPanel"
+          ],
+          "highlights": [
+            "Yellow plates",
+            "Pre-booking stickers",
+            "Prohibited signage",
+            "Optional taximeter"
+          ]
+        },
+        "visual_guide": {
+          "schema": "vehicle_standards.signage_and_plates",
+          "components": [
+            "VisualGuide with images"
+          ],
+          "images": [
+            "HC plate example",
+            "PH yellow plate example",
+            "Pre-booking sticker example"
+          ]
+        },
+        "process_steps": {
+          "schema": "application_processes.vehicle_licence_new_application.hackney_carriage.application_steps",
+          "components": [
+            "ProcessSteps numbered accordion"
+          ]
+        },
+        "testing_stations": {
+          "schema": "application_processes.vehicle_licence_new_application.approved_testing_stations",
+          "components": [
+            "LocationList (expandable with map if data available)"
+          ]
+        }
+      },
+      "renewal": {
+        "schema": "application_processes.vehicle_licence_renewal",
+        "components": [
+          "InfoPanel with requirements and age threshold note"
+        ]
+      },
+      "change": {
+        "schema": "application_processes.change_of_vehicle",
+        "components": [
+          "InfoPanel with cost (\u00a368) highlighted"
+        ]
+      },
+      "transfer": {
+        "schema": "application_processes.transfer_of_ownership",
+        "components": [
+          "InfoPanel with cost (\u00a351) and requirements"
+        ]
+      },
+      "cta": {
+        "schema": "online_forms.vehicle_application.new_application_url",
+        "components": [
+          "CTA buttons + links to fees and rule books"
+        ]
+      }
+    },
+    "operators_page": {
+      "page_header": {
+        "schema": "package_identity",
+        "components": [
+          "PageHeader"
+        ]
+      },
+      "definition": {
+        "schema": "licence_types.private_hire_operator.definition",
+        "components": [
+          "DefinitionPanel with examples"
+        ]
+      },
+      "do_i_need": {
+        "schema": "licence_types.private_hire_operator (implied)",
+        "components": [
+          "DecisionHelper YES/NO cards"
+        ]
+      },
+      "requirements": {
+        "schema": "application_processes.operator_licence.requirements",
+        "components": [
+          "RequirementsList with icons"
+        ],
+        "items": [
+          "Operating base in Gloucester",
+          "Planning permission",
+          "Insurance",
+          "Record keeping",
+          "Only use Gloucester-licensed drivers/vehicles"
+        ]
+      },
+      "planning_alert": {
+        "schema": "application_processes.operator_licence.requirements.operating_base.planning",
+        "components": [
+          "Warning alert with link to planning guidance"
+        ]
+      },
+      "duration_selector": {
+        "schema": "licence_types.private_hire_operator.duration_options",
+        "components": [
+          "OptionCards (1 year vs 5 year)"
+        ]
+      },
+      "fee_structure": {
+        "schema": "licence_types.private_hire_operator.fee_structure",
+        "components": [
+          "InfoPanel with note on fleet-based fees"
+        ]
+      },
+      "process": {
+        "schema": "application_processes.operator_licence (process not explicitly in schema - derived from requirements)",
+        "components": [
+          "ProcessSteps (5 steps)"
+        ]
+      },
+      "responsibilities": {
+        "schema": "licence_types.private_hire_operator.responsibilities",
+        "components": [
+          "ResponsibilitiesChecklist with icons"
+        ]
+      },
+      "record_keeping": {
+        "schema": "licence_types.private_hire_operator.record_keeping",
+        "components": [
+          "ExpandableDetail"
+        ]
+      },
+      "related_services": {
+        "schema": "related_services (NEW v2 - planning + business rates)",
+        "components": [
+          "RelatedServicesBox"
+        ],
+        "services": [
+          "Planning Permission (critical for operators)",
+          "Business Rates"
+        ]
+      },
+      "cta": {
+        "schema": "online_forms.operator_application.application_url",
+        "components": [
+          "CTA button + document links"
+        ]
+      }
+    },
+    "information_page": {
+      "page_header": {
+        "schema": "package_identity",
+        "components": [
+          "PageHeader"
+        ]
+      },
+      "search": {
+        "schema": "N/A - UX feature",
+        "components": [
+          "SearchBox (searches FAQs, policies, legislation)"
+        ]
+      },
+      "faqs": {
+        "schema": "faqs_and_common_scenarios (ALL 11 base FAQs) + driver_conduct (highlights)",
+        "components": [
+          "CategorizedFAQs with expandable accordion"
+        ],
+        "categories": [
+          "Getting licensed (4 FAQs)",
+          "Working as driver (6 conduct FAQs - NEW v2)",
+          "Vehicles (1 FAQ - grandfather rights)",
+          "If things go wrong (1 FAQ - expired licence)"
+        ]
+      },
+      "conviction_checker": {
+        "schema": "convictions_policy (COMPLETE - interactive tool)",
+        "components": [
+          "InteractiveTool with form and results panel"
+        ],
+        "functionality": [
+          "Dropdown: offence type",
+          "Date input: sentence completion",
+          "Calculate time elapsed vs policy minimum",
+          "Display: likelihood (likely/unclear/unlikely)",
+          "Display: time period from policy",
+          "Display: assessment text",
+          "Display: next steps",
+          "Link to full policy"
+        ]
+      },
+      "fit_and_proper_test": {
+        "schema": "fit_and_proper_person_test (NEW v2 - full explanation)",
+        "components": [
+          "FAQ in accordion"
+        ],
+        "content": [
+          "Legal basis",
+          "Test question (the famous question)",
+          "Burden of proof",
+          "What we consider (6 factors summary)",
+          "Ongoing requirement",
+          "Review triggers"
+        ]
+      },
+      "fees": {
+        "schema": "fees_and_charges",
+        "components": [
+          "FeeTable (sortable, filterable)"
+        ],
+        "columns": [
+          "Licence type",
+          "Fee",
+          "Duration"
+        ],
+        "note": "Fees reviewed annually, non-refundable"
+      },
+      "fares": {
+        "schema": "hackney_carriage_fares (NEW v2 - COMPLETE)",
+        "components": [
+          "FareInformation section"
+        ],
+        "subsections": [
+          "Current tariff display (flag fall, distance, time, extras)",
+          "Fare calculator (optional - distance, passengers, time of day)",
+          "Important notes (cannot exceed, can charge less, Christmas rates)",
+          "Link to full tariff PDF"
+        ]
+      },
+      "policies": {
+        "schema": "legal_framework.local_policies (ALL)",
+        "components": [
+          "DocumentLibrary with categories"
+        ],
+        "categories": [
+          "Driver rule books (HC, PH)",
+          "Vehicle rule books (HC, PH)",
+          "Operator documents (PHO rule book)",
+          "Standards and policies (Common Standards, Regulatory Guidelines)",
+          "Fare information (Tariff card)"
+        ]
+      },
+      "legislation": {
+        "schema": "legal_framework (primary + supporting + government guidance)",
+        "components": [
+          "ReferenceSection with accordions"
+        ],
+        "sections": [
+          "Primary legislation (Town Police Clauses Act 1847, LG(MP)A 1976)",
+          "Supporting legislation (Equality Act, Immigration Act, etc)",
+          "Government guidance (Statutory Standards, Best Practice)"
+        ]
+      },
+      "testing_stations": {
+        "schema": "application_processes.vehicle_licence_new_application.approved_testing_stations.current_list",
+        "components": [
+          "LocationDirectory (list with addresses, map view if data)"
+        ]
+      },
+      "training_providers": {
+        "schema": "application_processes.driver_licence_new_application.process_steps (driving assessment providers) + safeguarding.mandatory_training",
+        "components": [
+          "ProviderDirectory with sections"
+        ],
+        "sections": [
+          "Driving assessment providers (Diamond, Blue Lamp, Green Penny)",
+          "Safeguarding training (check website for dates)"
+        ]
+      },
+      "taxi_ranks": {
+        "schema": "taxi_ranks",
+        "components": [
+          "LocationMap with rules"
+        ],
+        "features": [
+          "Interactive map (if locations data available)",
+          "Bay capacities",
+          "Operating times",
+          "Usage rules (HC only, queuing, prohibited for PH)"
+        ]
+      },
+      "public_register": {
+        "schema": "External API (referenced in transparency)",
+        "components": [
+          "SearchTool with tabs"
+        ],
+        "search_types": [
+          "Drivers (by name or licence number)",
+          "Vehicles (by registration or licence number)",
+          "Operators (by company name)"
+        ]
+      },
+      "enforcement": {
+        "schema": "enforcement (overview)",
+        "components": [
+          "InfoSection"
+        ],
+        "sections": [
+          "Compliance checks",
+          "Suspension and revocation",
+          "Penalty points system"
+        ]
+      },
+      "data_protection": {
+        "schema": "data_protection_and_information_governance (NEW v2 - COMPLETE)",
+        "components": [
+          "Expandable section (large)"
+        ],
+        "subsections": [
+          "Data controller and DPO contact",
+          "What we collect (personal + special category)",
+          "Why we collect (lawful basis for licensing, DBS, NR3)",
+          "Who we share with (NR3, police, other councils)",
+          "NR3 database explained (what, when, how long)",
+          "How long we keep data (retention periods)",
+          "Your rights (access, rectification, erasure, object)",
+          "How to exercise rights",
+          "Link to full privacy notice"
+        ]
+      },
+      "contact_and_complaints": {
+        "schema": "service_delivery.operational_guidance.contact_points + enforcement.complaints",
+        "components": [
+          "ContactSection with cards"
+        ],
+        "cards": [
+          "General enquiries (email, phone, hours)",
+          "Make a complaint (how, what info needed, process)",
+          "Appeals (challenge routes from legal_framework)"
+        ]
+      },
+      "related_services": {
+        "schema": "related_services (NEW v2 - all 4)",
+        "components": [
+          "RelatedServices list"
+        ],
+        "services": [
+          "Business rates",
+          "Planning permission",
+          "Parking enforcement",
+          "Street trading"
+        ]
+      }
+    }
+  },
+  "component_library": {
+    "note": "Shared components used across multiple pages",
+    "navigation": {
+      "Header": {
+        "schema": "N/A",
+        "includes": [
+          "Logo",
+          "PrimaryNav",
+          "MobileMenuButton"
+        ],
+        "mobile": "Hamburger menu with priority actions"
+      },
+      "Breadcrumbs": {
+        "schema": "N/A",
+        "pattern": "Gloucester City Council > Licensing > Taxi & Private Hire > [Current Page]"
+      },
+      "Footer": {
+        "schema": "service_delivery.operational_guidance.contact_points + related_services",
+        "sections": [
+          "Quick links",
+          "Related services (NEW v2)",
+          "Legal links",
+          "Copyright"
+        ]
+      }
+    },
+    "content_blocks": {
+      "Hero": {
+        "usage": "Landing page only",
+        "schema": "package_identity + service_overview"
+      },
+      "PageHeader": {
+        "usage": "All content pages",
+        "schema": "Page title + subtitle"
+      },
+      "Alert": {
+        "usage": "All pages",
+        "types": [
+          "warning",
+          "danger",
+          "info",
+          "success"
+        ],
+        "schema": "Various (delays, convictions, requirements)"
+      },
+      "StatusAlert": {
+        "usage": "Landing page, page headers",
+        "schema": "service_delivery.operational_guidance.application_processing.target_timeframes.current_delays",
+        "condition": "Display if delays exist"
+      }
+    },
+    "interactive_components": {
+      "TabSwitcher": {
+        "usage": "Drivers, Vehicles pages",
+        "features": [
+          "URL hash sync",
+          "Keyboard accessible"
+        ],
+        "schema": "N/A - UX pattern"
+      },
+      "Expandable": {
+        "usage": "All pages",
+        "features": [
+          "Accordion",
+          "Collapsible sections"
+        ],
+        "schema": "Various (long content)"
+      },
+      "InteractiveChecklist": {
+        "usage": "Drivers page (new application)",
+        "features": [
+          "Progress tracking",
+          "LocalStorage persistence",
+          "Printable",
+          "Email"
+        ],
+        "schema": "application_processes.driver_licence_new_application.process_steps"
+      },
+      "ConvictionChecker": {
+        "usage": "Information page",
+        "features": [
+          "Form inputs",
+          "Calculation logic",
+          "Results display"
+        ],
+        "schema": "convictions_policy"
+      },
+      "FareCalculator": {
+        "usage": "Information page (NEW v2)",
+        "features": [
+          "Form inputs",
+          "Fare calculation",
+          "Breakdown display"
+        ],
+        "schema": "hackney_carriage_fares",
+        "optional": true
+      },
+      "SearchBox": {
+        "usage": "Information page",
+        "features": [
+          "Search FAQs, policies, legislation"
+        ],
+        "schema": "N/A - searches content from multiple schema sections"
+      }
+    },
+    "display_components": {
+      "CardGrid": {
+        "usage": "Landing page (journey cards)",
+        "schema": "licence_types"
+      },
+      "ComparisonTable": {
+        "usage": "Landing, Drivers, Vehicles pages",
+        "schema": "key_differences.hackney_carriage_vs_private_hire"
+      },
+      "RequirementsList": {
+        "usage": "All journey pages",
+        "schema": "application_processes (various requirements)"
+      },
+      "ProcessSteps": {
+        "usage": "All journey pages",
+        "schema": "application_processes (various process flows)"
+      },
+      "FAQAccordion": {
+        "usage": "Drivers page, Information page",
+        "schema": "faqs_and_common_scenarios + driver_conduct"
+      },
+      "DocumentLibrary": {
+        "usage": "Drivers page, Information page",
+        "schema": "legal_framework.local_policies"
+      },
+      "FeeTable": {
+        "usage": "Information page",
+        "schema": "fees_and_charges"
+      },
+      "LocationList": {
+        "usage": "Vehicles page, Information page",
+        "schema": "application_processes.vehicle_licence_new_application.approved_testing_stations"
+      },
+      "LocationMap": {
+        "usage": "Information page (taxi ranks)",
+        "schema": "taxi_ranks"
+      },
+      "RelatedServicesBox": {
+        "usage": "Operators page, Information page (NEW v2)",
+        "schema": "related_services"
+      }
+    }
+  },
+  "user_journeys": {
+    "new_driver_complete_journey": {
+      "entry": "Landing page > 'I want to become a driver'",
+      "path": [
+        "Landing > Drivers page",
+        "Read eligibility (30 sec)",
+        "Check costs and timeline (30 sec)",
+        "Optional: Check convictions (if applicable) > Information page > Conviction checker (2 min)",
+        "Return to Drivers page",
+        "Review process checklist (2 min)",
+        "Read safeguarding duties (NEW v2 - 1 min)",
+        "Book English test (exit to phone)",
+        "Work through checklist over 6-12 weeks",
+        "Submit application (exit to My Gloucester)"
+      ],
+      "success_metric": "70%+ application completion rate"
+    },
+    "renewal_quick_journey": {
+      "entry": "Landing page > 'I need to renew' OR email reminder",
+      "path": [
+        "Landing > Drivers page > Renewal tab",
+        "Check requirements (1 min)",
+        "Gather documents",
+        "Click 'Renew now' (exit to My Gloucester)"
+      ],
+      "success_metric": "90%+ completion rate, <5 min time on page"
+    },
+    "conviction_concern_journey": {
+      "entry": "Search engine > 'taxi licence conviction' OR Landing quick link",
+      "path": [
+        "Information page > Conviction checker",
+        "Select offence type",
+        "Enter sentence completion date",
+        "View assessment",
+        "Decide: proceed with application OR contact council",
+        "Optional: Read fit and proper test explanation (NEW v2)"
+      ],
+      "success_metric": "50%+ reduction in conviction-related phone calls"
+    },
+    "vehicle_licensing_journey": {
+      "entry": "Landing page > 'License a vehicle'",
+      "path": [
+        "Landing > Vehicles page",
+        "Understand HC vs PH difference (1 min)",
+        "Select vehicle type (HC or PH)",
+        "Check requirements (2 min)",
+        "View plate examples",
+        "Find testing station",
+        "Exit to book inspection",
+        "Return with certificate",
+        "Apply online"
+      ],
+      "success_metric": "80%+ complete application after viewing requirements"
+    },
+    "operator_setup_journey": {
+      "entry": "Landing page > 'Run a taxi company'",
+      "path": [
+        "Landing > Operators page",
+        "Understand what operator is (30 sec)",
+        "Check requirements (2 min)",
+        "Planning permission warning (NEW v2)",
+        "Exit to apply for planning permission (if needed)",
+        "Choose duration (1 or 5 years)",
+        "Apply for operator licence"
+      ],
+      "success_metric": "Reduced incomplete applications due to planning issues"
+    },
+    "public_information_seeker": {
+      "entry": "Search engine OR landing page quick links",
+      "path": [
+        "Information page",
+        "Search OR browse FAQs",
+        "Check fare information (NEW v2 - if public curious)",
+        "View public register (if checking driver)",
+        "Exit satisfied OR contact council"
+      ],
+      "success_metric": "40%+ reduction in 'information only' phone calls"
+    },
+    "transparency_seeker": {
+      "entry": "Information page (NEW v2 journey)",
+      "path": [
+        "Information page",
+        "Read 'How we use your data' (NEW v2)",
+        "Understand NR3 database sharing (NEW v2)",
+        "Review safeguarding approach (link to Drivers page)",
+        "Check public register",
+        "Exit satisfied with transparency"
+      ],
+      "success_metric": "Reduced FOI requests about data use, increased trust"
+    }
+  },
+  "design_system": {
+    "colors": {
+      "primary": "#004F9F",
+      "secondary": "#FFB81C",
+      "success": "#00703C",
+      "warning": "#F47738",
+      "danger": "#D4351C",
+      "info": "#1D70B8",
+      "background": "#F3F2F1",
+      "text": "#0B0C0C"
+    },
+    "typography": {
+      "font_family": "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+      "base_size": "16px",
+      "line_height": "1.5",
+      "headings": {
+        "h1": "32px bold",
+        "h2": "24px bold",
+        "h3": "19px bold"
+      }
+    },
+    "spacing": {
+      "base_unit": "8px",
+      "section_gap": "48px",
+      "component_gap": "24px"
+    },
+    "breakpoints": {
+      "mobile": "320px",
+      "tablet": "768px",
+      "desktop": "1024px",
+      "wide": "1280px"
+    }
+  },
+  "accessibility": {
+    "wcag_level": "AA",
+    "mandatory_features": [
+      "All images have alt text",
+      "Color contrast 4.5:1 minimum",
+      "Keyboard navigation for all interactive elements",
+      "Form inputs have labels",
+      "Skip to main content link",
+      "Logical heading hierarchy",
+      "ARIA landmarks"
+    ]
+  },
+  "analytics": {
+    "key_metrics": [
+      "Task completion rate",
+      "Time to task completion",
+      "Bounce rate by page",
+      "Search terms (gap analysis)",
+      "Form abandonment points",
+      "Contact rate reduction"
+    ],
+    "events_to_track": [
+      "CTA clicks",
+      "Tab switches",
+      "Accordion expansions",
+      "Document downloads",
+      "Conviction checker usage (NEW v2)",
+      "Fare calculator usage (NEW v2)",
+      "Safeguarding section views (NEW v2)",
+      "Data protection section views (NEW v2)",
+      "Form starts/completions",
+      "External link clicks"
+    ]
+  },
+  "content_governance": {
+    "source": "taxi_licensing_schema.json (single source of truth)",
+    "update_process": "Schema updated \u2192 Pages regenerate \u2192 Test \u2192 Deploy",
+    "review_cycle": {
+      "content_accuracy": "Quarterly",
+      "links_validity": "Monthly (automated)",
+      "fees": "Annually (budget cycle)",
+      "policies": "When updated by council"
+    }
+  },
+  "version_history": {
+    "v1.0.0": {
+      "date": "2025-02-02",
+      "coverage": "85% - core user journeys complete",
+      "pages": 5,
+      "components": "40+"
+    },
+    "v2.0.0": {
+      "date": "2025-02-02",
+      "coverage": "95% - added transparency/governance sections",
+      "pages": 5,
+      "components": "50+",
+      "new_sections": [
+        "Safeguarding duties (Drivers page)",
+        "Driver conduct FAQs (6 new FAQs)",
+        "Hackney carriage fares with calculator (Information page)",
+        "Data protection notice (Information page)",
+        "Fit and proper test explanation (Information page)",
+        "Related services signposting (Operators page, footer)"
+      ]
+    },
+    "v2.1.0": {
+      "date": "2025-02-02",
+      "changes": [
+        "Fixed contact_points paths to include operational_guidance",
+        "Added online_forms schema references for all CTA buttons",
+        "Applied 6 path corrections"
+      ],
+      "compatibility": "Fully compatible with schema v1.1",
+      "breaking_changes": "None - paths updated to match schema structure"
+    }
+  }
+}

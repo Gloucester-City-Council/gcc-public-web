@@ -1,0 +1,2081 @@
+{
+  "schema_metadata": {
+    "schema_version": "1.0.0",
+    "last_updated": "2025-02-02",
+    "status": "draft",
+    "package_type": "service_definition",
+    "validation_status": {
+      "TODO_SUMMARY": [
+        "Cabinet Member for Licensing - needs confirmation of current role holder",
+        "Service Manager Licensing - needs confirmation of current post holder",
+        "Corporate Director accountability - needs confirmation of current structure",
+        "Licensing policy document - need 2025 policy URL and approval date",
+        "Common Standards document - confirm all Gloucestershire councils have adopted",
+        "DPO sign-off required for data processing activities",
+        "NR3 data retention - confirm 11-year retention is in local policy",
+        "Safeguarding training providers - confirm current list and booking process",
+        "Approved testing stations - need complete current list",
+        "Knowledge test syllabuses - need current test content for hackney and private hire",
+        "Fare tariff review process - confirm review cycle and approval authority",
+        "Enforcement powers delegation - confirm which officers have authority",
+        "Penalty points system - need current penalty points policy",
+        "Wheelchair accessible vehicle targets - confirm policy on WAV requirements",
+        "Taxi rank locations - need complete list with bay capacities",
+        "Processing time SLAs - validate 14-day and 20-day targets",
+        "Appeal process timescales - confirm committee scheduling and decision timeframes"
+      ],
+      "cabinet_member": "TODO - confirm current Cabinet Member for Licensing",
+      "service_manager": "TODO - confirm current Licensing Service Manager",
+      "corporate_director": "TODO - confirm accountability structure",
+      "licensing_policy": "TODO - add link to Hackney Carriage and Private Hire Licensing Policy",
+      "common_standards": "TODO - confirm adoption date across all Gloucestershire councils",
+      "dpo_sign_off": "TODO - required before publication",
+      "nr3_retention": "TODO - confirm local policy on 11-year NR3 retention",
+      "testing_stations": "TODO - add complete current list of approved testing stations",
+      "knowledge_tests": "TODO - obtain syllabuses for knowledge tests",
+      "fare_tariff": "TODO - confirm tariff review and approval process",
+      "enforcement_delegation": "TODO - confirm officer delegation for enforcement",
+      "penalty_points": "TODO - add link to penalty points policy",
+      "wav_policy": "TODO - clarify mandatory WAV requirements for new HC licences",
+      "taxi_ranks": "TODO - add complete list of taxi rank locations",
+      "processing_slas": "TODO - validate processing time commitments"
+    },
+    "webmap_reference": {
+      "webmap_file": "taxi_licensing_webmap_v2.json",
+      "webmap_version": "2.0.0",
+      "mapping_approach": "This schema is the single source of truth. The webmap references schema paths to generate website content.",
+      "coverage": "Webmap v2 covers 95% of schema content, prioritizing user-facing information over internal governance detail"
+    }
+  },
+  "package_identity": {
+    "package_id": "taxi-licensing",
+    "package_name": "Taxi and Private Hire Licensing",
+    "package_description": "Licensing system for hackney carriage (taxi) and private hire drivers, vehicles, and operators to ensure public safety and regulatory compliance in passenger transport",
+    "intended_consumers": [
+      {
+        "consumer": "Public website",
+        "consumption_method": "Template engine reads schema, generates static HTML pages via webmap",
+        "schema_sections_used": "User-facing content (95%): application_processes, licence_types, faqs, convictions_policy, fees, etc.",
+        "schema_sections_unused": "Internal governance (5%): accountability detail, performance metrics"
+      },
+      {
+        "consumer": "AI chatbot",
+        "consumption_method": "Full schema loaded into context, used to answer user questions",
+        "schema_sections_used": "All sections (100%) - chatbot can answer policy questions, guide applications, explain processes"
+      },
+      {
+        "consumer": "Staff knowledge base",
+        "consumption_method": "Schema exported to wiki/SharePoint with policy detail",
+        "schema_sections_used": "Operational guidance, enforcement, convictions_policy, vehicle_standards, driver_conduct"
+      },
+      {
+        "consumer": "FOI responses",
+        "consumption_method": "Schema sections extracted for transparency reporting",
+        "schema_sections_used": "legal_framework, data_protection, accountability, performance_and_quality"
+      },
+      {
+        "consumer": "Committee reports",
+        "consumption_method": "Performance metrics and policy updates extracted from schema",
+        "schema_sections_used": "performance_and_quality, accountability, fees_and_charges, legal_framework.strategic_alignment"
+      }
+    ]
+  },
+  "service_overview": {
+    "what_is_taxi_licensing": "Taxi and private hire licensing regulates passenger transport services to protect public safety. Hackney carriages (taxis) can be hailed in the street or wait at ranks. Private hire vehicles must be pre-booked through a licensed operator. All drivers, vehicles, and operators must be licensed by Gloucester City Council.",
+    "why_licensing_exists": [
+      "Public safety - ensuring drivers are fit and proper persons",
+      "Vehicle safety - ensuring vehicles are roadworthy and maintained",
+      "Consumer protection - fare regulation, insurance requirements",
+      "Safeguarding - protecting vulnerable passengers including children",
+      "Professional standards - driver conduct, knowledge requirements"
+    ],
+    "licensing_authority": "Gloucester City Council",
+    "service_area": "Licensing Team",
+    "contact_email": "licensing@gloucester.gov.uk",
+    "contact_phone": "01452 396396",
+    "geographic_scope": {
+      "driver_licences": "Valid only for work with Gloucester-licensed vehicles and operators",
+      "vehicle_licences": "Vehicle must operate from Gloucester-based operator",
+      "operator_licences": "Operating base must be within Gloucester City Council boundaries",
+      "cross_border": "Other councils' licences not valid for Gloucester-based work"
+    }
+  },
+  "legal_framework": {
+    "service_type": "statutory",
+    "primary_legislation": {
+      "hackney_carriages": {
+        "act": "Town Police Clauses Act 1847",
+        "reference": "10 & 11 Vict. c.89",
+        "url": "https://www.legislation.gov.uk/ukpga/Vict/10-11/89/contents",
+        "what_law_requires": "Local authorities must license hackney carriages and their drivers",
+        "key_provisions": [
+          "Section 37: No person to act as hackney carriage driver without licence",
+          "Section 40: Power to grant hackney carriage driver licences",
+          "Section 47: Proprietors must obtain vehicle licence",
+          "Section 68: Power to make bye-laws for hackney carriages"
+        ]
+      },
+      "private_hire": {
+        "act": "Local Government (Miscellaneous Provisions) Act 1976",
+        "reference": "c.57, Part II",
+        "url": "https://www.legislation.gov.uk/ukpga/1976/57/part/II",
+        "what_law_requires": "District councils may adopt Part II to license private hire vehicles, drivers, and operators",
+        "adoption_status": "Gloucester City Council has adopted Part II",
+        "key_sections": [
+          {
+            "section": "Section 45",
+            "purpose": "Resolution to adopt Part II provisions"
+          },
+          {
+            "section": "Section 48",
+            "purpose": "Licensing of private hire vehicles"
+          },
+          {
+            "section": "Section 51",
+            "purpose": "Licensing of private hire drivers"
+          },
+          {
+            "section": "Section 55",
+            "purpose": "Licensing of private hire operators"
+          },
+          {
+            "section": "Section 60",
+            "purpose": "Suspension and revocation of vehicle licences"
+          },
+          {
+            "section": "Section 61",
+            "purpose": "Suspension and revocation of driver licences including immediate suspension powers for public safety"
+          },
+          {
+            "section": "Section 62",
+            "purpose": "Suspension and revocation of operator licences"
+          },
+          {
+            "section": "Section 68",
+            "purpose": "Fitness inspection of vehicles"
+          },
+          {
+            "section": "Section 70",
+            "purpose": "Taximeters on private hire vehicles (not mandatory but if fitted must be approved)"
+          }
+        ]
+      }
+    },
+    "supporting_legislation": [
+      {
+        "title": "Equality Act 2010",
+        "reference": "c.15",
+        "purpose": "Requirements for wheelchair accessible vehicles and assistance dogs",
+        "key_provisions": [
+          "Section 165: Duties on drivers of designated wheelchair accessible vehicles",
+          "Section 168: Assistance dog duties",
+          "Section 170: Wheelchair accessible vehicle lists"
+        ]
+      },
+      {
+        "title": "Immigration Act 2016",
+        "reference": "c.19",
+        "purpose": "Right to work checks for all licence applicants"
+      },
+      {
+        "title": "Road Safety Act 2006",
+        "reference": "c.49",
+        "purpose": "Enhanced DBS checks and immediate suspension powers"
+      },
+      {
+        "title": "Deregulation Act 2015",
+        "reference": "c.20",
+        "purpose": "Sub-contracting of private hire bookings between operators",
+        "note": "Allows licensed operators to sub-contract across council boundaries"
+      },
+      {
+        "title": "Policing and Crime Act 2017",
+        "reference": "c.3",
+        "purpose": "Enhanced safeguarding through NR3 database sharing"
+      },
+      {
+        "title": "Health Act 2006 / Smoke-Free (Premises and Enforcement) Regulations 2006",
+        "purpose": "Prohibition of smoking in licensed vehicles",
+        "effective_date": "2007-07-01",
+        "note": "All licensed vehicles are smoke-free premises"
+      }
+    ],
+    "government_guidance": [
+      {
+        "title": "Statutory Taxi and Private Hire Vehicle Standards",
+        "issued_by": "Department for Transport",
+        "date": "July 2020",
+        "url": "https://www.gov.uk/government/publications/statutory-taxi-and-private-hire-vehicle-standards",
+        "status": "Statutory - councils must have regard to",
+        "key_requirements": [
+          "Enhanced DBS checks for all drivers",
+          "Information sharing through NR3 database",
+          "Common law fit and proper person test",
+          "Safeguarding training",
+          "Whistleblowing policies"
+        ]
+      },
+      {
+        "title": "Taxi and Private Hire Vehicle Licensing: Best Practice Guidance",
+        "issued_by": "Department for Transport",
+        "date": "November 2023",
+        "url": "https://www.gov.uk/government/publications/taxi-and-private-hire-vehicle-licensing-best-practice-guidance",
+        "status": "Guidance - councils should consider",
+        "key_topics": [
+          "Licensing duration (3 years standard)",
+          "Medical standards (DVLA Group 2)",
+          "Knowledge tests",
+          "Vehicle standards",
+          "Enforcement approaches"
+        ]
+      }
+    ],
+    "local_policies": [
+      {
+        "policy": "Common Standards for Licensing Hackney Carriage and Private Hire Drivers in Gloucestershire",
+        "status": "Adopted September 2021",
+        "url": "/media/puabfoda/common-standards-for-licensing-hackney-carriage-and-private-hire-drivers-approved-september-2021.docx",
+        "purpose": "Consistent standards across all Gloucestershire licensing authorities",
+        "approval": "Gloucestershire Licensing Officers' Group",
+        "covers": [
+          "Criminal conviction policy",
+          "Fit and proper person test",
+          "Safeguarding requirements",
+          "DBS and disclosure requirements"
+        ],
+        "participating_authorities": [
+          "Gloucester City Council",
+          "Cheltenham Borough Council",
+          "Tewkesbury Borough Council",
+          "Stroud District Council",
+          "Cotswold District Council",
+          "Forest of Dean District Council",
+          "Gloucestershire County Council"
+        ]
+      },
+      {
+        "policy": "Hackney Carriage Driver and Vehicle Rule Book",
+        "status": "June 2025",
+        "url": "/media/hj5f4r44/hc-driver-and-vehicle-rule-books-june-2025.pdf",
+        "purpose": "Conditions attached to hackney carriage licences",
+        "approval": "Council",
+        "scope": "All hackney carriage drivers and vehicles"
+      },
+      {
+        "policy": "Private Hire Driver and Vehicle Rule Book",
+        "status": "June 2025",
+        "url": "/media/trngkdez/ph-driver-and-vehicle-rule-book-june-2025.doc",
+        "purpose": "Conditions attached to private hire licences",
+        "approval": "Council",
+        "scope": "All private hire drivers and vehicles"
+      },
+      {
+        "policy": "Private Hire Operators Rule Book",
+        "status": "June 2025",
+        "url": "/media/rjwdv2sn/pho-rule-book-june-2025.doc",
+        "purpose": "Conditions for private hire operator licences",
+        "approval": "Council",
+        "scope": "All private hire operators"
+      },
+      {
+        "policy": "Hackney Carriage and Private Hire Regulatory Guidelines",
+        "status": "Approved September 2021",
+        "url": "/media/i3abqpfe/hc-ph-regulatory-guidelines-approved-september-21.doc",
+        "purpose": "Regulatory framework and enforcement approach"
+      },
+      {
+        "policy": "Hackney Carriage Fare Tariff",
+        "status": "Current from November 2024",
+        "url": "/media/xgtllghi/taxi-tariff-november-2024.pdf",
+        "approval": "Council under Section 65 Local Government (Miscellaneous Provisions) Act 1976",
+        "scope": "Maximum fares for hackney carriage journeys",
+        "review": "TODO - confirm review cycle"
+      }
+    ],
+    "strategic_alignment": {
+      "corporate_plan": {
+        "theme": "Safe, supported and valued residents",
+        "objective": "Ensure public safety through effective regulation",
+        "relevance": "Taxi licensing protects vulnerable passengers and maintains professional standards"
+      },
+      "safeguarding_duty": {
+        "statutory_obligation": "Councils have safeguarding duties under Children Act 2004 and Care Act 2014",
+        "application": "Taxi licensing is explicitly referenced in statutory safeguarding guidance",
+        "named_in": [
+          "Independent Inquiry into Child Sexual Exploitation in Rotherham (Jay Report, 2014)",
+          "Casey Review of Rotherham Metropolitan Borough Council (2015)",
+          "Statutory Taxi and Private Hire Vehicle Standards (DfT, 2020)"
+        ],
+        "critical_role": "Taxi drivers have access to vulnerable people including children, elderly, and those with disabilities"
+      }
+    },
+    "legal_status": {
+      "licensing_regime": "Statutory licensing regime - operating without licence is criminal offence",
+      "not_discretionary": "Council must license if applicant meets requirements",
+      "fit_and_proper_test": "Council must be satisfied applicant is fit and proper person",
+      "burden_of_proof": "Balance of probabilities, not beyond reasonable doubt",
+      "criminal_offences": [
+        {
+          "offence": "Driving hackney carriage or private hire vehicle without driver licence",
+          "legislation": "Town Police Clauses Act 1847 s37 / LG(MP)A 1976 s46",
+          "penalty": "Criminal conviction, fine"
+        },
+        {
+          "offence": "Operating private hire vehicle without operator licence",
+          "legislation": "LG(MP)A 1976 s46",
+          "penalty": "Criminal conviction, fine up to level 4"
+        },
+        {
+          "offence": "Unlicensed vehicle plying for hire",
+          "legislation": "LG(MP)A 1976 s46",
+          "penalty": "Criminal conviction, vehicle may be seized"
+        },
+        {
+          "offence": "Failure to wear driver badge",
+          "legislation": "Local conditions",
+          "penalty": "Criminal offence under byelaws"
+        },
+        {
+          "offence": "Private hire vehicle waiting on taxi rank",
+          "legislation": "LG(MP)A 1976 s64",
+          "penalty": "Criminal conviction, fine"
+        },
+        {
+          "offence": "Smoking in licensed vehicle",
+          "legislation": "Health Act 2006",
+          "penalty": "Fixed penalty \u00a350 or prosecution"
+        }
+      ],
+      "challenge_routes": [
+        {
+          "decision": "Refusal of new licence",
+          "route": "Appeal to Magistrates Court within 21 days",
+          "legislation": "LG(MP)A 1976 s77"
+        },
+        {
+          "decision": "Suspension or revocation of licence",
+          "route": "Appeal to Magistrates Court within 21 days",
+          "note": "Suspension takes effect immediately unless court grants stay"
+        },
+        {
+          "decision": "Conditions attached to licence",
+          "route": "Appeal to Magistrates Court within 21 days"
+        },
+        {
+          "decision": "Procedural irregularity",
+          "route": "Judicial review to High Court",
+          "grounds": "Unlawful, irrational, or procedurally unfair decision"
+        }
+      ]
+    }
+  },
+  "licence_types": {
+    "hackney_carriage_driver": {
+      "definition": "Person licensed to drive a hackney carriage (taxi)",
+      "what_can_do": [
+        "Drive hackney carriage vehicles",
+        "Accept pre-bookings",
+        "Be hailed in street",
+        "Wait at designated taxi ranks",
+        "Charge fares according to taximeter and tariff"
+      ],
+      "dual_licence": {
+        "description": "Most drivers hold dual hackney carriage and private hire licence",
+        "allows": "Drive both hackney carriages and private hire vehicles",
+        "application": "Single application process covers both"
+      },
+      "duration": "3 years standard",
+      "renewal": "Apply before expiry - cannot work if licence expires"
+    },
+    "private_hire_driver": {
+      "definition": "Person licensed to drive a private hire vehicle",
+      "what_can_do": [
+        "Drive private hire vehicles for pre-booked journeys only",
+        "Accept bookings through licensed operator only"
+      ],
+      "what_cannot_do": [
+        "Accept street hailing",
+        "Wait at taxi ranks",
+        "Accept bookings directly (must go through operator)"
+      ],
+      "insurance_requirement": "Journey only insured if pre-booked through operator",
+      "duration": "3 years standard"
+    },
+    "hackney_carriage_vehicle": {
+      "definition": "Vehicle licensed to operate as taxi",
+      "plate_colour": "Specific to vehicle type - displayed front and rear",
+      "what_can_do": [
+        "Be hailed in street",
+        "Wait at taxi ranks",
+        "Accept pre-bookings",
+        "Use bus lanes where permitted"
+      ],
+      "mandatory_equipment": [
+        "Taximeter tested and sealed",
+        "Tariff card visible to passengers",
+        "Hackney carriage licence plates",
+        "Insurance for hire and reward"
+      ],
+      "fare_control": "Fares regulated by council tariff - cannot charge more",
+      "duration": "1 year",
+      "inspection": "Annual vehicle inspection mandatory"
+    },
+    "private_hire_vehicle": {
+      "definition": "Vehicle licensed for private hire work (pre-booked only)",
+      "plate_colour": "Yellow plates - front and rear",
+      "what_can_do": [
+        "Accept pre-booked journeys through licensed operator only"
+      ],
+      "what_cannot_do": [
+        "Be hailed in street",
+        "Wait at taxi ranks",
+        "Display 'taxi' or 'cab' signage",
+        "Use bus lanes"
+      ],
+      "mandatory_equipment": [
+        "Yellow private hire plates",
+        "Pre-booking only stickers",
+        "Insurance for hire and reward naming operator"
+      ],
+      "optional_equipment": [
+        "Taximeter (if fitted must be tested and sealed)"
+      ],
+      "duration": "1 year",
+      "inspection": "Annual vehicle inspection mandatory"
+    },
+    "private_hire_operator": {
+      "definition": "Person or company taking bookings for private hire vehicles",
+      "legal_requirement": "Must hold operator licence to accept or invite bookings for private hire vehicles",
+      "responsibilities": [
+        "Maintain booking records",
+        "Only use Gloucester-licensed drivers and vehicles",
+        "Maintain records of all drivers and vehicles used",
+        "Keep records at operating base",
+        "Notify council of changes"
+      ],
+      "operating_base": {
+        "requirement": "Must be within Gloucester City Council boundaries",
+        "planning": "May require planning permission for commercial use"
+      },
+      "record_keeping": {
+        "bookings": "All bookings must be recorded",
+        "retention": "Records must be available for inspection",
+        "driver_records": "List of all drivers used",
+        "vehicle_records": "List of all vehicles used"
+      },
+      "duration_options": [
+        {
+          "duration": "1 year",
+          "typical_for": "New operators, small fleets"
+        },
+        {
+          "duration": "5 years",
+          "typical_for": "Established operators with good compliance history",
+          "note": "Discretionary - council may grant shorter duration"
+        }
+      ],
+      "fee_structure": "Varies by number of vehicles in fleet"
+    }
+  },
+  "key_differences": {
+    "hackney_carriage_vs_private_hire": {
+      "street_hailing": {
+        "hackney_carriage": "Can be hailed anywhere",
+        "private_hire": "Cannot be hailed - criminal offence to accept"
+      },
+      "taxi_ranks": {
+        "hackney_carriage": "Can wait at designated ranks",
+        "private_hire": "Cannot wait at ranks - criminal offence"
+      },
+      "booking_method": {
+        "hackney_carriage": "Hailing, ranks, or pre-booking",
+        "private_hire": "Must be pre-booked through licensed operator only"
+      },
+      "fare_control": {
+        "hackney_carriage": "Maximum fares set by council tariff",
+        "private_hire": "Fares agreed between operator and customer"
+      },
+      "taximeter": {
+        "hackney_carriage": "Mandatory - must be tested and sealed",
+        "private_hire": "Optional but if fitted must be tested and sealed"
+      },
+      "signage": {
+        "hackney_carriage": "May display 'taxi' or 'cab' signage",
+        "private_hire": "Must not use 'taxi' or 'cab' - must display 'pre-booking only'"
+      },
+      "insurance": {
+        "hackney_carriage": "All journeys covered by hire and reward insurance",
+        "private_hire": "Only pre-booked journeys through operator are insured"
+      },
+      "critical_difference": "Private hire vehicles accepting street hailing or waiting at ranks are uninsured and drivers committing criminal offence"
+    }
+  },
+  "application_processes": {
+    "driver_licence_new_application": {
+      "eligibility_requirements": {
+        "age": "21 years or over",
+        "driving_licence": "Full DVLA driving licence held for at least 12 continuous months",
+        "penalty_points": "No more than 3 current penalty points on DVLA licence",
+        "right_to_work": "Legal right to work in UK (Immigration Act 2016)",
+        "criminal_record": "Must pass fit and proper person test",
+        "medical_fitness": "Must meet DVLA Group 2 medical standard",
+        "english_language": "Must pass English language proficiency test",
+        "knowledge": "Must pass knowledge test (topographical for HC, literacy/numeracy for PH)",
+        "driving_assessment": "Must pass driving assessment with approved provider",
+        "safeguarding": "Must complete safeguarding awareness training"
+      },
+      "process_steps": [
+        {
+          "step": 1,
+          "action": "English Language Proficiency Test",
+          "cost": "\u00a345",
+          "how": "Book by calling 01452 396396",
+          "note": "MUST be completed before other requirements - strongly recommended first step",
+          "why_first": "No point spending money on other tests if cannot pass English test"
+        },
+        {
+          "step": 2,
+          "action": "Medical examination",
+          "requirement": "DVLA Group 2 standard",
+          "form": "Council approved medical form",
+          "validity": "Must be no more than 3 months old when submitted",
+          "cost": "Varies by GP - typical \u00a350-150",
+          "frequency": "Every 5 years under age 65, annually over 65"
+        },
+        {
+          "step": 3,
+          "action": "Enhanced DBS check",
+          "provider": "Apply through TaxiPlus",
+          "url": "https://app.taxiplus.co.uk/self-initiate/68b7bd25-065c-49c6-af7e-2247040751fe/dbs-check",
+          "requirement": "Enhanced disclosure including barred lists",
+          "update_service": "Must subscribe to DBS Update Service within 28 days of certificate",
+          "cost": "Approximately \u00a350-60",
+          "validity": "Checked on renewal"
+        },
+        {
+          "step": 4,
+          "action": "Certificate of Good Conduct (if applicable)",
+          "requirement": "If lived outside UK since age 18",
+          "obtain_from": "Embassy of each country lived in",
+          "note": "Can take several months to obtain"
+        },
+        {
+          "step": 5,
+          "action": "Driving assessment",
+          "requirement": "Pass assessment with approved provider",
+          "approved_providers": [
+            {
+              "name": "Diamond Advanced Tests",
+              "url": "https://shop.advancedmotoring.co.uk/products/taxi-test"
+            },
+            {
+              "name": "The Blue Lamp Trust",
+              "url": "https://bltdrivertraining.co.uk/"
+            },
+            {
+              "name": "Green Penny",
+              "url": "https://www.greenpenny.co.uk/taxi-assessment-booking-form/"
+            }
+          ],
+          "cost": "Varies by provider - typical \u00a3100-150",
+          "note": "Assesses ability to drive safely with passengers"
+        },
+        {
+          "step": 6,
+          "action": "Knowledge test",
+          "hackney_carriage": {
+            "test": "Topographical knowledge test for Gloucester city and surrounding area",
+            "how_to_book": "Download application form and call 01452 396396 with payment",
+            "cost": "Check fees and charges",
+            "retakes": "Can retake up to 2 times in 12 months"
+          },
+          "private_hire": {
+            "test": "Literacy and numeracy test (Private Hire Knowledge Test)",
+            "how_to_book": "Call 01452 396396 to pay, then licensing officer will contact to arrange",
+            "cost": "Check fees and charges",
+            "retakes": "Can retake up to 2 times in 12 months"
+          },
+          "fail_3_times": "Cannot retake until can demonstrate learning has taken place"
+        },
+        {
+          "step": 7,
+          "action": "Safeguarding awareness training",
+          "requirement": "Mandatory for all new applicants",
+          "how": "Check council website for course dates and venues",
+          "cost": "Check current charges",
+          "validity": "Certificate required with application"
+        },
+        {
+          "step": 8,
+          "action": "Complete online application",
+          "url": "https://gloucester-self.achieveservice.com/",
+          "documents_needed": [
+            "English language test pass certificate",
+            "Medical certificate (less than 3 months old)",
+            "Enhanced DBS certificate",
+            "Certificate of good conduct (if applicable)",
+            "Driving assessment pass certificate",
+            "Knowledge test pass certificate",
+            "Safeguarding training certificate",
+            "Proof of right to work",
+            "DVLA driving licence",
+            "Proof of address"
+          ],
+          "application_fee": "Must be paid in full when submitting - see fees and charges",
+          "payment_methods": "Online or by phone"
+        },
+        {
+          "step": 9,
+          "action": "NR3 database check",
+          "automatic": "Council automatically checks National Register of Refusals and Revocations",
+          "data_held": [
+            "Name, DOB, address",
+            "National Insurance Number",
+            "Driving licence number",
+            "Previous refusals or revocations",
+            "Reason for refusal/revocation"
+          ],
+          "retention": "11 years on NR3 database",
+          "cross_authority": "Shared with other licensing authorities"
+        },
+        {
+          "step": 10,
+          "action": "Fit and proper person assessment",
+          "decision_maker": "Licensing team or Licensing Sub-Committee",
+          "criteria": "Common Standards for Licensing Hackney Carriage and Private Hire Drivers",
+          "test": "Would you be comfortable with this person driving your loved ones?",
+          "considerations": [
+            "Criminal convictions and cautions",
+            "Driving record and penalty points",
+            "Honesty and integrity",
+            "Medical fitness",
+            "Competence (tests passed)",
+            "Previous licensing history"
+          ]
+        },
+        {
+          "step": 11,
+          "action": "Decision",
+          "target_timeframe": "Decision within 14 days (normal cases)",
+          "current_delays": "High volume - allow 20 working days before enquiring",
+          "contact_if_delayed": "licensing@gloucester.gov.uk",
+          "possible_outcomes": [
+            "Grant licence for 3 years",
+            "Grant licence for shorter period (if justified by circumstances)",
+            "Refuse application",
+            "Refer to Licensing Sub-Committee for determination"
+          ]
+        },
+        {
+          "step": 12,
+          "action": "Badge collection",
+          "when": "After licence granted and additional fee paid",
+          "badge_requirements": [
+            "Wear badge at all times when working",
+            "Badge must be clearly visible",
+            "Return badge if licence suspended or revoked"
+          ],
+          "criminal_offence": "Not wearing badge whilst working is criminal offence"
+        }
+      ],
+      "total_typical_costs": {
+        "english_test": "\u00a345",
+        "medical": "\u00a350-150",
+        "dbs": "\u00a350-60",
+        "driving_assessment": "\u00a3100-150",
+        "knowledge_test": "\u00a3TBC",
+        "safeguarding_training": "\u00a3TBC",
+        "application_fee": "See fees and charges 2025/26",
+        "badge_fee": "Additional fee on grant",
+        "estimated_total": "\u00a3400-600 plus application fees",
+        "note": "Costs if need to retake tests not included"
+      },
+      "timeframe_estimate": "6-12 weeks if all tests passed first time and documents ready"
+    },
+    "driver_licence_renewal": {
+      "when_to_apply": "Before current licence expires",
+      "cannot_work_if_expired": "Cannot drive licensed vehicles if licence expired",
+      "requirements": [
+        {
+          "item": "Medical certificate",
+          "frequency": "Every 5 years if under 65, annually if 65+",
+          "validity": "Less than 3 months old"
+        },
+        {
+          "item": "Enhanced DBS check",
+          "requirement": "Subscribe to DBS Update Service",
+          "if_subscribed": "Council can check online - no new certificate needed",
+          "if_not_subscribed": "New enhanced DBS certificate required",
+          "critical": "Failure to subscribe within 28 days of certificate is breach of licence conditions"
+        },
+        {
+          "item": "DVLA licence check",
+          "automatic": "Council checks DVLA record for endorsements"
+        },
+        {
+          "item": "Tax check",
+          "requirement": "May need to complete HMRC tax check",
+          "url": "https://www.gov.uk/guidance/complete-a-tax-check-for-a-taxi-private-hire-or-scrap-metal-licence",
+          "when_required": "Renewing with same or different authority",
+          "note": "Check guidance to see if applies to your circumstances"
+        },
+        {
+          "item": "Conviction disclosure",
+          "requirement": "Declare any cautions, convictions, fixed penalties, pending prosecutions",
+          "timeframe": "Must inform within 48 hours of being formally notified",
+          "form": "Download notification of conviction form",
+          "critical": "Failure to disclose is serious breach - may result in refusal/revocation"
+        }
+      ],
+      "application_process": "Online via My Gloucester",
+      "fee": "See fees and charges 2025/26",
+      "target_timeframe": "14 days"
+    },
+    "vehicle_licence_new_application": {
+      "hackney_carriage": {
+        "number_limit": {
+          "policy": "Council may limit number of hackney carriage licences",
+          "current_policy": "TODO - confirm if quantity restriction in place",
+          "waiting_list": "TODO - confirm if waiting list exists"
+        },
+        "vehicle_requirements": {
+          "age_limits": {
+            "new_vehicle": "TODO - confirm maximum age at first licensing",
+            "existing_vehicle": "TODO - confirm age limits for continued licensing"
+          },
+          "wheelchair_accessibility": {
+            "new_additional_licences": "Must be wheelchair accessible",
+            "existing_licences": "Grandfather rights - can transfer saloon/estate types",
+            "transfer": "Existing HC licence can be transferred to new proprietor maintaining vehicle type",
+            "policy_intent": "Move toward fully wheelchair accessible hackney carriage fleet"
+          },
+          "vehicle_types": [
+            "Saloons (existing licences only)",
+            "Estates (existing licences only)",
+            "Multi-purpose vehicles",
+            "Purpose built hackney carriages",
+            "Wheelchair accessible vehicles (mandatory for new additional licences)"
+          ],
+          "passengers": "Maximum 8 passengers",
+          "mandatory_equipment": [
+            "Taximeter - tested and sealed by approved station",
+            "Tariff card visible to passengers showing current council tariff",
+            "Hackney carriage licence plates - front and rear",
+            "Roof sign (optional but common)",
+            "Appropriate seatbelts for all passengers"
+          ],
+          "colour_livery": "No mandatory colour restriction (unlike some authorities)"
+        },
+        "insurance_requirement": {
+          "type": "Hire and reward insurance",
+          "named_persons": "Must name proprietor and any drivers",
+          "cover": "Must cover hackney carriage use",
+          "duration": "Valid for full licence period"
+        },
+        "application_steps": [
+          {
+            "step": 1,
+            "action": "Ensure vehicle meets requirements",
+            "check": "Review hackney carriage conditions and rule book"
+          },
+          {
+            "step": 2,
+            "action": "Vehicle inspection",
+            "where": "Approved testing station",
+            "when": "Before application",
+            "test": "Vehicle fitness test including taximeter calibration",
+            "pass_required": "Vehicle inspection certificate required with application"
+          },
+          {
+            "step": 3,
+            "action": "Insurance",
+            "obtain": "Hire and reward insurance covering hackney carriage use",
+            "must_name": "Proprietor as named driver"
+          },
+          {
+            "step": 4,
+            "action": "Submit application",
+            "how": "Online application",
+            "documents": [
+              "Vehicle inspection certificate from approved station",
+              "Insurance certificate (hire and reward)",
+              "V5 registration document",
+              "MOT certificate (if over 1 year old)",
+              "Basic DBS certificate (if not Gloucester licensed driver)"
+            ],
+            "fee": "See fees and charges 2025/26"
+          },
+          {
+            "step": 5,
+            "action": "Decision",
+            "timeframe": "Usually within 14 days",
+            "delays": "May take longer - contact after 20 working days"
+          },
+          {
+            "step": 6,
+            "action": "Plates issued",
+            "collect": "Collect plates and fix to vehicle",
+            "display": "Front and rear as specified",
+            "start_work": "Can begin operating as hackney carriage"
+          }
+        ],
+        "ongoing_requirements": {
+          "inspection": "Annual vehicle inspection at approved testing station",
+          "age_threshold": "If 8 years or older - 6-monthly inspections required",
+          "insurance": "Maintain valid insurance - notify any changes within 7 days",
+          "taximeter": "Keep calibrated and sealed - any repairs require re-testing",
+          "condition": "Maintain vehicle to required standard",
+          "licence_display": "Display licence plates at all times"
+        }
+      },
+      "private_hire": {
+        "vehicle_requirements": {
+          "age_limits": "TODO - confirm age limits",
+          "accessibility": "No mandatory wheelchair accessibility requirement",
+          "vehicle_types": [
+            "Saloons",
+            "Estates",
+            "Multi-purpose vehicles",
+            "Purpose built vehicles",
+            "Wheelchair accessible vehicles (optional)",
+            "Executive/chauffeur vehicles",
+            "Limousines (up to 8 passengers)"
+          ],
+          "passengers": "Maximum 8 passengers (over 8 requires DVSA operator licence)",
+          "drive_side": "Left or right hand drive permitted",
+          "colour": "Any colour permitted",
+          "mandatory_equipment": [
+            "Yellow private hire licence plates - front and rear",
+            "'Pre-booking only' stickers - visible to passengers",
+            "Appropriate seatbelts for all passengers"
+          ],
+          "prohibited_signage": [
+            "Cannot display 'taxi' or 'cab'",
+            "Cannot use similar words like 'kab'",
+            "Cannot display anything suggesting hackney carriage"
+          ],
+          "advertising": "Permitted only for private hire company operating vehicle - must include 'Pre-booking only'"
+        },
+        "application_process": "Similar to hackney carriage",
+        "key_differences": [
+          "Yellow plates not hackney plates",
+          "Pre-booking stickers mandatory",
+          "Taximeter optional (if fitted must be tested)",
+          "Can be any colour",
+          "No quantity restrictions"
+        ]
+      },
+      "approved_testing_stations": {
+        "requirement": "All vehicles must be inspected at approved testing station",
+        "current_list": "TODO - add complete list of approved testing stations",
+        "test_includes": [
+          "Vehicle safety and condition",
+          "Interior cleanliness and comfort",
+          "Door safety and security",
+          "Seatbelt condition",
+          "Taximeter calibration (if fitted)",
+          "Compliance with licensing conditions"
+        ]
+      }
+    },
+    "vehicle_licence_renewal": {
+      "when": "Before expiry - cannot operate if expired",
+      "duration": "1 year",
+      "reference_number": "Need vehicle licence reference number from renewal letter",
+      "requirements": [
+        "Vehicle inspection certificate from approved testing station",
+        "Valid insurance (hire and reward)",
+        "MOT certificate (if applicable)",
+        "Confirm proprietor details unchanged or notify changes"
+      ],
+      "age_threshold": {
+        "under_8_years": "Annual inspection",
+        "8_years_or_over": "6-monthly inspections required"
+      },
+      "process": "Online application",
+      "fee": "See fees and charges 2025/26"
+    },
+    "change_of_vehicle": {
+      "when_needed": "Changing to different vehicle while keeping same licence",
+      "cost": "\u00a368",
+      "timeframe": "Usually 14 days",
+      "requirements": [
+        "New vehicle must meet all licensing conditions",
+        "Vehicle inspection certificate for new vehicle",
+        "Insurance for new vehicle",
+        "V5 for new vehicle",
+        "Return old licence plates"
+      ],
+      "special_cases": {
+        "like_for_like_temporary": "Contact council - e.g. vehicle over 5 years needs temporary replacement",
+        "fleet_vehicles": "Contact council for fleet arrangements"
+      }
+    },
+    "transfer_of_ownership": {
+      "when_needed": "Selling licensed vehicle to new owner",
+      "cost": "\u00a351",
+      "timeframe": "Usually 14 days",
+      "requirements": [
+        "Letter from previous owner confirming no longer using vehicle",
+        "V5 registration document or new keeper supplement",
+        "MOT certificate (unless less than 1 year old)",
+        "Insurance naming new proprietor",
+        "Basic DBS certificate (less than 1 month old) unless Gloucester licensed driver"
+      ],
+      "note": "Grandfather rights transfer with vehicle - e.g. non-WAV hackney carriage can remain non-WAV"
+    },
+    "operator_licence": {
+      "who_needs": "Anyone accepting or inviting bookings for private hire vehicles",
+      "legal_requirement": "Cannot operate without licence - criminal offence",
+      "operating_base": {
+        "location": "Must be within Gloucester City Council boundaries",
+        "planning": "May need planning permission for commercial use from residential property",
+        "records": "All booking records must be kept at operating base"
+      },
+      "requirements": {
+        "business_address": "Within Gloucester boundaries",
+        "planning_permission": "If operating from home, must not cause nuisance/obstruction",
+        "drivers_and_vehicles": "Must only use Gloucester-licensed drivers and vehicles",
+        "record_keeping": [
+          "Records of all bookings",
+          "Records of all drivers used",
+          "Records of all vehicles used",
+          "Available for inspection by council"
+        ]
+      },
+      "duration": {
+        "options": "1 year or 5 years",
+        "discretion": "Council decides duration based on compliance history"
+      },
+      "fee_structure": {
+        "based_on": "Number of vehicles in fleet",
+        "additional_premises": "Additional charge for each additional premises (e.g. nightclub booking point)"
+      },
+      "application": "Download rule book and apply online",
+      "tax_check": "May require HMRC tax check - see guidance"
+    }
+  },
+  "fees_and_charges": {
+    "financial_year": "2025/26",
+    "document": "TODO - add link to HCPH Fees 2025-2026 document",
+    "fee_setting_authority": {
+      "legislation": "Local Government (Miscellaneous Provisions) Act 1976",
+      "principle": "Fees must recover reasonable costs - cannot make profit",
+      "covers": [
+        "Administration of licences",
+        "Vehicle inspections",
+        "Control and supervision of trade"
+      ],
+      "review": "Fees reviewed annually as part of budget process"
+    },
+    "payment_methods": [
+      "Online (credit/debit card)",
+      "By phone (01452 396396)",
+      "Cannot proceed without payment"
+    ],
+    "typical_fees": {
+      "driver_new_application": "See fees document",
+      "driver_renewal": "See fees document",
+      "english_language_test": "\u00a345",
+      "knowledge_test_hackney": "See fees document",
+      "knowledge_test_private_hire": "See fees document",
+      "vehicle_new_application": "See fees document",
+      "vehicle_renewal": "See fees document",
+      "change_of_vehicle": "\u00a368",
+      "transfer_ownership": "\u00a351",
+      "operator_1_year": "Varies by fleet size - see fees document",
+      "operator_5_year": "Varies by fleet size - see fees document",
+      "replacement_badge_plate": "See fees document"
+    },
+    "non_refundable": "Application fees not refundable if application refused"
+  },
+  "hackney_carriage_fares": {
+    "application": "Hackney carriages only - private hire fares not regulated",
+    "legislation": "Section 65 Local Government (Miscellaneous Provisions) Act 1976",
+    "tariff_setting": {
+      "authority": "Council sets maximum fares",
+      "current_tariff": "Effective from November 2024",
+      "document": "/media/xgtllghi/taxi-tariff-november-2024.pdf",
+      "review_process": "TODO - confirm review cycle and consultation process"
+    },
+    "tariff_structure": {
+      "metered_fares": "Fares shown on taximeter according to approved tariff",
+      "cannot_exceed": "Cannot charge more than meter shows",
+      "can_charge_less": "Can agree lower fare with passenger",
+      "tariff_card": "Must display current tariff card in vehicle"
+    },
+    "typical_tariff_elements": {
+      "flag_fall": "Initial charge when hiring",
+      "distance": "Per mile or fraction",
+      "time": "Waiting time charge",
+      "extras": [
+        "Extra passengers (typically \u00a30.30 each)",
+        "Luggage",
+        "Pre-booking from outside rank/street"
+      ],
+      "no_charge": [
+        "Wheelchairs",
+        "Guide/assistance dogs"
+      ],
+      "soiling_charge": "\u00a375 for cleaning if passenger soils vehicle"
+    },
+    "christmas_rates": "Higher tariff typically applies Christmas/New Year period",
+    "pre_agreed_fares": {
+      "when": "Journey starting outside Gloucester where no tariff applies",
+      "rule": "Can agree fare in advance",
+      "must_not_exceed": "If no fare agreed, cannot exceed what Gloucester tariff would be"
+    }
+  },
+  "fit_and_proper_person_test": {
+    "legal_basis": "Common law test - not defined in statute",
+    "applies_to": "All drivers, vehicle proprietors, and operators",
+    "test_question": "Without any prejudice, and based on the information before you, would you allow a person for whom you care, regardless of their condition, to travel alone in a vehicle driven by this person at any time of day or night?",
+    "burden_of_proof": "Balance of probabilities (civil standard, not criminal)",
+    "applicant_burden": "Applicant must satisfy council they are fit and proper",
+    "considerations": [
+      {
+        "factor": "Criminal convictions and cautions",
+        "relevance": "Type, seriousness, time elapsed, pattern",
+        "policy": "Common Standards for Licensing sets out conviction policy",
+        "key_offences": [
+          "Offences involving dishonesty - serious concern",
+          "Violent offences - serious concern",
+          "Sexual offences - extremely serious concern",
+          "Driving offences - relevant to competence and safety",
+          "Drugs offences - serious concern",
+          "Discrimination - serious concern"
+        ],
+        "time_periods": "Policy sets minimum time periods before licence may be granted",
+        "each_case": "Each case considered on individual merits"
+      },
+      {
+        "factor": "Driving record",
+        "relevance": "Penalty points, endorsements, bans",
+        "threshold": "More than 3 current points requires careful consideration",
+        "serious": "Driving bans, dangerous driving, drink/drug driving"
+      },
+      {
+        "factor": "Honesty and integrity",
+        "relevance": "False information on application is extremely serious",
+        "examples": [
+          "Declaring all convictions and cautions",
+          "Accurate information about residence history",
+          "Truthful about previous licence refusals/revocations",
+          "Timely notification of changes"
+        ]
+      },
+      {
+        "factor": "Medical fitness",
+        "standard": "DVLA Group 2 (same as HGV/PCV drivers)",
+        "relevance": "Driving with passengers requires higher medical standard",
+        "conditions": "Diabetes, heart conditions, epilepsy, sight - carefully assessed"
+      },
+      {
+        "factor": "Competence",
+        "evidenced_by": [
+          "Driving assessment",
+          "Knowledge test",
+          "English language proficiency"
+        ]
+      },
+      {
+        "factor": "Previous licensing history",
+        "nr3_database": "National Register shows refusals/revocations by any UK authority",
+        "pattern": "Pattern of complaints or breaches indicates concerns"
+      }
+    ],
+    "decision_making": {
+      "delegated_authority": "Licensing officers have delegated power for straightforward cases",
+      "committee_referral": "Complex cases referred to Licensing Sub-Committee",
+      "reasons_for_referral": [
+        "Serious criminal convictions",
+        "Previous refusals or revocations",
+        "Multiple concerns about fitness",
+        "Controversial or borderline cases"
+      ]
+    },
+    "ongoing_requirement": {
+      "not_one_time": "Must remain fit and proper throughout licence period",
+      "continuous_duty": "Duty to notify of any changes affecting fitness",
+      "review_triggers": [
+        "New conviction or caution",
+        "Complaint about conduct",
+        "Driving offence or points",
+        "Safeguarding concern",
+        "Medical condition affecting fitness"
+      ]
+    }
+  },
+  "convictions_policy": {
+    "document": "Common Standards for Licensing Hackney Carriage and Private Hire Drivers in Gloucestershire",
+    "status": "Adopted September 2021",
+    "applies_to": "All Gloucestershire licensing authorities",
+    "general_principles": {
+      "purpose": "Protect public from harm",
+      "starting_point": "Recent serious offences normally preclude licensing",
+      "rehabilitation": "Passage of time and evidence of reform considered",
+      "each_case": "Individual circumstances considered",
+      "burden": "Applicant must demonstrate fitness"
+    },
+    "notification_requirement": {
+      "timeframe": "48 hours of being formally notified",
+      "applies_to": [
+        "Cautions",
+        "Convictions",
+        "Fixed penalties",
+        "Pending prosecutions",
+        "Arrests (if relevant to fitness)"
+      ],
+      "method": "In writing to Licensing Authority",
+      "form": "Download notification of conviction form",
+      "failure_to_notify": "Serious breach - may result in revocation",
+      "custodial_sentence": "As soon as reasonably practical"
+    },
+    "typical_time_periods": {
+      "note": "These are guidelines - each case assessed individually",
+      "murder": "Never likely to be granted",
+      "manslaughter": "Minimum 15 years from completion of sentence",
+      "serious_violence": "Minimum 10 years from completion of sentence",
+      "sexual_offences": "Minimum 10-15 years depending on seriousness, many never granted",
+      "dishonesty": "Minimum 7 years from completion of sentence",
+      "drugs_supply": "Minimum 10 years from completion of sentence",
+      "drink_drive": "Minimum 7 years from completion of sentence",
+      "violent_disorder": "Minimum 10 years from completion of sentence"
+    },
+    "penalty_points_system": {
+      "separate_from_conviction_policy": "Council operates penalty points for breaches of licence conditions",
+      "accumulation": "12 points in 12 months - automatic referral to committee",
+      "examples": [
+        "Failing to notify conviction within 48 hours",
+        "Not wearing badge",
+        "Vehicle condition issues",
+        "Breach of conditions"
+      ],
+      "policy_document": "TODO - add link to penalty points policy"
+    }
+  },
+  "safeguarding": {
+    "statutory_context": {
+      "children_act_2004": "Duty to safeguard and promote welfare of children",
+      "care_act_2014": "Duty to protect adults at risk of abuse or neglect",
+      "working_together_2018": "Statutory safeguarding guidance",
+      "prevent_duty": "Counter-terrorism and radicalisation awareness"
+    },
+    "licensing_authority_role": {
+      "gatekeeper": "Prevent unsuitable people from being licensed",
+      "ongoing_oversight": "Monitor licensed drivers throughout licence period",
+      "information_sharing": "Share concerns with police, social services, other authorities",
+      "national_register": "Record refusals and revocations on NR3 database"
+    },
+    "mandatory_training": {
+      "requirement": "All drivers must complete safeguarding awareness training",
+      "new_applicants": "Must complete before licence granted",
+      "frequency": "TODO - confirm refresh requirements",
+      "providers": "Council-approved courses",
+      "booking": "Check council website for dates and venues",
+      "content": [
+        "Recognising signs of abuse and neglect",
+        "Child Sexual Exploitation (CSE)",
+        "County lines and criminal exploitation",
+        "Modern slavery and trafficking",
+        "Domestic abuse",
+        "Prevent (radicalisation)",
+        "How to report concerns"
+      ]
+    },
+    "reporting_concerns": {
+      "driver_responsibility": "Drivers have duty to report safeguarding concerns",
+      "what_to_report": [
+        "Child appears distressed or in danger",
+        "Adult appears vulnerable and at risk",
+        "Suspected exploitation or abuse",
+        "Concerning behaviour by other drivers or operators"
+      ],
+      "how_to_report": {
+        "immediate_danger": "999 - Police",
+        "child_concern": "Multi-Agency Safeguarding Hub (MASH)",
+        "adult_concern": "Adult safeguarding team",
+        "licensing_concern": "Licensing Authority"
+      },
+      "whistleblowing": "Protected under whistleblowing legislation"
+    },
+    "dbs_checks": {
+      "level": "Enhanced DBS including barred lists",
+      "children_barred_list": "Checked for all taxi/PHV drivers",
+      "adults_barred_list": "Checked for all taxi/PHV drivers",
+      "update_service": {
+        "requirement": "Must subscribe within 28 days of certificate",
+        "benefit": "Council can check online without new certificate",
+        "cost": "\u00a313 per year (paid by driver)",
+        "failure_to_subscribe": "Breach of licence conditions"
+      },
+      "renewal_checks": {
+        "if_subscribed": "Annual online check",
+        "if_not_subscribed": "New enhanced DBS required"
+      },
+      "ongoing_disclosure": "Must inform council of any arrests, investigations, cautions or convictions"
+    },
+    "nr3_database": {
+      "full_name": "National Register of Taxi Licence Refusals and Revocations",
+      "purpose": "Share information about unsuitable individuals across UK authorities",
+      "managed_by": "National Anti-Fraud Network (NAFN)",
+      "gloucester_participation": "Adopted from 1 February 2020",
+      "when_checked": {
+        "new_applications": "Automatically checked",
+        "renewals": "Automatically checked",
+        "transfer_applications": "Checked when applying to different authority"
+      },
+      "data_recorded": [
+        "Name, DOB, address",
+        "National Insurance Number",
+        "Driving licence number",
+        "Decision taken (refusal/revocation)",
+        "Date of decision",
+        "Reason for decision"
+      ],
+      "retention_period": "11 years",
+      "data_protection": {
+        "legal_basis": "Legitimate interest in public safety",
+        "gdpr_compliant": "Processing in accordance with UK GDPR",
+        "limited_use": "Only used for licensing decisions",
+        "right_to_information": "Individuals can request information held about them"
+      },
+      "if_match_found": {
+        "process": "Contact originating authority for details",
+        "consideration": "Information considered as part of fit and proper test",
+        "decision": "Council decides relevance to current application"
+      }
+    }
+  },
+  "vehicle_standards": {
+    "accessibility": {
+      "wheelchair_accessible_vehicles": {
+        "hackney_carriages": {
+          "new_additional_licences": "Must be wheelchair accessible",
+          "existing_licences": "Can continue with saloon/estate if already licensed",
+          "transfers": "Grandfather rights transfer with vehicle",
+          "policy_direction": "Moving toward fully accessible hackney carriage fleet"
+        },
+        "private_hire": {
+          "requirement": "No mandatory requirement",
+          "encouraged": "Council encourages WAV provision"
+        },
+        "designated_vehicles": {
+          "equality_act_duties": "Section 165 Equality Act 2010",
+          "driver_duties": [
+            "Carry wheelchair user without additional charge",
+            "Provide assistance boarding and alighting",
+            "Carry wheelchair safely",
+            "Provide assistance with luggage"
+          ],
+          "exemptions": {
+            "medical": "Driver may apply for medical exemption if unable to assist",
+            "vehicle_design": "Some vehicles not suitable - designated by council"
+          }
+        }
+      },
+      "assistance_dogs": {
+        "legal_duty": "Must carry assistance dogs without extra charge (Equality Act 2010)",
+        "exemptions": "Medical exemption certificate if driver has dog allergy",
+        "exemption_display": "Exemption certificate must be displayed in vehicle",
+        "breach": "Refusing assistance dog is criminal offence unless exempt"
+      }
+    },
+    "vehicle_condition": {
+      "external": [
+        "Bodywork free from significant damage",
+        "All panels securely fitted",
+        "No sharp edges or protruding items",
+        "Clean and presentable"
+      ],
+      "internal": [
+        "Clean and tidy",
+        "Seats in good condition",
+        "Floor covering secure and clean",
+        "No offensive odours",
+        "Adequate heating and ventilation",
+        "Interior lights working"
+      ],
+      "mechanical": [
+        "Roadworthy to MOT standard",
+        "Brakes, steering, suspension safe",
+        "Lights and indicators working",
+        "Tyres legal and safe",
+        "Exhaust not excessively noisy"
+      ],
+      "safety": [
+        "Doors operate safely",
+        "All seatbelts present and working",
+        "Fire extinguisher (if required)",
+        "First aid kit (if required)"
+      ]
+    },
+    "signage_and_plates": {
+      "hackney_carriage": {
+        "licence_plates": "Council-issued plates front and rear",
+        "display": "Securely fixed as specified",
+        "roof_signs": "Optional but commonly used",
+        "taxi_signage": "May display 'taxi' or 'cab'"
+      },
+      "private_hire": {
+        "licence_plates": "Yellow council-issued plates front and rear",
+        "display": "Securely fixed as specified",
+        "pre_booking_stickers": "Mandatory - visible to passengers",
+        "prohibited": "Cannot display 'taxi', 'cab' or similar",
+        "operator_advertising": "May advertise operator including 'Pre-booking only'",
+        "door_panels": "Operator details permitted on door panels only"
+      }
+    },
+    "insurance": {
+      "type": "Hire and reward (public hire)",
+      "standard_insurance_not_valid": "Private car insurance does NOT cover taxi work",
+      "named_drivers": "Must name all drivers who will use vehicle",
+      "operator": "Private hire insurance must name licensed operator",
+      "validity": "Must be valid at all times vehicle available for hire",
+      "changes": "Notify council within 7 days of any insurance changes",
+      "evidence": "Certificate must be produced on request to officer or police"
+    },
+    "safety_equipment": {
+      "seatbelts": "Appropriate 3-point seatbelts for all passenger seats",
+      "child_seats": "Driver responsible for ensuring children under 14 properly restrained",
+      "fire_extinguisher": "TODO - confirm requirement",
+      "first_aid_kit": "TODO - confirm requirement"
+    },
+    "prohibited_modifications": {
+      "tinted_windows": "Must meet legal requirements for light transmission",
+      "exhaust": "Must not be excessively noisy",
+      "suspension": "Must not be lowered below manufacturer specification"
+    }
+  },
+  "driver_conduct": {
+    "badge_display": {
+      "requirement": "Wear badge at all times when working for hire",
+      "position": "Clearly visible - typically on lanyard or breast pocket",
+      "criminal_offence": "Not wearing badge is criminal offence",
+      "other_persons": "Badge not transferable - only licensed driver may use"
+    },
+    "appearance_and_behaviour": {
+      "dress_code": "Smart, clean, professional appearance",
+      "personal_hygiene": "Maintain good personal hygiene",
+      "conduct": [
+        "Be polite and courteous",
+        "Do not use offensive language",
+        "Do not smoke in or near vehicle",
+        "Do not eat or drink in vehicle when working",
+        "Do not play loud music"
+      ]
+    },
+    "passenger_interaction": {
+      "assistance": [
+        "Assist with luggage (reasonable assistance)",
+        "Assist elderly or disabled passengers",
+        "Help with wheelchair if WAV",
+        "Ensure passenger safety entering/exiting"
+      ],
+      "prohibited": [
+        "No sexual, discriminatory or offensive comments",
+        "No asking for personal contact details",
+        "No taking photos of passengers",
+        "No personal use of passenger information",
+        "No discrimination on any protected characteristic"
+      ],
+      "vulnerable_passengers": {
+        "children": "Extra care with unaccompanied children",
+        "intoxicated": "Refuse if safety concern, assist if appropriate",
+        "elderly_disabled": "Reasonable adjustments and assistance",
+        "safeguarding": "Report concerns appropriately"
+      }
+    },
+    "journey_conduct": {
+      "route": "Take most direct reasonable route unless passenger requests otherwise",
+      "prolongation": "Criminal offence to unnecessarily prolong journey",
+      "meter": "Hackney carriage - engage meter at start of hiring",
+      "fare": "Hackney carriage - cannot charge more than meter shows",
+      "receipt": "Provide receipt if requested",
+      "property": "Check for left property, hand in to police if not claimed"
+    },
+    "hackney_carriage_specific": {
+      "plying_for_hire": [
+        "Can be hailed in street",
+        "Must stop if available and safe to do so",
+        "Can wait at designated ranks",
+        "Cannot refuse short journeys (within district)"
+      ],
+      "ranks": {
+        "usage": "May wait at designated ranks only",
+        "queue": "Maintain orderly queues",
+        "first_cab": "First cab on rank takes first fare",
+        "cannot_refuse": "Cannot refuse fare from rank (except lawful excuse)"
+      },
+      "fares": {
+        "tariff": "Charge according to meter and approved tariff",
+        "maximum": "Tariff is maximum - can charge less if agreed",
+        "extras": "Only charge extras shown on tariff card",
+        "no_charge": "Wheelchairs and assistance dogs - no extra charge"
+      }
+    },
+    "private_hire_specific": {
+      "pre_booking_only": "Can ONLY accept bookings through licensed operator",
+      "standing_prohibited": "Cannot wait or tout for business",
+      "ranks_prohibited": "Cannot wait at taxi ranks - criminal offence",
+      "hailing_prohibited": "Cannot accept street hailing - journey uninsured if do",
+      "operator_booking": "All bookings must go through operator who issues booking to driver"
+    },
+    "smoking": {
+      "prohibition": "Smoking in licensed vehicle is criminal offence",
+      "includes": "Traditional cigarettes, e-cigarettes, vaping",
+      "applies": "Even when vehicle not carrying passengers",
+      "penalty": "Fixed penalty \u00a350 or prosecution",
+      "signage": "No smoking signs must be displayed"
+    },
+    "mobile_phones": {
+      "driving": "Illegal to use handheld phone while driving",
+      "hands_free": "Hands-free permitted but must not affect driving",
+      "penalty": "6 points and \u00a3200 fine minimum"
+    },
+    "lost_property": {
+      "check": "Check vehicle after each hiring",
+      "contact": "Try to contact passenger if details available",
+      "hand_in": "Hand unclaimed property to police within 48 hours",
+      "record": "Keep record of property found"
+    }
+  },
+  "enforcement": {
+    "authorised_officers": {
+      "council_officers": "Licensing officers have powers to inspect and enforce",
+      "police": "Police have powers under taxi legislation",
+      "powers": [
+        "Require production of driver licence",
+        "Inspect vehicle and plates",
+        "Test vehicle fitness",
+        "Inspect taximeter",
+        "Inspect insurance",
+        "Inspect booking records (operators)"
+      ]
+    },
+    "vehicle_inspections": {
+      "roadside": "Officers can stop and inspect licensed vehicles",
+      "testing_station": "Require vehicle presented for inspection",
+      "frequency": "May inspect up to 3 times in 12 months",
+      "suspension": "Can suspend vehicle if not satisfied with fitness",
+      "rectification": "Time given to rectify defects"
+    },
+    "compliance_checks": {
+      "targets": [
+        "Driver wearing badge",
+        "Plates correctly displayed",
+        "Insurance valid",
+        "Vehicle condition",
+        "Meter calibration (HC)",
+        "Pre-booking stickers (PH)",
+        "Private hire not on ranks"
+      ],
+      "joint_operations": "Council and police conduct joint operations",
+      "hot_spots": "Targeted checks at ranks, stations, nightlife areas"
+    },
+    "complaints": {
+      "sources": [
+        "Members of public",
+        "Other drivers",
+        "Operators",
+        "Police",
+        "Other agencies"
+      ],
+      "process": {
+        "receipt": "Complaint logged and assessed",
+        "investigation": "Officer investigates - may interview driver, witnesses",
+        "evidence": "Gather evidence - CCTV, documents, statements",
+        "decision": "Determine if breach occurred",
+        "action": "Decide appropriate action"
+      },
+      "outcomes": [
+        "No further action",
+        "Warning letter",
+        "Penalty points",
+        "Referral to committee",
+        "Suspension of licence",
+        "Revocation of licence",
+        "Prosecution"
+      ]
+    },
+    "suspension_and_revocation": {
+      "grounds": {
+        "drivers": [
+          "Convicted of offence involving dishonesty, violence or indecency",
+          "Non-compliance with legislation or licence conditions",
+          "Any other reasonable cause"
+        ],
+        "vehicles": [
+          "Vehicle unfit for purpose",
+          "Vehicle not comply with conditions",
+          "Use of vehicle for illegal purposes"
+        ],
+        "operators": [
+          "Convicted of offence involving dishonesty, violence, indecency or drugs",
+          "Non-compliance with legislation or conditions",
+          "Operating without appropriate planning permission",
+          "Operating from outside district"
+        ]
+      },
+      "immediate_suspension": {
+        "power": "Section 61(2B) LG(MP)A 1976",
+        "grounds": "Interest of public safety",
+        "effect": "Licence suspended immediately",
+        "notice": "Written notice given",
+        "duration": "Until determined otherwise",
+        "examples": [
+          "Serious criminal allegation",
+          "Safeguarding concern",
+          "Driving ban imposed",
+          "Serious breach of conditions"
+        ]
+      },
+      "standard_suspension_revocation": {
+        "notice_period": "21 days before taking effect",
+        "representations": "Licence holder can make representations",
+        "hearing": "May be heard by committee",
+        "appeal": "Can appeal to Magistrates Court within 21 days"
+      }
+    },
+    "penalty_points": {
+      "system": "Gloucester operates penalty points for minor breaches",
+      "threshold": "12 points in 12 months triggers committee referral",
+      "policy": "TODO - add link to penalty points policy",
+      "examples": [
+        "Vehicle condition issues - 3-6 points",
+        "Not wearing badge - 6 points",
+        "Late notification of conviction - 6 points",
+        "Meter not calibrated - 6 points"
+      ],
+      "accumulation": "Points accumulate - multiple breaches can lead to revocation"
+    },
+    "prosecution": {
+      "criminal_offences": "Some breaches are criminal offences",
+      "investigation": "Council may investigate and prosecute",
+      "magistrates_court": "Cases heard at Magistrates Court",
+      "penalties": "Fines, costs, criminal record",
+      "examples": [
+        "Driving without licence",
+        "Operating without operator licence",
+        "Private hire on taxi rank",
+        "Smoking in vehicle",
+        "Prolonging journey",
+        "Overcharging"
+      ]
+    },
+    "information_sharing": {
+      "nr3_database": "Refusals and revocations recorded and shared",
+      "police": "Share information about criminal matters",
+      "other_authorities": "Share information with other licensing authorities",
+      "safeguarding": "Share safeguarding concerns with MASH, adult safeguarding",
+      "dvla": "May report driving concerns to DVLA"
+    }
+  },
+  "taxi_ranks": {
+    "definition": "Hackney Carriage Stands - designated locations where hackney carriages may wait for hire",
+    "legislation": "Designated under local byelaws",
+    "locations": "TODO - add complete list of Gloucester taxi rank locations with bay capacities and times of operation",
+    "usage_rules": {
+      "hackney_carriages_only": "Only licensed hackney carriages may use ranks",
+      "private_hire_prohibited": "Private hire vehicles cannot wait at ranks - criminal offence",
+      "queueing": "Drivers must queue in orderly manner",
+      "first_cab": "First vehicle on rank entitled to first hiring",
+      "obstruction": "Cannot obstruct highway or cause nuisance"
+    },
+    "enforcement": {
+      "authorised_by": "Council and police",
+      "penalties": "Private hire on rank is criminal offence - prosecution or penalty notice"
+    }
+  },
+  "service_delivery": {
+    "operational_guidance": {
+      "application_processing": {
+        "target_timeframes": {
+          "driver_new": "14 days (normal cases)",
+          "driver_renewal": "14 days",
+          "vehicle_new": "14 days",
+          "vehicle_renewal": "14 days",
+          "current_delays": "High volume - contact after 20 working days if no response"
+        },
+        "process_flow": [
+          "Application received online",
+          "Payment checked",
+          "Documents validated",
+          "DBS checked via Update Service or new certificate",
+          "NR3 database checked",
+          "DVLA licence checked",
+          "Fit and proper assessment",
+          "Decision (officer or committee)",
+          "Licence issued or refusal letter sent"
+        ],
+        "committee_cases": {
+          "when_referred": [
+            "Serious criminal convictions",
+            "Previous refusals or revocations",
+            "Contentious cases",
+            "Officer recommendation to refuse"
+          ],
+          "committee": "Licensing and Enforcement Sub-Committee",
+          "notice": "Applicant invited to attend",
+          "representation": "Can bring representative",
+          "decision": "Committee makes decision on fitness"
+        }
+      },
+      "renewal_process": {
+        "advance_notice": "Renewal letters sent in advance of expiry",
+        "reference_number": "Unique reference number for tracking",
+        "online_application": "Renew via My Gloucester account",
+        "documents_required": "Varies by licence type - medical, DBS, vehicle inspection etc",
+        "continuous_licence": "Important to renew before expiry - cannot work if expired"
+      },
+      "change_notifications": {
+        "driver_must_notify": [
+          {
+            "change": "Criminal matters (arrests, cautions, convictions, pending cases)",
+            "timeframe": "48 hours of being formally notified",
+            "method": "In writing using notification form"
+          },
+          {
+            "change": "Change of address",
+            "timeframe": "Within 7 days",
+            "method": "Online form or email"
+          },
+          {
+            "change": "Change of operator (private hire drivers)",
+            "timeframe": "Within 7 days",
+            "method": "Notify licensing team"
+          },
+          {
+            "change": "Medical condition affecting fitness",
+            "timeframe": "As soon as aware",
+            "method": "Contact licensing team"
+          },
+          {
+            "change": "Driving licence endorsements or points",
+            "timeframe": "As soon as aware",
+            "method": "In writing"
+          }
+        ],
+        "vehicle_proprietor_must_notify": [
+          {
+            "change": "Accident causing material damage",
+            "timeframe": "72 hours",
+            "method": "Online accident report form"
+          },
+          {
+            "change": "Change of insurance",
+            "timeframe": "Within 7 days",
+            "method": "Email new certificate to licensing"
+          },
+          {
+            "change": "Change of vehicle colour or appearance",
+            "timeframe": "Before change made",
+            "method": "Apply for approval"
+          }
+        ],
+        "operator_must_notify": [
+          {
+            "change": "Change of operating address",
+            "timeframe": "Before change",
+            "method": "Apply for variation"
+          },
+          {
+            "change": "Change of directors or partners",
+            "timeframe": "Within 14 days",
+            "method": "Notify in writing"
+          }
+        ]
+      },
+      "contact_points": {
+        "general_enquiries": {
+          "email": "licensing@gloucester.gov.uk",
+          "phone": "01452 396396",
+          "office_hours": "TODO - add office hours"
+        },
+        "my_gloucester_account": {
+          "purpose": "Online account for applications, renewals, payments",
+          "access": "https://gloucester-self.achieveservice.com/",
+          "functions": [
+            "Apply for new licences",
+            "Renew existing licences",
+            "Report changes",
+            "Pay fees",
+            "Track applications"
+          ]
+        },
+        "complaint_about_driver": {
+          "how": "Contact licensing team with details",
+          "information_needed": [
+            "Date, time and location",
+            "Vehicle registration or plate number",
+            "Driver badge number if visible",
+            "Description of incident",
+            "Any witnesses or evidence"
+          ],
+          "process": "Complaint logged and investigated",
+          "confidentiality": "Complainant details kept confidential where possible"
+        }
+      }
+    }
+  },
+  "performance_and_quality": {
+    "service_standards": {
+      "application_processing": {
+        "target": "14 days for straightforward applications",
+        "current_performance": "TODO - validate current performance",
+        "delays": "High volume currently affecting timescales"
+      },
+      "customer_contact": {
+        "target": "Respond to emails within 5 working days",
+        "current_performance": "TODO - validate"
+      },
+      "complaints_handling": {
+        "acknowledgement": "Within 5 working days",
+        "investigation": "Completed within reasonable timeframe depending on complexity",
+        "outcome": "Complainant informed of outcome"
+      }
+    },
+    "quality_measures": {
+      "public_safety": "Primary objective - zero tolerance for serious safety breaches",
+      "compliance_rate": {
+        "target": "TODO - set target for % of vehicles passing inspection first time",
+        "monitoring": "Track inspection pass rates"
+      },
+      "enforcement_activity": {
+        "roadside_checks": "Regular programme of compliance checks",
+        "complaint_response": "All complaints investigated",
+        "action_taken": "Appropriate enforcement action where breaches found"
+      },
+      "customer_satisfaction": {
+        "public_feedback": "Monitor complaints and compliments",
+        "trade_feedback": "Engage with trade on policy development",
+        "accessibility": "Ensure services accessible to all"
+      }
+    },
+    "continuous_improvement": {
+      "policy_review": "Policies reviewed regularly",
+      "fee_review": "Annual fee review",
+      "training": "Officer training on legislation and best practice",
+      "benchmarking": "Compare with other authorities",
+      "consultation": "Consult trade and public on changes"
+    }
+  },
+  "accountability": {
+    "political_accountability": {
+      "cabinet_member": "TODO - confirm current Cabinet Member for Licensing",
+      "portfolio": "Overall political responsibility for licensing function",
+      "decisions": "Major policy decisions by Cabinet or Full Council"
+    },
+    "officer_accountability": {
+      "service_manager": "TODO - confirm Licensing Service Manager",
+      "responsibilities": [
+        "Day-to-day management of licensing service",
+        "Officer decisions on applications",
+        "Enforcement decisions",
+        "Service performance"
+      ],
+      "corporate_director": "TODO - confirm which Corporate Director licensing reports to",
+      "senior_leadership": "Strategic oversight of regulatory services"
+    },
+    "committee_accountability": {
+      "licensing_committee": "Licensing and Enforcement Sub-Committee",
+      "role": "Determine complex or contentious applications",
+      "membership": "Elected councillors",
+      "decisions": [
+        "Applications with serious convictions",
+        "Revocation hearings",
+        "Appeals against officer decisions",
+        "Policy recommendations"
+      ],
+      "meetings": "Regular scheduled meetings",
+      "public_access": "Meetings generally in public (exempt items in private)"
+    },
+    "transparency": {
+      "public_register": {
+        "hackney_carriage_drivers": "Published list of licensed drivers",
+        "private_hire_drivers": "Published list of licensed drivers",
+        "hackney_carriage_vehicles": "Published list of licensed vehicles",
+        "private_hire_vehicles": "Published list of licensed vehicles",
+        "operators": "Published list of licensed operators",
+        "information_shown": [
+          "Licence number",
+          "Name of licence holder",
+          "Expiry date",
+          "Vehicle details (for vehicle licences)"
+        ],
+        "access": "Available on council website"
+      },
+      "committee_decisions": {
+        "minutes": "Committee minutes published",
+        "decisions": "Decisions and reasons recorded",
+        "access": "Available on council website"
+      },
+      "policies": {
+        "publication": "All policies published on council website",
+        "accessibility": "Available in accessible formats on request"
+      }
+    },
+    "external_oversight": {
+      "courts": {
+        "appeals": "Right of appeal to Magistrates Court",
+        "judicial_review": "High Court can review procedural fairness"
+      },
+      "ombudsman": {
+        "local_government_ombudsman": "Can investigate complaints about service",
+        "grounds": "Maladministration causing injustice",
+        "remedy": "Can recommend compensation or service improvement"
+      },
+      "audit": {
+        "internal_audit": "Internal audit of licensing processes",
+        "external_audit": "External audit of council finances including fee income"
+      }
+    }
+  },
+  "data_protection_and_information_governance": {
+    "data_controller": "Gloucester City Council",
+    "dpo_contact": "dataprotection@gloucester.gov.uk",
+    "lawful_basis": {
+      "licensing_data": "Legal obligation (licensing is statutory function)",
+      "criminal_records": "Substantial public interest (prevention and detection of crime, safeguarding)",
+      "nr3_database": "Legitimate interest in public safety"
+    },
+    "data_collected": {
+      "personal_data": [
+        "Name, date of birth, address",
+        "Contact details",
+        "National Insurance Number",
+        "Driving licence number",
+        "Photograph"
+      ],
+      "special_category_data": [
+        "Criminal convictions and offences (DBS)",
+        "Health information (medical certificates)"
+      ],
+      "licensing_data": [
+        "Application details",
+        "Licence history",
+        "Compliance and enforcement records",
+        "Complaint records"
+      ]
+    },
+    "data_sharing": {
+      "routine_sharing": [
+        {
+          "recipient": "National Register (NR3)",
+          "data": "Refusals and revocations",
+          "purpose": "Prevent unsuitable persons being licensed elsewhere",
+          "legal_basis": "Legitimate interest in public safety"
+        },
+        {
+          "recipient": "Police",
+          "data": "Criminal matters and safeguarding concerns",
+          "purpose": "Law enforcement and safeguarding",
+          "legal_basis": "Legal obligation and legitimate interest"
+        },
+        {
+          "recipient": "Other licensing authorities",
+          "data": "Licensing history via NR3",
+          "purpose": "Fit and proper assessment",
+          "legal_basis": "Legitimate interest"
+        }
+      ],
+      "safeguarding_sharing": {
+        "recipients": [
+          "Multi-Agency Safeguarding Hub (MASH)",
+          "Adult safeguarding team",
+          "Police",
+          "Children's services"
+        ],
+        "legal_basis": "Legal obligation to safeguard and vital interests",
+        "threshold": "Concerns about risk of harm"
+      }
+    },
+    "retention_periods": {
+      "active_licences": "Held while licence in force",
+      "expired_licences": "TODO - confirm retention period for expired licences",
+      "refused_revoked": "Held on NR3 for 11 years",
+      "complaints": "TODO - confirm retention period",
+      "enforcement": "TODO - confirm retention period",
+      "note": "Retention in line with council's corporate retention schedule and Information Commissioner guidance"
+    },
+    "individual_rights": {
+      "right_of_access": "Request copy of personal data held - Data Subject Access Request (DSAR)",
+      "right_to_rectification": "Request correction of inaccurate data",
+      "right_to_erasure": "Limited - licensing data held for statutory purpose",
+      "right_to_restrict": "Can request restriction in certain circumstances",
+      "right_to_object": "Can object to processing based on legitimate interest",
+      "how_to_exercise": {
+        "email": "dataprotection@gloucester.gov.uk",
+        "post": "Data Protection Officer, Gloucester City Council, Eastgate Management Suite, Eastgate Street, Gloucester, GL1 1PA"
+      }
+    },
+    "privacy_information": {
+      "privacy_notice": "TODO - add link to taxi licensing privacy notice",
+      "transparency": "Council publishes privacy information explaining data use"
+    },
+    "security_measures": {
+      "technical": [
+        "Secure IT systems",
+        "Access controls",
+        "Encryption where appropriate"
+      ],
+      "organisational": [
+        "Staff training on data protection",
+        "Confidentiality requirements",
+        "Clear retention and disposal procedures"
+      ]
+    },
+    "dpo_sign_off": "TODO - Data Protection Officer sign-off required before schema publication"
+  },
+  "related_services": {
+    "business_rates": {
+      "relevance": "Taxi operators may be liable for business rates",
+      "contact": "revenues@gloucester.gov.uk",
+      "url": "https://www.gloucester.gov.uk/business-economy/business-rates/"
+    },
+    "planning_permission": {
+      "relevance": "Operating from home may require planning permission",
+      "contact": "Planning department",
+      "note": "Check before starting operator business from residential property"
+    },
+    "street_trading": {
+      "relevance": "Different licence - not covered by taxi licensing",
+      "contact": "licensing@gloucester.gov.uk"
+    },
+    "parking_enforcement": {
+      "relevance": "Taxi ranks enforced by parking and police",
+      "ranks": "Do not obstruct or misuse taxi ranks"
+    }
+  },
+  "faqs_and_common_scenarios": {
+    "can_i_drive_taxi_with_ordinary_car_licence": "No - you need a hackney carriage or private hire driver licence from the council in addition to your DVLA driving licence",
+    "difference_between_taxi_and_private_hire": "Taxis (hackney carriages) can be hailed in street and wait at ranks. Private hire must be pre-booked through operator. Different licences and rules apply.",
+    "can_i_use_my_licensed_vehicle_for_personal_use": "Yes, but insurance must cover personal use as well as hire and reward. Plates must remain fitted.",
+    "what_if_i_have_criminal_conviction": "Depends on type, seriousness and time elapsed. See Common Standards policy. Each case assessed individually on whether you are fit and proper person.",
+    "do_i_need_medical_every_year": "Every 5 years if under 65, annually if 65 or over, or sooner if medical condition develops",
+    "can_i_work_for_uber_lyft": "These are private hire operators. You need private hire driver licence, your vehicle needs private hire vehicle licence, and operator (Uber/Lyft) needs operator licence. All must be from Gloucester if operating in Gloucester.",
+    "what_if_licence_expires": "Cannot work - illegal to drive licensed vehicle without current licence. Apply for renewal before expiry.",
+    "can_i_drive_in_other_areas": "Your Gloucester licence only valid for Gloucester-licensed vehicles and operators. Other areas require their licences.",
+    "what_if_get_points_on_licence": "Must notify council within 48 hours. May affect fitness depending on circumstances.",
+    "can_i_refuse_a_fare": "Hackney carriage - no except lawful excuse (e.g. safety concern, passenger abusive). Private hire - operator takes booking decision.",
+    "what_is_grandfather_rights": "Existing hackney carriage licences for non-wheelchair accessible vehicles can continue and be transferred to new owner. New additional licences must be wheelchair accessible."
+  },
+  "online_forms": {
+    "description": "Links to online application forms and My Gloucester portal",
+    "my_gloucester": {
+      "base_url": "https://my.gloucester.gov.uk",
+      "description": "Gloucester City Council's online portal for licensing applications"
+    },
+    "driver_application": {
+      "new_application_url": "TODO - add My Gloucester URL for new driver applications",
+      "renewal_url": "TODO - add My Gloucester renewal URL",
+      "description": "Online forms for driver licence applications and renewals"
+    },
+    "vehicle_application": {
+      "new_application_url": "TODO - add My Gloucester URL for vehicle licensing",
+      "renewal_url": "TODO - add My Gloucester vehicle renewal URL",
+      "description": "Online forms for vehicle licence applications"
+    },
+    "operator_application": {
+      "application_url": "TODO - add My Gloucester URL for operator applications",
+      "description": "Online form for private hire operator licence applications"
+    },
+    "accident_report": {
+      "url": "TODO - add URL for vehicle accident reporting form",
+      "description": "Form for reporting vehicle accidents (required within 72 hours)"
+    },
+    "conviction_notification": {
+      "url": "TODO - add URL or specify as downloadable form",
+      "description": "Form for notifying licensing team of convictions (required within 48 hours)"
+    }
+  },
+  "implementation_checklist": {
+    "description": "Items requiring action before website publication",
+    "critical_must_have": [
+      {
+        "item": "DPO sign-off",
+        "status": "TODO",
+        "required_by": "Legal requirement",
+        "action": "Data Protection Officer must review and approve data protection sections"
+      },
+      {
+        "item": "My Gloucester URLs",
+        "status": "TODO",
+        "required_by": "User journeys require application links",
+        "action": "Obtain URLs for driver, vehicle, operator applications and renewals"
+      },
+      {
+        "item": "Cabinet Member confirmation",
+        "status": "TODO",
+        "required_by": "Accountability section",
+        "action": "Confirm current Cabinet Member for Licensing"
+      },
+      {
+        "item": "Service Manager confirmation",
+        "status": "TODO",
+        "required_by": "Contact and accountability",
+        "action": "Confirm current Licensing Service Manager name"
+      }
+    ],
+    "high_priority": [
+      {
+        "item": "Approved testing stations list",
+        "status": "TODO",
+        "required_by": "Vehicle licensing journey",
+        "action": "Provide complete current list of approved vehicle testing stations with addresses"
+      },
+      {
+        "item": "Knowledge test syllabuses",
+        "status": "TODO",
+        "required_by": "Driver application guidance",
+        "action": "Obtain and link to knowledge test syllabuses for geography and highway code"
+      },
+      {
+        "item": "Knowledge test cost",
+        "status": "\u00a3TBC",
+        "required_by": "Cost calculator",
+        "action": "Confirm current cost of knowledge test"
+      },
+      {
+        "item": "Safeguarding training cost",
+        "status": "\u00a3TBC",
+        "required_by": "Cost calculator",
+        "action": "Confirm current cost of safeguarding training (or confirm if provided free)"
+      }
+    ],
+    "medium_priority": [
+      {
+        "item": "Taxi rank locations",
+        "status": "Partial - TODO add capacities and times",
+        "required_by": "Taxi ranks page",
+        "action": "Complete taxi rank information with capacities and operating times"
+      },
+      {
+        "item": "Penalty points policy link",
+        "status": "TODO",
+        "required_by": "Enforcement information",
+        "action": "Add link to penalty points policy document"
+      },
+      {
+        "item": "NR3 retention policy",
+        "status": "TODO",
+        "required_by": "Data protection notice",
+        "action": "Confirm local policy on 11-year NR3 retention"
+      }
+    ],
+    "nice_to_have": [
+      {
+        "item": "Public register API",
+        "status": "TODO",
+        "required_by": "Public register search",
+        "action": "Provide API or data source for licensed driver/vehicle search"
+      },
+      {
+        "item": "Fare calculator",
+        "status": "Optional enhancement",
+        "required_by": "Fare information page",
+        "action": "If implementing calculator, confirm tariff calculation rules"
+      }
+    ]
+  }
+}
