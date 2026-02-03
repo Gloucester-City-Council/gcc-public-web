@@ -1,0 +1,368 @@
+{
+  "vehicle_licence_new_application": {
+    "hackney_carriage": {
+      "number_limit": {
+        "policy": "Council may limit number of hackney carriage licences"
+      },
+      "vehicle_requirements": {
+        "wheelchair_accessibility": {
+          "new_additional_licences": "Must be wheelchair accessible",
+          "existing_licences": "Grandfather rights - can transfer saloon/estate types",
+          "transfer": "Existing HC licence can be transferred to new proprietor maintaining vehicle type",
+          "policy_intent": "Move toward fully wheelchair accessible hackney carriage fleet"
+        },
+        "vehicle_types": [
+          "Saloons (existing licences only)",
+          "Estates (existing licences only)",
+          "Multi-purpose vehicles",
+          "Purpose built hackney carriages",
+          "Wheelchair accessible vehicles (mandatory for new additional licences)"
+        ],
+        "passengers": "Maximum 8 passengers",
+        "mandatory_equipment": [
+          "Taximeter - tested and sealed by approved station",
+          "Tariff card visible to passengers showing current council tariff",
+          "Hackney carriage licence plates - front and rear",
+          "Roof sign (optional but common)",
+          "Appropriate seatbelts for all passengers"
+        ],
+        "colour_livery": "No mandatory colour restriction (unlike some authorities)"
+      },
+      "insurance_requirement": {
+        "type": "Hire and reward insurance",
+        "named_persons": "Must name proprietor and any drivers",
+        "cover": "Must cover hackney carriage use",
+        "duration": "Valid for full licence period"
+      },
+      "application_steps": [
+        {
+          "step": 1,
+          "action": "Ensure vehicle meets requirements",
+          "check": "Review hackney carriage conditions and rule book"
+        },
+        {
+          "step": 2,
+          "action": "Vehicle inspection",
+          "where": "Approved testing station",
+          "when": "Before application",
+          "test": "Vehicle fitness test including taximeter calibration",
+          "pass_required": "Vehicle inspection certificate required with application"
+        },
+        {
+          "step": 3,
+          "action": "Insurance",
+          "obtain": "Hire and reward insurance covering hackney carriage use",
+          "must_name": "Proprietor as named driver"
+        },
+        {
+          "step": 4,
+          "action": "Submit application",
+          "how": "Online application",
+          "documents": [
+            "Vehicle inspection certificate from approved station",
+            "Insurance certificate (hire and reward)",
+            "V5 registration document",
+            "MOT certificate (if over 1 year old)",
+            "Basic DBS certificate (if not Gloucester licensed driver)"
+          ],
+          "fee": "See fees and charges 2025/26"
+        },
+        {
+          "step": 5,
+          "action": "Decision",
+          "timeframe": "Usually within 14 days",
+          "delays": "May take longer - contact after 20 working days"
+        },
+        {
+          "step": 6,
+          "action": "Plates issued",
+          "collect": "Collect plates and fix to vehicle",
+          "display": "Front and rear as specified",
+          "start_work": "Can begin operating as hackney carriage"
+        }
+      ],
+      "ongoing_requirements": {
+        "inspection": "Annual vehicle inspection at approved testing station",
+        "age_threshold": "If 8 years or older - 6-monthly inspections required",
+        "insurance": "Maintain valid insurance - notify any changes within 7 days",
+        "taximeter": "Keep calibrated and sealed - any repairs require re-testing",
+        "condition": "Maintain vehicle to required standard",
+        "licence_display": "Display licence plates at all times"
+      }
+    },
+    "private_hire": {
+      "vehicle_requirements": {
+        "accessibility": "No mandatory wheelchair accessibility requirement",
+        "vehicle_types": [
+          "Saloons",
+          "Estates",
+          "Multi-purpose vehicles",
+          "Purpose built vehicles",
+          "Wheelchair accessible vehicles (optional)",
+          "Executive/chauffeur vehicles",
+          "Limousines (up to 8 passengers)"
+        ],
+        "passengers": "Maximum 8 passengers (over 8 requires DVSA operator licence)",
+        "drive_side": "Left or right hand drive permitted",
+        "colour": "Any colour permitted",
+        "mandatory_equipment": [
+          "Yellow private hire licence plates - front and rear",
+          "'Pre-booking only' stickers - visible to passengers",
+          "Appropriate seatbelts for all passengers"
+        ],
+        "prohibited_signage": [
+          "Cannot display 'taxi' or 'cab'",
+          "Cannot use similar words like 'kab'",
+          "Cannot display anything suggesting hackney carriage"
+        ],
+        "advertising": "Permitted only for private hire company operating vehicle - must include 'Pre-booking only'"
+      },
+      "application_process": "Similar to hackney carriage",
+      "key_differences": [
+        "Yellow plates not hackney plates",
+        "Pre-booking stickers mandatory",
+        "Taximeter optional (if fitted must be tested)",
+        "Can be any colour",
+        "No quantity restrictions"
+      ]
+    },
+    "approved_testing_stations": {
+      "requirement": "All vehicles must be inspected at approved testing station",
+      "test_includes": [
+        "Vehicle safety and condition",
+        "Interior cleanliness and comfort",
+        "Door safety and security",
+        "Seatbelt condition",
+        "Taximeter calibration (if fitted)",
+        "Compliance with licensing conditions"
+      ]
+    }
+  },
+  "vehicle_licence_renewal": {
+    "when": "Before expiry - cannot operate if expired",
+    "duration": "1 year",
+    "reference_number": "Need vehicle licence reference number from renewal letter",
+    "requirements": [
+      "Vehicle inspection certificate from approved testing station",
+      "Valid insurance (hire and reward)",
+      "MOT certificate (if applicable)",
+      "Confirm proprietor details unchanged or notify changes"
+    ],
+    "age_threshold": {
+      "under_8_years": "Annual inspection",
+      "8_years_or_over": "6-monthly inspections required"
+    },
+    "process": "Online application",
+    "fee": "See fees and charges 2025/26"
+  },
+  "change_of_vehicle": {
+    "when_needed": "Changing to different vehicle while keeping same licence",
+    "cost": "\u00a368",
+    "timeframe": "Usually 14 days",
+    "requirements": [
+      "New vehicle must meet all licensing conditions",
+      "Vehicle inspection certificate for new vehicle",
+      "Insurance for new vehicle",
+      "V5 for new vehicle",
+      "Return old licence plates"
+    ],
+    "special_cases": {
+      "like_for_like_temporary": "Contact council - e.g. vehicle over 5 years needs temporary replacement",
+      "fleet_vehicles": "Contact council for fleet arrangements"
+    }
+  },
+  "transfer_of_ownership": {
+    "when_needed": "Selling licensed vehicle to new owner",
+    "cost": "\u00a351",
+    "timeframe": "Usually 14 days",
+    "requirements": [
+      "Letter from previous owner confirming no longer using vehicle",
+      "V5 registration document or new keeper supplement",
+      "MOT certificate (unless less than 1 year old)",
+      "Insurance naming new proprietor",
+      "Basic DBS certificate (less than 1 month old) unless Gloucester licensed driver"
+    ],
+    "note": "Grandfather rights transfer with vehicle - e.g. non-WAV hackney carriage can remain non-WAV"
+  },
+  "vehicle_standards": {
+    "accessibility": {
+      "wheelchair_accessible_vehicles": {
+        "hackney_carriages": {
+          "new_additional_licences": "Must be wheelchair accessible",
+          "existing_licences": "Can continue with saloon/estate if already licensed",
+          "transfers": "Grandfather rights transfer with vehicle",
+          "policy_direction": "Moving toward fully accessible hackney carriage fleet"
+        },
+        "private_hire": {
+          "requirement": "No mandatory requirement",
+          "encouraged": "Council encourages WAV provision"
+        },
+        "designated_vehicles": {
+          "equality_act_duties": "Section 165 Equality Act 2010",
+          "driver_duties": [
+            "Carry wheelchair user without additional charge",
+            "Provide assistance boarding and alighting",
+            "Carry wheelchair safely",
+            "Provide assistance with luggage"
+          ],
+          "exemptions": {
+            "medical": "Driver may apply for medical exemption if unable to assist",
+            "vehicle_design": "Some vehicles not suitable - designated by council"
+          }
+        }
+      },
+      "assistance_dogs": {
+        "legal_duty": "Must carry assistance dogs without extra charge (Equality Act 2010)",
+        "exemptions": "Medical exemption certificate if driver has dog allergy",
+        "exemption_display": "Exemption certificate must be displayed in vehicle",
+        "breach": "Refusing assistance dog is criminal offence unless exempt"
+      }
+    },
+    "vehicle_condition": {
+      "external": [
+        "Bodywork free from significant damage",
+        "All panels securely fitted",
+        "No sharp edges or protruding items",
+        "Clean and presentable"
+      ],
+      "internal": [
+        "Clean and tidy",
+        "Seats in good condition",
+        "Floor covering secure and clean",
+        "No offensive odours",
+        "Adequate heating and ventilation",
+        "Interior lights working"
+      ],
+      "mechanical": [
+        "Roadworthy to MOT standard",
+        "Brakes, steering, suspension safe",
+        "Lights and indicators working",
+        "Tyres legal and safe",
+        "Exhaust not excessively noisy"
+      ],
+      "safety": [
+        "Doors operate safely",
+        "All seatbelts present and working",
+        "Fire extinguisher (if required)",
+        "First aid kit (if required)"
+      ]
+    },
+    "signage_and_plates": {
+      "hackney_carriage": {
+        "licence_plates": "Council-issued plates front and rear",
+        "display": "Securely fixed as specified",
+        "roof_signs": "Optional but commonly used",
+        "taxi_signage": "May display 'taxi' or 'cab'"
+      },
+      "private_hire": {
+        "licence_plates": "Yellow council-issued plates front and rear",
+        "display": "Securely fixed as specified",
+        "pre_booking_stickers": "Mandatory - visible to passengers",
+        "prohibited": "Cannot display 'taxi', 'cab' or similar",
+        "operator_advertising": "May advertise operator including 'Pre-booking only'",
+        "door_panels": "Operator details permitted on door panels only"
+      }
+    },
+    "insurance": {
+      "type": "Hire and reward (public hire)",
+      "standard_insurance_not_valid": "Private car insurance does NOT cover taxi work",
+      "named_drivers": "Must name all drivers who will use vehicle",
+      "operator": "Private hire insurance must name licensed operator",
+      "validity": "Must be valid at all times vehicle available for hire",
+      "changes": "Notify council within 7 days of any insurance changes",
+      "evidence": "Certificate must be produced on request to officer or police"
+    },
+    "safety_equipment": {
+      "seatbelts": "Appropriate 3-point seatbelts for all passenger seats",
+      "child_seats": "Driver responsible for ensuring children under 14 properly restrained"
+    },
+    "prohibited_modifications": {
+      "tinted_windows": "Must meet legal requirements for light transmission",
+      "exhaust": "Must not be excessively noisy",
+      "suspension": "Must not be lowered below manufacturer specification"
+    }
+  },
+  "private_hire_operator": {
+    "definition": "Person or company taking bookings for private hire vehicles",
+    "legal_requirement": "Must hold operator licence to accept or invite bookings for private hire vehicles",
+    "responsibilities": [
+      "Maintain booking records",
+      "Only use Gloucester-licensed drivers and vehicles",
+      "Maintain records of all drivers and vehicles used",
+      "Keep records at operating base",
+      "Notify council of changes"
+    ],
+    "operating_base": {
+      "requirement": "Must be within Gloucester City Council boundaries",
+      "planning": "May require planning permission for commercial use"
+    },
+    "record_keeping": {
+      "bookings": "All bookings must be recorded",
+      "retention": "Records must be available for inspection",
+      "driver_records": "List of all drivers used",
+      "vehicle_records": "List of all vehicles used"
+    },
+    "duration_options": [
+      {
+        "duration": "1 year",
+        "typical_for": "New operators, small fleets"
+      },
+      {
+        "duration": "5 years",
+        "typical_for": "Established operators with good compliance history",
+        "note": "Discretionary - council may grant shorter duration"
+      }
+    ],
+    "fee_structure": "Varies by number of vehicles in fleet"
+  },
+  "operator_licence": {
+    "who_needs": "Anyone accepting or inviting bookings for private hire vehicles",
+    "legal_requirement": "Cannot operate without licence - criminal offence",
+    "operating_base": {
+      "location": "Must be within Gloucester City Council boundaries",
+      "planning": "May need planning permission for commercial use from residential property",
+      "records": "All booking records must be kept at operating base"
+    },
+    "requirements": {
+      "business_address": "Within Gloucester boundaries",
+      "planning_permission": "If operating from home, must not cause nuisance/obstruction",
+      "drivers_and_vehicles": "Must only use Gloucester-licensed drivers and vehicles",
+      "record_keeping": [
+        "Records of all bookings",
+        "Records of all drivers used",
+        "Records of all vehicles used",
+        "Available for inspection by council"
+      ]
+    },
+    "duration": {
+      "options": "1 year or 5 years",
+      "discretion": "Council decides duration based on compliance history"
+    },
+    "fee_structure": {
+      "based_on": "Number of vehicles in fleet",
+      "additional_premises": "Additional charge for each additional premises (e.g. nightclub booking point)"
+    },
+    "application": "Download rule book and apply online",
+    "tax_check": "May require HMRC tax check - see guidance"
+  },
+  "related_services": {
+    "business_rates": {
+      "relevance": "Taxi operators may be liable for business rates",
+      "contact": "revenues@gloucester.gov.uk",
+      "url": "https://www.gloucester.gov.uk/business-economy/business-rates/"
+    },
+    "planning_permission": {
+      "relevance": "Operating from home may require planning permission",
+      "contact": "Planning department",
+      "note": "Check before starting operator business from residential property"
+    },
+    "street_trading": {
+      "relevance": "Different licence - not covered by taxi licensing",
+      "contact": "licensing@gloucester.gov.uk"
+    },
+    "parking_enforcement": {
+      "relevance": "Taxi ranks enforced by parking and police",
+      "ranks": "Do not obstruct or misuse taxi ranks"
+    }
+  }
+}

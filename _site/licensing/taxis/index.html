@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apply for taxi and private hire licences in Gloucester. Information for drivers, vehicle owners, and operators.">
+  <title>Taxi and Private Hire Licensing - Gloucester City Council</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="/" class="logo">Gloucester City Council</a>
+
+      <nav aria-label="Primary navigation" class="primary-nav">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="drivers.html">Drivers</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="operators.html">Operators</a>
+        <a href="information.html">Information</a>
+      </nav>
+
+      <button class="mobile-menu-button" aria-expanded="false">☰ Menu</button>
+    </div>
+
+    <nav aria-label="Mobile navigation" class="mobile-nav">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="drivers.html">Drivers</a>
+      <a href="vehicles.html">Vehicles</a>
+      <a href="operators.html">Operators</a>
+      <a href="information.html">Information</a>
+    </nav>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav aria-label="Breadcrumbs" class="breadcrumbs">
+    <ol>
+      <li><a href="/">Gloucester City Council</a></li>
+      <li><a href="/licensing">Licensing</a></li>
+      <li aria-current="page">Taxi & Private Hire</li>
+    </ol>
+  </nav>
+
+  <!-- Main content -->
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1>Taxi and Private Hire Licensing</h1>
+        <p>Everything you need to work as a licensed driver in Gloucester</p>
+      </div>
+    </section>
+
+    <div class="page-content">
+      <!-- Status alert -->
+      <!-- From: schema service_delivery.operational_guidance.application_processing.target_timeframes.current_delays -->
+      <div class="alert alert-warning">
+        <span class="alert-icon">⚠️</span>
+        <div class="alert-content">
+          <strong>Current processing times:</strong> Due to high application volumes, please allow 20 working days before enquiring about your application.
+        </div>
+      </div>
+
+      <!-- Journey cards -->
+      <h2 class="text-center">What do you need to do?</h2>
+      <p class="text-center mb-lg">Choose the option that applies to you</p>
+
+      <div class="card-grid">
+        <!-- Driver - New application -->
+        <a href="drivers.html#new-application" class="journey-card">
+          <span class="card-icon">🚗</span>
+          <h3>I want to become a driver</h3>
+          <p>Apply for a new hackney carriage or private hire driver licence</p>
+          <div class="button button-primary mt-sm">Start here</div>
+        </a>
+
+        <!-- Renewal -->
+        <a href="drivers.html#renewal" class="journey-card">
+          <span class="card-icon">🔄</span>
+          <h3>I need to renew my licence</h3>
+          <p>Renew your existing driver, vehicle or operator licence</p>
+          <div class="button button-primary mt-sm">Renewals</div>
+        </a>
+
+        <!-- Vehicle -->
+        <a href="vehicles.html" class="journey-card">
+          <span class="card-icon">🚕</span>
+          <h3>License a vehicle</h3>
+          <p>Apply for hackney carriage or private hire vehicle licence</p>
+          <div class="button button-primary mt-sm">Vehicle licensing</div>
+        </a>
+
+        <!-- Operator -->
+        <a href="operators.html" class="journey-card">
+          <span class="card-icon">📋</span>
+          <h3>Run a taxi company</h3>
+          <p>Apply for private hire operator licence to run a booking business</p>
+          <div class="button button-primary mt-sm">Operator licensing</div>
+        </a>
+      </div>
+
+      <!-- Quick links -->
+      <section class="mt-xl">
+        <h2>Quick links</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Common tasks</h3>
+            <ul class="list-plain">
+              <li><a href="information.html#conviction-checker">Will my conviction affect licensing?</a></li>
+              <li><a href="information.html#fees">View fees and charges</a></li>
+              <li><a href="mailto:licensing@gloucester.gov.uk">Contact licensing team</a></li>
+              <li><a href="https://gloucester-self.achieveservice.com/">Apply or renew online</a></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Information</h3>
+            <ul class="list-plain">
+              <li><a href="information.html#faqs">Frequently asked questions</a></li>
+              <li><a href="information.html#policies">Policies and downloads</a></li>
+              <li><a href="information.html#fares">Hackney carriage fares</a></li>
+              <li><a href="information.html#data-protection">How we use your data</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key differences -->
+      <section class="mt-xl" id="key-differences">
+        <details>
+          <summary>
+            <h2>What's the difference between taxi and private hire?</h2>
+          </summary>
+          <div class="content">
+            <p>Understanding the difference is important - different rules and licences apply.</p>
+
+            <table class="responsive mt-md">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Hackney Carriage (Taxi)</th>
+                  <th>Private Hire Vehicle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Feature"><strong>Street hailing</strong></td>
+                  <td data-label="Hackney Carriage">✓ Can be hailed in street</td>
+                  <td data-label="Private Hire">✗ Pre-booking only</td>
+                </tr>
+                <tr>
+                  <td data-label="Feature"><strong>Taxi ranks</strong></td>
+                  <td data-label="Hackney Carriage">✓ Can wait at designated ranks</td>
+                  <td data-label="Private Hire">✗ Cannot use ranks (criminal offence)</td>
+                </tr>
+                <tr>
+                  <td data-label="Feature"><strong>Booking method</strong></td>
+                  <td data-label="Hackney Carriage">Hailing, ranks, or pre-booking</td>
+                  <td data-label="Private Hire">Must be pre-booked through operator</td>
+                </tr>
+                <tr>
+                  <td data-label="Feature"><strong>Fare control</strong></td>
+                  <td data-label="Hackney Carriage">Maximum fares set by council (tariff)</td>
+                  <td data-label="Private Hire">Agreed between operator and customer</td>
+                </tr>
+                <tr>
+                  <td data-label="Feature"><strong>Taximeter</strong></td>
+                  <td data-label="Hackney Carriage">Mandatory - must be approved and calibrated</td>
+                  <td data-label="Private Hire">Optional</td>
+                </tr>
+                <tr>
+                  <td data-label="Feature"><strong>Signage</strong></td>
+                  <td data-label="Hackney Carriage">May display 'taxi' or 'cab' roof sign</td>
+                  <td data-label="Private Hire">Cannot use 'taxi' or 'cab' signage</td>
+                </tr>
+                <tr>
+                  <td data-label="Feature"><strong>Plates</strong></td>
+                  <td data-label="Hackney Carriage">White/black plates</td>
+                  <td data-label="Private Hire">Yellow plates</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="alert alert-danger mt-md">
+              <span class="alert-icon">🚫</span>
+              <div class="alert-content">
+                <strong>Critical difference:</strong> Private hire vehicles accepting street hailing are operating illegally - the journey is uninsured and the driver is committing a criminal offence.
+              </div>
+            </div>
+
+            <h3 class="mt-md">Can I have both licences?</h3>
+            <p>Yes - many drivers hold both hackney carriage and private hire driver licences (dual licence). This gives maximum flexibility. However, when driving a specific vehicle, you must follow the rules for that vehicle type.</p>
+
+            <p><a href="drivers.html">Learn more about driver licences</a></p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Contact section -->
+      <section class="mt-xl">
+        <h2>Contact us</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Licensing team</h3>
+            <p><strong>Email:</strong> <a href="mailto:licensing@gloucester.gov.uk">licensing@gloucester.gov.uk</a></p>
+            <p><strong>Phone:</strong> 01452 396396</p>
+          </div>
+
+          <div class="card">
+            <h3>Online services</h3>
+            <p>Use My Gloucester to apply for licences, renew, make payments, and track applications</p>
+            <a href="https://gloucester-self.achieveservice.com/" class="button button-primary mt-sm" target="_blank" rel="noopener">Access My Gloucester</a>
+          </div>
+
+          <div class="card">
+            <h3>Make a complaint</h3>
+            <p>To complain about a licensed driver, vehicle, or operator, contact the licensing team with full details including date, time, location, and vehicle/badge number if known.</p>
+            <p><a href="information.html#contact">More about complaints</a></p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="mailto:licensing@gloucester.gov.uk">Contact licensing team</a></li>
+          <li><a href="information.html#contact">Make a complaint</a></li>
+          <li><a href="https://gloucester-self.achieveservice.com/">Apply online</a></li>
+          <li><a href="information.html#public-register">Check licence status</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Related Services</h3>
+        <ul>
+          <li><a href="/planning">Planning permission</a></li>
+          <li><a href="/business-rates">Business rates</a></li>
+          <li><a href="/parking">Parking</a></li>
+          <li><a href="/licensing/street-trading">Street trading</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="/privacy">Privacy policy</a></li>
+          <li><a href="/accessibility">Accessibility statement</a></li>
+          <li><a href="/terms">Terms and conditions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-copyright">
+        &copy; 2025 Gloucester City Council. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js" type="module"></script>
+</body>
+</html>
