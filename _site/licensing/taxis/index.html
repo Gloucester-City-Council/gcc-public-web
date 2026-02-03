@@ -1,269 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Apply for taxi and private hire licences in Gloucester. Information for drivers, vehicle owners, and operators.">
-  <title>Taxi and Private Hire Licensing - Gloucester City Council</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apply for taxi and private hire licences in Gloucester. Information for drivers, vehicle owners, and operators.">
+    <title>Taxi and Private Hire Licensing | Gloucester City Council</title>
+
+    <!-- Assets -->
+    <link rel="preload" href="/assets/images/GCC_logo.svg" as="image">
+    <link rel="preload" href="/assets/css/styles.css" as="style">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/service-landing.css">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GovernmentService",
+      "name": "Taxi and Private Hire Licensing",
+      "description": "Licensing service for taxi and private hire drivers, vehicles, and operators in Gloucester",
+      "serviceUrl": "https://www.gloucester.gov.uk/licensing/taxis",
+      "provider": {
+        "@type": "GovernmentOrganization",
+        "name": "Gloucester City Council"
+      },
+      "serviceType": "Licensing",
+      "areaServed": {
+        "@type": "City",
+        "name": "Gloucester"
+      }
+    }
+    </script>
 </head>
-<body>
-  <!-- Skip link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Header -->
-  <header>
-    <div class="header-container">
-      <a href="/" class="logo">Gloucester City Council</a>
+<body data-service-id="taxi-licensing">
 
-      <nav aria-label="Primary navigation" class="primary-nav">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="drivers.html">Drivers</a>
-        <a href="vehicles.html">Vehicles</a>
-        <a href="operators.html">Operators</a>
-        <a href="information.html">Information</a>
-      </nav>
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-      <button class="mobile-menu-button" aria-expanded="false">☰ Menu</button>
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <div class="header-top">
+                <a href="/" class="logo-link" aria-label="Gloucester City Council homepage">
+                    <img src="/assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="site-logo"
+                         width="250"
+                         height="70">
+                </a>
+
+                <div class="search-wrapper">
+                    <form class="search-form" role="search">
+                        <label for="search-input" class="sr-only">Search the website</label>
+                        <input
+                            type="search"
+                            id="search-input"
+                            name="q"
+                            class="search-input"
+                            placeholder="Search..."
+                            aria-label="Search the website"
+                            aria-controls="search-results"
+                            aria-expanded="false"
+                            aria-autocomplete="list"
+                            autocomplete="off"
+                        >
+                        <button type="submit" class="search-button">
+                            <span>Search</span>
+                        </button>
+                    </form>
+                    <div
+                        id="search-results"
+                        class="search-results"
+                        role="region"
+                        aria-label="Search results"
+                        aria-live="polite"
+                        hidden
+                    ></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Welcome Banner -->
+        <h1 class="welcome-banner">
+            Taxi and Private Hire Licensing
+        </h1>
+    </header>
+
+    <!-- MAIN NAV -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <button class="menu-toggle" aria-expanded="false">Menu</button>
+            <ul class="nav-list">
+                <li><a href="/contact">Contact us</a></li>
+                <li><a href="https://gloucester-self.achieveservice.com/">My Gloucester</a></li>
+                <li><a href="/news">News</a></li>
+                <li><a href="https://public.govdelivery.com/accounts/UKGCCA/subscriber/new">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Service alert -->
+    <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem 2rem; margin: 0;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <p style="margin: 0;">
+                <strong>⚠️ Current processing times:</strong> Due to high application volumes, please allow 20 working days before enquiring about your application.
+            </p>
+        </div>
     </div>
 
-    <nav aria-label="Mobile navigation" class="mobile-nav">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="drivers.html">Drivers</a>
-      <a href="vehicles.html">Vehicles</a>
-      <a href="operators.html">Operators</a>
-      <a href="information.html">Information</a>
-    </nav>
-  </header>
+    <!-- TOP TASKS SECTION -->
+    <section class="hero-section" aria-labelledby="top-tasks-title">
+        <div class="hero-container">
+            <div class="quick-actions">
+                <h2 id="top-tasks-title" class="quick-actions-title">
+                    What do you need to do?
+                </h2>
+                <p class="service-intro-text">
+                    Choose the option that applies to you.
+                </p>
 
-  <!-- Breadcrumbs -->
-  <nav aria-label="Breadcrumbs" class="breadcrumbs">
-    <ol>
-      <li><a href="/">Gloucester City Council</a></li>
-      <li><a href="/licensing">Licensing</a></li>
-      <li aria-current="page">Taxi & Private Hire</li>
-    </ol>
-  </nav>
+                <div class="actions-grid">
 
-  <!-- Main content -->
-  <main id="main-content">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container">
-        <h1>Taxi and Private Hire Licensing</h1>
-        <p>Everything you need to work as a licensed driver in Gloucester</p>
-      </div>
+                    <a href="/licensing/taxis/drivers#new-application" class="action-card">
+                        <span class="action-icon" aria-hidden="true">🚗</span>
+                        <span class="action-title">I want to become a driver</span><br>
+                        <span class="action-description">Apply for hackney carriage or private hire driver licence</span>
+                    </a>
+
+                    <a href="/licensing/taxis/drivers#renewal" class="action-card">
+                        <span class="action-icon" aria-hidden="true">🔄</span>
+                        <span class="action-title">Renew my licence</span><br>
+                        <span class="action-description">Renew driver, vehicle or operator licence</span>
+                    </a>
+
+                    <a href="/licensing/taxis/vehicles" class="action-card">
+                        <span class="action-icon" aria-hidden="true">🚕</span>
+                        <span class="action-title">License a vehicle</span><br>
+                        <span class="action-description">Hackney carriage or private hire vehicle</span>
+                    </a>
+
+                    <a href="/licensing/taxis/operators" class="action-card">
+                        <span class="action-icon" aria-hidden="true">📋</span>
+                        <span class="action-title">Run a taxi company</span><br>
+                        <span class="action-description">Private hire operator licence</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
     </section>
 
-    <div class="page-content">
-      <!-- Status alert -->
-      <!-- From: schema service_delivery.operational_guidance.application_processing.target_timeframes.current_delays -->
-      <div class="alert alert-warning">
-        <span class="alert-icon">⚠️</span>
-        <div class="alert-content">
-          <strong>Current processing times:</strong> Due to high application volumes, please allow 20 working days before enquiring about your application.
-        </div>
-      </div>
+    <!-- MAIN CONTENT AREA -->
+    <main id="main-content" class="main-content" role="main">
 
-      <!-- Journey cards -->
-      <h2 class="text-center">What do you need to do?</h2>
-      <p class="text-center mb-lg">Choose the option that applies to you</p>
+        <div class="service-layout">
 
-      <div class="card-grid">
-        <!-- Driver - New application -->
-        <a href="drivers.html#new-application" class="journey-card">
-          <span class="card-icon">🚗</span>
-          <h3>I want to become a driver</h3>
-          <p>Apply for a new hackney carriage or private hire driver licence</p>
-          <div class="button button-primary mt-sm">Start here</div>
-        </a>
+            <!-- LEFT COLUMN -->
+            <div class="service-main">
 
-        <!-- Renewal -->
-        <a href="drivers.html#renewal" class="journey-card">
-          <span class="card-icon">🔄</span>
-          <h3>I need to renew my licence</h3>
-          <p>Renew your existing driver, vehicle or operator licence</p>
-          <div class="button button-primary mt-sm">Renewals</div>
-        </a>
+                <!-- Quick links -->
+                <section class="service-groups" aria-labelledby="quick-links-heading">
+                    <h2 id="quick-links-heading" class="section-title">Quick links</h2>
 
-        <!-- Vehicle -->
-        <a href="vehicles.html" class="journey-card">
-          <span class="card-icon">🚕</span>
-          <h3>License a vehicle</h3>
-          <p>Apply for hackney carriage or private hire vehicle licence</p>
-          <div class="button button-primary mt-sm">Vehicle licensing</div>
-        </a>
+                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
+                            <li><a href="/licensing/taxis/information#conviction-checker" style="color: #2d6a4f; text-decoration: none; display: block; padding: 0.75rem; border-radius: 6px; transition: background 0.2s;">→ Will my conviction affect licensing?</a></li>
+                            <li><a href="/licensing/taxis/information#fees" style="color: #2d6a4f; text-decoration: none; display: block; padding: 0.75rem; border-radius: 6px; transition: background 0.2s;">→ Fees and charges</a></li>
+                            <li><a href="/licensing/taxis/information#faqs" style="color: #2d6a4f; text-decoration: none; display: block; padding: 0.75rem; border-radius: 6px; transition: background 0.2s;">→ Frequently asked questions</a></li>
+                            <li><a href="/licensing/taxis/information#policies" style="color: #2d6a4f; text-decoration: none; display: block; padding: 0.75rem; border-radius: 6px; transition: background 0.2s;">→ Policies and downloads</a></li>
+                            <li><a href="/licensing/taxis/information#fares" style="color: #2d6a4f; text-decoration: none; display: block; padding: 0.75rem; border-radius: 6px; transition: background 0.2s;">→ Hackney carriage fares</a></li>
+                            <li><a href="/licensing/taxis/information#data-protection" style="color: #2d6a4f; text-decoration: none; display: block; padding: 0.75rem; border-radius: 6px; transition: background 0.2s;">→ How we use your data</a></li>
+                        </ul>
+                    </div>
+                </section>
 
-        <!-- Operator -->
-        <a href="operators.html" class="journey-card">
-          <span class="card-icon">📋</span>
-          <h3>Run a taxi company</h3>
-          <p>Apply for private hire operator licence to run a booking business</p>
-          <div class="button button-primary mt-sm">Operator licensing</div>
-        </a>
-      </div>
+                <!-- Key differences -->
+                <section class="service-groups" aria-labelledby="differences-heading">
+                    <h2 id="differences-heading" class="section-title">What's the difference between taxi and private hire?</h2>
+                    <p>Understanding the difference is important - different rules and licences apply.</p>
 
-      <!-- Quick links -->
-      <section class="mt-xl">
-        <h2>Quick links</h2>
-        <div class="card-grid">
-          <div class="card">
-            <h3>Common tasks</h3>
-            <ul class="list-plain">
-              <li><a href="information.html#conviction-checker">Will my conviction affect licensing?</a></li>
-              <li><a href="information.html#fees">View fees and charges</a></li>
-              <li><a href="mailto:licensing@gloucester.gov.uk">Contact licensing team</a></li>
-              <li><a href="https://gloucester-self.achieveservice.com/">Apply or renew online</a></li>
-            </ul>
-          </div>
+                    <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+                        <thead>
+                            <tr style="background: #f5f5f5; border-bottom: 2px solid #004F9F;">
+                                <th style="padding: 1rem; text-align: left;">Feature</th>
+                                <th style="padding: 1rem; text-align: left;">Hackney Carriage (Taxi)</th>
+                                <th style="padding: 1rem; text-align: left;">Private Hire</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 1rem;"><strong>Street hailing</strong></td>
+                                <td style="padding: 1rem;">✓ Can be hailed in street</td>
+                                <td style="padding: 1rem;">✗ Pre-booking only</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 1rem;"><strong>Taxi ranks</strong></td>
+                                <td style="padding: 1rem;">✓ Can wait at designated ranks</td>
+                                <td style="padding: 1rem;">✗ Cannot use ranks</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 1rem;"><strong>Booking method</strong></td>
+                                <td style="padding: 1rem;">Hailing, ranks, or pre-booking</td>
+                                <td style="padding: 1rem;">Must be pre-booked through operator</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 1rem;"><strong>Fares</strong></td>
+                                <td style="padding: 1rem;">Maximum set by council (tariff)</td>
+                                <td style="padding: 1rem;">Agreed with operator/customer</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-          <div class="card">
-            <h3>Information</h3>
-            <ul class="list-plain">
-              <li><a href="information.html#faqs">Frequently asked questions</a></li>
-              <li><a href="information.html#policies">Policies and downloads</a></li>
-              <li><a href="information.html#fares">Hackney carriage fares</a></li>
-              <li><a href="information.html#data-protection">How we use your data</a></li>
-            </ul>
-          </div>
-        </div>
-      </section>
+                    <div style="background: #fee; border-left: 4px solid #D4351C; padding: 1rem; border-radius: 4px; margin: 1rem 0;">
+                        <p style="margin: 0;"><strong>Critical difference:</strong> Private hire vehicles accepting street hailing are operating illegally - the journey is uninsured and the driver is committing a criminal offence.</p>
+                    </div>
+                </section>
 
-      <!-- Key differences -->
-      <section class="mt-xl" id="key-differences">
-        <details>
-          <summary>
-            <h2>What's the difference between taxi and private hire?</h2>
-          </summary>
-          <div class="content">
-            <p>Understanding the difference is important - different rules and licences apply.</p>
+                <!-- HELP SECTION -->
+                <section class="service-help" aria-labelledby="help-heading">
+                    <h2 id="help-heading" class="section-title">Need help?</h2>
+                    <p>If you cannot complete something online, you can get help in other ways:</p>
+                    <ul>
+                        <li>Phone: <a href="tel:+441452396396">01452 396396</a></li>
+                        <li>Email: <a href="mailto:licensing@gloucester.gov.uk">licensing@gloucester.gov.uk</a></li>
+                        <li>Visit: Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</li>
+                    </ul>
+                </section>
 
-            <table class="responsive mt-md">
-              <thead>
-                <tr>
-                  <th>Feature</th>
-                  <th>Hackney Carriage (Taxi)</th>
-                  <th>Private Hire Vehicle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-label="Feature"><strong>Street hailing</strong></td>
-                  <td data-label="Hackney Carriage">✓ Can be hailed in street</td>
-                  <td data-label="Private Hire">✗ Pre-booking only</td>
-                </tr>
-                <tr>
-                  <td data-label="Feature"><strong>Taxi ranks</strong></td>
-                  <td data-label="Hackney Carriage">✓ Can wait at designated ranks</td>
-                  <td data-label="Private Hire">✗ Cannot use ranks (criminal offence)</td>
-                </tr>
-                <tr>
-                  <td data-label="Feature"><strong>Booking method</strong></td>
-                  <td data-label="Hackney Carriage">Hailing, ranks, or pre-booking</td>
-                  <td data-label="Private Hire">Must be pre-booked through operator</td>
-                </tr>
-                <tr>
-                  <td data-label="Feature"><strong>Fare control</strong></td>
-                  <td data-label="Hackney Carriage">Maximum fares set by council (tariff)</td>
-                  <td data-label="Private Hire">Agreed between operator and customer</td>
-                </tr>
-                <tr>
-                  <td data-label="Feature"><strong>Taximeter</strong></td>
-                  <td data-label="Hackney Carriage">Mandatory - must be approved and calibrated</td>
-                  <td data-label="Private Hire">Optional</td>
-                </tr>
-                <tr>
-                  <td data-label="Feature"><strong>Signage</strong></td>
-                  <td data-label="Hackney Carriage">May display 'taxi' or 'cab' roof sign</td>
-                  <td data-label="Private Hire">Cannot use 'taxi' or 'cab' signage</td>
-                </tr>
-                <tr>
-                  <td data-label="Feature"><strong>Plates</strong></td>
-                  <td data-label="Hackney Carriage">White/black plates</td>
-                  <td data-label="Private Hire">Yellow plates</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="alert alert-danger mt-md">
-              <span class="alert-icon">🚫</span>
-              <div class="alert-content">
-                <strong>Critical difference:</strong> Private hire vehicles accepting street hailing are operating illegally - the journey is uninsured and the driver is committing a criminal offence.
-              </div>
             </div>
 
-            <h3 class="mt-md">Can I have both licences?</h3>
-            <p>Yes - many drivers hold both hackney carriage and private hire driver licences (dual licence). This gives maximum flexibility. However, when driving a specific vehicle, you must follow the rules for that vehicle type.</p>
+            <!-- RIGHT COLUMN (SIDEBAR) -->
+            <aside class="service-sidebar">
 
-            <p><a href="drivers.html">Learn more about driver licences</a></p>
-          </div>
-        </details>
-      </section>
+                <section class="service-status">
+                    <h2>Apply online</h2>
+                    <p>Use My Gloucester to apply for licences, renew, make payments, and track applications.</p>
+                    <p><a href="https://gloucester-self.achieveservice.com/" class="button-link" target="_blank" rel="noopener">Access My Gloucester</a></p>
+                </section>
 
-      <!-- Contact section -->
-      <section class="mt-xl">
-        <h2>Contact us</h2>
-        <div class="card-grid">
-          <div class="card">
-            <h3>Licensing team</h3>
-            <p><strong>Email:</strong> <a href="mailto:licensing@gloucester.gov.uk">licensing@gloucester.gov.uk</a></p>
-            <p><strong>Phone:</strong> 01452 396396</p>
-          </div>
+                <section class="service-contact">
+                    <h2>Contact the licensing team</h2>
 
-          <div class="card">
-            <h3>Online services</h3>
-            <p>Use My Gloucester to apply for licences, renew, make payments, and track applications</p>
-            <a href="https://gloucester-self.achieveservice.com/" class="button button-primary mt-sm" target="_blank" rel="noopener">Access My Gloucester</a>
-          </div>
+                    <div class="contact-block">
+                        <h3>Phone</h3>
+                        <p>
+                            <a href="tel:+441452396396">01452 396 396</a><br>
+                            Monday to Friday, 8:30am to 5pm
+                        </p>
+                    </div>
 
-          <div class="card">
-            <h3>Make a complaint</h3>
-            <p>To complain about a licensed driver, vehicle, or operator, contact the licensing team with full details including date, time, location, and vehicle/badge number if known.</p>
-            <p><a href="information.html#contact">More about complaints</a></p>
-          </div>
+                    <div class="contact-block">
+                        <h3>Email</h3>
+                        <p>
+                            <a href="mailto:licensing@gloucester.gov.uk">licensing@gloucester.gov.uk</a><br>
+                            We aim to reply within 2 working days.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="service-related">
+                    <h2>You might also need</h2>
+                    <ul class="related-links">
+                        <li><a href="/planning">Planning permission</a></li>
+                        <li><a href="/business-rates">Business rates</a></li>
+                        <li><a href="/parking">Parking</a></li>
+                    </ul>
+                </section>
+
+            </aside>
+
         </div>
-      </section>
-    </div>
-  </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="mailto:licensing@gloucester.gov.uk">Contact licensing team</a></li>
-          <li><a href="information.html#contact">Make a complaint</a></li>
-          <li><a href="https://gloucester-self.achieveservice.com/">Apply online</a></li>
-          <li><a href="information.html#public-register">Check licence status</a></li>
-        </ul>
-      </div>
+        <!-- FEEDBACK PANEL -->
+        <section class="feedback-panel" aria-labelledby="feedback-heading">
+            <div class="feedback-inner">
+                <h2 id="feedback-heading" class="feedback-title">Was this page helpful?</h2>
 
-      <div class="footer-section">
-        <h3>Related Services</h3>
-        <ul>
-          <li><a href="/planning">Planning permission</a></li>
-          <li><a href="/business-rates">Business rates</a></li>
-          <li><a href="/parking">Parking</a></li>
-          <li><a href="/licensing/street-trading">Street trading</a></li>
-        </ul>
-      </div>
+                <div class="feedback-buttons" role="group">
+                    <button type="button" class="feedback-btn feedback-yes" data-rating="positive">
+                        👍 Yes
+                    </button>
+                    <button type="button" class="feedback-btn feedback-no" data-rating="negative">
+                        👎 No
+                    </button>
+                </div>
 
-      <div class="footer-section">
-        <h3>Legal</h3>
-        <ul>
-          <li><a href="/privacy">Privacy policy</a></li>
-          <li><a href="/accessibility">Accessibility statement</a></li>
-          <li><a href="/terms">Terms and conditions</a></li>
-        </ul>
-      </div>
+                <form id="feedback-form" class="feedback-form" hidden>
+                    <p id="feedback-prompt">What worked well? (optional)</p>
+                    <label for="feedback-comments" class="sr-only">Your feedback</label>
+                    <textarea id="feedback-comments" rows="3" aria-labelledby="feedback-prompt"></textarea>
 
-      <div class="footer-copyright">
-        &copy; 2025 Gloucester City Council. All rights reserved.
-      </div>
-    </div>
-  </footer>
+                    <label for="feedback-email">Email (optional, if you'd like a response)</label>
+                    <input type="email" id="feedback-email">
 
-  <script src="main.js" type="module"></script>
+                    <button type="submit" class="feedback-submit">Submit</button>
+                </form>
+
+                <p id="feedback-thanks" class="feedback-thanks" hidden>
+                    ✅ Thank you for your feedback.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-section">
+                    <img src="/assets/images/GCC_logo.svg"
+                         alt="Gloucester City Council"
+                         class="footer-logo">
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/licensing/taxis/drivers">Driver licences</a></li>
+                        <li><a href="/licensing/taxis/vehicles">Vehicle licences</a></li>
+                        <li><a href="/licensing/taxis/operators">Operator licences</a></li>
+                        <li><a href="/licensing/taxis/information">Information & FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Gloucester</h3>
+                    <ul class="footer-links">
+                        <li><a href="http://visitgloucester.co.uk/">Visit Gloucester</a></li>
+                        <li><a href="/find-councillor">Find your councillor</a></li>
+                        <li><a href="/jobs">Jobs & careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Using our site</h3>
+                    <ul class="footer-links">
+                        <li><a href="/privacy">Privacy & cookies</a></li>
+                        <li><a href="/accessibility">Accessibility</a></li>
+                        <li><a href="/contact">Contact us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Gloucester City Council. All rights reserved.</p>
+                <p>Registered office: Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script type="module" src="/assets/js/search-api.js"></script>
+
 </body>
 </html>
