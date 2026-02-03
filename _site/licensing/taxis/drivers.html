@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Apply for a hackney carriage or private hire driver licence in Gloucester. Complete guide to requirements, costs, and the application process.">
   <title>Driver Licences - Taxi & Private Hire Licensing - Gloucester City Council</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="/assets/images/GCC_logo.svg" as="image">
+    <link rel="preload" href="/assets/css/styles.css" as="style">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/service-landing.css">
 </head>
 <body>
   <!-- Skip link -->
@@ -17,22 +20,22 @@
       <a href="/" class="logo">Gloucester City Council</a>
 
       <nav aria-label="Primary navigation" class="primary-nav">
-        <a href="index.html">Home</a>
-        <a href="drivers.html" aria-current="page">Drivers</a>
-        <a href="vehicles.html">Vehicles</a>
-        <a href="operators.html">Operators</a>
-        <a href="information.html">Information</a>
+        <a href="/licensing/taxis/index.html">Home</a>
+        <a href="/licensing/taxis/drivers" aria-current="page">Drivers</a>
+        <a href="/licensing/taxis/vehicles">Vehicles</a>
+        <a href="/licensing/taxis/operators">Operators</a>
+        <a href="/licensing/taxis/information">Information</a>
       </nav>
 
       <button class="mobile-menu-button" aria-expanded="false">☰ Menu</button>
     </div>
 
     <nav aria-label="Mobile navigation" class="mobile-nav">
-      <a href="index.html">Home</a>
-      <a href="drivers.html" aria-current="page">Drivers</a>
-      <a href="vehicles.html">Vehicles</a>
-      <a href="operators.html">Operators</a>
-      <a href="information.html">Information</a>
+      <a href="/licensing/taxis/index.html">Home</a>
+      <a href="/licensing/taxis/drivers" aria-current="page">Drivers</a>
+      <a href="/licensing/taxis/vehicles">Vehicles</a>
+      <a href="/licensing/taxis/operators">Operators</a>
+      <a href="/licensing/taxis/information">Information</a>
     </nav>
   </header>
 
@@ -41,7 +44,7 @@
     <ol>
       <li><a href="/">Gloucester City Council</a></li>
       <li><a href="/licensing">Licensing</a></li>
-      <li><a href="index.html">Taxi & Private Hire</a></li>
+      <li><a href="/licensing/taxis/index.html">Taxi & Private Hire</a></li>
       <li aria-current="page">Driver Licences</li>
     </ol>
   </nav>
@@ -878,6 +881,8 @@
     </div>
   </footer>
 
-  <script src="main.js" type="module"></script>
+  <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script type="module" src="/assets/js/search-api.js"></script>
 </body>
 </html>
