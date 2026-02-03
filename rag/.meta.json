@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-03T17:35:16.744Z",
+  "generatedAt": "2026-02-03T18:32:27.650Z",
   "configPath": "./rag.config.json",
   "distDir": "_site",
   "distDirAbs": "/home/runner/work/gcc-public-web/gcc-public-web/_site",
@@ -20,10 +20,10 @@
     "**/tags/**",
     "**/_*/**"
   ],
-  "pagesOk": 34,
+  "pagesOk": 39,
   "pagesSkipped": 2,
-  "totalPagesFound": 36,
-  "totalChunks": 76,
+  "totalPagesFound": 41,
+  "totalChunks": 102,
   "chunk": {
     "maxTokens": 450,
     "minTokens": 120,
