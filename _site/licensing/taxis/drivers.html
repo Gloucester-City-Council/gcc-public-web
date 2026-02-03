@@ -9,6 +9,328 @@
     <link rel="preload" href="/assets/css/styles.css" as="style">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="stylesheet" href="/assets/css/service-landing.css">
+
+    <style>
+        /* Enhanced styles for taxi licensing pages */
+        .intro-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #4a5568;
+            margin-bottom: 2rem;
+        }
+
+        .alert {
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 4px solid;
+            margin: 2rem 0;
+            background: white;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+
+        .alert-danger {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            border-color: #0ea5e9;
+        }
+
+        .alert-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .alert-icon {
+            font-size: 1.5rem;
+        }
+
+        .situation-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #2d6a4f;
+        }
+
+        .situation-card h2 {
+            color: #2d6a4f;
+            font-size: 1.75rem;
+            margin: 0 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .situation-card h3 {
+            color: #2d6a4f;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .icon {
+            font-size: 2rem;
+        }
+
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .fact-box {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid #2d6a4f;
+        }
+
+        .fact-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .fact-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d6a4f;
+        }
+
+        .fact-note {
+            font-size: 0.875rem;
+            color: #4a5568;
+            margin-top: 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2d6a4f;
+            color: white !important;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin: 0.5rem 0;
+        }
+
+        .cta-button:hover {
+            background: #1b4332;
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.4);
+        }
+
+        .cta-button-secondary {
+            display: inline-block;
+            background: white;
+            color: #2d6a4f !important;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #2d6a4f;
+            transition: all 0.2s ease;
+            margin: 0.5rem 0;
+        }
+
+        .cta-button-secondary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        .expandable-section {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .expandable-section summary {
+            padding: 1.25rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: #2d6a4f;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8f9fa;
+            transition: background 0.2s ease;
+        }
+
+        .expandable-section summary:hover {
+            background: #e9ecef;
+        }
+
+        .expandable-section summary::after {
+            content: "▼";
+            font-size: 0.875rem;
+            transition: transform 0.2s ease;
+        }
+
+        .expandable-section[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .expandable-section summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .expandable-content {
+            padding: 1.5rem;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .step-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #2d6a4f;
+        }
+
+        .step-item h4 {
+            color: #2d6a4f;
+            margin: 0 0 0.75rem 0;
+            font-size: 1.125rem;
+        }
+
+        .step-item p {
+            margin: 0.5rem 0;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .step-item ul {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .step-item li {
+            margin: 0.5rem 0;
+            color: #4a5568;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .badge-cost {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-free {
+            background: #d1f2eb;
+            color: #0c5460;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-left: 4px solid #2d6a4f;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h4 {
+            color: #065f46;
+            margin: 0 0 1rem 0;
+        }
+
+        .highlight-box p, .highlight-box ul {
+            color: #065f46;
+            margin: 0.5rem 0;
+        }
+
+        .highlight-box ul {
+            padding-left: 1.5rem;
+        }
+
+        .info-box {
+            background: #e0f2fe;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .info-box h4 {
+            color: #075985;
+            margin: 0 0 0.75rem 0;
+        }
+
+        .info-box p {
+            color: #0c4a6e;
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .comparison-card h4 {
+            color: #2d6a4f;
+            margin: 0 0 1rem 0;
+            font-size: 1.25rem;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .comparison-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .comparison-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2d6a4f;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
   <!-- Skip link -->
@@ -95,792 +417,414 @@
             <!-- LEFT COLUMN -->
             <div class="service-main">
 
-      <p class="intro-text">Apply for or renew your hackney carriage or private hire driver licence</p>
+                <p class="intro-text">Get licensed to drive hackney carriages or private hire vehicles in Gloucester</p>
 
-      <!-- Delay alert -->
-      <!-- From: schema service_delivery.operational_guidance.application_processing.target_timeframes.current_delays -->
-      <div class="alert alert-warning">
-        <span class="alert-icon">⚠️</span>
-        <div class="alert-content">
-          <strong>Current processing times:</strong> Due to high application volumes, please allow 20 working days before enquiring about your application. We aim to process most applications within 14 days.
-        </div>
-      </div>
-
-      <!-- Tabs -->
-      <!-- From: webmap - UX pattern for New vs Renewal -->
-      <div class="tabs">
-        <div role="tablist">
-          <button role="tab" aria-selected="true" aria-controls="new-application" id="tab-new" data-tab="new-application" class="tab-button" tabindex="0">
-            🆕 New Application
-          </button>
-          <button role="tab" aria-selected="false" aria-controls="renewal" id="tab-renewal" data-tab="renewal" class="tab-button" tabindex="-1">
-            🔄 Renewal
-          </button>
-        </div>
-      </div>
-
-      <!-- NEW APPLICATION TAB -->
-      <!-- From: application_processes.driver_licence_new_application -->
-      <div role="tabpanel" id="new-application" aria-labelledby="tab-new" aria-hidden="false">
-
-        <!-- Summary cards -->
-        <div class="card-grid">
-          <!-- Eligibility card -->
-          <!-- From: application_processes.driver_licence_new_application.eligibility_requirements -->
-          <div class="card">
-            <div class="card-header">
-              <span class="card-icon">✓</span>
-              <h2 class="card-title">Eligibility</h2>
-            </div>
-            <ul>
-              <li>21 years or over</li>
-              <li>Full DVLA driving licence held for at least 12 continuous months</li>
-              <li>No more than 3 current penalty points on DVLA licence</li>
-              <li>Legal right to work in UK (Immigration Act 2016)</li>
-              <li>Must pass fit and proper person test</li>
-            </ul>
-            <details>
-              <summary>See all requirements</summary>
-              <div class="content">
-                <ul>
-                  <li>Must meet DVLA Group 2 medical standard</li>
-                  <li>Must pass English language proficiency test</li>
-                  <li>Must pass knowledge test (topographical for HC, literacy/numeracy for PH)</li>
-                  <li>Must pass driving assessment with approved provider</li>
-                  <li>Must complete safeguarding awareness training</li>
-                </ul>
-              </div>
-            </details>
-          </div>
-
-          <!-- Cost card -->
-          <!-- From: application_processes.driver_licence_new_application.total_typical_costs -->
-          <div class="card">
-            <div class="card-header">
-              <span class="card-icon">£</span>
-              <h2 class="card-title">Total Cost</h2>
-            </div>
-            <p class="text-large"><strong>£400-600+</strong></p>
-            <p>Typical costs before application fees</p>
-            <details>
-              <summary>See breakdown</summary>
-              <div class="content">
-                <table>
-                  <tr>
-                    <td>English test</td>
-                    <td>£45</td>
-                  </tr>
-                  <tr>
-                    <td>Medical</td>
-                    <td>£50-150</td>
-                  </tr>
-                  <tr>
-                    <td>DBS check</td>
-                    <td>£50-60</td>
-                  </tr>
-                  <tr>
-                    <td>Driving assessment</td>
-                    <td>£100-150</td>
-                  </tr>
-                </table>
-                <p class="text-small mt-sm">Plus application fees (see <a href="information.html#fees">fees and charges</a>). Costs if need to retake tests not included.</p>
-              </div>
-            </details>
-          </div>
-
-          <!-- Timeline card -->
-          <!-- From: application_processes.driver_licence_new_application.timeframe_estimate -->
-          <div class="card">
-            <div class="card-header">
-              <span class="card-icon">⏱️</span>
-              <h2 class="card-title">Timeline</h2>
-            </div>
-            <p class="text-large"><strong>6-12 weeks</strong></p>
-            <p>If all tests passed first time and documents ready</p>
-          </div>
-        </div>
-
-        <!-- Interactive checklist -->
-        <!-- From: application_processes.driver_licence_new_application.process_steps -->
-        <h2 class="mt-lg">Step-by-step checklist</h2>
-        <p>Follow these steps to apply for your driver licence. Your progress is saved automatically.</p>
-
-        <!-- Progress bar -->
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 0%"></div>
-          <span class="progress-text">0 of 12 steps completed (0%)</span>
-        </div>
-
-        <div id="driver-checklist" class="interactive-checklist">
-          <ul class="checkbox-list">
-            <!-- Step 1: English test -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-1" aria-describedby="step-1-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">1</span>
-                  <h3 class="step-title">English Language Proficiency Test <span class="badge badge-cost">£45</span></h3>
-                </div>
-                <div id="step-1-desc" class="step-details">
-                  <p><strong>MUST be completed before other requirements - strongly recommended first step</strong></p>
-                  <p><strong>Why first?</strong> No point spending money on other tests if cannot pass English test</p>
-                  <p><strong>How to book:</strong> Call 01452 396396</p>
-                </div>
-              </div>
-            </li>
-
-            <!-- Step 2: Medical -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-2" aria-describedby="step-2-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">2</span>
-                  <h3 class="step-title">Medical examination <span class="badge badge-cost">£50-150</span></h3>
-                </div>
-                <div id="step-2-desc" class="step-details">
-                  <p><strong>Requirement:</strong> DVLA Group 2 standard</p>
-                  <p><strong>Form:</strong> Council approved medical form (see downloads below)</p>
-                  <p><strong>Important:</strong> Must be no more than 3 months old when submitted</p>
-                  <p><strong>Cost:</strong> Varies by GP - typical £50-150</p>
-                  <p><strong>Future renewals:</strong> Every 5 years under age 65, annually over 65</p>
-                </div>
-              </div>
-            </li>
-
-            <!-- Step 3: DBS -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-3" aria-describedby="step-3-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">3</span>
-                  <h3 class="step-title">Enhanced DBS check <span class="badge badge-cost">£50-60</span></h3>
-                </div>
-                <div id="step-3-desc" class="step-details">
-                  <p><strong>Level required:</strong> Enhanced disclosure including barred lists</p>
-                  <p><strong>Provider:</strong> Apply through TaxiPlus</p>
-                  <a href="https://app.taxiplus.co.uk/self-initiate/68b7bd25-065c-49c6-af7e-2247040751fe/dbs-check" class="button button-secondary" target="_blank" rel="noopener">Apply for DBS check</a>
-                  <div class="alert alert-danger mt-sm">
+                <!-- Processing alert -->
+                <div class="alert alert-warning">
                     <div class="alert-content">
-                      <strong>CRITICAL:</strong> You MUST subscribe to DBS Update Service within 28 days of receiving your certificate. Cost: £13/year. This is a licence condition.
+                        <span class="alert-icon">⚠️</span>
+                        <div>
+                            <strong>Current processing times:</strong> Due to high application volumes, please allow 20 working days before enquiring about your application. We aim to process most applications within 14 days.
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-            </li>
 
-            <!-- Step 4: Certificate of Good Conduct -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-4" aria-describedby="step-4-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">4</span>
-                  <h3 class="step-title">Certificate of Good Conduct (if applicable)</h3>
-                </div>
-                <div id="step-4-desc" class="step-details">
-                  <p><strong>Required if:</strong> You have lived outside UK since age 18</p>
-                  <p><strong>Obtain from:</strong> Embassy of each country you lived in</p>
-                  <p class="alert alert-warning">This can take several months to obtain - start early!</p>
-                </div>
-              </div>
-            </li>
+                <!-- Quick comparison -->
+                <div class="situation-card">
+                    <h2><span class="icon">🚕</span> Hackney Carriage vs Private Hire</h2>
 
-            <!-- Step 5: Driving assessment -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-5" aria-describedby="step-5-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">5</span>
-                  <h3 class="step-title">Driving assessment <span class="badge badge-cost">£100-150</span></h3>
-                </div>
-                <div id="step-5-desc" class="step-details">
-                  <p><strong>Purpose:</strong> Assesses ability to drive safely with passengers</p>
-                  <p><strong>Approved providers:</strong></p>
-                  <ul>
-                    <li><a href="https://shop.advancedmotoring.co.uk/products/taxi-test" target="_blank" rel="noopener">Diamond Advanced Tests</a></li>
-                    <li><a href="https://bltdrivertraining.co.uk/" target="_blank" rel="noopener">The Blue Lamp Trust</a></li>
-                    <li><a href="https://www.greenpenny.co.uk/taxi-assessment-booking-form/" target="_blank" rel="noopener">Green Penny</a></li>
-                  </ul>
-                  <p>Cost varies by provider - typical £100-150</p>
-                </div>
-              </div>
-            </li>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>🚕 Hackney Carriage</h4>
+                            <ul>
+                                <li>Can be hailed in the street</li>
+                                <li>Can wait at ranks</li>
+                                <li>Pre-booking accepted</li>
+                                <li>Display 'TAXI' signage</li>
+                            </ul>
+                        </div>
 
-            <!-- Step 6: Knowledge test -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-6" aria-describedby="step-6-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">6</span>
-                  <h3 class="step-title">Knowledge test</h3>
-                </div>
-                <div id="step-6-desc" class="step-details">
-                  <p><strong>Hackney Carriage:</strong> Topographical knowledge test for Gloucester city and surrounding area. Download application form and call 01452 396396 with payment.</p>
-                  <p><strong>Private Hire:</strong> Literacy and numeracy test (Private Hire Knowledge Test). Call 01452 396396 to pay, then licensing officer will contact to arrange.</p>
-                  <p><strong>Retakes:</strong> Can retake up to 2 times in 12 months. If fail 3 times, cannot retake until can demonstrate learning has taken place.</p>
-                </div>
-              </div>
-            </li>
-
-            <!-- Step 7: Safeguarding training -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-7" aria-describedby="step-7-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">7</span>
-                  <h3 class="step-title">Safeguarding awareness training</h3>
-                </div>
-                <div id="step-7-desc" class="step-details">
-                  <p><strong>Requirement:</strong> Mandatory for all new applicants</p>
-                  <p><strong>How to book:</strong> Check council website for course dates and venues</p>
-                  <p><strong>What's covered:</strong> Recognising abuse, CSE, modern slavery, how to report concerns</p>
-                  <p>Certificate required with application</p>
-                </div>
-              </div>
-            </li>
-
-            <!-- Step 8: Complete application -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-8" aria-describedby="step-8-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">8</span>
-                  <h3 class="step-title">Complete online application</h3>
-                </div>
-                <div id="step-8-desc" class="step-details">
-                  <p><strong>Documents needed:</strong></p>
-                  <ul>
-                    <li>English language test pass certificate</li>
-                    <li>Medical certificate (less than 3 months old)</li>
-                    <li>Enhanced DBS certificate</li>
-                    <li>Certificate of good conduct (if applicable)</li>
-                    <li>Driving assessment pass certificate</li>
-                    <li>Knowledge test pass certificate</li>
-                    <li>Safeguarding training certificate</li>
-                    <li>Proof of right to work</li>
-                    <li>DVLA driving licence</li>
-                    <li>Proof of address</li>
-                  </ul>
-                  <p><strong>Application fee:</strong> Must be paid in full when submitting - see <a href="information.html#fees">fees and charges</a></p>
-                  <a href="https://gloucester-self.achieveservice.com/" class="button button-primary mt-sm" target="_blank" rel="noopener">Apply online (My Gloucester)</a>
-                </div>
-              </div>
-            </li>
-
-            <!-- Step 9: NR3 check (automatic) -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-9" aria-describedby="step-9-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">9</span>
-                  <h3 class="step-title">NR3 database check <span class="badge badge-info">Automatic</span></h3>
-                </div>
-                <div id="step-9-desc" class="step-details">
-                  <p><strong>What happens:</strong> Council automatically checks National Register of Refusals and Revocations</p>
-                  <p><strong>Data checked:</strong> Name, DOB, address, National Insurance Number, driving licence number, previous refusals or revocations</p>
-                  <p><strong>Retention:</strong> 11 years on NR3 database if refused/revoked</p>
-                  <p><strong>Purpose:</strong> Prevent unsuitable persons being licensed elsewhere</p>
-                </div>
-              </div>
-            </li>
-
-            <!-- Step 10: Fit and proper assessment (automatic) -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-10" aria-describedby="step-10-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">10</span>
-                  <h3 class="step-title">Fit and proper person assessment <span class="badge badge-info">Automatic</span></h3>
-                </div>
-                <div id="step-10-desc" class="step-details">
-                  <p><strong>Decision maker:</strong> Licensing team or Licensing Sub-Committee</p>
-                  <p><strong>The test question:</strong> "Would you be comfortable with this person driving your loved ones?"</p>
-                  <p><strong>We consider:</strong></p>
-                  <ul>
-                    <li>Criminal convictions and cautions</li>
-                    <li>Driving record and penalty points</li>
-                    <li>Honesty and integrity</li>
-                    <li>Medical fitness</li>
-                    <li>Competence (tests passed)</li>
-                    <li>Previous licensing history</li>
-                  </ul>
-                  <p><a href="information.html#fit-and-proper">Read more about the fit and proper test</a></p>
-                </div>
-              </div>
-            </li>
-
-            <!-- Step 11: Decision -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-11" aria-describedby="step-11-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">11</span>
-                  <h3 class="step-title">Decision</h3>
-                </div>
-                <div id="step-11-desc" class="step-details">
-                  <p><strong>Target timeframe:</strong> Decision within 14 days (normal cases)</p>
-                  <p><strong>Current delays:</strong> High volume - allow 20 working days before enquiring</p>
-                  <p><strong>Possible outcomes:</strong></p>
-                  <ul>
-                    <li>Grant licence for 3 years</li>
-                    <li>Grant licence for shorter period (if justified by circumstances)</li>
-                    <li>Refuse application</li>
-                    <li>Refer to Licensing Sub-Committee for determination</li>
-                  </ul>
-                  <p>Contact licensing@gloucester.gov.uk if delayed beyond 20 working days</p>
-                </div>
-              </div>
-            </li>
-
-            <!-- Step 12: Badge collection -->
-            <li class="checkbox-item">
-              <input type="checkbox" id="step-12" aria-describedby="step-12-desc">
-              <div style="flex: 1;">
-                <div class="step-header">
-                  <span class="step-number">12</span>
-                  <h3 class="step-title">Badge collection</h3>
-                </div>
-                <div id="step-12-desc" class="step-details">
-                  <p><strong>When:</strong> After licence granted and additional fee paid</p>
-                  <p><strong>Badge requirements:</strong></p>
-                  <ul>
-                    <li>Wear badge at all times when working</li>
-                    <li>Badge must be clearly visible</li>
-                    <li>Return badge if licence suspended or revoked</li>
-                  </ul>
-                  <div class="alert alert-danger">
-                    <div class="alert-content">
-                      <strong>Criminal offence:</strong> Not wearing badge whilst working is a criminal offence
+                        <div class="comparison-card">
+                            <h4>🚗 Private Hire</h4>
+                            <ul>
+                                <li>Must be pre-booked only</li>
+                                <li>Cannot be hailed in street</li>
+                                <li>Cannot wait at ranks</li>
+                                <li>No 'TAXI' or 'CAB' signage</li>
+                            </ul>
+                        </div>
                     </div>
-                  </div>
+
+                    <div class="info-box">
+                        <h4>💡 Good to know</h4>
+                        <p><strong>Dual licence:</strong> Many drivers hold both hackney carriage AND private hire licences for maximum flexibility. You can drive either type of vehicle depending on which licence you hold.</p>
+                    </div>
                 </div>
-              </div>
-            </li>
-          </ul>
 
-          <!-- Checklist actions -->
-          <div class="checklist-actions">
-            <button class="button button-secondary" data-action="print">📄 Print checklist</button>
-            <button class="button button-secondary" data-action="reset">🔄 Reset progress</button>
-          </div>
-        </div>
+                <!-- NEW APPLICATION SECTION -->
+                <div class="situation-card">
+                    <h2><span class="icon">🆕</span> New Application</h2>
+                    <p>First time applying for a taxi driver licence in Gloucester? Here's everything you need to know.</p>
 
-        <!-- Dual licence explainer -->
-        <!-- From: licence_types + key_differences -->
-        <details class="mt-lg">
-          <summary>
-            <h2>Should I apply for hackney carriage or private hire?</h2>
-          </summary>
-          <div class="content">
-            <p>You can hold both types of licence (dual licence). Many drivers do this for flexibility.</p>
-            <table class="responsive">
-              <thead>
-                <tr>
-                  <th>Feature</th>
-                  <th>Hackney Carriage</th>
-                  <th>Private Hire</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-label="Feature">Street hailing</td>
-                  <td data-label="Hackney Carriage">✓ Can be hailed</td>
-                  <td data-label="Private Hire">✗ Pre-booking only</td>
-                </tr>
-                <tr>
-                  <td data-label="Feature">Taxi ranks</td>
-                  <td data-label="Hackney Carriage">✓ Can wait at ranks</td>
-                  <td data-label="Private Hire">✗ Cannot use ranks</td>
-                </tr>
-                <tr>
-                  <td data-label="Feature">Knowledge test</td>
-                  <td data-label="Hackney Carriage">Topographical (street knowledge)</td>
-                  <td data-label="Private Hire">Literacy and numeracy</td>
-                </tr>
-                <tr>
-                  <td data-label="Feature">Fares</td>
-                  <td data-label="Hackney Carriage">Maximum set by council (tariff)</td>
-                  <td data-label="Private Hire">Agreed with operator/customer</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </details>
+                    <div class="quick-facts">
+                        <div class="fact-box">
+                            <div class="fact-label">Typical Cost</div>
+                            <div class="fact-value">£400-600+</div>
+                            <div class="fact-note">Before application fees</div>
+                        </div>
 
-        <!-- Conviction warning -->
-        <!-- From: convictions_policy.notification_requirement -->
-        <div class="alert alert-warning mt-lg">
-          <span class="alert-icon">⚠️</span>
-          <div class="alert-content">
-            <strong>Have a criminal conviction?</strong> Each case is assessed individually. Use our <a href="information.html#conviction-checker">conviction checker tool</a> to see if your conviction may affect licensing.
-          </div>
-        </div>
+                        <div class="fact-box">
+                            <div class="fact-label">Timeline</div>
+                            <div class="fact-value">6-12 weeks</div>
+                            <div class="fact-note">If all tests passed first time</div>
+                        </div>
 
-        <!-- Safeguarding section -->
-        <!-- From: safeguarding (NEW v2) -->
-        <details class="mt-lg">
-          <summary>
-            <h2>Your safeguarding duties</h2>
-          </summary>
-          <div class="content">
-            <div class="alert alert-info">
-              <div class="alert-content">
-                <h3>Important responsibility</h3>
-                <p>As a licensed driver, you have a duty to safeguard vulnerable passengers including children, elderly people, and those with disabilities.</p>
-              </div>
-            </div>
+                        <div class="fact-box">
+                            <div class="fact-label">Licence Duration</div>
+                            <div class="fact-value">3 years</div>
+                            <div class="fact-note">Then renewable</div>
+                        </div>
+                    </div>
 
-            <h3>What to look for</h3>
-            <p>You should be aware of signs that someone may be at risk:</p>
-            <ul>
-              <li>Recognising signs of abuse and neglect</li>
-              <li>Child Sexual Exploitation (CSE)</li>
-              <li>County lines and criminal exploitation</li>
-              <li>Modern slavery and trafficking</li>
-              <li>Domestic abuse</li>
-              <li>Prevent (radicalisation)</li>
-            </ul>
-            <p class="text-small"><strong>Note:</strong> Your mandatory safeguarding training covers these topics in detail.</p>
+                    <h3>Basic requirements</h3>
+                    <div class="highlight-box">
+                        <ul>
+                            <li>21 years or over</li>
+                            <li>Full DVLA driving licence held for at least 12 continuous months</li>
+                            <li>No more than 3 current penalty points on DVLA licence</li>
+                            <li>Legal right to work in UK (Immigration Act 2016)</li>
+                            <li>Must pass fit and proper person test</li>
+                        </ul>
+                    </div>
 
-            <h3 class="mt-md">How to report concerns</h3>
+                    <!-- Expandable step-by-step guide -->
+                    <h3>Step-by-step application process</h3>
+                    <p>Follow these steps in order. Each step must be completed before you can apply.</p>
 
-            <div class="card">
-              <div class="alert alert-danger">
-                <span class="alert-icon">📞</span>
-                <div class="alert-content">
-                  <strong>Immediate danger:</strong> Call 999 - Police
+                    <details class="expandable-section">
+                        <summary>Step 1: English Language Test <span class="badge badge-cost">£45</span></summary>
+                        <div class="expandable-content">
+                            <div class="alert alert-danger">
+                                <div class="alert-content">
+                                    <span class="alert-icon">🎯</span>
+                                    <div>
+                                        <strong>DO THIS FIRST!</strong> You must pass this before doing any other tests. No point spending money on other tests if you cannot pass the English test.
+                                    </div>
+                                </div>
+                            </div>
+                            <p><strong>What it is:</strong> A proficiency test to ensure you can communicate clearly with passengers in English.</p>
+                            <p><strong>How to book:</strong> Call the licensing team on <a href="tel:+441452396396">01452 396396</a></p>
+                            <p><strong>Cost:</strong> £45</p>
+                        </div>
+                    </details>
+
+                    <details class="expandable-section">
+                        <summary>Step 2: Medical Examination <span class="badge badge-cost">£50-150</span></summary>
+                        <div class="expandable-content">
+                            <p><strong>Standard required:</strong> DVLA Group 2 (same as HGV/bus drivers)</p>
+                            <p><strong>Who can do it:</strong> Your GP or registered medical practitioner</p>
+                            <p><strong>Important:</strong> Must use council-approved medical form and be no more than 3 months old when submitted</p>
+                            <p><strong>Cost:</strong> Varies by GP - typically £50-150</p>
+                            <p><strong>Future renewals:</strong></p>
+                            <ul>
+                                <li>Every 5 years if under 65</li>
+                                <li>Annually if over 65</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="expandable-section">
+                        <summary>Step 3: Enhanced DBS Check <span class="badge badge-cost">£50-60</span></summary>
+                        <div class="expandable-content">
+                            <p><strong>Level:</strong> Enhanced disclosure including barred lists</p>
+                            <p><strong>Apply through:</strong> TaxiPlus online system</p>
+                            <p><a href="https://app.taxiplus.co.uk/self-initiate/68b7bd25-065c-49c6-af7e-2247040751fe/dbs-check" class="cta-button" target="_blank">Apply for DBS check →</a></p>
+
+                            <div class="alert alert-danger" style="margin-top: 1rem;">
+                                <div class="alert-content">
+                                    <span class="alert-icon">⚠️</span>
+                                    <div>
+                                        <strong>CRITICAL:</strong> You MUST subscribe to the DBS Update Service within 28 days of receiving your certificate. Cost: £13/year. This is a licence condition.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="expandable-section">
+                        <summary>Step 4: Driving Assessment <span class="badge badge-cost">£100-150</span></summary>
+                        <div class="expandable-content">
+                            <p><strong>What it tests:</strong> Your ability to drive safely with passengers, anticipate hazards, and follow best practice</p>
+                            <p><strong>Approved providers:</strong></p>
+                            <ul>
+                                <li><a href="https://shop.advancedmotoring.co.uk/products/taxi-test" target="_blank">Diamond Advanced Tests</a> (IAM RoadSmart)</li>
+                                <li><a href="https://bltdrivertraining.co.uk/" target="_blank">The Blue Lamp Trust</a></li>
+                                <li><a href="https://www.greenpenny.co.uk/taxi-assessment-booking-form/" target="_blank">Green Penny</a></li>
+                            </ul>
+                            <p><strong>Cost:</strong> Typically £100-150 depending on provider</p>
+                        </div>
+                    </details>
+
+                    <details class="expandable-section">
+                        <summary>Step 5: Knowledge Test</summary>
+                        <div class="expandable-content">
+                            <p><strong>For Hackney Carriage:</strong> Topographical knowledge test covering Gloucester city and surrounding areas. You'll need to know streets, landmarks, and routes.</p>
+                            <p><strong>For Private Hire:</strong> Literacy and numeracy test (Private Hire Knowledge Test)</p>
+                            <p><strong>How to book:</strong> Call <a href="tel:+441452396396">01452 396396</a> to arrange payment, then licensing will contact you to schedule the test</p>
+                            <p><strong>Retakes:</strong> You can retake up to 2 times within 12 months. If you fail 3 times, you cannot retake until you can demonstrate further learning has taken place.</p>
+                        </div>
+                    </details>
+
+                    <details class="expandable-section">
+                        <summary>Step 6: Safeguarding Training <span class="badge badge-free">Free</span></summary>
+                        <div class="expandable-content">
+                            <p><strong>Requirement:</strong> Mandatory for all new applicants</p>
+                            <p><strong>What's covered:</strong></p>
+                            <ul>
+                                <li>Recognising signs of abuse</li>
+                                <li>Child sexual exploitation (CSE)</li>
+                                <li>Modern slavery and trafficking</li>
+                                <li>How to report concerns</li>
+                            </ul>
+                            <p><strong>How to book:</strong> Check the council website for upcoming course dates and venues</p>
+                            <p>You'll receive a certificate upon completion which must be submitted with your application.</p>
+                        </div>
+                    </details>
+
+                    <details class="expandable-section">
+                        <summary>Step 7: Certificate of Good Conduct (if applicable)</summary>
+                        <div class="expandable-content">
+                            <div class="info-box">
+                                <h4>Who needs this?</h4>
+                                <p>Only required if you have lived outside the UK for more than 3 months since age 18</p>
+                            </div>
+                            <p><strong>Obtain from:</strong> Embassy or consulate of each country you've lived in</p>
+                            <p><strong>Important:</strong> This can take several months to obtain from some countries - start this process early!</p>
+                        </div>
+                    </details>
+
+                    <details class="expandable-section">
+                        <summary>Step 8: Submit Your Application</summary>
+                        <div class="expandable-content">
+                            <p><strong>You'll need all of the following:</strong></p>
+                            <ul>
+                                <li>English language test pass certificate</li>
+                                <li>Medical certificate (less than 3 months old)</li>
+                                <li>Enhanced DBS certificate with Update Service subscription</li>
+                                <li>Certificate of good conduct (if applicable)</li>
+                                <li>Driving assessment pass certificate</li>
+                                <li>Knowledge test pass certificate</li>
+                                <li>Safeguarding training certificate</li>
+                                <li>Proof of right to work in UK</li>
+                                <li>DVLA driving licence</li>
+                                <li>Proof of address</li>
+                            </ul>
+
+                            <p style="margin-top: 1.5rem;"><strong>Application fee:</strong> Must be paid in full when submitting - see <a href="/licensing/taxis/information#fees">fees and charges</a></p>
+
+                            <p style="margin-top: 1.5rem;">
+                                <a href="https://gloucester-self.achieveservice.com/" class="cta-button" target="_blank">Apply online via My Gloucester →</a>
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="expandable-section">
+                        <summary>What happens after you apply?</summary>
+                        <div class="expandable-content">
+                            <ol class="step-list">
+                                <li class="step-item">
+                                    <h4>Application review (1-2 weeks)</h4>
+                                    <p>The licensing team will review all your documents and certificates</p>
+                                </li>
+
+                                <li class="step-item">
+                                    <h4>NR3 database check (automatic)</h4>
+                                    <p>Council checks the National Register of Refusals and Revocations to ensure you haven't been refused or had a licence revoked elsewhere</p>
+                                </li>
+
+                                <li class="step-item">
+                                    <h4>Fit and proper person assessment</h4>
+                                    <p>Licensing officer assesses whether you meet the "fit and proper" test based on character, convictions, behaviour, and compliance with regulations</p>
+                                </li>
+
+                                <li class="step-item">
+                                    <h4>Decision (usually within 14 days)</h4>
+                                    <p>You'll be notified by email or letter. If approved, you can collect your badge from the licensing office</p>
+                                </li>
+
+                                <li class="step-item">
+                                    <h4>Start driving!</h4>
+                                    <p>Once you have your badge, you can start work. You must display your badge while driving and carry it at all times when working</p>
+                                </li>
+                            </ol>
+                        </div>
+                    </details>
                 </div>
-              </div>
-            </div>
 
-            <div class="card-grid mt-sm">
-              <div class="card">
-                <h4>Child at risk</h4>
-                <p>Contact: Multi-Agency Safeguarding Hub (MASH)</p>
-              </div>
-              <div class="card">
-                <h4>Vulnerable adult at risk</h4>
-                <p>Contact: Adult safeguarding team</p>
-              </div>
-              <div class="card">
-                <h4>Concern about another driver</h4>
-                <p>Contact: Licensing Authority - licensing@gloucester.gov.uk</p>
-              </div>
-            </div>
+                <!-- RENEWAL SECTION -->
+                <div class="situation-card">
+                    <h2><span class="icon">🔄</span> Renewal</h2>
+                    <p>Already licensed? Here's what you need to renew your driver licence.</p>
 
-            <p class="mt-sm"><strong>Whistleblowing protection:</strong> You are protected under whistleblowing legislation when reporting genuine concerns.</p>
+                    <div class="alert alert-danger">
+                        <div class="alert-content">
+                            <span class="alert-icon">⏰</span>
+                            <div>
+                                <strong>Renew before expiry!</strong> You cannot legally operate as a taxi driver if your licence has expired. Apply at least 4 weeks before your expiry date to avoid any gaps.
+                            </div>
+                        </div>
+                    </div>
 
-            <h3 class="mt-md">Why we check your DBS</h3>
-            <p>Enhanced DBS checks including barred lists ensure you're safe to work with vulnerable people. We check both children's and adults' barred lists.</p>
+                    <h3>What you need for renewal</h3>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <h4>Enhanced DBS certificate</h4>
+                            <p>Must be dated within last 6 months OR be subscribed to DBS Update Service</p>
+                            <p><a href="https://app.taxiplus.co.uk/self-initiate/68b7bd25-065c-49c6-af7e-2247040751fe/dbs-check" target="_blank">Apply for new DBS check →</a></p>
+                        </div>
 
-            <div class="alert alert-danger mt-sm">
-              <div class="alert-content">
-                <h4>DBS Update Service - MANDATORY</h4>
-                <p>You MUST subscribe to DBS Update Service within 28 days of receiving your certificate.</p>
-                <p><strong>Cost:</strong> £13 per year</p>
-                <p><strong>Benefit:</strong> Council can check online without new certificate at renewal</p>
-                <p><strong>Failure to subscribe:</strong> Breach of licence conditions</p>
-              </div>
-            </div>
+                        <div class="step-item">
+                            <h4>Medical certificate (if due)</h4>
+                            <p><strong>Under 65:</strong> Required every 5 years</p>
+                            <p><strong>Over 65:</strong> Required annually</p>
+                            <p>Must be on council-approved form and less than 3 months old</p>
+                        </div>
 
-            <h3 class="mt-md">National Register (NR3)</h3>
-            <p>We share information about refused and revoked licences with other licensing authorities across the UK. This helps prevent unsuitable people being licensed elsewhere.</p>
-            <p><strong>Retention:</strong> 11 years</p>
-            <p><a href="information.html#data-protection">Read more about how we use your data</a></p>
-          </div>
-        </details>
+                        <div class="step-item">
+                            <h4>DVLA driving licence check consent</h4>
+                            <p>You'll need to provide consent for the council to check your DVLA record</p>
+                        </div>
 
-        <!-- CTA buttons -->
-        <div class="button-group mt-lg">
-          <a href="https://gloucester-self.achieveservice.com/" class="button button-primary" target="_blank" rel="noopener">Apply online now</a>
-          <a href="information.html#fees" class="button button-secondary">View fees and charges</a>
-        </div>
-      </div>
+                        <div class="step-item">
+                            <h4>Safeguarding training (if due)</h4>
+                            <p>Required every 3 years - check your licence to see when yours is due</p>
+                        </div>
+                    </div>
 
-      <!-- RENEWAL TAB -->
-      <!-- From: application_processes.driver_licence_renewal -->
-      <div role="tabpanel" id="renewal" aria-labelledby="tab-renewal" aria-hidden="true">
+                    <div class="info-box">
+                        <h4>Renewal fee</h4>
+                        <p>See <a href="/licensing/taxis/information#fees">fees and charges</a> for current renewal fees. Payment is required in full when submitting your application.</p>
+                    </div>
 
-        <!-- Renewal alert -->
-        <div class="alert alert-warning">
-          <span class="alert-icon">⚠️</span>
-          <div class="alert-content">
-            <strong>Renew before expiry!</strong> You cannot work if your licence expires. Apply before your current licence ends.
-          </div>
-        </div>
+                    <p style="margin-top: 2rem;">
+                        <a href="https://gloucester-self.achieveservice.com/" class="cta-button" target="_blank">Renew online via My Gloucester →</a>
+                    </p>
+                </div>
 
-        <h2>Renewal requirements</h2>
-        <p>To renew your driver licence, you need:</p>
+                <!-- FAQs -->
+                <div class="situation-card">
+                    <h2><span class="icon">❓</span> Frequently Asked Questions</h2>
 
-        <div class="card-grid">
-          <!-- Medical certificate -->
-          <div class="card">
-            <h3>Medical certificate</h3>
-            <p><strong>Frequency:</strong></p>
-            <ul>
-              <li>Every 5 years if under 65</li>
-              <li>Annually if 65 or over</li>
-              <li>Sooner if medical condition develops</li>
-            </ul>
-            <p><strong>Validity:</strong> Less than 3 months old</p>
-          </div>
+                    <details class="expandable-section">
+                        <summary>How long does a driver licence last?</summary>
+                        <div class="expandable-content">
+                            <p><strong>New licences:</strong> 3 years from date of issue</p>
+                            <p><strong>Renewal licences:</strong> 3 years from expiry date of previous licence</p>
+                            <p>The expiry date is printed on your badge. You should apply to renew at least 4 weeks before it expires.</p>
+                        </div>
+                    </details>
 
-          <!-- DBS Update Service -->
-          <div class="card">
-            <h3>DBS Update Service check</h3>
-            <p><strong>If subscribed:</strong> Council can check online - no new certificate needed</p>
-            <p><strong>If not subscribed:</strong> New enhanced DBS certificate required</p>
-            <div class="alert alert-danger mt-sm">
-              <div class="alert-content">
-                <strong>Critical:</strong> Failure to subscribe within 28 days of certificate is breach of licence conditions
-              </div>
-            </div>
-          </div>
+                    <details class="expandable-section">
+                        <summary>Can I drive in other areas with my Gloucester licence?</summary>
+                        <div class="expandable-content">
+                            <p>Your Gloucester driver licence only allows you to drive Gloucester-licensed vehicles working for Gloucester-licensed operators.</p>
+                            <p>To work in other areas, you'll need to apply for their driver licences. Some councils may have different requirements.</p>
+                        </div>
+                    </details>
 
-          <!-- DVLA check -->
-          <div class="card">
-            <h3>DVLA licence check</h3>
-            <p><strong>Automatic:</strong> Council checks DVLA record for endorsements</p>
-          </div>
+                    <details class="expandable-section">
+                        <summary>What if I get points on my DVLA licence?</summary>
+                        <div class="expandable-content">
+                            <div class="alert alert-danger">
+                                <div class="alert-content">
+                                    <span class="alert-icon">⚠️</span>
+                                    <div>
+                                        <strong>You must notify the council within 48 hours</strong> of receiving any convictions, cautions, warnings, or penalty points on your DVLA licence. Failure to do so is a breach of your licence conditions.
+                                    </div>
+                                </div>
+                            </div>
+                            <p>The council will assess whether the conviction affects your fitness to hold a taxi licence based on the seriousness and nature of the offence.</p>
+                        </div>
+                    </details>
 
-          <!-- Tax check -->
-          <div class="card">
-            <h3>Tax check</h3>
-            <p>You may need to complete HMRC tax check when renewing.</p>
-            <a href="https://www.gov.uk/guidance/complete-a-tax-check-for-a-taxi-private-hire-or-scrap-metal-licence" class="button button-secondary mt-sm" target="_blank" rel="noopener">Check if you need tax check</a>
-          </div>
+                    <details class="expandable-section">
+                        <summary>Can I work for Uber or other app-based companies?</summary>
+                        <div class="expandable-content">
+                            <p>Yes, but you'll need:</p>
+                            <ul>
+                                <li>Private hire driver licence from Gloucester</li>
+                                <li>Vehicle licensed as private hire by Gloucester</li>
+                                <li>The operator (e.g. Uber) must hold an operator licence from Gloucester</li>
+                            </ul>
+                            <p><strong>Important:</strong> All three licences must be from the same authority (Gloucester) if you're operating in Gloucester.</p>
+                        </div>
+                    </details>
 
-          <!-- Conviction disclosure -->
-          <div class="card">
-            <h3>Conviction disclosure</h3>
-            <p>Declare any cautions, convictions, fixed penalties, or pending prosecutions</p>
-            <div class="alert alert-danger mt-sm">
-              <div class="alert-content">
-                <strong>48-hour rule:</strong> Must notify council within 48 hours of being formally notified of any conviction, caution, or arrest
-              </div>
-            </div>
-          </div>
-        </div>
+                    <details class="expandable-section">
+                        <summary>What's the difference between hackney carriage and private hire drivers?</summary>
+                        <div class="expandable-content">
+                            <div class="comparison-grid">
+                                <div>
+                                    <h4>Hackney Carriage Driver</h4>
+                                    <p><strong>You CAN:</strong></p>
+                                    <ul>
+                                        <li>Be hailed in the street</li>
+                                        <li>Wait at taxi ranks</li>
+                                        <li>Accept pre-bookings</li>
+                                        <li>Use a taximeter</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4>Private Hire Driver</h4>
+                                    <p><strong>You CANNOT:</strong></p>
+                                    <ul>
+                                        <li>Accept street hailing (uninsured if you do)</li>
+                                        <li>Wait or tout for business</li>
+                                        <li>Wait at taxi ranks (criminal offence)</li>
+                                        <li>Display 'taxi' or 'cab' signage</li>
+                                    </ul>
+                                    <p><strong>You MUST:</strong> Only accept jobs from a licensed operator</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
 
-        <!-- Conviction reminder -->
-        <div class="alert alert-danger mt-lg">
-          <span class="alert-icon">🚫</span>
-          <div class="alert-content">
-            <h3>Ongoing duty to disclose</h3>
-            <p><strong>You must inform the council within 48 hours of:</strong></p>
-            <ul>
-              <li>Cautions</li>
-              <li>Convictions</li>
-              <li>Fixed penalties</li>
-              <li>Pending prosecutions</li>
-              <li>Arrests (if relevant to fitness)</li>
-            </ul>
-            <p><strong>Method:</strong> In writing to Licensing Authority</p>
-            <p><strong>Failure to notify:</strong> Serious breach - may result in revocation</p>
-          </div>
-        </div>
+                    <details class="expandable-section">
+                        <summary>Do I need to notify the council of address changes?</summary>
+                        <div class="expandable-content">
+                            <p><strong>Yes.</strong> You must notify the licensing team in writing within 7 days of:</p>
+                            <ul>
+                                <li>Change of address</li>
+                                <li>Change of contact details</li>
+                                <li>Any convictions, cautions, or penalty points</li>
+                                <li>Any change in medical fitness</li>
+                            </ul>
+                            <p>Email: <a href="mailto:licensing@gloucester.gov.uk">licensing@gloucester.gov.uk</a></p>
+                        </div>
+                    </details>
 
-        <!-- CTA -->
-        <div class="button-group mt-lg">
-          <a href="https://gloucester-self.achieveservice.com/" class="button button-primary" target="_blank" rel="noopener">Renew online now</a>
-          <a href="information.html#fees" class="button button-secondary">View renewal fees</a>
-        </div>
-      </div>
+                    <details class="expandable-section">
+                        <summary>What happens if I'm refused a licence?</summary>
+                        <div class="expandable-content">
+                            <p>If your application is refused, you'll receive a written decision explaining why.</p>
+                            <p><strong>Your right to appeal:</strong> You can appeal the decision to the Magistrates' Court within 21 days of receiving the refusal notice.</p>
+                            <p><strong>NR3 database:</strong> Refusals and revocations are recorded on the National Register for 11 years and shared with other licensing authorities.</p>
+                        </div>
+                    </details>
+                </div>
 
-      <!-- DOWNLOADS SECTION (shown on both tabs) -->
-      <!-- From: legal_framework.local_policies -->
-      <section class="mt-xl">
-        <h2>Downloads</h2>
-        <div class="card-grid">
-          <div class="card">
-            <h3>📄 Driver Rule Books</h3>
-            <ul class="list-plain">
-              <li><a href="/media/hj5f4r44/hc-driver-and-vehicle-rule-books-june-2025.pdf">Hackney Carriage Driver Rule Book (PDF)</a></li>
-              <li><a href="/media/trngkdez/ph-driver-and-vehicle-rule-book-june-2025.doc">Private Hire Driver Rule Book (DOC)</a></li>
-            </ul>
-          </div>
+                <!-- Contact -->
+                <div class="situation-card">
+                    <h2><span class="icon">📞</span> Need Help?</h2>
+                    <p><strong>Licensing team:</strong></p>
+                    <p>📞 Phone: <a href="tel:+441452396396">01452 396 396</a></p>
+                    <p>✉️ Email: <a href="mailto:licensing@gloucester.gov.uk">licensing@gloucester.gov.uk</a></p>
+                    <p>🏢 Office hours: Monday to Friday, 9am - 5pm</p>
 
-          <div class="card">
-            <h3>📄 Policies</h3>
-            <ul class="list-plain">
-              <li><a href="/media/puabfoda/common-standards-for-licensing-hackney-carriage-and-private-hire-drivers-approved-september-2021.docx">Common Standards for Licensing (DOCX)</a></li>
-              <li><a href="/media/i3abqpfe/hc-ph-regulatory-guidelines-approved-september-21.doc">Regulatory Guidelines (DOC)</a></li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>📄 Forms</h3>
-            <ul class="list-plain">
-              <li><a href="#">Medical Examination Form</a></li>
-              <li><a href="#">Conviction Notification Form</a></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQs SECTION -->
-      <!-- From: faqs_and_common_scenarios + driver_conduct -->
-      <section class="mt-xl">
-        <h2>Frequently asked questions</h2>
-
-        <h3>Getting licensed</h3>
-
-        <details>
-          <summary>Can I drive a taxi with my ordinary car licence?</summary>
-          <div class="content">
-            <p>No - you need a hackney carriage or private hire driver licence from the council in addition to your DVLA driving licence.</p>
-          </div>
-        </details>
-
-        <details>
-          <summary>What's the difference between taxi and private hire?</summary>
-          <div class="content">
-            <p>Taxis (hackney carriages) can be hailed in street and wait at ranks. Private hire must be pre-booked through operator. Different licences and rules apply.</p>
-          </div>
-        </details>
-
-        <details>
-          <summary>What if I have a criminal conviction?</summary>
-          <div class="content">
-            <p>Depends on type, seriousness and time elapsed. See Common Standards policy. Each case assessed individually on whether you are fit and proper person.</p>
-            <p><a href="information.html#conviction-checker">Use our conviction checker tool</a></p>
-          </div>
-        </details>
-
-        <details>
-          <summary>Do I need a medical every year?</summary>
-          <div class="content">
-            <p>Every 5 years if under 65, annually if 65 or over, or sooner if medical condition develops.</p>
-          </div>
-        </details>
-
-        <h3 class="mt-lg">Working as a driver</h3>
-
-        <!-- From: driver_conduct -->
-        <details>
-          <summary>Do I have to wear my badge?</summary>
-          <div class="content">
-            <p><strong>Yes.</strong> Wear badge at all times when working for hire.</p>
-            <p><strong>Position:</strong> Clearly visible - typically on lanyard or breast pocket</p>
-            <div class="alert alert-danger">
-              <div class="alert-content">
-                <strong>Criminal offence:</strong> Not wearing badge whilst working is a criminal offence
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details>
-          <summary>Can I smoke in my vehicle?</summary>
-          <div class="content">
-            <div class="alert alert-danger">
-              <div class="alert-content">
-                <p><strong>No.</strong> Smoking in licensed vehicle is criminal offence</p>
-                <p><strong>Includes:</strong> Traditional cigarettes, e-cigarettes, vaping</p>
-                <p><strong>Applies:</strong> Even when vehicle not carrying passengers</p>
-                <p><strong>Penalty:</strong> Fixed penalty £50 or prosecution</p>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details>
-          <summary>Can I use my phone while driving?</summary>
-          <div class="content">
-            <div class="alert alert-danger">
-              <div class="alert-content">
-                <strong>No.</strong> Illegal to use handheld phone while driving
-              </div>
-            </div>
-            <p><strong>Hands-free permitted:</strong> But must not affect driving</p>
-            <p><strong>Penalty:</strong> 6 points and £200 fine minimum</p>
-          </div>
-        </details>
-
-        <details>
-          <summary>What if a passenger leaves property in my vehicle?</summary>
-          <div class="content">
-            <ol>
-              <li>Check vehicle after each hiring</li>
-              <li>Try to contact passenger if details available</li>
-              <li>Hand unclaimed property to police within 48 hours</li>
-              <li>Keep record of property found</li>
-            </ol>
-          </div>
-        </details>
-
-        <details>
-          <summary>What are the key rules for hackney carriage drivers?</summary>
-          <div class="content">
-            <h4>You can:</h4>
-            <ul class="list-check">
-              <li>Be hailed in street</li>
-              <li>Wait at designated ranks</li>
-              <li>Take bookings</li>
-            </ul>
-
-            <h4 class="mt-sm">You must:</h4>
-            <ul>
-              <li>Stop if available and safe when hailed</li>
-              <li>Maintain orderly queues at ranks</li>
-              <li>Charge according to meter and approved tariff</li>
-              <li>Cannot refuse short journeys (within district)</li>
-              <li>No extra charge for wheelchairs and assistance dogs</li>
-            </ul>
-          </div>
-        </details>
-
-        <details>
-          <summary>What are the key rules for private hire drivers?</summary>
-          <div class="content">
-            <div class="alert alert-danger">
-              <div class="alert-content">
-                <strong>Critical:</strong> Private hire drivers can ONLY accept bookings through licensed operator
-              </div>
-            </div>
-
-            <h4>You CANNOT:</h4>
-            <ul>
-              <li>Accept street hailing (journey uninsured if you do)</li>
-              <li>Wait or tout for business</li>
-              <li>Wait at taxi ranks (criminal offence)</li>
-              <li>Display 'taxi' or 'cab' signage</li>
-            </ul>
-
-            <p class="mt-sm">All bookings must go through operator who issues booking to driver.</p>
-          </div>
-        </details>
-
-        <details>
-          <summary>Can I work for Uber or Lyft?</summary>
-          <div class="content">
-            <p>These are private hire operators. You need:</p>
-            <ul>
-              <li>Private hire driver licence</li>
-              <li>Your vehicle needs private hire vehicle licence</li>
-              <li>Operator (Uber/Lyft) needs operator licence</li>
-            </ul>
-            <p><strong>Important:</strong> All must be from Gloucester if operating in Gloucester.</p>
-          </div>
-        </details>
-
-        <details>
-          <summary>Can I drive in other areas?</summary>
-          <div class="content">
-            <p>Your Gloucester licence only valid for Gloucester-licensed vehicles and operators. Other areas require their licences.</p>
-          </div>
-        </details>
-
-        <details>
-          <summary>What if I get points on my DVLA licence?</summary>
-          <div class="content">
-            <div class="alert alert-danger">
-              <div class="alert-content">
-                <strong>Must notify council within 48 hours.</strong> May affect fitness depending on circumstances.
-              </div>
-            </div>
-          </div>
-        </details>
-      </section>
+                    <p style="margin-top: 1.5rem;">
+                        <a href="/licensing/taxis/information" class="cta-button-secondary">View fees, policies & more information →</a>
+                    </p>
+                </div>
 
             </div>
             <!-- END service-main -->
