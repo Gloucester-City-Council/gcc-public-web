@@ -1,0 +1,893 @@
+{
+  "schema_metadata": {
+    "schema_version": "1.0.0",
+    "last_updated": "2025-02-25",
+    "status": "draft",
+    "package_type": "service_definition",
+    "authority": "Gloucestershire County Council",
+
+    "validation_status": {
+      "TODO_SUMMARY": [
+        "Cabinet Member for SEND - confirm current role holder",
+        "Director of Education and Skills - confirm current post holder",
+        "SEND Service Manager - confirm current post holder",
+        "Local Offer URL - confirm current canonical URL",
+        "SEND Information, Advice and Support Service (SENDIASS) contact details - confirm current",
+        "EHC needs assessment timescale compliance rate - confirm current performance data",
+        "EHC plan annual review completion rates - confirm current performance data",
+        "Number of children/young people with EHC plans in Gloucestershire - confirm current figure",
+        "Mediation provider details - confirm current contracted provider",
+        "Independent Supporters service - confirm if still commissioned",
+        "Short breaks/respite provision details - confirm current commissioned services",
+        "Specialist school list and places - confirm current available provision",
+        "Alternative provision details - confirm currently commissioned providers",
+        "Tribunal appeal volumes and outcomes - confirm current data",
+        "SEND Budget 2025/26 - confirm total allocation",
+        "High Needs Block DSG allocation 2025/26 - confirm figure",
+        "Educational Psychologist capacity - confirm current staffing levels",
+        "Specialist SEND team structure - confirm current organisational structure",
+        "SEND strategic plan / written statement of action - confirm current version and URL",
+        "DPO sign off - required before publication",
+        "Data retention periods - confirm for all SEND data types",
+        "Gloucestershire SEND Partnership Board membership - confirm current members",
+        "SEND inspection history - confirm date and outcome of most recent Ofsted/CQC inspection",
+        "Post-16 and post-19 provision details - confirm current commissioned services",
+        "Transport policy for SEND pupils - confirm current policy URL"
+      ],
+
+      "cabinet_member": "TODO - confirm current Cabinet Member for Education and SEND",
+      "director": "TODO - confirm current Director of Education and Skills",
+      "send_service_manager": "TODO - confirm current Head of SEND",
+      "local_offer_url": "TODO - confirm current URL (likely https://www.gloucestershire.gov.uk/send)",
+      "sendiass_contact": "TODO - confirm current SENDIASS phone and email",
+      "performance_data": "TODO - validate EHC plan timescale compliance and review rates",
+      "high_needs_block": "TODO - confirm 2025/26 High Needs Block DSG figure",
+      "inspection_outcome": "TODO - confirm most recent Ofsted/CQC SEND inspection date and outcome",
+      "written_statement_of_action": "TODO - confirm if WSOA is current or if re-inspection has occurred",
+      "dpo_sign_off": "TODO - required before publication",
+      "retention_periods": "TODO - confirm retention periods for EHC plans and associated records"
+    }
+  },
+
+  "package_identity": {
+    "package_id": "send",
+    "package_name": "Special Educational Needs and Disabilities (SEND)",
+    "package_description": "Statutory services for children and young people aged 0-25 with special educational needs and/or disabilities, including Education, Health and Care needs assessments, EHC plan coordination, the Local Offer, and support for families throughout the SEND process"
+  },
+
+  "service_overview": {
+    "what_is_send": "Special Educational Needs and Disabilities (SEND) services support children and young people aged 0-25 who have additional needs that require support beyond what is ordinarily available in mainstream settings. Gloucestershire County Council has a statutory duty to identify, assess, and make provision for children and young people with SEND, working in partnership with health and social care.",
+
+    "what_it_provides": [
+      "Education, Health and Care (EHC) needs assessments",
+      "EHC plan coordination, issue, and annual review",
+      "The Local Offer - information about available SEND provision",
+      "SEND Information, Advice and Support Service (SENDIASS)",
+      "Specialist educational provision including special schools and resourced units",
+      "Early years SEND support",
+      "Post-16 and post-19 SEND support up to age 25",
+      "Alternative provision",
+      "Short breaks and respite for disabled children and their families",
+      "Educational Psychology service",
+      "Specialist support services (advisory teachers, inclusion support)"
+    ],
+
+    "who_it_serves": {
+      "age_range": "0-25 years",
+      "population": "Children and young people with special educational needs and/or disabilities resident in Gloucestershire",
+      "note": "EHC plans can continue to age 25 for those in education or training. Young people aged 16+ have rights in their own name under the Children and Families Act 2014."
+    },
+
+    "responsible_authority": "Gloucestershire County Council",
+    "partner_agencies": [
+      "NHS Gloucestershire Integrated Care Board (ICB) - health element of EHC plans",
+      "Gloucestershire Health and Care NHS Foundation Trust - specialist health services",
+      "Gloucestershire Hospitals NHS Foundation Trust",
+      "District and city councils - housing and some social care interfaces",
+      "Schools and academies - delivery of SEND support",
+      "Further Education colleges - post-16 provision",
+      "Early years providers"
+    ]
+  },
+
+  "legal_framework": {
+    "service_type": "statutory",
+
+    "primary_legislation": {
+      "act": "Children and Families Act 2014",
+      "reference": "c.6",
+      "url": "https://www.legislation.gov.uk/ukpga/2014/6/contents",
+      "what_law_requires": "Local authorities must identify, assess and make provision for children and young people with SEND aged 0-25. Where a child or young person has or may have SEND and has or may have needs that cannot be met by support ordinarily available, the authority must conduct an EHC needs assessment.",
+      "key_sections": [
+        {
+          "section": "Section 19",
+          "purpose": "Principles: local authority must have regard to the views, wishes and feelings of the child/young person and their parents, importance of participation, importance of achieving best possible outcomes"
+        },
+        {
+          "section": "Section 22",
+          "purpose": "Local authority must keep under review education and training provision and social care provision for children and young people with SEND in its area (Local Offer duty)"
+        },
+        {
+          "section": "Section 24",
+          "purpose": "Duty to publish Local Offer"
+        },
+        {
+          "section": "Section 26",
+          "purpose": "Request for EHC needs assessment"
+        },
+        {
+          "section": "Section 36",
+          "purpose": "EHC needs assessments - duty to assess"
+        },
+        {
+          "section": "Section 37",
+          "purpose": "EHC plans - duty to maintain"
+        },
+        {
+          "section": "Section 38",
+          "purpose": "Educational placement in EHC plans - mainstream preference and parental choice"
+        },
+        {
+          "section": "Section 39 and 40",
+          "purpose": "Duty to name requested school/institution in EHC plan (s.39) and naming alternative (s.40)"
+        },
+        {
+          "section": "Section 42",
+          "purpose": "Duty to secure special educational provision specified in EHC plan"
+        },
+        {
+          "section": "Section 44",
+          "purpose": "Annual review of EHC plans"
+        },
+        {
+          "section": "Section 45",
+          "purpose": "Ceasing to maintain EHC plan"
+        },
+        {
+          "section": "Sections 51-57",
+          "purpose": "Mediation and appeals - right to mediation before tribunal, SEND Tribunal jurisdiction"
+        },
+        {
+          "section": "Section 58",
+          "purpose": "Local authority's duty to provide information and advice (SENDIASS)"
+        }
+      ]
+    },
+
+    "supporting_legislation": [
+      {
+        "title": "Special Educational Needs and Disability Regulations 2014",
+        "reference": "SI 2014/1530",
+        "url": "https://www.legislation.gov.uk/uksi/2014/1530/contents",
+        "purpose": "Detailed procedural regulations including timescales for EHC needs assessments and plans"
+      },
+      {
+        "title": "Special Educational Needs (Personal Budgets) Regulations 2014",
+        "reference": "SI 2014/1652",
+        "purpose": "Regulations governing personal budgets within EHC plans"
+      },
+      {
+        "title": "Children Act 1989",
+        "reference": "c.41",
+        "url": "https://www.legislation.gov.uk/ukpga/1989/41/contents",
+        "purpose": "Underpins social care elements, looked after children with SEND, and Section 17 disabled children duties"
+      },
+      {
+        "title": "Equality Act 2010",
+        "reference": "c.15",
+        "url": "https://www.legislation.gov.uk/ukpga/2010/15/contents",
+        "purpose": "Disability discrimination duties on schools and local authorities; reasonable adjustments duty"
+      },
+      {
+        "title": "Education Act 1996",
+        "reference": "c.56",
+        "purpose": "Definitions of special educational needs; school attendance and exclusion provisions relevant to SEND"
+      },
+      {
+        "title": "Care Act 2014",
+        "reference": "c.23",
+        "purpose": "Adult social care transition for young people with SEND approaching 18; young person's carer assessments"
+      },
+      {
+        "title": "Health and Social Care (Community Health and Standards) Act 2003",
+        "reference": "c.43",
+        "purpose": "NHS duties in relation to EHC plans (health element)"
+      },
+      {
+        "title": "Mental Health Units (Use of Force) Act 2018",
+        "reference": "c.27",
+        "purpose": "Relevant where young people with SEND are in mental health provision"
+      }
+    ],
+
+    "statutory_guidance": [
+      {
+        "title": "SEND Code of Practice: 0 to 25 years",
+        "published": "January 2015",
+        "url": "https://www.gov.uk/government/publications/send-code-of-practice-0-to-25",
+        "status": "Statutory guidance - local authorities, schools, health bodies and others must have regard to it",
+        "note": "This is the primary operational guide for all SEND practice"
+      },
+      {
+        "title": "Exclusion from maintained schools, academies and pupil referral units in England",
+        "url": "https://www.gov.uk/government/publications/school-exclusion",
+        "purpose": "Protections and considerations for pupils with SEND facing exclusion"
+      }
+    ],
+
+    "local_policies": [
+      {
+        "policy": "Gloucestershire SEND Strategy",
+        "status": "TODO - confirm current strategy title, version and URL",
+        "purpose": "Local strategic framework for SEND improvement",
+        "approval": "TODO - confirm approval body and date"
+      },
+      {
+        "policy": "Written Statement of Action (WSOA)",
+        "status": "TODO - confirm if WSOA remains live following any re-inspection",
+        "purpose": "Action plan produced in response to Ofsted/CQC SEND inspection findings",
+        "url": "TODO"
+      },
+      {
+        "policy": "SEND Transport Policy",
+        "status": "TODO - confirm current policy URL",
+        "purpose": "Eligibility and provision of transport to specialist educational placements",
+        "url": "TODO"
+      },
+      {
+        "policy": "Personal Budget Policy",
+        "status": "TODO - confirm current policy",
+        "purpose": "How families can request and use personal budgets within EHC plans"
+      },
+      {
+        "policy": "Gloucestershire Inclusion Framework",
+        "status": "TODO - confirm current version and URL",
+        "purpose": "Framework for schools to meet SEND needs through graduated approach before EHC needs assessment"
+      }
+    ],
+
+    "strategic_alignment": {
+      "gloucestershire_county_council_plan": {
+        "status": "TODO - confirm current corporate plan reference and relevant SEND commitments"
+      },
+      "send_and_ap_improvement_plan": {
+        "title": "SEND and Alternative Provision Improvement Plan (national)",
+        "published": "March 2023",
+        "url": "https://www.gov.uk/government/publications/send-and-alternative-provision-improvement-plan",
+        "local_relevance": "National framework within which Gloucestershire SEND improvement activity sits"
+      }
+    },
+
+    "legal_status": {
+      "statutory_authority": "Children and Families Act 2014 places mandatory duties on local authorities. These are not discretionary.",
+      "right_of_appeal": "Parents and young people have a right of appeal to the First-tier Tribunal (SEND) against decisions on EHC needs assessments, the contents of EHC plans, and decisions to cease plans.",
+      "challenge_routes": [
+        "Mediation (mandatory to consider before Tribunal appeal in most cases)",
+        "First-tier Tribunal (Special Educational Needs and Disability) - commonly called the SEND Tribunal",
+        "Local Government and Social Care Ombudsman - for process failures",
+        "Judicial Review - for unlawful decisions",
+        "Complaints procedure"
+      ]
+    }
+  },
+
+  "ehc_needs_assessment": {
+    "what_it_is": "An Education, Health and Care (EHC) needs assessment is a detailed look at the special educational, health and social care needs of a child or young person. It considers whether an EHC plan is needed to secure the provision required.",
+
+    "who_can_request": [
+      "Parents or carers of a child or young person aged 0-25",
+      "Young people aged 16-25 in their own name",
+      "Schools and educational settings",
+      "Health services (e.g. paediatricians)",
+      "Social care services",
+      "Anyone else who thinks an assessment may be necessary (with parent/young person knowledge)"
+    ],
+
+    "how_to_request": {
+      "method": "Written request to Gloucestershire County Council SEND team",
+      "address": "TODO - confirm current postal address for SEND requests",
+      "email": "TODO - confirm current SEND request email",
+      "online_form": "TODO - confirm if online form available and URL",
+      "local_offer": "TODO - confirm Local Offer page for requesting assessment"
+    },
+
+    "decision_to_assess": {
+      "timescale_days": 6,
+      "timescale_description": "Local authority must decide whether to carry out an EHC needs assessment within 6 weeks of receiving a request",
+      "legal_reference": "SEND Regulations 2014, Regulation 4",
+      "decision_factors": [
+        "Whether the child or young person has or may have special educational needs",
+        "Whether it may be necessary to make special educational provision through an EHC plan",
+        "Evidence of needs and what has been tried in the educational setting"
+      ],
+      "if_refused": {
+        "right": "Parent/young person can appeal refusal to assess to the SEND Tribunal",
+        "timescale_to_appeal": "Must mediate or obtain mediation certificate before appealing; 2 months from decision or 1 month from mediation certificate (whichever is later)"
+      }
+    },
+
+    "the_assessment": {
+      "overall_timescale_weeks": 20,
+      "overall_timescale_description": "From request to EHC plan issue (or notice that plan will not be issued) must be within 20 weeks, except in exceptional circumstances",
+      "legal_reference": "SEND Regulations 2014, Regulation 13",
+      "who_contributes": [
+        "Educational Psychologist report",
+        "School or educational setting advice",
+        "Health advice (coordinated by NHS Gloucestershire ICB)",
+        "Social care advice (if relevant)",
+        "Child or young person's views (including through the Education, Health and Care assessment)",
+        "Parental/carer views",
+        "Any other specialist advice requested (e.g. speech and language therapy, occupational therapy, specialist advisory teacher)"
+      ],
+      "childs_voice": "The views, wishes and feelings of the child or young person must be ascertained and given due weight throughout the assessment process (Children and Families Act 2014, s.19)"
+    },
+
+    "decision_after_assessment": {
+      "options": [
+        "Issue an EHC plan",
+        "Decide not to issue an EHC plan (with reasons and right of appeal)"
+      ],
+      "notification_timescale": "Within 16 weeks of the request (decision whether to issue plan)",
+      "draft_plan_timescale": "Draft EHC plan sent to parents/young person within 15 working days of decision to issue"
+    }
+  },
+
+  "ehc_plans": {
+    "what_it_is": "An Education, Health and Care (EHC) plan is a legal document describing a child or young person's SEND, the outcomes sought, and the educational, health and social care provision to meet those needs and achieve those outcomes.",
+
+    "structure": {
+      "sections": [
+        {
+          "section": "A",
+          "content": "Views, interests and aspirations of the child/young person and parents"
+        },
+        {
+          "section": "B",
+          "content": "Special educational needs"
+        },
+        {
+          "section": "C",
+          "content": "Health needs related to SEND"
+        },
+        {
+          "section": "D",
+          "content": "Social care needs related to SEND"
+        },
+        {
+          "section": "E",
+          "content": "Outcomes sought for the child/young person"
+        },
+        {
+          "section": "F",
+          "content": "Special educational provision (this section is legally binding)"
+        },
+        {
+          "section": "G",
+          "content": "Health provision (this section is legally binding on the NHS ICB)"
+        },
+        {
+          "section": "H1",
+          "content": "Social care provision under Children Act 1989 s.2 Chronically Sick and Disabled Persons Act 1970"
+        },
+        {
+          "section": "H2",
+          "content": "Other social care provision"
+        },
+        {
+          "section": "I",
+          "content": "Educational placement (school or other institution)"
+        },
+        {
+          "section": "J",
+          "content": "Personal budget (if applicable)"
+        },
+        {
+          "section": "K",
+          "content": "Appendices - advice and information gathered during assessment"
+        }
+      ]
+    },
+
+    "legally_binding_sections": {
+      "sections": ["B", "F", "G"],
+      "explanation": "Sections B (needs), F (educational provision) and G (health provision) are the legally binding sections. The local authority has a duty to secure all provision specified in Section F. The NHS ICB has a duty to arrange provision specified in Section G."
+    },
+
+    "placement": {
+      "general_principle": "Children and young people with EHC plans must be educated in mainstream provision unless this is incompatible with parental wishes, or incompatible with the efficient education of others and there are no reasonable steps to prevent that incompatibility (Children and Families Act 2014, s.33)",
+      "parental_preference": "Parents can request a particular school or institution. The local authority must name it unless it is unsuitable for the child's needs, or the attendance would be incompatible with efficient education of others or efficient use of resources.",
+      "placement_types": [
+        "Mainstream school or academy",
+        "Mainstream school with specialist resourced unit or provision",
+        "Special school (maintained)",
+        "Non-maintained special school",
+        "Independent special school (approved under s.41 Children and Families Act 2014)",
+        "Further Education college",
+        "Specialist post-16 institution",
+        "Home education (in exceptional circumstances)"
+      ],
+      "gloucestershire_provision": "TODO - confirm current list of maintained special schools, resourced units and commissioned independent special schools"
+    },
+
+    "annual_review": {
+      "frequency": "At least annually for all EHC plans",
+      "legal_reference": "Children and Families Act 2014, s.44; SEND Regulations 2014, Regulation 18-20",
+      "phase_transfer_reviews": [
+        {
+          "transition": "Early years to school",
+          "timing": "By 31 March in year before school entry"
+        },
+        {
+          "transition": "Primary to secondary",
+          "timing": "By 31 March in Year 5 (year before Year 6, i.e. 2 years before transfer)"
+        },
+        {
+          "transition": "Secondary to post-16",
+          "timing": "By 31 March in Year 9, and every year thereafter until leaving school"
+        }
+      ],
+      "review_process": [
+        "School/setting sends invitations and paperwork at least 2 weeks before review meeting",
+        "Review meeting held",
+        "Recommendations sent to local authority within 2 weeks of meeting",
+        "Local authority decides within 4 weeks of meeting to maintain, amend or cease plan"
+      ]
+    },
+
+    "ceasing_an_ehc_plan": {
+      "grounds": [
+        "Young person is no longer in education or training",
+        "Young person has reached age 25",
+        "Local authority determines plan is no longer necessary (e.g. needs met, outcomes achieved)"
+      ],
+      "right_of_appeal": "Parents and young people have the right to appeal a decision to cease an EHC plan to the SEND Tribunal"
+    },
+
+    "personal_budgets": {
+      "what_it_is": "A personal budget gives families or young people more control over how the special educational provision in their EHC plan is delivered",
+      "types": [
+        "Notional budget (school uses allocation flexibly)",
+        "Arrangements (provider delivers on behalf of authority)",
+        "Direct payments (money paid to family or young person to commission provision themselves)"
+      ],
+      "right_to_request": "Parents and young people have the right to request a personal budget when an EHC plan is being prepared or reviewed",
+      "legal_reference": "Children and Families Act 2014, s.49; Special Educational Needs (Personal Budgets) Regulations 2014",
+      "gloucestershire_policy": "TODO - confirm current personal budget policy and URL"
+    }
+  },
+
+  "graduated_approach": {
+    "what_it_is": "The graduated approach is a model for identifying and meeting SEND needs through cycles of action, starting with support ordinarily available in educational settings, before escalating to additional support and potentially an EHC needs assessment.",
+
+    "the_cycle": {
+      "assess": "Identify and assess the child or young person's needs",
+      "plan": "Create a plan of support with targets and provision",
+      "do": "Implement the plan",
+      "review": "Review the impact and adjust accordingly"
+    },
+
+    "waves_of_support": [
+      {
+        "wave": "Universal (Wave 1)",
+        "description": "Quality-first teaching and ordinarily available provision for all pupils, including those with SEND",
+        "responsibility": "All schools and settings"
+      },
+      {
+        "wave": "Targeted (Wave 2)",
+        "description": "Additional targeted support for pupils who need more than ordinarily available provision, typically through SEND Support with a plan",
+        "responsibility": "School SENDCo and class teachers, may involve external advisory support"
+      },
+      {
+        "wave": "Specialist (Wave 3 / EHC)",
+        "description": "Where targeted support has not met needs, an EHC needs assessment may be appropriate",
+        "responsibility": "Local authority EHC process with school involvement"
+      }
+    ],
+
+    "send_support_in_school": {
+      "legal_basis": "Children and Families Act 2014 and SEND Code of Practice",
+      "requirements": "Schools must use best endeavours to make special educational provision for pupils with SEN. Schools must identify, assess and plan support for pupils with SEN through the graduated approach.",
+      "sendco": {
+        "role": "Every maintained school and academy must have a qualified teacher designated as SENCO (Special Educational Needs Co-ordinator)",
+        "legal_reference": "Children and Families Act 2014, s.67; SEND Regulations 2014, Regulation 49-51",
+        "qualifications": "SENDCos who are new to the role must achieve the National Professional Qualification for SENCOs (NPQSENCO) within 3 years of appointment"
+      }
+    }
+  },
+
+  "local_offer": {
+    "what_it_is": "The Local Offer sets out the support available for children and young people with SEND and their families in Gloucestershire, from early years through to adulthood. It must be published and kept up to date.",
+
+    "legal_duty": {
+      "reference": "Children and Families Act 2014, s.30",
+      "what_must_be_included": [
+        "Special educational provision in maintained schools, academies, early years providers and post-16 institutions",
+        "Health and social care provision for children and young people with SEND",
+        "Other educational provision (independent schools, alternative provision)",
+        "Information about support available to assist in preparation for adulthood",
+        "Training and support for parents and carers",
+        "Information about leisure activities",
+        "Information about transport"
+      ]
+    },
+
+    "url": "TODO - confirm current Local Offer URL (likely https://www.gloucestershire.gov.uk/send or similar)",
+    "format": "Online portal/website",
+    "updating": "Local authority must review and update the Local Offer regularly, involving children, young people and families in that process"
+  },
+
+  "sendiass": {
+    "full_name": "SEND Information, Advice and Support Service",
+    "what_it_is": "SENDIASS provides free, impartial, confidential information, advice and support to children and young people with SEND and their parents and carers in Gloucestershire.",
+
+    "legal_duty": {
+      "reference": "Children and Families Act 2014, s.32",
+      "what_must_be_provided": "Local authorities must arrange for children, young people and parents to be provided with information and advice about matters relating to SEND"
+    },
+
+    "who_it_helps": [
+      "Parents and carers of children and young people with SEND",
+      "Children and young people with SEND (in age-appropriate ways)",
+      "Young people aged 16-25 with SEND in their own right"
+    ],
+
+    "what_it_covers": [
+      "Understanding the EHC needs assessment and planning process",
+      "Rights under the Children and Families Act 2014",
+      "Disagreement resolution options",
+      "Preparing for SEND Tribunal",
+      "Understanding school-based SEND support",
+      "Transition to adulthood",
+      "General SEND rights and entitlements"
+    ],
+
+    "important_principles": [
+      "Impartial - independent of local authority decisions",
+      "Free to families",
+      "Confidential",
+      "Not advocacy (but can help families understand their options)"
+    ],
+
+    "contact": {
+      "phone": "TODO - confirm current SENDIASS phone number",
+      "email": "TODO - confirm current SENDIASS email",
+      "website": "TODO - confirm current SENDIASS web page",
+      "hours": "TODO - confirm current service hours"
+    },
+
+    "gloucestershire_provider": "TODO - confirm whether SENDIASS is in-house or commissioned, and current provider if commissioned"
+  },
+
+  "specialist_provision": {
+    "special_schools": {
+      "overview": "Gloucestershire maintains a number of special schools for pupils with complex SEND needs who cannot be met in mainstream education.",
+      "schools_list": "TODO - confirm current list of maintained special schools in Gloucestershire with type of need they serve",
+      "how_to_access": "Named in Section I of EHC plan following EHC needs assessment. Parental preference considered.",
+      "annual_places": "TODO - confirm current capacity and available places position"
+    },
+
+    "resourced_units": {
+      "what_they_are": "Specialist units or bases within mainstream schools providing enhanced support for specific types of SEND, such as autism, hearing impairment, or communication needs.",
+      "units_list": "TODO - confirm current list of maintained resourced units in Gloucestershire",
+      "how_to_access": "Named in EHC plan; some may have waiting lists"
+    },
+
+    "independent_special_schools": {
+      "legal_basis": "Local authorities may name approved independent special schools under Children and Families Act 2014, s.41",
+      "approved_list": "https://www.gov.uk/government/publications/section-41-approved-independent-special-schools-and-special-post-16-institutions",
+      "cost": "Local authority responsible for fees where named in EHC plan; costs can be significant",
+      "gloucestershire_approach": "TODO - confirm GCC's commissioning approach and any preferred provider framework for independent special schools"
+    },
+
+    "alternative_provision": {
+      "what_it_is": "Education arranged by the local authority or schools outside mainstream schooling for pupils who cannot attend school, including those with SEND.",
+      "types": [
+        "Pupil Referral Units (PRUs)",
+        "Hospital education",
+        "Home tuition",
+        "Online/remote education",
+        "Other commissioned providers"
+      ],
+      "gloucestershire_providers": "TODO - confirm current AP providers commissioned by GCC"
+    },
+
+    "post_16_and_19": {
+      "age_range_covered": "Young people with EHC plans can remain in education or training until age 25",
+      "provision_types": [
+        "Further Education colleges with specialist SEND provision",
+        "Sixth forms",
+        "Specialist post-16 institutions (approved under s.41)",
+        "Supported internships",
+        "Traineeships",
+        "Apprenticeships with SEND support"
+      ],
+      "gloucestershire_provision": "TODO - confirm current post-16 and post-19 SEND provision commissioned or available in Gloucestershire",
+      "preparation_for_adulthood": "EHC plans from Year 9 onwards must include outcomes and provision related to preparing for adulthood, including employment, independent living, participation in society, and health"
+    }
+  },
+
+  "early_years": {
+    "age_range": "0-5 years",
+    "legal_framework": "Children and Families Act 2014 applies from birth; SEND Code of Practice Chapter 5 covers early years",
+
+    "early_identification": {
+      "who_identifies": [
+        "Health visiting services",
+        "GPs and paediatricians",
+        "Early years settings (childminders, nurseries, Children's Centres)",
+        "Parents and carers"
+      ],
+      "portage": "TODO - confirm whether Gloucestershire commissions a Portage home-visiting service for children with SEND aged 0-5 and contact details"
+    },
+
+    "eyfs_send_support": {
+      "description": "All early years providers must have regard to the SEND Code of Practice and use a graduated approach to identify and support children with SEND.",
+      "sendco_equivalent": "Every maintained nursery school and other maintained settings must have a SENCO. Other providers should have a named person for SEND coordination.",
+      "disability_access_fund": "Children aged 3-4 with certain disabilities receiving Disability Living Allowance may attract a Disability Access Fund (DAF) payment to their early years provider to improve access"
+    },
+
+    "ehc_assessment_in_early_years": "EHC needs assessments can be requested for children from birth. The 20-week timescale applies from the date of request."
+  },
+
+  "transition_to_adulthood": {
+    "legal_framework": "Children and Families Act 2014 and Care Act 2014 together govern transition; SEND Code of Practice Chapter 8",
+
+    "when_planning_starts": "Transition planning must begin at the Year 9 annual review (age 13-14) and continue through annual reviews until the young person leaves education or reaches 25",
+
+    "preparation_for_adulthood_domains": [
+      "Higher education and/or employment (including supported employment)",
+      "Independent living",
+      "Participation in society (including leisure and volunteering)",
+      "Being as healthy as possible in adult life"
+    ],
+
+    "adult_social_care": {
+      "care_act_assessment": "Young people with SEND approaching 18 may be eligible for an adult social care needs assessment under the Care Act 2014",
+      "transition_assessment": "Local authority must assess where it appears a young person is likely to have needs for care and support after turning 18",
+      "timing": "Must be carried out at a time that is of significant benefit to the young person, usually between 16-18"
+    },
+
+    "ehc_plan_to_age_25": {
+      "duration": "EHC plan can continue to age 25 if the young person remains in education or training",
+      "ceasing": "Plan must be ceased when young person leaves education or training, reaches 25, or when needs can be met without a plan"
+    },
+
+    "gloucestershire_transition_services": "TODO - confirm current commissioned transition support services and contact details"
+  },
+
+  "support_for_families": {
+    "information_and_advice": {
+      "sendiass": "See SENDIASS section above",
+      "local_offer": "See Local Offer section above",
+      "independent_supporters": {
+        "what_they_are": "Trained volunteers or workers who help families navigate the EHC assessment and planning process",
+        "availability": "TODO - confirm whether GCC currently commissions an Independent Supporters service and contact details"
+      }
+    },
+
+    "short_breaks": {
+      "what_they_are": "Short break services provide disabled children and their families with a break from each other. They range from activities for the child to overnight or residential care.",
+      "legal_duty": "Local authorities must provide a range of short breaks for disabled children (Breaks for Carers of Disabled Children Regulations 2011)",
+      "gloucestershire_provision": "TODO - confirm current short breaks offer in Gloucestershire, commissioned providers, and eligibility criteria",
+      "how_to_access": "TODO - confirm referral route (likely via children's social care or disability team)"
+    },
+
+    "parent_carer_forum": {
+      "what_it_is": "Parent carer forums represent the views of families of children and young people with SEND. Local authorities must involve them in strategic decision-making.",
+      "gloucestershire_forum": "TODO - confirm name and contact details of current Gloucestershire parent carer forum",
+      "legal_duty": "Children and Families Act 2014 - local authorities must consult parent carer forums when reviewing the Local Offer"
+    },
+
+    "carer_support": {
+      "carers_assessment": "Parents and carers may be entitled to a carer's assessment of their own needs under the Care Act 2014 and Children and Families Act 2014",
+      "gloucestershire_carers": "TODO - confirm current carer support services in Gloucestershire"
+    }
+  },
+
+  "disagreement_resolution_and_appeals": {
+    "complaints_procedure": {
+      "who_to_contact": "TODO - confirm current GCC SEND complaints contact",
+      "timescales": "Local authority complaints procedure timescales apply",
+      "ombudsman": "If not resolved, complaint can be escalated to Local Government and Social Care Ombudsman (LGSCO)",
+      "lgsco_url": "https://www.lgo.org.uk"
+    },
+
+    "disagreement_resolution": {
+      "what_it_is": "Voluntary processes to resolve disagreements about SEND without going to Tribunal. Local authority must commission and publicise this service.",
+      "legal_duty": "Children and Families Act 2014, s.51",
+      "gloucestershire_provider": "TODO - confirm current commissioned disagreement resolution service and contact details"
+    },
+
+    "mediation": {
+      "what_it_is": "Mediation with an accredited mediator before a Tribunal appeal. Most Tribunal appeals require the parent/young person to contact a mediation adviser first.",
+      "legal_reference": "Children and Families Act 2014, s.53-55",
+      "when_required": "Must contact mediation adviser (and obtain certificate) before appealing most SEND decisions to Tribunal, except where appealing only about the school named in the plan",
+      "timescale": "Mediation must be arranged within 30 days of request",
+      "gloucestershire_provider": "TODO - confirm current commissioned mediation service and contact details"
+    },
+
+    "send_tribunal": {
+      "full_name": "First-tier Tribunal (Special Educational Needs and Disability)",
+      "url": "https://www.gov.uk/courts-tribunals/first-tier-tribunal-special-educational-needs-and-disability",
+      "jurisdiction": [
+        "Refusal to conduct EHC needs assessment",
+        "Refusal to issue EHC plan",
+        "Contents of EHC plan (Sections B, F, I)",
+        "Refusal to maintain EHC plan",
+        "Decision to cease EHC plan",
+        "Disability discrimination in schools (concurrent with Equality Act)"
+      ],
+      "who_can_appeal": "Parents, and young people aged 16 and over in their own right",
+      "timescale_to_appeal": "2 months from decision, or 1 month from mediation certificate (whichever is later)",
+      "note": "Tribunal cannot consider health (Section G) or social care (Sections H1/H2) provision - these are subject to separate challenge routes"
+    },
+
+    "judicial_review": {
+      "what_it_is": "Challenge to the lawfulness of a local authority decision in the High Court",
+      "when_applicable": "Where the local authority has acted unlawfully, not just where a parent disagrees with a decision",
+      "note": "Specialist legal advice required; significant costs implications"
+    }
+  },
+
+  "contacts_and_referrals": {
+    "main_send_team": {
+      "address": "TODO - confirm current postal address for GCC SEND team",
+      "phone": "TODO - confirm current SEND team phone number",
+      "email": "TODO - confirm current SEND team email",
+      "website": "TODO - confirm current SEND pages URL on gloucestershire.gov.uk"
+    },
+
+    "ehc_requests": {
+      "how": "TODO - confirm current process for submitting EHC needs assessment requests",
+      "form": "TODO - confirm if standard referral form available and URL"
+    },
+
+    "educational_psychology": {
+      "contact": "TODO - confirm whether EP service has a direct contact route for families or if access is via schools only",
+      "website": "TODO - confirm URL"
+    },
+
+    "nhs_send": {
+      "contact": "NHS Gloucestershire ICB is responsible for health element of EHC plans",
+      "url": "https://www.nhsgloucestershire.icb.nhs.uk",
+      "note": "Families should contact the SEND team who will coordinate health input; some health services can be contacted directly"
+    },
+
+    "local_offer_url": "TODO - confirm current URL"
+  },
+
+  "performance_and_accountability": {
+    "key_performance_indicators": [
+      {
+        "metric": "% EHC needs assessments completed within 20-week statutory timescale",
+        "current_performance": "TODO - confirm current figure",
+        "national_benchmark": "National average published annually by DfE"
+      },
+      {
+        "metric": "% EHC plan annual reviews completed on time",
+        "current_performance": "TODO - confirm current figure"
+      },
+      {
+        "metric": "Number of children and young people with EHC plans",
+        "current_figure": "TODO - confirm current number",
+        "trend": "TODO - confirm trajectory"
+      },
+      {
+        "metric": "% of pupils with EHC plans in mainstream education",
+        "current_performance": "TODO - confirm current figure"
+      },
+      {
+        "metric": "Number of SEND Tribunal appeals lodged per year",
+        "current_figure": "TODO - confirm current figure"
+      },
+      {
+        "metric": "% of Tribunal appeals decided in family's favour",
+        "current_performance": "TODO - confirm current figure"
+      }
+    ],
+
+    "reporting": {
+      "to_dfe": "Local authorities report SEND data annually to DfE through statutory data collections (SEN2)",
+      "dfe_publication": "https://explore-education-statistics.service.gov.uk/find-statistics/education-health-and-care-plans",
+      "governance": "TODO - confirm current internal governance and scrutiny arrangements for SEND performance (e.g. Children and Families Scrutiny Committee)"
+    },
+
+    "ofsted_cqc_inspection": {
+      "inspection_framework": "Ofsted and CQC jointly inspect local area SEND arrangements",
+      "most_recent_inspection": "TODO - confirm date and outcome of most recent inspection",
+      "inspection_letter_url": "TODO - add URL",
+      "current_status": "TODO - confirm whether GCC is subject to Written Statement of Action or has had revisit inspection"
+    },
+
+    "send_partnership_board": {
+      "what_it_is": "Strategic partnership board bringing together local authority, health, schools, and families to oversee SEND improvement",
+      "membership": "TODO - confirm current membership",
+      "meeting_frequency": "TODO - confirm frequency",
+      "minutes_url": "TODO - confirm whether minutes are published and URL"
+    }
+  },
+
+  "financial_framework": {
+    "high_needs_block": {
+      "what_it_is": "The High Needs Block is part of the Dedicated Schools Grant (DSG) allocated by central government to fund SEND provision above the nationally prescribed threshold",
+      "gloucestershire_allocation_2025_26": "TODO - confirm 2025/26 High Needs Block DSG allocation",
+      "legal_reference": "School and Early Years Finance (England) Regulations 2020",
+      "pressures": "High Needs Block budgets are under significant pressure nationally due to growing EHC plan numbers and increasing complexity of need"
+    },
+
+    "place_funding_and_top_up": {
+      "place_funding": "Element 2 funding - base per-pupil funding for SEND places in special schools and resourced units",
+      "top_up": "Element 3 funding - additional top-up funding paid by local authority to meet needs above the base level",
+      "mainstream_threshold": "£6,000 - schools are expected to fund SEND support up to this level from their budgets before local authority top-up applies"
+    },
+
+    "personal_budgets": "See personal budgets section under EHC Plans"
+  },
+
+  "data_and_information_governance": {
+    "data_controller": "Gloucestershire County Council",
+    "dpo": "TODO - confirm current Data Protection Officer contact for GCC",
+    "legal_basis_for_processing": [
+      "Article 6(1)(e) GDPR - processing necessary for the performance of a task carried out in the public interest",
+      "Article 9(2)(g) GDPR - processing necessary for reasons of substantial public interest (statutory SEND functions)",
+      "Children and Families Act 2014 - statutory duty to maintain EHC plans and associated records"
+    ],
+    "data_sharing": {
+      "with_health": "EHC assessment involves sharing data with NHS ICB and health providers. Governed by data sharing agreement.",
+      "with_schools": "SEND data shared with educational settings named in EHC plans",
+      "with_dfe": "Statutory data returns (SEN2)",
+      "data_sharing_agreement": "TODO - confirm current data sharing agreement with NHS Gloucestershire ICB"
+    },
+    "retention": {
+      "ehc_plans": "TODO - confirm retention period for EHC plans (likely to age 25 or end of plan plus defined period)",
+      "assessment_records": "TODO - confirm retention period",
+      "legal_reference": "TODO - confirm applicable retention schedule"
+    },
+    "privacy_notice_url": "TODO - confirm URL for GCC SEND privacy notice"
+  },
+
+  "related_services": {
+    "childrens_social_care": {
+      "note": "Children with SEND may also have needs under the Children Act 1989 (Child in Need, Child Protection, Looked After Children). These are managed by GCC Children's Social Care.",
+      "contact": "TODO - confirm Children's Social Care contact details"
+    },
+    "adult_social_care": {
+      "note": "Young people with SEND transitioning to adulthood may need Care Act 2014 assessments from Adult Social Care",
+      "contact": "TODO - confirm Adult Social Care contact for SEND transitions"
+    },
+    "education_welfare": {
+      "note": "Children with SEND are at greater risk of school absence. Education Welfare / Attendance Support services may be involved.",
+      "contact": "TODO - confirm Education Welfare contact"
+    },
+    "school_exclusions": {
+      "note": "Pupils with SEND are disproportionately excluded. GCC has a role in challenging unlawful exclusions and ensuring provision for excluded pupils with EHC plans.",
+      "contact": "TODO - confirm GCC exclusions contact"
+    },
+    "elective_home_education": {
+      "note": "Parents may choose to electively home educate children with SEND. Where a child has an EHC plan, the local authority retains its duty to secure appropriate provision. The child's name remains on the EHC plan.",
+      "url": "TODO - confirm GCC EHE information page"
+    }
+  },
+
+  "glossary": {
+    "EHC": "Education, Health and Care",
+    "EHCP": "Education, Health and Care Plan (more commonly EHC plan)",
+    "ICB": "Integrated Care Board (NHS Gloucestershire)",
+    "SEND": "Special Educational Needs and/or Disabilities",
+    "SEN": "Special Educational Needs",
+    "SENCO": "Special Educational Needs Co-ordinator",
+    "SENDIASS": "SEND Information, Advice and Support Service",
+    "DSG": "Dedicated Schools Grant",
+    "HNB": "High Needs Block (of DSG)",
+    "WSOA": "Written Statement of Action",
+    "DfE": "Department for Education",
+    "Ofsted": "Office for Standards in Education, Children's Services and Skills",
+    "CQC": "Care Quality Commission",
+    "VOA": "Valuation Office Agency (not relevant to SEND - carried over from council tax schema, can remove)",
+    "PRU": "Pupil Referral Unit",
+    "EP": "Educational Psychologist",
+    "DAF": "Disability Access Fund",
+    "EYFS": "Early Years Foundation Stage",
+    "AP": "Alternative Provision"
+  }
+}
